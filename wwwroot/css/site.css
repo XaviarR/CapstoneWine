@@ -18,5 +18,24 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    height: 100%;
+    cursor: none;
+    color: #000;
+    background-color: #fff;
+}
+
+#invertedcursor {
+    pointer-events: none;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    border-radius: 50%;
+    top: var(--y, 0);
+    left: var(--x, 0);
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    mix-blend-mode: difference;
+    transition: transform .2s;
 }
