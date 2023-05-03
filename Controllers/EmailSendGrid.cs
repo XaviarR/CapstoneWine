@@ -18,7 +18,7 @@ namespace CapstoneWine.Controllers
 
         static async Task Execute()
         {
-            var apiKey = Environment.GetEnvironmentVariable("capstoneAPI");
+            var apiKey = "SG.YTpEGcJzS8i06r - qREik8A.DVSXOfK6dEd6RDmkSg6jSTuG8Rw - 3zTF61tU6ErGSbQ";
             var client = new SendGridClient(apiKey);
             var from = new EmailAddress("Xaviar.Rehu@techtorium.ac.nz", "Example User");
             var subject = "Sending with SendGrid is Fun";
@@ -27,6 +27,9 @@ namespace CapstoneWine.Controllers
             var htmlContent = "<strong>and easy to do anywhere, even with C#</strong>";
             var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
             var response = await client.SendEmailAsync(msg);
+            Console.WriteLine(response.StatusCode);
+            Console.WriteLine(response.Body.ReadAsStringAsync());
+           
         }
     }
 }
