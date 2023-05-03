@@ -22,8 +22,8 @@ namespace CapstoneWine.Controllers
 		{
 			return View();
 		}
-
-		public IActionResult Home()
+		
+		public IActionResult Checkout()
 		{
 			return View();
 		}
