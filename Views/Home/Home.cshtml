@@ -18,7 +18,7 @@
 
         /* background-color and color should be the same as the below otherwise it won't work */
         .container > .text {
-            position: fixed;
+            position: absolute;
             
             /*outline
             -webkit-text-fill-color:transparent;
@@ -42,9 +42,7 @@
         .container > .bg-video {
             width: 100%;
             height: 100%;
-        }
-       
-     keyframes      
+        }     
        
 </style>
 
@@ -53,9 +51,8 @@
     <video class="bg-video" controls="controls" autoPlay muted loop>
         <source src="~/video/texteffects.mp4" type="video/mp4" />
     </video>
-    <div>
+    
 		<p class="text">WINEZ</p>
-	</div>
 </div>
 
 
