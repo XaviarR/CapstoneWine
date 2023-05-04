@@ -43,3 +43,64 @@ body {
     mix-blend-mode: difference;
     transition: transform .2s;
 }
+
+.slide-box {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    /*background-color: #f0f0f0;*/
+}
+
+.slide-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*background-color: bisque;*/
+    position: absolute;
+    left: -50%;
+    top: 50%;
+    transform: translate(-100%, -50%);
+    width: 100%;
+    height: 400px;
+    text-align: center;
+    font-size: 150px;
+    line-height: 1;
+    transition: transform 1s ease-out;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Container should be full height and full width */
+.vid-container {
+    position: relative;
+    left: 0;
+    width: 100%;
+    height: 450px;
+    overflow: hidden;
+}
+
+.vid-container > .bg-video {
+    width: 100%;
+    height: 200%;
+    overflow:hidden;
+}
+
+/* background-color and color should be the same as the below otherwise it won't work */
+.vid-container > .text {
+    position: absolute;
+    text-align: center;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    background-color: #000;
+    color: #ffffff;
+    font-weight: 900;
+    font-size: 100px;
+    font-family: sans-serif;
+    /* Mix Blend Mode does the all magic */
+    mix-blend-mode: multiply;
+    user-select: none;
+}
