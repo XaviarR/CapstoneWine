@@ -22,8 +22,13 @@ namespace CapstoneWine.Controllers
 		{
 			return View();
 		}
-		
-		public IActionResult Checkout()
+
+        public IActionResult About()
+        {
+            return View();
+        }
+
+        public IActionResult Checkout()
 		{
 			return View();
 		}
