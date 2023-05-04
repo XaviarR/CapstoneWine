@@ -13,8 +13,12 @@ html {
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
+    height: 100%;
+    cursor: none;
+    color: #000;
+    background-color: #fff;
 }
 
 body {
