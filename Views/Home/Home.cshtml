@@ -2,60 +2,44 @@
 	ViewData["Title"] = "Home Page";
 }
 
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-    }
-
-    /* Container should be full height and full width */
-   .container {
-        position: relative;
-        width: 100vw;
-        height: 100vh;
-
-    }
-
-        /* background-color and color should be the same as the below otherwise it won't work */
-        .container > .text {
-            position: fixed;
-            
-            /*outline
-            -webkit-text-fill-color:transparent;
-            -webkit-text-stroke: 4px;
-            /*remove above to have solid text*/
-
-            inset: 0;
-            display: grid;
-            place-items: center;
-            background-color: #000;
-            color: #fff;
-            font-weight: 900;
-            font-size: 100px;
-            font-family: sans-serif;
-
-            /* Mix Blend Mode does the all magic */
-            mix-blend-mode: multiply;
-            user-select: none;
-        }
-
-        .container > .bg-video {
-            width: 100%;
-            height: 100%;
-        }
-       
-     keyframes      
-       
-</style>
-
-<div class="container">
-
-    <video class="bg-video" controls="controls" autoPlay muted loop>
-        <source src="~/video/texteffects.mp4" type="video/mp4" />
+<div class="vid-container">
+    <video class="bg-video" autoplay loop muted>
+        <source src="https://imgur.com/2cSaKIt.mp4" type="video/mp4" />
     </video>
-    <div>
-		<p class="text">WINEZ</p>
-	</div>
+    <p class="text">CABERNET SAUVIGNON</p>
+</div>
+
+<div class="slide-box" id="box1">
+    <div class="slide-text" id="wine1">
+        CABERNET SAUVIGNON
+    </div>
+</div>
+<div class="slide-box" id="box2">
+    <div class="slide-text" id="wine2">
+        PINOT NOIR
+    </div>
+</div>
+<div class="slide-box" id="box3">
+    <div class="slide-text" id="wine3">
+        SHRIAZ
+    </div>
+</div>
+<div class="slide-box" id="box4">
+    <div class="slide-text" id="wine4">
+        MERLOT
+    </div>
+</div>
+
+<div class="vid-container">
+    <video class="bg-video" autoplay loop muted>
+        <source src="https://imgur.com/2cSaKIt.mp4" type="video/mp4" />
+    </video>
+    <p class="text">CABERNET SAUVIGNON</p>
 </div>
 
 
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+<script src="~/js/scrolltrigger.js"></script>
