@@ -7,6 +7,7 @@ using System;
 using System.Threading.Tasks;
 using System.IO;
 using Newtonsoft.Json.Linq;
+using Azure.Security.KeyVault;
 
 namespace CapstoneWine.Controllers
 {
@@ -25,7 +26,7 @@ namespace CapstoneWine.Controllers
         {
             ViewData["Message"] = "Email Sent!!!...";
             Example emailexample = new Example();
-            await emailexample.Execute(emailmodel.From, emailmodel.To, emailmodel.Subject, emailmodel.Body, emailmodel.Body);
+            await emailexample.Execute(emailmodel.To, emailmodel.To, emailmodel.To, emailmodel.To);//needed to parse 4 values from async task Execute
             return View("SendgridEmail");
         }
 
@@ -67,12 +68,14 @@ namespace CapstoneWine.Controllers
 
         internal class Example
         {
-            public async Task Execute(string From, string To, string subject, string plainTextContent, string htmlContent)
-            {
-                var value = Environment.GetEnvironmentVariable("capstoneAPI");
-                var client = new SendGridClient(value);
-                var from = new EmailAddress(From);
-                var to = new EmailAddress(To);
+            public async Task Execute(string To, string subject, string plainTextContent, string htmlContent)
+            {   
+                var apiKey = "";//api key
+                var client = new SendGridClient(apiKey);
+                var from = new EmailAddress("xaviar.rehu@techtorium.ac.nz");//email that sends messages to user
+                var to = new EmailAddress(To);//user inputs own email
+                subject = "Thank you for registering with us";//message that is emailed to user
+                plainTextContent = "Welcome to WiNeZ";
                 htmlContent = "<strong>" + htmlContent + "</strong>";
                 var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
                 var response = await client.SendEmailAsync(msg);

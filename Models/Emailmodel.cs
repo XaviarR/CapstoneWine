@@ -2,9 +2,9 @@
 {
     public class Emailmodel
     {
-        public string From { get; set; }
+        //Body or subject could be needed later for feedback?
         public string To { get; set; }
-        public string Subject { get; set; }
-        public string Body { get; set; }
+        //public string Subject { get; set; }
+        //public string Body { get; set; }
     }
 }

@@ -7,24 +7,23 @@
 <form asp-action="SendgridEmailSubmit" asp-controller="Home" method="post">
     <table style="padding:20px;">
         <tr>
-            <td>From</td>
-            <td>  <input asp-for="From" /></td>
-            <td><br /></td>
-        </tr>
-        <tr>
-            <td>To</td>
+            <td>
+                Email: 
+            </td>
             <td>  <input asp-for="To" /></td>
         </tr>
+        
+@*        possibly for feedback form?
         <tr>
             <td>Subject</td>
             <td>  <input asp-for="Subject" /></td>
-        </tr>
-        <tr>
+        </tr>*@
+@*        <tr>
             <td>
-                Body
+                Message: 
             </td>
             <td>  <input asp-for="Body" /></td>
-        </tr>
+        </tr>*@
         <tr>
             <td></td>
             <td><input type="submit" value="Send Email" /></td>
