@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.IO;
 using Newtonsoft.Json.Linq;
 using Azure.Security.KeyVault;
+using System.Xml.Schema;
 
 namespace CapstoneWine.Controllers
 {
@@ -69,8 +70,8 @@ namespace CapstoneWine.Controllers
         internal class Example
         {
             public async Task Execute(string To, string subject, string plainTextContent, string htmlContent)
-            {   
-                var apiKey = "";//api key
+            {
+                var apiKey = APIFILE.apiKey;//api key
                 var client = new SendGridClient(apiKey);
                 var from = new EmailAddress("xaviar.rehu@techtorium.ac.nz");//email that sends messages to user
                 var to = new EmailAddress(To);//user inputs own email

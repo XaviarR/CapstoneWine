@@ -1,8 +1,20 @@
+using Azure.Extensions.AspNetCore.Configuration.Secrets;
+using Azure.Identity;
 using CapstoneWine.Data;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Cryptography.X509Certificates;
+ using System.Linq;
+using Microsoft.Identity.Client;
+using CapstoneWine.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
+
+
+//var KeyVaultURL = new Uri(builder.Configuration.GetSection("KeyVaultURL").Value!);
+//var azureCredential = new DefaultAzureCredential();
+//builder.Configuration.AddAzureKeyVault(KeyVaultURL, azureCredential);
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
