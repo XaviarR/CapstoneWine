@@ -8,4 +8,19 @@ document.body.onmousemove = function(e) {
         '--x', (e.clientX+window.scrollX) + 'px');
     document.documentElement.style.setProperty (
         '--y', (e.clientY+window.scrollY) + 'px');
-    }
+}
+
+$(function () {
+    $('a').hover(function () {
+        $('#invertedcursor').css('height', '60px');
+        $('#invertedcursor').css('width', '60px');
+        $('#invertedcursor').css('transition', 'height .8s, width .8s');
+
+
+    }, function () {
+        // on mouseout, reset the background colour
+        $('#invertedcursor').css('height', '100px');
+        $('#invertedcursor').css('width', '100px');
+        $('#invertedcursor').css('transition', 'height .8s width .8s')
+    });
+});
