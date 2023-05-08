@@ -27,7 +27,10 @@ body {
     height: 100%;
     cursor: none;
     color: #000;
-    background-color: #fff;
+    
+    /*set background color*/
+    background-color: darkslategrey;
+   
 }
 
 #invertedcursor {
@@ -44,3 +47,5 @@ body {
     mix-blend-mode: difference;
     transition: transform .2s;
 }
+
+
