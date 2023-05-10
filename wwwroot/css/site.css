@@ -52,7 +52,8 @@ body {
 
 * {
     margin: 0;
-    padding: 0;
+    padding: 0px;
+    box-sizing: border-box;
 }
 
 /* Container should be full height and full width */
@@ -95,3 +96,5 @@ body {
         transform: translate(-100%, 0%);
         transition: transform 1s ease-out;
     }
+
+
