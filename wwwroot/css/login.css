@@ -41,7 +41,7 @@ body {
 }
 
 form {
-    height: 660px;
+    height: auto;
     width: 500px;
     background-color: rgba(255,255,255,0.13);
     position: absolute;
@@ -66,9 +66,13 @@ form {
     form h3 {
         font-size: 4rem;
         font-weight: 500;
-        line-height: 42px;
+        line-height: 62px;
         text-align: center;
     }
+h1{   color:white;
+      text-align:center;
+      margin:40px 0;
+}
 
 .label {
     display: block;
