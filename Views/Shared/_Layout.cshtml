@@ -6,44 +6,51 @@
 	<title>@ViewData["Title"] - CapstoneWine</title>
 	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/css/menustyle.css" asp-append-version="true" />
 	<link rel="stylesheet" href="~/CapstoneWine.styles.css" asp-append-version="true" />
 </head>
 
 <body>
+	
 	<header>
 		<div id="invertedcursor"></div>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-			<div class="container-fluid">
-				<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">CapstoneWine</a>
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-						aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-					<ul class="navbar-nav flex-grow-1">
-						<li class="nav-item">
-							<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Index</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Checkout">Checkout</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">About|Contact</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Home">Home</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="sendgridEmail">Email</a>
-						</li>
-					</ul>
-					<partial name="_LoginPartial" />
-				</div>
+		
+		
+		
+		<!--Option 1-->
+		<nav class="navbar">
+			<div class="hamburger">
+				<a>
+					<span class="bar"></span>
+					<span class="bar"></span>
+					<span class="bar"></span>
+				</a>
 			</div>
-		</nav>
+			
+			<ul class="nav-menu navbar-nav flex-grow-1">
+				<li class="nav-item ">
+					<a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Index</a>
+				</li>
+				<li class="nav-item">
+					<a  class="nav-link" asp-area="" asp-controller="Home" asp-action="Checkout">Checkout</a>
+				</li>
+				<li class="nav-item">
+					<a  class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About|Contact</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" asp-area="" asp-controller="Home" asp-action="Home">Home</a>
+				</li>
+				<li class="nav-item">
+					<a  class="nav-link" asp-area="" asp-controller="Home" asp-action="sendgridEmail">Email</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="sendgridEmail">Email</a>
+				</li>
+				<partial name="_LoginPartial" />
+			</ul>
+			
+			<a href="#" class="nav-branding">WINEZ</a>
+			</nav>
 	</header>
 		<div class="container">
 			<main role="main" class="pb-3">
