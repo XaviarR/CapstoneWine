@@ -1,0 +1,41 @@
+﻿@page
+@model ResendEmailConfirmationModel
+
+<link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
+<link rel="preconnect" href="https://fonts.gstatic.com" />
+<link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel=”stylesheet”>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+
+@{
+    ViewData["Title"] = "Resend email confirmation";
+}
+
+<h1>@ViewData["Title"]</h1>
+<div>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+	<form method="post">
+		<h3>Enter your email.</h3>
+		<hr />
+		<div class="row">
+			<div>
+            <div asp-validation-summary="All" class="text-danger" role="alert"></div>
+            <div>
+                <label asp-for="Input.Email" class="label"></label>
+                <input asp-for="Input.Email" class="input" aria-required="true" placeholder="name@example.com" />
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div style="margin-top: 50px">
+                <button type="submit" class="w-100 btn btn-lg btn-outline-light">Resend</button>
+			</div>
+			</div>
+        </div>
+	</form>
+    </div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
