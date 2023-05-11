@@ -18,9 +18,9 @@ $(function () {
 
 
     }, function () {
-        // on mouseout, reset the background colour
-        $('#invertedcursor').css('height', '80px');
-        $('#invertedcursor').css('width', '80px');
+        // on mouseout, reset the cursor size
+        $('#invertedcursor').css('height', '70px');
+        $('#invertedcursor').css('width', '70px');
         $('#invertedcursor').css('transition', 'height .5s width .5s')
     });
 });
