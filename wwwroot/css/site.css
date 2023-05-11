@@ -21,8 +21,13 @@ body {
     margin-bottom: 60px;
     min-height: 91vh;
     cursor: none;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
-
+footer{
+    margin-top:auto;
+}
 .bg-home {
     background-color: black;
 }

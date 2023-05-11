@@ -1,4 +1,5 @@
 ﻿using CapstoneWine.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SendGrid;
 using SendGrid.Helpers.Mail;
@@ -14,8 +15,10 @@ namespace CapstoneWine.Controllers
 
             return View();
         }
-
-        private readonly ILogger<HomeController> _logger;
+       
+        
+        /*Email*/
+		private readonly ILogger<HomeController> _logger;
         [HttpPost]
         public async Task<IActionResult> SendgridEmailSubmit(Emailmodel emailmodel)
         {
@@ -29,13 +32,49 @@ namespace CapstoneWine.Controllers
         {
             _logger = logger;
         }
+		
+        
 
-        public IActionResult Index()
+		public IActionResult Index()
         {
+            if(!Request.Cookies.ContainsKey("AgeVerified"))
+            {
+                return RedirectToAction("VerifyAge");
+            }
             return View();
         }
+        
+        public IActionResult VerifyAge() {
+            return View();
+        }
+		/*AgeCheck*/
+		[HttpPost]
+		public IActionResult VerifyAge(DateTime dateOfBirth)
+		{
+			DateTime currentDate = DateTime.Now;
+			int age = currentDate.Year - dateOfBirth.Year;
 
-        public IActionResult Privacy()
+			//check if user is above min age
+			int minimumAge = 18;
+			if (age >= minimumAge)
+			{
+				HttpContext.Response.Cookies.Append("AgeVerified", "true");
+				return RedirectToAction("Index", "Home");
+			}
+			else
+			{
+				return Redirect("https://www.alcohol.org.nz");
+			}
+		}
+
+
+		[Authorize]
+        public IActionResult Subscription()
+		{
+			return View();
+		}
+
+		public IActionResult Privacy()
         {
             return View();
         }

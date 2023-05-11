@@ -1,11 +1,88 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+	ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <h1>Anthony Christian Brown wrote this</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">Ellie Added these changes</a>.</p>
-</div>
+<body class="bg-home">
+	<div id="mouse-area">
+		<div id="mouse-area-body">
+			<div class="slide-box" id="box1">
+				<div class="vid-container" id="wine1">
+					<video class="bg-video" id="wine1" autoplay loop muted>
+						<source src="/video/texteffects.mp4" type="video/mp4" />
+					</video>
+					<a href="#" class="text" id="wine1">CABERNET SAUVIGNON</a>
+				</div>
+			</div>
 
+			<div class="slide-box" id="box2">
+				<div class="vid-container" id="wine2">
+					<video class="bg-video" id="wine2" autoplay loop muted>
+						<source src="/video/texteffects.mp4" type="video/mp4" />
+					</video>
+					<a href="#" class="text" id="wine2">PINOT NOIR</a>
+				</div>
+			</div>
+
+			<div class="slide-box" id="box3">
+				<div class="vid-container" id="wine3">
+					<video class="bg-video" id="wine3" autoplay loop muted>
+						<source src="/video/texteffects.mp4" type="video/mp4" />
+					</video>
+					<a href="#" class="text" id="wine3">SHRIAZ</a>
+				</div>
+			</div>
+
+			<div class="slide-box" id="box4">
+				<div class="vid-container" id="wine4">
+					<video class="bg-video" id="wine4" autoplay loop muted>
+						<source src="/video/texteffects.mp4" type="video/mp4" />
+					</video>
+					<a href="#" class="text" id="wine4">MERLOT</a>
+				</div>
+			</div>
+
+			<div class="slide-box" id="box5">
+				<div class="vid-container" id="wine5">
+					<video class="bg-video" id="wine5" autoplay loop muted>
+						<source src="/video/texteffects.mp4" type="video/mp4" />
+					</video>
+					<a class="text" id="wine5">SAUVIGNON BLANC</a>
+				</div>
+			</div>
+
+			<div class="slide-box" id="box6">
+				<div class="vid-container" id="wine6">
+					<video class="bg-video" id="wine6" autoplay loop muted>
+						<source src="/video/texteffects.mp4" type="video/mp4" />
+					</video>
+					<a class="text" id="wine6">CHARDONAY</a>
+				</div>
+			</div>
+
+			<div class="slide-box" id="box7">
+				<div class="vid-container" id="wine7">
+					<video class="bg-video" id="wine7" autoplay loop muted>
+						<source src="/video/texteffects.mp4" type="video/mp4" />
+					</video>
+					<a class="text" id="wine7">PINOT GRIS</a>
+				</div>
+			</div>
+
+			<div class="slide-box" id="box8">
+				<div class="vid-container" id="wine8">
+					<video class="bg-video" id="wine8" autoplay loop muted>
+						<source src="/video/texteffects.mp4" type="video/mp4" />
+					</video>
+					<a class="text" id="wine8" asp-controller="Home" asp-action="Privacy">RIESLING</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+	<script src="~/js/scrolltrigger.js"></script>
+</body>
