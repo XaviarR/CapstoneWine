@@ -12,16 +12,16 @@ document.body.onmousemove = function(e) {
 
 $(function () {
     $('a').hover(function () {
-        $('#invertedcursor').css('height', '60px');
-        $('#invertedcursor').css('width', '60px');
-        $('#invertedcursor').css('transition', 'height .8s, width .8s');
+        $('#invertedcursor').css('height', '40px');
+        $('#invertedcursor').css('width', '40px');
+        $('#invertedcursor').css('transition', 'height .5s, width .5s');
 
 
     }, function () {
-        // on mouseout, reset the background colour
-        $('#invertedcursor').css('height', '100px');
-        $('#invertedcursor').css('width', '100px');
-        $('#invertedcursor').css('transition', 'height .8s width .8s')
+        // on mouseout, reset the cursor size
+        $('#invertedcursor').css('height', '70px');
+        $('#invertedcursor').css('width', '70px');
+        $('#invertedcursor').css('transition', 'height .5s width .5s')
     });
 });
 
