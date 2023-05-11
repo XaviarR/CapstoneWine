@@ -5,12 +5,11 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography.X509Certificates;
- using System.Linq;
+using System.Linq;
 using Microsoft.Identity.Client;
 using CapstoneWine.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
-
 
 //var KeyVaultURL = new Uri(builder.Configuration.GetSection("KeyVaultURL").Value!);
 //var azureCredential = new DefaultAzureCredential();
