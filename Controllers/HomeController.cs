@@ -1,19 +1,13 @@
 ﻿using CapstoneWine.Models;
 using Microsoft.AspNetCore.Mvc;
-using SendGrid.Helpers.Mail;
 using SendGrid;
+using SendGrid.Helpers.Mail;
 using System.Diagnostics;
-using System;
-using System.Threading.Tasks;
-using System.IO;
-using Newtonsoft.Json.Linq;
-using Azure.Security.KeyVault;
-using System.Xml.Schema;
 
 namespace CapstoneWine.Controllers
 {
-	public class HomeController : Controller
-	{
+    public class HomeController : Controller
+    {
         public IActionResult SendgridEmail()
         {
             ViewData["Message"] = "Your application description page.";
@@ -32,19 +26,35 @@ namespace CapstoneWine.Controllers
         }
 
         public HomeController(ILogger<HomeController> logger)
-		{
-			_logger = logger;
-		}
+        {
+            _logger = logger;
+        }
 
-		public IActionResult Index()
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+
+		public IActionResult Help()
 		{
 			return View();
 		}
 
-		public IActionResult Privacy()
-		{
-			return View();
-		}
+        public IActionResult TermsAndConditions()
+        {
+            return View();
+        }
+
+        public IActionResult LiquorLicense()
+        {
+            return View();
+        }
+
 
         public IActionResult About()
         {
@@ -52,20 +62,20 @@ namespace CapstoneWine.Controllers
         }
 
         public IActionResult Checkout()
-		{
-			return View();
-		}
-		public IActionResult Home()
-		{
-			return View();
-		}
-        
+        {
+            return View();
+        }
+        public IActionResult Home()
+        {
+            return View();
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-		public IActionResult Error()
-		{
-			return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-		}
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
 
         internal class Example
         {
