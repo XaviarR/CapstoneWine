@@ -1,7 +1,7 @@
 ﻿
 
-header{
-    background-color: #262626;
+header {
+    background-color: #080710;
 }
 
 li{
@@ -83,12 +83,11 @@ a{
         top: 70px;
         gap: 0;
         flex-direction: column;
-        background-color: #262626;
-        width:40%;
+        background-color: #080710;
+        width: 40%;
         text-align: right;
         transition: 0.7s;
         align-content: flex-end;
-        
     }
 
     .nav-item {

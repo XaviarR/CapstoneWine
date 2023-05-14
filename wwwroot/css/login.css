@@ -4,12 +4,18 @@
 *:before,
 *:after {
     padding: 0;
-    margin: 0;
+    margin: px;
     box-sizing: border-box;
 }
 
 body {
     background-color: #080710;
+    margin-bottom: 0px;
+    cursor: none;
+    min-height: 110vh;
+    display: flex;
+    flex-direction: column;
+    flex-wrap:wrap;
 }
 
 .background {
@@ -18,7 +24,9 @@ body {
     position: absolute;
     transform: translate(-50%,-50%);
     left: 50%;
-    top: 50%;
+    top: 40%;
+    margin-bottom: 200px;
+  
 }
 
     .background .shape {
@@ -139,8 +147,9 @@ h1{   color: white;
         margin-right: 4px;
     }
 
-    .go:hover{
-        color:white;
-    }
+footer {
+    margin-top: auto;
+}
+  
 
    

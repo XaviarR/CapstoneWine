@@ -14,12 +14,11 @@ html {
 
 html {
     position: relative;
-    background-color: #fff;
+    background-color: #080710;
 }
 
 body {
     margin-bottom: 60px;
-    min-height: 91vh;
     cursor: none;
     min-height: 100vh;
     display: flex;
@@ -92,7 +91,7 @@ footer{
         display: grid;
         place-items: center;
         background-color: #000;
-        color: #ffffff;
+        color: #fff;
         font-weight: 900;
         font-size: 100px;
         font-family: sans-serif;
@@ -102,5 +101,17 @@ footer{
         transform: translate(-100%, 0%);
         transition: transform 1s ease-out;
     }
+.boldTitle {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 10vw;
+    margin: 0px 0px;
+    text-align: center;
+}
+.divaText {
+    font-family: 'Gruppo', cursive;
+    text-align: center;
+    font-size: 5rem;
+    color: white;
+}
 
 
