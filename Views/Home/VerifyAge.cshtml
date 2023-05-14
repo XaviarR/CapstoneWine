@@ -1,12 +1,19 @@
-﻿
+﻿<style>
+	.container {
+		display: grid | inline-grid;
+		grid-template-columns:auto;
+		grid-template-rows:auto;
+	}
+</style>
+<div class="container">
 @{
 	ViewData["Title"] = "Age Check";
 }
-<div class=" flex-container">
+<div>
 	<div>
-<h1 class="boldTitle">@ViewData["Title"]</h1>
+		<h1 class="boldTitle">@ViewData["Title"]</h1>
 	</div>
-	<h3 class="divaText">Confirm you are 18+ to proceed.</h3>
+	<h3 style="min-block-size:300px" class="divaText">Confirm you are 18+ to proceed.</h3>
 	<div class="background">
 	<form method="post" asp-action="VerifyAge">
 		<label class="label" formaction="dateOfBirth">Enter Your Date of Birth</label>
@@ -15,4 +22,5 @@
 	</form>
 	</div>
 
+</div>
 </div>

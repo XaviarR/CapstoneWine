@@ -1,10 +1,5 @@
 ﻿@page
 @model RegisterModel
-<link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
-<link rel="preconnect" href="https://fonts.gstatic.com" />
-<link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel=”stylesheet”>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
 
 @{
 	ViewData["Title"] = "Register";
@@ -16,8 +11,8 @@
 	<div class="shape"></div>
 	<div class="shape"></div>
 	</div>
-<div class="row">
-	<div class="col-md-4">
+<div class="background">
+	
 		<form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
 			<h3>Sign Up</h3>
 			<hr />
@@ -39,7 +34,7 @@
 				<button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-outline-light">Register</button>
 			</div>
 			</form>
-	</div>
+	
 	@*<div class="col-md-6 col-md-offset-2">
 		<section>
 			<h3>Use another service to register.</h3>
