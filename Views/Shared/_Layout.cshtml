@@ -7,7 +7,12 @@
 	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 	<link rel="stylesheet" href="~/css/menustyle.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
 	<link rel="stylesheet" href="~/CapstoneWine.styles.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gruppo&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
@@ -49,19 +54,20 @@
 			<a href="#" class="nav-branding">WINEZ</a>
 			</nav>
 	</header>
-		<div class="container">
+    <section>
+		<div class="container block">
 			<main role="main" class="pb-3">
 				@RenderBody()
 			</main>
 		</div>
-
+    </section>
 @*		<footer class="border-top footer text-muted">
 			<div>
 				&copy; 2023 - CapstoneWine - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>*@
 
                 <!-- Footer -->
                 <footer class="text-center text-lg-start text-white border-top"
-                style="background-color: #262626">
+                        style="background-color: #080710">
                     <div class="container p-4 pb-0">
                         <section class="">
                             <div class="row">

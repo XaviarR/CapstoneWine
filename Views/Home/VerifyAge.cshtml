@@ -1,14 +1,26 @@
-﻿@{
+﻿<style>
+	.container {
+		display: grid | inline-grid;
+		grid-template-columns:auto;
+		grid-template-rows:auto;
+	}
+</style>
+<div class="container">
+@{
 	ViewData["Title"] = "Age Check";
 }
-<h1>@ViewData["Title"]</h1>
-
 <div>
+	<div>
+		<h1 class="boldTitle">@ViewData["Title"]</h1>
+	</div>
+	<h3 style="min-block-size:300px" class="divaText">Confirm you are 18+ to proceed.</h3>
+	<div class="background">
 	<form method="post" asp-action="VerifyAge">
-		<label formaction="dateOfBirth">Date of Birth:</label>
-		<input type="date" id="dateOfBirth" name="dateOfBirth" required>
-		<button type="submit">Submit</button>
+		<label class="label" formaction="dateOfBirth">Enter Your Date of Birth</label>
+		<input class="input"  type="date" id="dateOfBirth" name="dateOfBirth" required>
+		<button class=" w-100 btn btn-md btn-outline-light" style="margin-top:20px" type="submit">Submit</button>
 	</form>
+	</div>
 
 </div>
-
+</div>
