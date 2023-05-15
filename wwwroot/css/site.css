@@ -18,7 +18,7 @@ html {
 }
 
 body {
-    margin-bottom: 60px;
+    margin-bottom: 20px;
     cursor: none;
     min-height: 100vh;
     display: flex;

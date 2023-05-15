@@ -13,12 +13,12 @@
 	<div>
 		<h1 class="boldTitle">@ViewData["Title"]</h1>
 	</div>
-	<h3 style="min-block-size:300px" class="divaText">Confirm you are 18+ to proceed.</h3>
+	<h3 class="divaText">Confirm you are 18+ to proceed.</h3>
 	<div class="background">
 	<form method="post" asp-action="VerifyAge">
-		<label class="label" formaction="dateOfBirth">Enter Your Date of Birth</label>
+		<label class="label" style="margin-bottom:35px ,margin-top:0" formaction="dateOfBirth">Enter Your Date of Birth</label>
 		<input class="input"  type="date" id="dateOfBirth" name="dateOfBirth" required>
-		<button class=" w-100 btn btn-md btn-outline-light" style="margin-top:20px" type="submit">Submit</button>
+		<button class=" w-100 btn btn-md btn-outline-light" style="margin-top:35px" type="submit">Submit</button>
 	</form>
 	</div>
 
