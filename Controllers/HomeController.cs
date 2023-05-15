@@ -9,32 +9,6 @@ namespace CapstoneWine.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult SendgridEmail()
-        {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
-       
-        
-        /*Email*/
-		private readonly ILogger<HomeController> _logger;
-        [HttpPost]
-        public async Task<IActionResult> SendgridEmailSubmit(Emailmodel emailmodel)
-        {
-            ViewData["Message"] = "Email Sent!!!...";
-            Example emailexample = new Example();
-            await emailexample.Execute(emailmodel.To, emailmodel.To, emailmodel.To, emailmodel.To);//needed to parse 4 values from async task Execute
-            return View("SendgridEmail");
-        }
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
-		
-        
-
 		public IActionResult Index()
         {
             if(!Request.Cookies.ContainsKey("AgeVerified"))
@@ -114,22 +88,6 @@ namespace CapstoneWine.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
-
-        internal class Example
-        {
-            public async Task Execute(string To, string subject, string plainTextContent, string htmlContent)
-            {
-                var apiKey = APIFILE.apiKey;//api key
-                var client = new SendGridClient(apiKey);
-                var from = new EmailAddress("xaviar.rehu@techtorium.ac.nz");//email that sends messages to user
-                var to = new EmailAddress(To);//user inputs own email
-                subject = "Thank you for registering with us";//message that is emailed to user
-                plainTextContent = "Welcome to WiNeZ";
-                htmlContent = "<strong>" + htmlContent + "</strong>";
-                var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
-                var response = await client.SendEmailAsync(msg);
-            }
         }
     }
 }
