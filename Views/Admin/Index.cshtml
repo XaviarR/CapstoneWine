@@ -1,0 +1,21 @@
+﻿@{
+	ViewData["Title"] = "Admin Home";
+}
+
+<style>
+	.col {
+		border: 2px solid #fff;
+	}
+</style>
+
+<div class="row text-center">
+	<div class="col h2">
+		<a asp-area="" asp-controller="Wines" asp-action="Index">Wines</a>
+	</div>
+	<div class="col h2">
+		<a asp-area="" asp-controller="Orders" asp-action="Index">Orders</a>
+	</div>
+	<div class="col h2">
+		<a asp-area="" asp-controller="Subscriptions" asp-action="Index">Subscriptions</a>
+	</div>
+</div>
