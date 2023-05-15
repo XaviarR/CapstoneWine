@@ -22,6 +22,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+	.AddRoles<IdentityRole>()
 	.AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
@@ -50,5 +51,42 @@ app.MapControllerRoute(
 	name: "default",
 	pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapRazorPages();
+
+// Creates the roles
+using (var scope = app.Services.CreateScope())
+{
+	var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+	var roles = new[] { "Admin", "Registered" };
+
+	foreach (var role in roles)
+	{
+		if (!await roleManager.RoleExistsAsync(role))
+			await roleManager.CreateAsync(new IdentityRole(role));
+	}
+}
+
+// Seeds an admin user
+using (var scope = app.Services.CreateScope())
+{
+    var UserManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
+
+    string email = "admin1@admin.com";
+    string password = "Password1!";
+
+    if (await UserManager.FindByEmailAsync(email) == null) //search for account
+    {
+        var user = new IdentityUser(); //create new user
+        user.UserName = email;
+        user.Email = email;
+		user.EmailConfirmed = true;
+
+        await UserManager.CreateAsync(user, password); //register user
+
+        await UserManager.AddToRoleAsync(user, "Admin"); //assign role to user
+    }
+
+}
+
 
 app.Run();
