@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CapstoneWine.Data;
 using CapstoneWine.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CapstoneWine.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class SubscriptionsController : Controller
     {
         private readonly ApplicationDbContext _context;
