@@ -23,7 +23,8 @@
 		
 		
 		<!--Option 1-->
-		<nav class="navbar">
+		<nav class="navbar fixed-top">
+			
 			<div class="hamburger">
 				<a>
 					<span class="bar"></span>
@@ -31,18 +32,27 @@
 					<span class="bar"></span>
 				</a>
 			</div>
-			
 			<ul class="nav-menu navbar-nav flex-grow-1">
+			
+               @*
 				<li class="nav-item ">
 					<a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-				</li>
-				<li class="nav-item">
-					<a  class="nav-link" asp-area="" asp-controller="Home" asp-action="Checkout">Checkout</a>
-				</li>
-				<li class="nav-item">
+				</li>*@
+
+				<partial name="_LoginPartial" />
+				
+				@*<li class="nav-item">
 					<a  class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About|Contact</a>
 				</li>
-				<partial name="_LoginPartial" />
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Shop">Shop</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Subscription">Subscription</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" asp-area="" asp-controller="Home" asp-action="Checkout">Checkout</a>
+				</li>*@
 			</ul>
 			
 			<a href="#" class="nav-branding">WINEZ</a>
