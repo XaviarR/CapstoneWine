@@ -7,21 +7,21 @@
 	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 	<link rel="stylesheet" href="~/css/menustyle.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
 	<link rel="stylesheet" href="~/CapstoneWine.styles.css" asp-append-version="true" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gruppo&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gruppo&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
-	
+
 	<header>
 		<div id="invertedcursor"></div>
-		
-		
-		
+
+
+
 		<!--Option 1-->
 		<nav class="navbar fixed-top">
 			
@@ -54,147 +54,154 @@
 					<a class="nav-link" asp-area="" asp-controller="Home" asp-action="Checkout">Checkout</a>
 				</li>*@
 			</ul>
-			
-			<a href="#" class="nav-branding">WINEZ</a>
-			</nav>
+
+			@if (User.IsInRole("Admin"))
+			{
+				<a class="nav-branding" asp-area="" asp-controller="Admin" asp-action="Index">WINEZ</a>
+			}
+			else
+			{
+				<a href="#" class="nav-branding">WINEZ</a>
+			}
+		</nav>
 	</header>
-    <section>
+	<section>
 		<div class="container block">
 			<main role="main" class="pb-3">
 				@RenderBody()
 			</main>
 		</div>
-    </section>
-@*		<footer class="border-top footer text-muted">
-			<div>
-				&copy; 2023 - CapstoneWine - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>*@
+	</section>
+	@*		<footer class="border-top footer text-muted">
+	<div>
+	&copy; 2023 - CapstoneWine - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>*@
 
-                <!-- Footer -->
-                <footer class="text-center text-lg-start text-white border-top"
-                        style="background-color: #080710">
-                    <div class="container p-4 pb-0">
-                        <section class="">
-                            <div class="row">
-                                @*WINEZ*@
-                                <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-                                    <h6 class="text-uppercase mb-4 font-weight-bold">
-                                        WineZ
-                                    </h6>
-                                    <p>
-                                        WineZ is an Ecommerce website that sells goods such as wine
-                                    </p>
-                                </div>
+	<!-- Footer -->
+	<footer class="text-center text-lg-start text-white border-top"
+			style="background-color: #080710">
+		<div class="container p-4 pb-0">
+			<section class="">
+				<div class="row">
+					@*WINEZ*@
+					<div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+						<h6 class="text-uppercase mb-4 font-weight-bold">
+							WineZ
+						</h6>
+						<p>
+							WineZ is an Ecommerce website that sells goods such as wine
+						</p>
+					</div>
 
-                                <hr class="w-100 clearfix d-md-none" />
-                                @*Policies and Documents*@
-                                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-                                    <h6 class="text-uppercase mb-4 font-weight-bold">Policies and Documents</h6>
-                                    <p>
-                                <a class="text-white text-decoration-underline" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                                    </p>
-                                    <p>
-                                <a class="text-white text-decoration-underline" asp-area="" asp-controller="Home" asp-action="TermsAndConditions">Terms & Conditions</a>
-                                    </p>
-                                    <p>
-                            <a class="text-white text-decoration-underline" asp-area="" asp-controller="Home" asp-action="LiquorLicense">Liquor License</a>
-                                    </p>
-                                </div>
+					<hr class="w-100 clearfix d-md-none" />
+					@*Policies and Documents*@
+					<div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+						<h6 class="text-uppercase mb-4 font-weight-bold">Policies and Documents</h6>
+						<p>
+							<a class="text-white text-decoration-underline" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+						</p>
+						<p>
+							<a class="text-white text-decoration-underline" asp-area="" asp-controller="Home" asp-action="TermsAndConditions">Terms & Conditions</a>
+						</p>
+						<p>
+							<a class="text-white text-decoration-underline" asp-area="" asp-controller="Home" asp-action="LiquorLicense">Liquor License</a>
+						</p>
+					</div>
 
-                                <hr class="w-100 clearfix d-md-none" />
-                                @*Useful Links*@
-                                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
-                                    <h6 class="text-uppercase mb-4 font-weight-bold">
-                                        Useful links
-                                    </h6>
-                                    <p>
-                            <a class="text-white text-decoration-underline" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Your Account</a>
-                                    </p>
-                                    <p>
-                            <a class="text-white text-decoration-underline" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Subscriptions</a>
-                                    </p>
-                                    <p>
-                            <a class="text-white text-decoration-underline" asp-area="" asp-controller="Home" asp-action="About">About Us</a>
-                                    </p>
-                                    <p>
-                            <a class="text-white text-decoration-underline" asp-area="" asp-controller="Home" asp-action="Help">Help</a>
-                                    </p>
-                                </div>
+					<hr class="w-100 clearfix d-md-none" />
+					@*Useful Links*@
+					<div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+						<h6 class="text-uppercase mb-4 font-weight-bold">
+							Useful links
+						</h6>
+						<p>
+							<a class="text-white text-decoration-underline" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Your Account</a>
+						</p>
+						<p>
+							<a class="text-white text-decoration-underline" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Subscriptions</a>
+						</p>
+						<p>
+							<a class="text-white text-decoration-underline" asp-area="" asp-controller="Home" asp-action="About">About Us</a>
+						</p>
+						<p>
+							<a class="text-white text-decoration-underline" asp-area="" asp-controller="Home" asp-action="Help">Help</a>
+						</p>
+					</div>
 
-                                <hr class="w-100 clearfix d-md-none" />
-                                @*Contact*@
-                                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-                                    <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
-                        <p><i class="fas fa-home mr-3"></i>45 Queen Street, Auckland Central, Auckland 1010, New Zealand</p>
-                        <p><i class="fas fa-envelope mr-3"></i>  info@winz.co.nz</p>
-                        <p><i class="fas fa-phone mr-3"></i> + 64 9 123 4567</p>
-                                </div>
-                            </div>
-                        </section>
+					<hr class="w-100 clearfix d-md-none" />
+					@*Contact*@
+					<div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+						<h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+						<p><i class="fas fa-home mr-3"></i>45 Queen Street, Auckland Central, Auckland 1010, New Zealand</p>
+						<p><i class="fas fa-envelope mr-3"></i>  info@winz.co.nz</p>
+						<p><i class="fas fa-phone mr-3"></i> + 64 9 123 4567</p>
+					</div>
+				</div>
+			</section>
 
-                        <hr class="my-3">
-                        <!-- Section: Copyright -->
-                        <section class="p-3 pt-0">
-                            <div class="row d-flex align-items-center">
-                                <div class="col-md-7 col-lg-8 text-center text-md-start">
-                                    <!-- Copyright -->
-                                    <div class="p-3">
-                                        © 2023 Copyright:
-                                        <a class="text-white" href="https://mdbootstrap.com/">WineZ.com</a>
-                                    </div>
-                                </div>
-                                <div class="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end">
-                                    @*Social media Icons*@
-                            <ul class="wrapper text-center">
-                                <li class="icon facebook">
-                                    <span class="tooltip">Facebook</span>
-                                    <span>
-                                        <i class="fab fa-facebook-f"></i><a href="https://www.facebook.com" target="_blank">
-                                            <img src="~/Images/facebook_icon.png" style="height:100%;width:100%">
-                                        </a>
-                                    </span>
-                                </li>
-                                <li class="icon twitter">
-                                    <span class="tooltip">Twitter</span>
-                                    <span>
-                                        <i class="fab fa-twitter"></i><a href="https://twitter.com"
-                                                                         target="_blank"><img src="~/Images/twitter.png" style="height:100%;width:100%"></a>
-                                    </span>
-                                </li>
-                                <li class="icon instagram">
-                                    <span class="tooltip">Instagram</span>
-                                    <span>
-                                        <i class="fab fa-instagram"></i><a href="https://www.instagram.com" target="_blank">
-                                            <img src="~/Images/instagram_icon.png" style="height:100%;width:100%">
-                                        </a>
-                                    </span>
-                                </li>
-                                <li class="icon github">
-                                    <span class="tooltip">Github</span>
-                                    <span>
-                                        <i class="fab fa-github"></i><a href="https://github.com/XaviarR/CapstoneWine" target="_blank">
-                                            <img src="~/Images/github.png" style="height:100%;width:100%">
-                                        </a>
-                                    </span>
-                                </li>
-                                <li class="icon youtube">
-                                    <span class="tooltip">Youtube</span>
-                                    <span>
-                                        <i class="fab fa-youtube"></i><a href="https://www.youtube.com" target="_blank">
-                                            <img src="~/Images/youtube_icon.png" style="height:100%;width:100%">
-                                        </a>
-                                    </span>    
-                            </ul>
-                            </div>
-                            </div>
-                        </section>
-                        <div class="text-muted text-white text-center">
-                            Our prices are stated in New Zealand dollars inclusive of goods & services tax (GST). 
-                            <br />Alcohol is supplied under our licence which can be viewed here. In order to purchase alcohol you must be over 18 years old and legally entitled to do so. 
-                            <br />All transactions are subject to this and all our other Terms and Conditions, which can be viewed here. 
-                            <br />Please note that your web browser must have cookies and javascript enabled in order to use all of the features of this website, including online shopping.
-                        </div>
-                    </div>
-                </footer>
+			<hr class="my-3">
+			<!-- Section: Copyright -->
+			<section class="p-3 pt-0">
+				<div class="row d-flex align-items-center">
+					<div class="col-md-7 col-lg-8 text-center text-md-start">
+						<!-- Copyright -->
+						<div class="p-3">
+							© 2023 Copyright:
+							<a class="text-white" href="https://mdbootstrap.com/">WineZ.com</a>
+						</div>
+					</div>
+					<div class="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end">
+						@*Social media Icons*@
+						<ul class="wrapper text-center">
+							<li class="icon facebook">
+								<span class="tooltip">Facebook</span>
+								<span>
+									<i class="fab fa-facebook-f"></i><a href="https://www.facebook.com" target="_blank">
+										<img src="~/Images/facebook_icon.png" style="height:100%;width:100%">
+									</a>
+								</span>
+							</li>
+							<li class="icon twitter">
+								<span class="tooltip">Twitter</span>
+								<span>
+									<i class="fab fa-twitter"></i><a href="https://twitter.com"
+												   target="_blank"><img src="~/Images/twitter.png" style="height:100%;width:100%"></a>
+								</span>
+							</li>
+							<li class="icon instagram">
+								<span class="tooltip">Instagram</span>
+								<span>
+									<i class="fab fa-instagram"></i><a href="https://www.instagram.com" target="_blank">
+										<img src="~/Images/instagram_icon.png" style="height:100%;width:100%">
+									</a>
+								</span>
+							</li>
+							<li class="icon github">
+								<span class="tooltip">Github</span>
+								<span>
+									<i class="fab fa-github"></i><a href="https://github.com/XaviarR/CapstoneWine" target="_blank">
+										<img src="~/Images/github.png" style="height:100%;width:100%">
+									</a>
+								</span>
+							</li>
+							<li class="icon youtube">
+								<span class="tooltip">Youtube</span>
+								<span>
+									<i class="fab fa-youtube"></i><a href="https://www.youtube.com" target="_blank">
+										<img src="~/Images/youtube_icon.png" style="height:100%;width:100%">
+									</a>
+								</span>
+						</ul>
+					</div>
+				</div>
+			</section>
+			<div class="text-muted text-white text-center">
+				Our prices are stated in New Zealand dollars inclusive of goods & services tax (GST).
+				<br />Alcohol is supplied under our licence which can be viewed here. In order to purchase alcohol you must be over 18 years old and legally entitled to do so.
+				<br />All transactions are subject to this and all our other Terms and Conditions, which can be viewed here.
+				<br />Please note that your web browser must have cookies and javascript enabled in order to use all of the features of this website, including online shopping.
+			</div>
+		</div>
+	</footer>
 
 	<script src="~/lib/jquery/dist/jquery.min.js"></script>
 	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
