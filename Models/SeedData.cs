@@ -161,6 +161,10 @@ namespace CapstoneWine.Models
 
                     // }
                     );
+                if (context.Subscriptions.Any())
+                {
+                    return; // DB has been seeded
+                }
                 context.Subscriptions.AddRange(
                     new SubscriptionsModel
                     {
@@ -243,6 +247,10 @@ namespace CapstoneWine.Models
                         RewardPoints = 120,
                     }
                     );
+                if (context.Orders.Any())
+                {
+                    return; // DB has been seeded
+                }
                 context.Orders.AddRange(
                         new OrdersModel
                         {
