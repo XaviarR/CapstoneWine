@@ -123,7 +123,271 @@ namespace CapstoneWine.Models
                         Category = "Port"
 
                     }
+
+
+                    // new WinesModel
+                    // {
+                    //     WineName = "Château Margaux 2015",
+                    //     Image = "https://www.db.wine/images/brands/Chateau-Margaux.png",
+                    //     Price = 699.99M,
+                    //     Blurb = "A stunning, captivating wine, the 2015 Margaux is magnificent. The flavors are deep and boldly sketched in this sumptuous, spectacularly ripe Margaux. Time in the glass brings out a compelling interplay of floral aromatics and succulent red-fleshed fruits. The 2015 is supremely finessed and nuanced, but it also has quite a bit of supporting structure. Most importantly, though, Margaux is flat-out gorgeous in 2015. This is a super-classic Margaux from the estate that appears to be firing on all cylinders. Don’t miss it! (Antonio Galloni)",
+                    //     Quantity = 12,
+                    //     Type = "Red",
+                    //     Category = "Bordeaux Blend"
+
+                    // },
+
+                    // new WinesModel
+                    // {
+                    //     WineName = "Domaine de la Romanée-Conti La Tâche 2016",
+                    //     Image = "https://www.db.wine/images/brands/DRC.png",
+                    //     Price = 4999.99M,
+                    //     Blurb = "The 2016 La Tâche Grand Cru was picked on September 24–25 at 31hL/ha (the highest of the five crus). It has an utterly sublime bouquet of blackberry, briar, crushed limestone, a dash of cracked black pepper and a little oyster shell. This is extremely complex and displays exquisite focus. The palate is medium-bodied with fine-grained tannin matched with a killer line of acidity that imparts so much freshness and tension. There is a sense of harmony and completeness here that I find beguiling, while the persistence is easily one of the longest that I have encountered in over 20 years visiting Burgundy. Stunning. (Neal Martin)",
+                    //     Quantity = 6,
+                    //     Type = "Red",
+                    //     Category = "Pinot Noir"
+
+                    // },
+
+                    // new WinesModel
+                    // {
+                    //     WineName = "Krug Brut Rosé NV",
+                    //     Image = "https://www.db.wine/images/brands/Krug.png",
+                    //     Price = 299.99M,
+                    //     Blurb = "A lovely rosé in an almost vinous style, with mouthwatering acidity and a fine, lacy mousse carrying appealing flavors of ripe raspberry, white cherry fruit, star anise, mandarin orange peel and honeysuckle. Lightly chalky on the lasting finish. Enjoy with food. Drink now through 2030. (Alison Napjus)",
+                    //     Quantity = 24,
+                    //     Type = "Sparkling",
+                    //     Category = "Champagne Blend"
+
+                    // }
                     );
+                context.Subscriptions.AddRange(
+                    new SubscriptionsModel
+                    {
+                        SubName = "Vin&Done",
+                        Type = "Customized",
+                        Frequency = 3,
+                        NumOfBottles = 6,
+                        RewardPoints = 60,
+                    },
+                    new SubscriptionsModel
+                    {
+                        SubName = "Everyday Delights",
+                        Type = "Mixed",
+                        Frequency = 12,
+                        NumOfBottles = 12,
+                        RewardPoints = 120,
+                    },
+                    new SubscriptionsModel
+                    {
+                        SubName = "Sauvignon Blanc Collection",
+                        Type = "White",
+                        Frequency = 6,
+                        NumOfBottles = 6,
+                        RewardPoints = 120,
+                    },
+                    new SubscriptionsModel
+                    {
+                        SubName = "Connoisseur Collection",
+                        Type = "Red",
+                        Frequency = 12,
+                        NumOfBottles = 6,
+                        RewardPoints = 180,
+                    },
+                    new SubscriptionsModel
+                    {
+                        SubName = "Star Wine Club",
+                        Type = "Mixed",
+                        Frequency = 3,
+                        NumOfBottles = 12,
+                        RewardPoints = 120,
+                    },
+                    new SubscriptionsModel
+                    {
+                        SubName = "Winc",
+                        Type = "Customizable",
+                        Frequency = 6,
+                        NumOfBottles = 6,
+                        RewardPoints = 30,
+                    },
+                    new SubscriptionsModel
+                    {
+                        SubName = "Wine Access",
+                        Type = "Curated",
+                        Frequency = 12,
+                        NumOfBottles = 12,
+                        RewardPoints = 60,
+                    },
+                    new SubscriptionsModel
+                    {
+                        SubName = "Star Wine Club",
+                        Type = "Mixed",
+                        Frequency = 3,
+                        NumOfBottles = 12,
+                        RewardPoints = 120,
+                    },
+                    new SubscriptionsModel
+                    {
+                        SubName = "Cheap and Cheerful",
+                        Type = "Sparkling",
+                        Frequency = 3,
+                        NumOfBottles = 3,
+                        RewardPoints = 30,
+                    },
+                    new SubscriptionsModel
+                    {
+                        SubName = "Cellar Masters Selection",
+                        Type = "Customizable",
+                        Frequency = 6,
+                        NumOfBottles = 12,
+                        RewardPoints = 120,
+                    }
+                    );
+                context.Orders.AddRange(
+                        new OrdersModel
+                        {
+                            OrderDate = DateTime.Now,
+                            UserID = "0f1e1c11-6b01-48fc-b440-57a5b9e65fbb",
+                            WineID = 1,
+                            SubID = 1,
+                            Quantity = 10,
+                            DeliveryAdd = "01 bar rd",
+                            DeliveryCharge = 9.99m,
+                            TotalCost = 129.98m,
+                            OrderStatus = "Pending",
+                            RewardPoints = 12998
+                        },
+                        new OrdersModel
+                        {
+                            OrderDate = DateTime.Now,
+                            UserID = "4f761d70-f797-4e90-95d7-cb0e6c39b4d8",
+                            WineID = 2,
+                            SubID = 3,
+                            Quantity = 15,
+                            DeliveryAdd = "04 bar rd",
+                            DeliveryCharge = 15.99m,
+                            TotalCost = 265.98m,
+                            OrderStatus = "Delivering",
+                            RewardPoints = 26598
+                        },
+                        new OrdersModel
+                        {
+                            OrderDate = DateTime.Now,
+                            UserID = "b495ec40-e4c6-43da-a1de-00e22428ada0",
+                            WineID = 4,
+                            SubID = 3,
+                            Quantity = 7,
+                            DeliveryAdd = "07 bar rd",
+                            DeliveryCharge = 29.99m,
+                            TotalCost = 169.98m,
+                            OrderStatus = "Pending",
+                            RewardPoints = 16998
+                        },
+                        new OrdersModel
+                        {
+                            OrderDate = DateTime.Now,
+                            UserID = "9d804031-7b76-47af-8266-4d4c28e614a6",
+                            WineID = 1,
+                            SubID = 2,
+                            Quantity = 8,
+                            DeliveryAdd = "20 bar rd",
+                            DeliveryCharge = 50.99m,
+                            TotalCost = 149.98m,
+                            OrderStatus = "Pending",
+                            RewardPoints = 14998
+                        },
+                        new OrdersModel
+                        {
+                            OrderDate = DateTime.Now,
+                            UserID = "3b4d2e82-fdb8-4fc0-9a2b-98000c45b49c",
+                            WineID = 4,
+                            SubID = 1,
+                            Quantity = 5,
+                            DeliveryAdd = "06 bar rd",
+                            DeliveryCharge = 25.49m,
+                            TotalCost = 317.48m,
+                            OrderStatus = "Delivering",
+                            RewardPoints = 31748
+                        },
+                        new OrdersModel
+                        {
+                            OrderDate = DateTime.Now,
+                            UserID = "b495ec40-e4c6-43da-a1de-00e22428ada0",
+                            WineID = 2,
+                            SubID = 1,
+                            Quantity = 11,
+                            DeliveryAdd = "08 bar rd",
+                            DeliveryCharge = 10.49m,
+                            TotalCost = 49.48m,
+                            OrderStatus = "Delivering",
+                            RewardPoints = 4948
+                        },
+                        new OrdersModel
+                        {
+                            OrderDate = DateTime.Now,
+                            UserID = "2394f4f1-c073-49ab-881a-9ab1d19eb493",
+                            WineID = 3,
+                            SubID = 2,
+                            Quantity = 6,
+                            DeliveryAdd = "13 bar rd",
+                            DeliveryCharge = 11.08m,
+                            TotalCost = 99.30m,
+                            OrderStatus = "Delivering",
+                            RewardPoints = 9930
+                        },
+                        new OrdersModel
+                        {
+                            OrderDate = DateTime.Now,
+                            UserID = "2394f4f1-c073-49ab-881a-9ab1d19eb493",
+                            WineID = 1,
+                            SubID = 3,
+                            Quantity = 14,
+                            DeliveryAdd = "09 bar rd",
+                            DeliveryCharge = 17.69m,
+                            TotalCost = 120.50m,
+                            OrderStatus = "Delivering",
+                            RewardPoints = 12050
+                        },
+                        new OrdersModel
+                        {
+                            OrderDate = DateTime.Now,
+                            UserID = "5767c35c-a81d-4398-a014-16db4a6eecbe",
+                            WineID = 4,
+                            SubID = 3,
+                            Quantity = 14,
+                            DeliveryAdd = "15 bar rd",
+                            DeliveryCharge = 17.69m,
+                            TotalCost = 120.50m,
+                            OrderStatus = "Delivering",
+                            RewardPoints = 12050
+                        },
+                        new OrdersModel
+                        {
+                            OrderDate = DateTime.Now,
+                            UserID = "2394f4f1-c073-49ab-881a-9ab1d19eb493",
+                            WineID = 4,
+                            SubID = 2,
+                            Quantity = 14,
+                            DeliveryAdd = "04 bar rd",
+                            DeliveryCharge = 17.69m,
+                            TotalCost = 120.50m,
+                            OrderStatus = "Delivering",
+                            RewardPoints = 12050
+                        },
+                        new OrdersModel
+                        {
+                            OrderDate = DateTime.Now,
+                            UserID = "9d804031-7b76-47af-8266-4d4c28e614a6",
+                            WineID = 2,
+                            SubID = 2,
+                            Quantity = 3,
+                            DeliveryAdd = "20 bar rd",
+                            DeliveryCharge = 21.38m,
+                            TotalCost = 133.76m,
+                            OrderStatus = "Pending",
+                            RewardPoints = 13376
+                        }
+                        ); ;
                 context.SaveChanges();
             }
         }
