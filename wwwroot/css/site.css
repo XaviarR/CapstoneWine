@@ -27,6 +27,15 @@ body {
 footer{
     margin-top:auto;
 }
+
+.heading {
+    height: 90vh;
+    display: grid;
+    place-items: center;
+    font-size: 200px;
+    z-index: 10;
+}
+
 .bg-home {
     background-color: black;
 }
@@ -69,7 +78,7 @@ footer{
     height: 500px;
     overflow: hidden;
     transform: translate(-100%, 0%);
-    transition: transform 1s ease-out;
+    transition: transform .5s ease-out;
 }
 
     .vid-container > .bg-video {
@@ -80,7 +89,7 @@ footer{
         height: 200%;
         overflow: hidden;
         transform: translate(-100%, 0%);
-        transition: transform 1s ease-out;
+        transition: transform .5s ease-out;
     }
 
     /* background-color and color should be the same as the below otherwise it won't work */
@@ -99,7 +108,7 @@ footer{
         mix-blend-mode: multiply;
         user-select: none;
         transform: translate(-100%, 0%);
-        transition: transform 1s ease-out;
+        transition: transform .5s ease-out;
     }
 .boldTitle {
     font-family: 'Bebas Neue', sans-serif;
