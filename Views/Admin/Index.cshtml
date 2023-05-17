@@ -1,28 +1,149 @@
-﻿@{
+﻿@model Tuple<List<CapstoneWine.Models.SubscriptionsModel>, List<CapstoneWine.Models.WinesModel>, List<CapstoneWine.Models.OrdersModel>>
+
+@{
 	ViewData["Title"] = "Admin";
 }
 
 <style>
-	
+	.table {
+		color: white;
+	}
 </style>
 
 
 <h1>Admin</h1>
 
-<div class="row border mb-5">
+<div class="col-12 border border-5 rounded mb-5">
+	<div class="row">
+		<div class="col-2 h3">
+			<a asp-area="" asp-controller="Subscriptions" asp-action="Index">Subscriptions</a>
 
-	<div class="col h3">
-		<a asp-area="" asp-controller="Orders" asp-action="Index">Orders</a>
+		</div>
 
-	</div>
-	<div class="col h3">
-		<a asp-area="" asp-controller="Subscriptions" asp-action="Index">Subscriptions</a>
-
-	</div>
-	<div class="col h3">
-		<a asp-area="" asp-controller="Wines" asp-action="Index">Wines</a>
+		<div class="col-10 pe-5">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Name</th>
+						<th>Type</th>
+						<th>Frequency</th>
+						<th>Number of Bottles</th>
+						<th>Reward Points</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var subscription in Model.Item1)
+					{
+						<tr>
+							<td>@subscription.SubID</td>
+							<td>@subscription.SubName</td>
+							<td>@subscription.Type</td>
+							<td>@subscription.Frequency</td>
+							<td>@subscription.NumOfBottles</td>
+							<td>@subscription.RewardPoints</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
 
 	</div>
 </div>
 
-<partial name="Orders"/>
+
+<div class="col-12 border border-5 rounded mb-5">
+	<div class="row">
+		<div class="col-2 h3">
+			<a asp-area="" asp-controller="Wines" asp-action="Index">Wines</a>
+
+		</div>
+
+		<div class="col-10 pe-5">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Name</th>
+						<th>Image</th>
+						<th>Price</th>
+						<th>Blurb</th>
+						<th>Quantity</th>
+						<th>Type</th>
+						<th>Category</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var wine in Model.Item2)
+					{
+						<tr>
+							<td>@wine.WineID</td>
+							<td>@wine.WineName</td>
+							<td>@wine.Image</td>
+							<td>@wine.Price</td>
+							<td>@wine.Blurb</td>
+							<td>@wine.Quantity</td>
+							<td>@wine.Type</td>
+							<td>@wine.Category</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+</div>
+
+
+<div class="col-12 border border-5 rounded mb-5">
+	<div class="row">
+		<div class="col-2 h3">
+			<a asp-area="" asp-controller="Orders" asp-action="Index">Orders</a>
+
+		</div>
+
+		<div class="col-10 pe-5">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Order Date</th>
+						<th>User ID</th>
+						<th>Wine ID</th>
+						<th>Subscription ID</th>
+						<th>Quantity</th>
+						<th>Delivery Address</th>
+						<th>Delivery Charge</th>
+						<th>Total Cost</th>
+						<th>Order Status</th>
+						<th>Reward Points</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var order in Model.Item3)
+					{
+						<tr>
+							<td>@order.OrderID</td>
+							<td>@order.OrderDate</td>
+							<td>@order.UserID</td>
+							<td>@order.WineID</td>
+							<td>@order.SubID</td>
+							<td>@order.Quantity</td>
+							<td>@order.DeliveryAdd</td>
+							<td>@order.DeliveryCharge</td>
+							<td>@order.TotalCost</td>
+							<td>@order.OrderStatus</td>
+							<td>@order.RewardPoints</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+</div>
+
+
+
+
+

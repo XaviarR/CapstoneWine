@@ -22,8 +22,15 @@ namespace CapstoneWine.Controllers
         // GET: Admin
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Orders.Include(o => o.subscription).Include(o => o.wine);
-            return View(await applicationDbContext.ToListAsync());
+            var subscriptions = await _context.Subscriptions.ToListAsync();
+            var wines = await _context.Wines.ToListAsync();
+            var orders = await _context.Orders
+                .Include(o => o.subscription)
+                .Include(o => o.wine)
+                .ToListAsync();
+
+            var model = new Tuple<List<SubscriptionsModel>, List<WinesModel>, List<OrdersModel>>(subscriptions, wines, orders);
+            return View(model);
         }
 
         public async Task<IActionResult> Orders()
