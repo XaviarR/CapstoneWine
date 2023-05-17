@@ -68,7 +68,13 @@
 		<div id="subscriptionsTable" style="display: none;">
 			<!-- Subscriptions table -->
 			<div class="row">
-				<div class="col-12 ps-5 pe-5">
+				<div class="col-12">
+					<a asp-controller="Subscriptions" asp-action="Index"><h3>Subscriptions</h3></a>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-12 pe-5">
 					<table class="table">
 						<thead>
 							<tr>
@@ -100,6 +106,12 @@
 
 		<!-- Content for the "Wines" section -->
 		<div id="winesTable" style="display: none;">
+			<div class="row">
+				<div class="col-12">
+					<a asp-controller="Wines" asp-action="Index"><h3>Wines</h3></a>
+				</div>
+			</div>
+
 			<div class="row">
 				<div class="col-12 pe-5">
 					<table class="table">
@@ -138,6 +150,12 @@
 
 		<!-- Content for the orders table -->
 		<div id="ordersTable" style="display: none;">
+			<div class="row">
+				<div class="col-12">
+					<a asp-controller="Orders" asp-action="Index"><h3>Orders</h3></a>
+				</div>
+			</div>
+
 			<div class="row">
 				<div class="col-12 pe-5">
 					<table class="table">
