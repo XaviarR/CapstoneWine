@@ -1,0 +1,67 @@
+﻿body {
+    background-color: floralwhite;
+    color: black;
+}
+
+section {
+    margin-top: 1rem;
+    margin-bottom: 6rem;
+}
+
+.shop-content {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    row-gap: 1.57rem;
+    place-items: center;
+}
+
+.product-box {
+    display: grid;
+    grid-template-columns: 150px auto;
+    grid-template-rows: 60% auto auto auto;
+    gap: 0.8rem;
+    height: 23rem;
+    width: 400px;
+    padding: 1rem;
+    border: 2px solid lightgrey;
+}
+
+.img {
+    grid-area: 1/1/1/1;
+    background-color: antiquewhite;
+    height: 100%;
+    width: 100%;
+}
+
+.price {
+    /*background-color:aqua;*/
+    grid-area: 2/1/2/1;
+}
+
+.quantity {
+    /*background-color: red;*/
+    grid-area: 3/1/3/1;
+}
+
+.cart {
+    grid-area: 4/1/4/3;
+    background-color: #040b4f;
+    text-align: center;
+    color: white;
+    border-radius: 5px;
+}
+
+    .cart:hover {
+        background-color: lightgrey;
+        color: black;
+    }
+
+.blurb {
+    /*background-color: yellow;*/
+    grid-area: 1/2/4/2;
+}
+
+
+.product-title {
+    font-size: 2em;
+}

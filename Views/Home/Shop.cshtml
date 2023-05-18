@@ -1,0 +1,33 @@
+﻿<link rel="stylesheet" href="~/css/shop.css" />
+
+@{
+	ViewData["Title"] = "Shop";
+}
+
+
+@for (int categories = 0; categories < 3; categories++)
+{
+	<section>
+		<div class="h1 text-center">Category @(categories+1)</div>
+		<div class="shop-content">
+			@for (int product = 0; product < 3; product++)
+			{
+				<div class="product-box">
+					<div class="img">Image</div>
+					<div class="price">Price</div>
+					<div class="quantity">Quantity</div>
+					<div class="cart">Add to cart</div>
+					<div class="blurb">
+						<div class="product-title">Product</div>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+							eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+							enim ad minim veniam, quis nostrud exercitation ullamco laboris
+							nisi ut aliquip ex ea commodo consequat.
+						</p>
+					</div>
+				</div>
+			}
+		</div>
+	</section>
+}
