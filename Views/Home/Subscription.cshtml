@@ -1,8 +1,33 @@
-﻿@{
+﻿<link rel="stylesheet" href="~/css/sub.css" asp-append-version="true" />
+<script defer src="/js/app.js" type="text/javascript"></script>
+
+@{
     ViewData["Title"] = "Subsciptions";
 }
+<h1> Wine Subscriptions </h1>
+<section class="hidden mySection">
+    <h1>Take the hard work out of keeping stocked, let take care of it.</h1>
+    <p>you should really purchase these subscriptions</p>
+</section>
 
-<div class="text-center">
-   
-</div>
+<section class="hidden mySection">
+    <h2>this option could be amazing</h2>
+    <p>Hear are some reasons this wine could be amazing</p>
+</section>
 
+<section class="mySection">
+    <div class="logos">
+        <div class="logo hidden">
+            <h2>Mixed Case</h2>
+            <img src="~/Images/sub/mixed.jpg"/>
+        </div>
+        <div class="logo hidden">
+            <h2>Red Case</h2>
+            <img src="~/Images/sub/red.jpg" />
+        </div>
+        <div class="logo hidden">
+            <h2> White Case</h2>
+            <img src="~/Images/sub/white.jpg" />
+        </div>
+    </div>
+</section>
