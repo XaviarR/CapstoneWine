@@ -8,23 +8,6 @@ section {
     margin-bottom: 6rem;
 }
 
-.shop-content {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    row-gap: 1.57rem;
-    place-items: center;
-}
-
-.product-box {
-    display: grid;
-    grid-template-columns: 150px auto;
-    grid-template-rows: 60% auto auto auto;
-    gap: 0.8rem;
-    height: 23rem;
-    width: 400px;
-    padding: 1rem;
-    border: 2px solid lightgrey;
-}
 
 .img {
     grid-area: 1/1/1/1;
@@ -64,4 +47,62 @@ section {
 
 .product-title {
     font-size: 2em;
+}
+
+.category-row {
+    display: grid;
+    grid-template-columns: 30px 100% 30px;
+}
+
+.slide-button {
+    background-color:aliceblue;
+}
+
+.slide-button:hover {
+    background-color:aquamarine;
+}
+
+#container {
+    height: 23rem;
+    width: 100%;
+    border: 1px solid red;
+    position: relative;
+    /*margin: 20px auto;*/
+    overflow: hidden;
+}
+
+#slider {
+    width: 5000px;
+    position: absolute;
+    height: 100%;
+    font-size: 0;
+    transition: 1s ease-in-out;
+}
+
+.product-box {
+    display: grid;
+    grid-template-columns: 150px auto;
+    grid-template-rows: 60% auto auto auto;
+    gap: 0.8rem;
+    height: 23rem;
+    width: 400px;
+    padding: 1rem;
+}
+
+li {
+    list-style-type: none;
+    display: inline-block;
+    height: 23rem;
+    width: 400px;
+    font-size: 16px;
+    margin-right: 47px;
+    /*border: 1px solid black;*/
+}
+
+    li:last-child {
+        margin-right: 0;
+    }
+
+ul {
+    padding-left:0;
 }

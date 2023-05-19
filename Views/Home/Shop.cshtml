@@ -4,30 +4,57 @@
 	ViewData["Title"] = "Shop";
 }
 
-
-@for (int categories = 0; categories < 3; categories++)
-{
-	<section>
-		<div class="h1 text-center">Category @(categories+1)</div>
-		<div class="shop-content">
-			@for (int product = 0; product < 3; product++)
+<div class="category-row">
+	<div class="slide-button" id="prv">prev</div>
+	<div id="container">
+		<ul id="slider">
+			@for (int products = 0; products < 8; products++)
 			{
-				<div class="product-box">
-					<div class="img">Image</div>
-					<div class="price">Price</div>
-					<div class="quantity">Quantity</div>
-					<div class="cart">Add to cart</div>
-					<div class="blurb">
-						<div class="product-title">Product</div>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-							eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-							enim ad minim veniam, quis nostrud exercitation ullamco laboris
-							nisi ut aliquip ex ea commodo consequat.
-						</p>
+				<li>
+					<div class="product-box">
+						<div class="img">Image</div>
+						<div class="price">Price</div>
+						<div class="quantity">Quantity</div>
+						<div class="cart">Add to cart</div>
+						<div class="blurb">
+							<div class="product-title">Product @(products + 1)</div>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+								eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+								enim ad minim veniam, quis nostrud exercitation ullamco laboris
+								nisi ut aliquip ex ea commodo consequat.
+							</p>
+						</div>
 					</div>
-				</div>
+				</li>
 			}
-		</div>
-	</section>
-}
+		</ul>
+	</div>
+	<div class="slide-button" id="nxt">next</div>
+</div>
+
+
+
+
+<script>
+	const prev = document.getElementById("prv");
+	const next = document.getElementById("nxt");
+	const slide = document.getElementById("slider");
+	const boxWidth = document.querySelector(".product-box").offsetWidth;
+	const conWidth = document.getElementById("container").clientWidth;
+	let counter = 0;
+	console.log(conWidth);
+
+	next.addEventListener('click', () => {
+		counter++;
+		if (counter >= 7) counter = 0;
+		slide.style.transform = `translateX(-${(boxWidth * counter) + (counter * 47)}px)`;
+		console.log(counter);
+	});
+	prev.addEventListener('click', () => {
+		counter--;
+		if (counter < 0) counter = 0;
+		slide.style.transform = `translateX(-${(boxWidth * counter) + (counter * 47)}px)`;
+		console.log(counter);
+	});
+</script>
