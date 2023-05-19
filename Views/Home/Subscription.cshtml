@@ -1,33 +1,74 @@
-﻿<link rel="stylesheet" href="~/css/sub.css" asp-append-version="true" />
+﻿<link rel="stylesheet" href="~/css/sub - Copy.css" asp-append-version="true" />
 <script defer src="/js/app.js" type="text/javascript"></script>
 
 @{
     ViewData["Title"] = "Subsciptions";
 }
-<h1> Wine Subscriptions </h1>
-<section class="hidden mySection">
-    <h1>Take the hard work out of keeping stocked, let take care of it.</h1>
-    <p>you should really purchase these subscriptions</p>
+<section>
+	<h1 class="boldTitle"> Subscriptions </h1>
 </section>
-
-<section class="hidden mySection">
-    <h2>this option could be amazing</h2>
-    <p>Hear are some reasons this wine could be amazing</p>
+<section>
+	<h1 class="divaText"><span class="logo hidden">Discover,</span> <span class="logo hidden">Savor,</span> <span class="logo hidden">& Indulge.</span></h1>
 </section>
-
-<section class="mySection">
-    <div class="logos">
-        <div class="logo hidden">
-            <h2>Mixed Case</h2>
-            <img src="~/Images/sub/mixed.jpg"/>
+<section style="margin:70px auto">
+	<h5>
+		Embark on an extraordinary wine adventure with our exclusive wine subscriptions.
+		Delight in the convenience of having exceptional, handpicked wines delivered right to your doorstep.
+		Explore a curated selection of hidden gems and renowned vineyards from around the globe,
+		allowing your palate to journey through diverse varietals, regions, and winemaking techniques.
+		With detailed tasting notes and expert guidance, enhance your wine knowledge and unravel the stories behind each bottle.
+		Whether you're a seasoned connoisseur or a curious enthusiast, our subscriptions offer a world of fine wines tailored to your preferences.
+		Choose from our esteemed Cheap and Cheerful, Treat Yourself, or Cellarmaster's Selection subscriptions and elevate your wine experience.
+		Discover, savor, and indulge in the captivating world of wine, one bottle at a time. Cheers to unforgettable moments and unforgettable wines!
+	</h5>
+</section>
+@*Cards to edit*@
+<section class="mySection logos">
+<article class="card logo hidden">
+    <img class="card__background"
+         src="~/Images/sub/mixed.jpg"
+         alt="Photo of Cartagena's cathedral at the background and some colonial style houses"
+         width="1920"
+         height="2193" />
+    <div class="card__content | flow">
+        <div class="card__content--container | flow">
+            <h2 class="card__title">Cheap & Chearfull</h2>
+            <p class="card__description">These budget-friendly gems are handpicked to deliver fantastic flavors, 
+                ensuring that you can enjoy a glass of quality wine whenever the occasion calls for it. </p>
         </div>
-        <div class="logo hidden">
-            <h2>Red Case</h2>
-            <img src="~/Images/sub/red.jpg" />
-        </div>
-        <div class="logo hidden">
-            <h2> White Case</h2>
-            <img src="~/Images/sub/white.jpg" />
-        </div>
+        <button class="card__button">Cheap & Cheerful</button>
     </div>
+</article>
+
+    <article class="card logo hidden">
+    <img class="card__background"
+         src="/Images/sub/red.jpg"
+         alt=""
+         width="1920"
+         height="2193" />
+    <div class="card__content | flow">
+        <div class="card__content--container | flow">
+            <h2 class="card__title">Treat Yourself</h2>
+            <p class="card__description">Treat Yourself is designed to enhance your special occasions or add a touch of luxury to your everyday life.
+                    Immerse yourself in a world of refined flavors and captivating aromas as you savor each bottle.</p>
+        </div>
+        <button class="card__button">Read more</button>
+    </div>
+</article>
+
+    <article class="card logo hidden">
+    <img class="card__background"
+         src="/Images/sub/white.jpg"
+         alt=""
+         width="1920"
+         height="2193" />
+    <div class="card__content | flow">
+        <div class="card__content--container | flow">
+            <h2 class="card__title">Cellarmaster's Collection</h2>
+            <p class="card__description"> Embark on an extraordinary journey as our expert cellarmasters handpick a distinguished array of exclusive wines 
+                from renowned vineyards and prestigious winemakers.</p>
+        </div>
+        <button class="card__button">Read more</button>
+    </div>
+	</article>
 </section>
