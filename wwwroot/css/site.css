@@ -102,8 +102,9 @@ footer{
         background-color: #000;
         color: #fff;
         font-weight: 900;
-        font-size: 100px;
-        font-family: sans-serif;
+        /*font update*/
+        font-size: 10vw;
+        font-family: 'Bebas Neue';
         /* Mix Blend Mode does the all magic */
         mix-blend-mode: multiply;
         user-select: none;

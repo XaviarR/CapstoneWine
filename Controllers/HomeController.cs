@@ -74,14 +74,14 @@ namespace CapstoneWine.Controllers
             return View();
         }
 
-        public IActionResult Checkout()
-        {
-            return View();
-        }
         public IActionResult Home()
         {
             return View();
         }
+		public IActionResult Shop()
+		{
+			return View();
+		}
 
 		public IActionResult Shop()
 		{
