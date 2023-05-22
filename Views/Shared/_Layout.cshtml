@@ -20,11 +20,9 @@
 	<header>
 		<div id="invertedcursor"></div>
 
-
-
 		<!--Option 1-->
 		<nav class="navbar fixed-top">
-			
+			@*this is the hamburger icon*@
 			<div class="hamburger">
 				<a>
 					<span class="bar"></span>
@@ -32,29 +30,17 @@
 					<span class="bar"></span>
 				</a>
 			</div>
+			@*items in the hamburger*@
 			<ul class="nav-menu navbar-nav flex-grow-1">
-			
-               @*
-				<li class="nav-item ">
-					<a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-				</li>*@
 
 				<partial name="_LoginPartial" />
 				
-				@*<li class="nav-item">
-					<a  class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About|Contact</a>
-				</li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Shop">Shop</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Subscription">Subscription</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" asp-area="" asp-controller="Home" asp-action="Checkout">Checkout</a>
-				</li>*@
+
 			</ul>
 
+			<a asp-controller="Cart" asp-action="Index"><img src="~/Images/add-to-cart.png" style="height:50px; width:50px; " /></a>
+
+			@*admin page -only accessible with proper credentials*@
 			@if (User.IsInRole("Admin"))
 			{
 				<a class="nav-branding" asp-area="" asp-controller="Admin" asp-action="Index">WINEZ</a>
@@ -62,6 +48,8 @@
 			else
 			{
 				<a href="#" class="nav-branding">WINEZ</a>
+			
+				
 			}
 		</nav>
 	</header>
