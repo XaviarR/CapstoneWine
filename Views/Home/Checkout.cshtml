@@ -1,47 +1,168 @@
-﻿@{
-    ViewData["Title"] = "Checkout";
+﻿@using CapstoneWine.Models;
+@model WinesModel;
+
+@{
+	ViewData["Title"] = "Checkout";
 }
 <script src="https://www.paypal.com/sdk/js?client-id=AQJ-nomYmdcrcJJa_kZYrA-Lzy1AdtFLCMYgwwyBhOxumCXDaQ4r7VtkGAcyDMqZhfVvz27iS7mmbgXW&currency=NZD"></script>
 <script data-sdk-integration-source="integrationbuilder_ac"></script>
 <script src="~/js/paypal.js"></script>
 <div id="paypal-button-container"></div>
 <script src="~/js/paypal.js"></script>
-<script>
-    const fundingSources = [
-        paypal.FUNDING.PAYPAL,
-        paypal.FUNDING.CARD
-    ];
 
-    for (const fundingSource of fundingSources) {
 
-        paypal
-            .Buttons({
-                fundingSource,
 
-                style: {
-                    layout: 'vertical',
-                    shape: 'rect'
-                },
+<div class="row">
+    <div class="col-md-8 offset-2 text-white">
+        <div class="text-center">
+            <h2>You shopping cart summary</h2>
+        </div>
 
-                createOrder: function (data, actions) {
-                    const createOrderPayload = {
-                        purchase_units: [
-                            {
-                                amount: {
-                                    value: "88.44",
-                                },
-                            },
-                        ],
-                    };
+        <table class="table text-white">
+            <thead>
+                <tr>
+                    <th>Selected amount</th>
+                    <th>Wine</th>
+                    <th>Price</th>
+                    <th>Subtotal</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                
+                    <tr>
+                        <td class="align-middle">1</td>
+                        <td class="align-middle">Red</td>
+                        <td class="align-middle">$100</td>
+                        <td class="align-middle">$100</td>
+                        <td class="align-middle">
+                            <a class="text-danger" asp-controller="Orders" asp-action="RemoveItemFromShoppingCart"
+                           asp-route-id="">
+                                <i class="bi bi-cart-dash"></i>
+                            </a>
+                            |
+                            <a class="text-success" asp-controller="Orders" asp-action="AddItemToShoppingCart"
+                           asp-route-id="">
+                                <i class="bi bi-cart-plus"></i>
+                            </a>
+                        </td>
+                    </tr>
+                
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="2"></td>
+                    <td><b>Total:</b></td>
+                    <td>
+                        $100
+                    </td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
 
-                    return actions.order.create(createOrderPayload);
-                },
+        <div class="text-end">
+            <div class="btn-group">
+                @*<a class="btn btn-outline-primary" asp-action="CompleteOrder">
+                Complete order
+                </a>*@
+                <div class="text-center" id="paypal-btn"></div>
+                <span style="padding:5px"></span>
+                <a class="btn btn-outline-success" asp-controller="Home" asp-action="Index">
+                    Add more items
+                </a>
+            </div>
+        </div>
 
-                onApprove: function (data, actions) {
+    </div>
+</div>
 
-                },
-            })
-            .render("#paypal-button-container");
-    }
+@section Scripts{
 
-</script>
+    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+
+    <script>
+
+        let _total = "100";
+
+        paypal.Button.render({
+            //Configure environment
+            env: 'sandbox',
+            client: {
+                sandbox: 'AcKRtgL4i68EZ2ZYuYUx3ilihAg2YhL5dtF_m19A8MjBWVOn6ewNS4M_uV8gA3xi98zTcUq38gUHbVFx'
+            },
+
+            //Customize button
+            locale: 'en_US',
+            style: {
+                size: 'small',
+                color: 'gold',
+                shape: 'rect'
+            },
+            commit: true,
+
+            //Set up a payment
+            payment: function (data, actions) {
+                return actions.payment.create({
+                    transactions: [{
+                        amount: {
+                            total: _total,
+                            currency: 'USD'
+                        }
+                    }]
+                });
+            },
+
+            //Execute the payment
+            onAuthorize: function (data, actions) {
+                return actions.payment.execute().then(function () {
+                    var url = '@Url.Action("CompleteOrder", "Orders", new { })';
+                    window.location.href = url;
+                });
+            }
+
+        }, '#paypal-btn')
+    </script>
+}
+
+
+@*<script>
+	const fundingSources = [
+		paypal.FUNDING.PAYPAL,
+		paypal.FUNDING.CARD
+	];
+
+	for (const fundingSource of fundingSources) {
+
+		paypal
+			.Buttons({
+				fundingSource,
+
+				style: {
+					layout: 'vertical',
+					shape: 'rect'
+				},
+
+				createOrder: function (data, actions) {
+					const createOrderPayload = {
+						purchase_units: [
+							{
+								amount: {
+									value: "88.44",
+								},
+							},
+						],
+					};
+
+					return actions.order.create(createOrderPayload);
+				},
+
+				onApprove: function (data, actions) {
+
+				},
+			})
+			.render("#paypal-button-container");
+	}
+
+//</script>*@

@@ -77,7 +77,12 @@ form {
         outline: none;
         border: none;
     }
-
+   .exit{
+        background-color:transparent;
+        margin:0;
+        padding: 0;
+        border:none;
+    }
     form h3 {
         font-size: 4rem;
         font-weight: 500;
