@@ -1,4 +1,6 @@
-﻿<link rel="stylesheet" href="~/css/shop.css" />
+﻿@model IEnumerable<CapstoneWine.Models.WinesModel>
+
+<link rel="stylesheet" href="~/css/shop.css" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 @{
@@ -12,21 +14,20 @@
 			<div class="slide-button" id="prv"><i class="material-icons">keyboard_arrow_left</i></div>
 			<div id="container">
 				<ul id="slider">
-					@for (int products = 0; products < 8; products++)
+				@foreach (var item in Model)
 					{
 						<li>
 							<div class="product-box">
-								<div class="img">Image</div>
-								<div class="price">Price</div>
-								<div class="quantity">Quantity</div>
-								<div class="cart">Add to cart</div>
+								<div class="img">Blank Image</div>
+								<div class="price">@Html.DisplayFor(modelItem => item.Price)</div>
+								<div class="quantity">@Html.DisplayFor(modelItem => item.Quantity)</div>
+								<div class="cart">
+									<a asp-controller="Cart" asp-action="Add" asp-route-id="@item.WineID">Add to Cart</a> |
+								</div>
 								<div class="blurb">
-									<div class="product-title">Product @(products + 1)</div>
+									<div class="product-title">@Html.DisplayFor(modelItem => item.WineName)</div>
 									<p>
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-										eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-										enim ad minim veniam, quis nostrud exercitation ullamco laboris
-										nisi ut aliquip ex ea commodo consequat.
+										@Html.DisplayFor(modelItem => item.Blurb)
 									</p>
 								</div>
 							</div>
