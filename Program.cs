@@ -14,6 +14,14 @@ using CapstoneWine.Areas.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddDistributedMemoryCache();
+
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
+    options.Cookie.IsEssential = true;
+});
+
 //var KeyVaultURL = new Uri(builder.Configuration.GetSection("KeyVaultURL").Value!);
 //var azureCredential = new DefaultAzureCredential();
 //builder.Configuration.AddAzureKeyVault(KeyVaultURL, azureCredential);
@@ -33,6 +41,8 @@ builder.Services.AddTransient<IEmailSender, EmailSender>();
 builder.Services.Configure<AuthMessageSenderOptions>(builder.Configuration);
 
 var app = builder.Build();
+
+app.UseSession();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
