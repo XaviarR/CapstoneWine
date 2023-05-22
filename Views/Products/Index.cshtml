@@ -1,0 +1,59 @@
+﻿@model IEnumerable<CapstoneWine.Models.WinesModel>
+
+@{
+        ViewData["Title"] = "Products";
+}
+
+<h1>Products</h1>
+
+<div class="row">
+    <table class="table" style="color:white;">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.WineName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Image)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Blurb)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Type)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.WineName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Image)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Blurb)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Type)
+                    </td>
+                    <td>
+                        <a asp-controller="Cart" asp-action="Add" asp-route-id="@item.WineID">Add to Cart</a> |
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
