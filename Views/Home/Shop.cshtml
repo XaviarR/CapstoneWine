@@ -1,5 +1,67 @@
-﻿@{
-	ViewData["Title"] = "Shop Page";
+﻿<link rel="stylesheet" href="~/css/shop.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+@{
+	ViewData["Title"] = "Shop";
 }
 
-<h3 class="divaText" >Shop Our Selection</h3>
+@for (int categories = 0; categories < 3; categories++)
+{
+	<section>
+		<div class="category-row">
+			<div class="slide-button" id="prv"><i class="material-icons">keyboard_arrow_left</i></div>
+			<div id="container">
+				<ul id="slider">
+					@for (int products = 0; products < 8; products++)
+					{
+						<li>
+							<div class="product-box">
+								<div class="img">Image</div>
+								<div class="price">Price</div>
+								<div class="quantity">Quantity</div>
+								<div class="cart">Add to cart</div>
+								<div class="blurb">
+									<div class="product-title">Product @(products + 1)</div>
+									<p>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+										eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+										enim ad minim veniam, quis nostrud exercitation ullamco laboris
+										nisi ut aliquip ex ea commodo consequat.
+									</p>
+								</div>
+							</div>
+						</li>
+					}
+				</ul>
+			</div>
+			<div class="slide-button" id="nxt"><i class="material-icons">keyboard_arrow_right</i></div>
+		</div>
+	</section>
+}
+
+
+
+
+
+<script>
+	const prev = document.getElementById("prv");
+	const next = document.getElementById("nxt");
+	const slide = document.getElementById("slider");
+	const boxWidth = document.querySelector(".product-box").offsetWidth;
+	const conWidth = document.getElementById("container").clientWidth;
+	let counter = 0;
+	console.log(conWidth);
+
+	next.addEventListener('click', () => {
+		counter++;
+		if (counter >= 7) counter = 0;
+		slide.style.transform = `translateX(-${(boxWidth * counter) + (counter * 47)}px)`;
+		console.log(counter);
+	});
+	prev.addEventListener('click', () => {
+		counter--;
+		if (counter < 0) counter = 0;
+		slide.style.transform = `translateX(-${(boxWidth * counter) + (counter * 47)}px)`;
+		console.log(counter);
+	});
+</script>
