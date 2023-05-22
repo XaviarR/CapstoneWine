@@ -1,33 +1,299 @@
-﻿<link rel="stylesheet" href="~/css/sub.css" asp-append-version="true" />
+﻿<link rel="stylesheet" href="~/css/sub - Copy.css" asp-append-version="true" />
 <script defer src="/js/app.js" type="text/javascript"></script>
 
 @{
     ViewData["Title"] = "Subsciptions";
 }
-<h1> Wine Subscriptions </h1>
-<section class="hidden mySection">
-    <h1>Take the hard work out of keeping stocked, let take care of it.</h1>
-    <p>you should really purchase these subscriptions</p>
+<section>
+	<h1 class="boldTitle"> Subscriptions </h1>
 </section>
-
-<section class="hidden mySection">
-    <h2>this option could be amazing</h2>
-    <p>Hear are some reasons this wine could be amazing</p>
+<section>
+	<h1 class="divaText"><span class="logo hidden"> Discover  </span> <span class="logo hidden"> Savor  </span> <span class="logo hidden"> Indulge  </span></h1>
 </section>
+<section style="margin:70px auto 20px auto">
+	<p class="blah">
+		Embark on an extraordinary wine adventure with our exclusive wine subscriptions.
+		Delight in the convenience of having exceptional, handpicked wines delivered right to your doorstep.
+		Explore a curated selection of hidden gems and renowned vineyards from around the globe,
+		allowing your palate to journey through diverse varietals, regions, and winemaking techniques.<br /><br />
+		With detailed tasting notes and expert guidance, enhance your wine knowledge and unravel the stories behind each bottle.
+		Whether you're a seasoned connoisseur or a curious enthusiast, our subscriptions offer a world of fine wines tailored to your preferences.
+		Choose from our esteemed Cheap and Cheerful, Treat Yourself, or Cellarmaster's Selection subscriptions and elevate your wine experience.<br /><br />
+		Discover, savor, and indulge in the captivating world of wine, one bottle at a time. Cheers to unforgettable moments and unforgettable wines!
+	</p>
+</section>
+@*Cards to edit*@
+@*Cheap & Chearful*@
 
-<section class="mySection">
-    <div class="logos">
-        <div class="logo hidden">
-            <h2>Mixed Case</h2>
-            <img src="~/Images/sub/mixed.jpg"/>
+<section class="mySection logos">
+	<h1 class="divaText" style="font-size:48px">Subscription 1</h1>
+    <h1 class="divaText" style="font-size:48px">Subscription 2</h1>
+    <h1 class="divaText" style="font-size:48px">Subscription 3</h1>
+<article class="card logo hidden">
+		@*images need to be same ratio*@
+        <img class="card__background"
+         src="~/Images/sub/mixed.jpg" 
+         width="1920"
+         height="2193" />
+    <div class="card__content | flow">
+        <div class="card__content--container | flow">
+            <h2 class="card__title">Cheap & Chearfull</h2>
+            <p class="card__description">These budget-friendly gems are handpicked to deliver fantastic flavors, 
+                ensuring that you can enjoy a glass of quality wine whenever the occasion calls for it. </p>
         </div>
-        <div class="logo hidden">
-            <h2>Red Case</h2>
-            <img src="~/Images/sub/red.jpg" />
+    </div>
+</article>
+    @*Treat Yourself*@
+    <article class="card logo hidden">
+    <img class="card__background"
+             src="/Images/sub/mixed.jpg" @*images need to be same ratio*@
+         width="1920"
+         height="2193" />
+    <div class="card__content | flow">
+        <div class="card__content--container | flow">
+            <h2 class="card__title">Treat Yourself</h2>
+            <p class="card__description">Treat Yourself is designed to enhance your special occasions or add a touch of luxury to your everyday life.
+                    Immerse yourself in a world of refined flavors and captivating aromas as you savor each bottle.</p>
         </div>
-        <div class="logo hidden">
-            <h2> White Case</h2>
-            <img src="~/Images/sub/white.jpg" />
+
+    </div>
+</article>
+    @*Cellarmaster's Collection*@
+    <article class="card logo hidden">
+    <img class="card__background"
+             src="/Images/sub/mixed.jpg" @*images need to be same ratio*@
+         width="1920"
+         height="2193" />
+    <div class="card__content | flow">
+        <div class="card__content--container | flow">
+            <h2 class="card__title">Cellarmaster's Collection</h2>
+            <p class="card__description"> Embark on an extraordinary journey as our expert cellarmasters handpick a distinguished array of exclusive wines 
+                from renowned vineyards and prestigious winemakers.</p>
         </div>
+
+    </div>
+	</article>
+
+    @*order details*@
+    @*case size Cheap & Chearful - CC*@
+    <div class="myDetails" style="margin-top:20px">
+       <div class="text">
+			<p>Bottles</p>
+		</div>
+		<div class="radio toolbar">
+			<input type="radio" name="CC_bottles" id="CC_6" value="6" checked />
+            <label for="CC_6" class="material-icons">6</label>
+			<input type="radio" name="CC_bottles" id="CC_12" value="12" />
+            <label for="CC_12" class="material-icons">12</label>
+      </div>
+   </div>
+    @*case size Treat Yourself - TY*@
+    <div class="myDetails" style="margin-top:20px">
+        <div class="text">
+            <p>Bottles</p>
+        </div>
+        <div class="radio toolbar">
+            <input type="radio" name="TY_bottles" id="TY_6" value="6" checked />
+            <label for="TY_6" class="material-icons">6</label>
+            <input type="radio" name="TY_bottles" id="TY_12" value="12" />
+            <label for="TY_12" class="material-icons">12</label>
+        </div>
+    </div>
+    @*case size Cellarmaster's Collection - CM*@
+    <div class="myDetails" style="margin-top:20px">
+        <div class="text">
+            <p>Bottles</p>
+        </div>
+        <div class="radio toolbar">
+            <input type="radio" name="CM_bottles" id="CM_6" value="6" checked />
+            <label for="CM_6" class="material-icons">6</label>
+            <input type="radio" name="CM_bottles" id="CM_12" value="12" />
+            <label for="CM_12" class="material-icons">12</label>
+        </div>
+
+    </div>
+    @*Delivery - subscription 1*@
+    <div class="myDetails">
+        <div class="text">
+            <p>Frequency</p>
+        </div>
+        <div class="radio months">
+            <input type="radio" name="sub1_month" id="1_3M" value="3" checked />
+            <label for="1_3M" class="material-icons">3</label>
+            <input type="radio" name="sub1_month" id="1_6M" value="6" />
+            <label for="1_6M" class="material-icons">6</label>
+            <input type="radio" name="sub1_month" id="1_12M" value="12" />
+            <label for="1_12M" class="material-icons">12</label>
+        </div>
+    </div>
+    @*Delivery - subscription 2*@
+    <div class="myDetails">
+        <div class="text">
+            <p>Frequency</p>
+        </div>
+        <div class="radio months">
+            <input type="radio" name="sub2_month" id="2_3M" value="3" checked />
+            <label for="2_3M" class="material-icons">3</label>
+            <input type="radio" name="sub2_month" id="2_6M" value="6" />
+            <label for="2_6M" class="material-icons">6</label>
+            <input type="radio" name="sub2_month" id="2_12M" value="12" />
+            <label for="2_12M" class="material-icons">12</label>
+        </div>
+    </div>
+    @*Delivery - subscription 3*@
+    <div class="myDetails">
+        <div class="text">
+            <p>Frequency</p>
+        </div>
+        <div class="radio months">
+            <input type="radio" name="sub3_month" id="3_3M" value="3" checked />
+            <label for="3_3M" class="material-icons">3</label>
+            <input type="radio" name="sub3_month" id="3_6M" value="6" />
+            <label for="3_6M" class="material-icons">6</label>
+            <input type="radio" name="sub3_month" id="3_12M" value="12" />
+            <label for="3_12M" class="material-icons">12</label>
+        </div>
+    </div>
+    @*Wine Type - Sub 1*@
+    <div class="myDetails">
+        <div class="text">
+            <p>Wine </p>
+        </div>
+        <div class="radio wine">
+            <input type="radio" name="sub1_type" id="1_red" value="red" checked />
+            <label for="1_red" class="material-icons">Red</label>
+            <input type="radio" name="sub1_type" id="1_white" value="white" />
+            <label for="1_white" class="material-icons">White</label>
+            <input type="radio" name="sub1_type" id="1_mixed" value="mixed" />
+            <label for="1_mixed" class="material-icons">Mixed</label>
+        </div>
+    </div>
+     @*Wine Type - Sub 2*@
+    <div class="myDetails">
+        <div class="text">
+            <p>Wine </p>
+        </div>
+        <div class="radio wine">
+            <input type="radio" name="sub2_type" id="2_red" value="red" checked />
+            <label for="2_red" class="material-icons">Red</label>
+            <input type="radio" name="sub2_type" id="2_white" value="white" />
+            <label for="2_white" class="material-icons">White</label>
+            <input type="radio" name="sub2_type" id="2_mixed" value="mixed" />
+            <label for="2_mixed" class="material-icons">Mixed</label>
+        </div>
+    </div>
+    @*Wine Type - Sub 3*@
+    <div class="myDetails">
+        <div class="text">
+            <p>Wine </p>
+        </div>
+        <div class="radio wine">
+            <input type="radio" name="sub3_type" id="3_red" value="red" checked />
+            <label for="3_red" class="material-icons">Red</label>
+            <input type="radio" name="sub3_type" id="3_white" value="white" />
+            <label for="3_white" class="material-icons">White</label>
+            <input type="radio" name="sub3_type" id="3_mixed" value="mixed" />
+            <label for="3_mixed" class="material-icons">Mixed</label>
+        </div>
+    </div>
+    @*Price per bottle*@
+    @*Subscription 1*@
+    <div class="myDetails">
+        <div class="text">
+            <p>Price per bottle</p>
+        </div>
+        <div class="text">
+            <p>@*{input from table goes here}*@</p>
+        </div>
+    </div>
+    @*Subscription 2*@
+    <div class="myDetails">
+        <div class="text">
+            <p>Price per bottle</p>
+        </div>
+        <div class="text">
+            <p>@*{input from table goes here}*@</p>
+        </div>
+    </div>
+    @*Subscription 3*@
+    <div class="myDetails">
+        <div class="text">
+            <p>Price per bottle</p>
+        </div>
+        <div class="text">
+            <p>@*{input from table goes here}*@</p>
+        </div>
+    </div>
+    @*Price per Delivery*@
+  
+    @*subscription 1*@
+    <div class="myDetails">
+        <div class="text">
+            <p>Price per Delivery</p>
+        </div>
+        <div class="text">
+            <p>@*{input from table goes here}*@</p>
+        </div>
+    </div>
+    @*subscription 2*@
+    <div class="myDetails">
+        <div class="text">
+            <p>Price per Delivery</p>
+        </div>
+        <div class="text">
+            <p>@*{input from table goes here}*@</p>
+        </div>
+    </div>
+    @*subscription 3*@
+    <div class="myDetails">
+        <div class="text">
+            <p>Price per Delivery</p>
+        </div>
+        <div class="text">
+            <p>@*{input from table goes here}*@</p>
+        </div>
+    </div>
+   
+    @*Reward Points*@
+    @*subscription 1*@
+    <div class="myDetails">
+        <div class="text">
+            <p>Reward Points</p>
+        </div>
+        <div class="text">
+            <p>@*{input from table goes here}*@</p>
+        </div>
+    </div>
+      @*subscription 2*@
+    <div class="myDetails">
+        <div class="text">
+            <p>Reward Points</p>
+        </div>
+        <div class="text">
+            <p>@*{input from table goes here}*@</p>
+        </div>
+    </div>
+    @*subscription 3*@
+    <div class="myDetails">
+        <div class="text">
+            <p>Reward Points</p>
+        </div>
+        <div class="text">
+            <p>@*{input from table goes here}*@</p>
+        </div>
+    </div>
+
+    @*add to cart button*@
+    @*purchase sub1*@
+    <div class="myDetails">
+        <button class="add">Add To Cart</button>
+    </div>
+    @*purchase sub2*@
+    <div class="myDetails">
+        <button class="add">Add To Cart</button>
+    </div>
+    @*purchase sub3*@
+    <div class="myDetails">
+        <button class="add">Add To Cart</button>
     </div>
 </section>
