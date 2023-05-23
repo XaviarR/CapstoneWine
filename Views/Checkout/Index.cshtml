@@ -2,67 +2,71 @@
 @{
 	ViewData["Title"] = "Checkout";
 }
-
-
-<table class="table text-white">
-	<tr>
-		<th>Product</th>
-		<th>Quantity</th>
-		<th>Price</th>
-		<th>Total</th>
-	</tr>
-	@foreach (var item in Model.CartItems)
-	{
-		<tr>
-			<td>@item.ProductName</td>
-			<td>@item.Quantity</td>
-			<td>@item.Price.ToString("C2")</td>
-			<td>@Model.CartItems.Where(x => x.ProductId == item.ProductId).Sum(x => x.Quantity * x.Price).ToString("C2")</td>
-		</tr>
-	}
-	<tr>
-		<td class="text-right" colspan="4">Grand Total: @Model.GrandTotal.ToString("C2")</td>
-	</tr>
-	<tr>
-		<td class="text-right" colspan="4">
-			<div class="text-end">
-				<div class="btn-group">
-					@*<a class="btn btn-outline-primary" asp-action="CompleteOrder">
-					Complete order
-					</a>*@
-					<div class="text-center" id="paypal-btn"></div>
-					<span style="padding:5px"></span>
-					<a class="btn btn-outline-success" asp-controller="Home" asp-action="Shop">
-						Add more items
-					</a>
-				</div>
-			</div>
-		</td>
-	</tr>
-</table>
 <div>
-	<label class="label">Name:</label>
-	<input class="input text-white" autocomplete="username" aria-required="true" placeholder="John Smith" />
-	<span class="text-danger"></span>
+	<div class="col">
+		<h1>
+			Order Details
+		</h1>
+		<table class="table text-white">
+			<tr>
+				<th>Product</th>
+				<th>Quantity</th>
+				<th>Price</th>
+				<th>Total</th>
+			</tr>
+			@foreach (var item in Model.CartItems)
+			{
+				<tr>
+					<td>@item.ProductName</td>
+					<td>@item.Quantity</td>
+					<td>@item.Price.ToString("C2")</td>
+					<td>@Model.CartItems.Where(x => x.ProductId == item.ProductId).Sum(x => x.Quantity * x.Price).ToString("C2")</td>
+				</tr>
+			}
+			<tr>
+				<td class="text-right" colspan="4">Grand Total: @Model.GrandTotal.ToString("C2")</td>
+			</tr>
 
-	<label class="label">Email:</label>
-	<input class="input text-white" autocomplete="username" aria-required="true" placeholder="name@example.com" />
-	<span class="text-danger"></span>
+			<tr>
+				<td>
+					<div>
+						<label class="label">Name:</label>
+						<input class="input text-white" autocomplete="username" aria-required="true" placeholder="John Smith" />
+						<span class="text-danger"></span>
 
-	<label class="label">Mobile:</label>
-	<input class="input text-white" autocomplete="username" aria-required="true" placeholder="+64 123 456" />
-	<span class="text-danger"></span>
+						<label class="label">Email:</label>
+						<input class="input text-white" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+						<span class="text-danger"></span>
 
-	<label class="label">Shipping Address:</label>
-	<input class="input text-white" aria-required="true" placeholder="123 Boluvard Street" />
-	<span class="text-danger"></span>
+						<label class="label">Mobile:</label>
+						<input class="input text-white" autocomplete="username" aria-required="true" placeholder="+64 123 456" />
+						<span class="text-danger"></span>
 
-	<label class="label">Delivery Instructions</label>
-	<input class="input text-white" placeholder="eg: Leave at backdoor" />
-	<span class="text-danger"></span>
+						<label class="label">Shipping Address:</label>
+						<input class="input text-white" aria-required="true" placeholder="123 Boluvard Street" />
+						<span class="text-danger"></span>
+
+						<label class="label">Delivery Instructions</label>
+						<input class="input text-white" placeholder="eg: Leave at backdoor" />
+						<span class="text-danger"></span>
+					</div>
+				</td>
+			</tr>
+
+		</table>
+	</div>
+	<div class="col">
+		<div class="text-end">
+			<div class="btn-group">
+				<div class="text-center" id="paypal-btn"></div>
+				<span style="padding:5px"></span>
+				<a class="btn btn-outline-success" asp-controller="Home" asp-action="Shop">
+					Add more items
+				</a>
+			</div>
+		</div>
+	</div>
 </div>
-
-
 @section Scripts{
 
 	<script src="https://www.paypalobjects.com/api/checkout.js"></script>
@@ -81,9 +85,9 @@
 			//Customize button
 			locale: 'en_US',
 			style: {
-				size: 'small',
+				size: 'large',
 				color: 'gold',
-				shape: 'rect'
+				shape: 'pill'
 			},
 			commit: true,
 
@@ -103,51 +107,10 @@
 			onAuthorize: function (data, actions) {
 				return actions.payment.execute().then(function () {
 					var url = '@Url.Action("Shop", "Home", new { })';//page sent to after order completed
-					window.location.href = url;		
+					window.location.href = url;
 				});
 			}
 
 		}, '#paypal-btn')
 	</script>
 }
-
-
-@*<script>
-	const fundingSources = [
-		paypal.FUNDING.PAYPAL,
-		paypal.FUNDING.CARD
-	];
-
-	for (const fundingSource of fundingSources) {
-
-		paypal
-			.Buttons({
-				fundingSource,
-
-				style: {
-					layout: 'vertical',
-					shape: 'rect'
-				},
-
-				createOrder: function (data, actions) {
-					const createOrderPayload = {
-						purchase_units: [
-							{
-								amount: {
-									value: "88.44",
-								},
-							},
-						],
-					};
-
-					return actions.order.create(createOrderPayload);
-				},
-
-				onApprove: function (data, actions) {
-
-				},
-			})
-			.render("#paypal-button-container");
-	}
-
-//</script>*@
