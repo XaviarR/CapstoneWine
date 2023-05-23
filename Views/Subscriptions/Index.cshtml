@@ -6,6 +6,18 @@
 
 <h1>Subscriptions</h1>
 
+<form method="get" action="/Subscriptions/Index">
+
+    <td style="padding-right:940px">
+    </td>
+    <td>
+        <input class="form-control" type="text" placeholder="Search for..." name="SearchString" value="@ViewData["CurrentFilter"]" aria-label="Search" aria-describedby="btnNavbarSearch" />
+    </td>
+    <td>
+        <input type="submit" value="Search" class="btn btn-primary" />
+    </td>
+</form>
+
 <p>
     <a asp-action="Create">Create New</a>
 </p>

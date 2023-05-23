@@ -22,11 +22,23 @@ namespace CapstoneWine.Controllers
         }
 
         // GET: Subscriptions
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-              return _context.Subscriptions != null ? 
-                          View(await _context.Subscriptions.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.Subscriptions'  is null.");
+            ViewData["CurrentFilter"] = searchString;
+
+            var subs = from sub in _context.Subscriptions
+                        select sub;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                subs = subs.Where(w => w.SubName.Contains(searchString));
+                return View(subs);
+            }
+
+            var subList = _context.Subscriptions.ToList();
+            return View(subList);
+            //return _context.Subscriptions != null ? 
+            //            View(await _context.Subscriptions.ToListAsync()) :
+            //            Problem("Entity set 'ApplicationDbContext.Subscriptions'  is null.");
         }
 
         // GET: Subscriptions/Details/5

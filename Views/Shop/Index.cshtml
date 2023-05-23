@@ -1,0 +1,89 @@
+﻿@model IEnumerable<CapstoneWine.Models.WinesModel>
+
+<link rel="stylesheet" href="~/css/shop.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+@{
+    ViewData["Title"] = "Shop";
+}
+
+@{
+    string[] categories = { "Chardonnay", "Rioja", "Shiraz" };
+}
+
+<form method="get" action="/Home/Shop">
+    <td>
+        <input class="form-control" type="text" placeholder="Search for..." name="SearchString" value="@ViewData["CurrentFilter"]" aria-label="Search" aria-describedby="btnNavbarSearch" />
+    </td>
+    <td>
+        <input type="submit" value="Search" class="btn btn-primary" />
+    </td>
+</form>
+
+@foreach (var category in categories)
+{
+    <h2 class="text-center">@category.ToUpper()</h2>
+    <section>
+        <div class="category-row">
+            <div class="slide-button" id="prv"><a><i class="material-icons">keyboard_arrow_left</i></a></div>
+            <div id="container">
+                <ul id="slider">
+                    @foreach (var item in Model.Where(item => item.Category == category))
+                    {
+                        <li>
+                            <div class="product-box">
+                                <div class="img">Blank Image</div>
+                                <div class="price h5">$@Html.DisplayFor(modelItem => item.Price)</div>
+                                <div class="quantity">@Html.DisplayFor(modelItem => item.Quantity)</div>
+                                <div class="cart">
+                                    <a asp-controller="Cart" asp-action="Add" asp-route-id="@item.WineID">Add to Cart</a>
+                                </div>
+                                <div class="blurb">
+                                    <div class="product-title">@Html.DisplayFor(modelItem => item.WineName)</div>
+                                    <p>
+                                        @Html.DisplayFor(modelItem => item.Blurb)
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+            <div class="slide-button" id="nxt"><a><i class="material-icons">keyboard_arrow_right</i></a></div>
+        </div>
+    </section>
+}
+
+
+
+
+
+<script>
+    const prevButtons = document.querySelectorAll(".slide-button#prv");
+    const nextButtons = document.querySelectorAll(".slide-button#nxt");
+    const sliders = document.querySelectorAll("#slider");
+    const boxWidth = document.querySelector(".product-box").offsetWidth;
+    const conWidth = document.getElementById("container").clientWidth;
+
+    for (let i = 0; i < sliders.length; i++) {
+        const prev = prevButtons[i];
+        const next = nextButtons[i];
+        const slide = sliders[i];
+        const itemCount = slide.children.length;
+        let counter = 0;
+        console.log(conWidth);
+
+        next.addEventListener('click', () => {
+            counter++;
+            if (counter >= itemCount) counter = 0;
+            slide.style.transform = `translateX(-${(boxWidth * counter) + (counter * 47)}px)`;
+            console.log(counter);
+        });
+        prev.addEventListener('click', () => {
+            counter--;
+            if (counter < 0) counter = 0;
+            slide.style.transform = `translateX(-${(boxWidth * counter) + (counter * 47)}px)`;
+            console.log(counter);
+        });
+    }
+</script>

@@ -1,6 +1,15 @@
 ﻿body {
-    background-color: black;
-    color: white;
+    background-color: floralwhite;
+    color: black;
+    padding: 70px;
+}
+
+footer {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 99vw;
+    padding-bottom: 50px;
 }
 
 section {
@@ -8,6 +17,18 @@ section {
     margin-bottom: 6rem;
 }
 
+form {
+    all: unset;
+}
+
+.navbar {
+    background-color: #080710;
+}
+
+.nav-menu {
+    background-color: rgba(10,10,10,0.3);
+    border-radius: 0 19px 19px 0;
+}
 
 .img {
     grid-area: 1/1/1/1;
