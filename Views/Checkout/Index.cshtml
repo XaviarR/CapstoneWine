@@ -32,7 +32,7 @@
 					</a>*@
 					<div class="text-center" id="paypal-btn"></div>
 					<span style="padding:5px"></span>
-					<a class="btn btn-outline-success" asp-controller="Products" asp-action="Index">
+					<a class="btn btn-outline-success" asp-controller="Home" asp-action="Shop">
 						Add more items
 					</a>
 				</div>
@@ -40,20 +40,42 @@
 		</td>
 	</tr>
 </table>
+<div>
+	<label class="label">Name:</label>
+	<input class="input text-white" autocomplete="username" aria-required="true" placeholder="John Smith" />
+	<span class="text-danger"></span>
+
+	<label class="label">Email:</label>
+	<input class="input text-white" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+	<span class="text-danger"></span>
+
+	<label class="label">Mobile:</label>
+	<input class="input text-white" autocomplete="username" aria-required="true" placeholder="+64 123 456" />
+	<span class="text-danger"></span>
+
+	<label class="label">Shipping Address:</label>
+	<input class="input text-white" aria-required="true" placeholder="123 Boluvard Street" />
+	<span class="text-danger"></span>
+
+	<label class="label">Delivery Instructions</label>
+	<input class="input text-white" placeholder="eg: Leave at backdoor" />
+	<span class="text-danger"></span>
+</div>
+
 
 @section Scripts{
 
 	<script src="https://www.paypalobjects.com/api/checkout.js"></script>
 
 	<script>
-		let a = @Model.GrandTotal.ToString();
+		let a = @Model.GrandTotal.ToString();//sets the displayed total in the paypal window to be grandtotal
 		let _total = a;
 
 		paypal.Button.render({
 			//Configure environment
 			env: 'sandbox',
 			client: {
-				sandbox: 'AcKRtgL4i68EZ2ZYuYUx3ilihAg2YhL5dtF_m19A8MjBWVOn6ewNS4M_uV8gA3xi98zTcUq38gUHbVFx'
+				sandbox: 'AQJ-nomYmdcrcJJa_kZYrA-Lzy1AdtFLCMYgwwyBhOxumCXDaQ4r7VtkGAcyDMqZhfVvz27iS7mmbgXW'//this is the client id -needed to receive payments
 			},
 
 			//Customize button
@@ -71,7 +93,7 @@
 					transactions: [{
 						amount: {
 							total: _total,
-							currency: 'USD'
+							currency: 'USD'//as its usd, paypal converts payment to NZD automatically
 						}
 					}]
 				});
@@ -80,8 +102,8 @@
 			//Execute the payment
 			onAuthorize: function (data, actions) {
 				return actions.payment.execute().then(function () {
-					var url = '@Url.Action("CompleteOrder", "Orders", new { })';
-					window.location.href = url;
+					var url = '@Url.Action("Shop", "Home", new { })';//page sent to after order completed
+					window.location.href = url;		
 				});
 			}
 

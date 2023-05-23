@@ -1,6 +1,8 @@
-﻿using CapstoneWine.Models;
+﻿using CapstoneWine.Data;
+using CapstoneWine.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 using System.Diagnostics;
@@ -9,6 +11,13 @@ namespace CapstoneWine.Controllers
 {
     public class HomeController : Controller
     {
+		private readonly ApplicationDbContext _context;
+
+		public HomeController(ApplicationDbContext context)
+		{
+			_context = context;
+		}
+
 		public IActionResult Index()
         {
             if(!Request.Cookies.ContainsKey("AgeVerified"))
@@ -78,10 +87,18 @@ namespace CapstoneWine.Controllers
         {
             return View();
         }
-		public IActionResult Shop()
+		public async Task<IActionResult> Shop()
 		{
-			return View();
+			// Return an error message if the Wine entity set is null
+			if (_context.Wines == null)
+			{
+				return Problem("Entity set 'ApplicationDbContext.Wines' is null.");
+			}
+			// Otherwise, return the Wines entity set as a view
+			return View(await _context.Wines.ToListAsync());
 		}
+
+
 
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
