@@ -3,12 +3,12 @@
 <link rel="stylesheet" href="~/css/searchproducts.css" />
 
 @{
-	ViewData["Title"] = "Search " + "'" + @ViewData["CurrentFilter"] + "'";
+	ViewData["Title"] = ViewData["CurrentFilter"];
 }
 
 <a asp-controller="Shop" asp-action="Index">Back to shop</a>
 
-<h1 class="text-black">Search results for "@ViewData["CurrentFilter"]"</h1>
+<h1 class="text-black">Browse "@ViewData["CurrentFilter"]"</h1>
 
 <div class="shop-content">
 	@foreach (var item in Model)
@@ -27,4 +27,3 @@
 		</div>
 	}
 </div>
-

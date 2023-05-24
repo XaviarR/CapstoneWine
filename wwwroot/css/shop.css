@@ -141,3 +141,26 @@ form {
         #container li:last-child {
             margin-right: 0;
         }
+
+ form td{
+    width: 400px;
+}
+
+.filters-box {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 10px;
+    min-width: 20vw;
+    width: 30%;
+}
+
+.filter-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #040b4f;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+    color:white;
+}

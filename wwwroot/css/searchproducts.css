@@ -23,7 +23,7 @@ footer {
 
 .shop-content {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 1fr 1fr 1fr;
     row-gap: 1.57rem;
     place-items: center;
     margin-top: 50px;
