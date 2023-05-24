@@ -22,15 +22,28 @@ namespace CapstoneWine.Controllers
         }
 
         // GET: Wines
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            // Return an error message if the Wine entity set is null
-            if (_context.Wines == null)
+
+            ViewData["CurrentFilter"] = searchString;
+
+            var wines = from wine in _context.Wines
+                        select wine;
+            if (!String.IsNullOrEmpty(searchString))
             {
-                return Problem("Entity set 'ApplicationDbContext.Wines' is null.");
+                wines = wines.Where(w => w.WineName.Contains(searchString));
+                return View(wines);
             }
-            // Otherwise, return the Wines entity set as a view
-            return View(await _context.Wines.ToListAsync());
+
+            var wineList = _context.Wines.ToList();
+            return View(wineList);
+            //// Return an error message if the Wine entity set is null
+            //if (_context.Wines == null)
+            //{
+            //    return Problem("Entity set 'ApplicationDbContext.Wines' is null.");
+            //}
+            //// Otherwise, return the Wines entity set as a view
+            //return View(await _context.Wines.ToListAsync());
         }
 
         // GET: Wines/Details/5
@@ -178,14 +191,14 @@ namespace CapstoneWine.Controllers
             {
                 _context.Wines.Remove(wine);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool WineExists(int id)
         {
-          return (_context.Wines?.Any(e => e.WineID == id)).GetValueOrDefault();
+            return (_context.Wines?.Any(e => e.WineID == id)).GetValueOrDefault();
         }
     }
 }

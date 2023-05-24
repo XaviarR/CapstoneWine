@@ -87,16 +87,6 @@ namespace CapstoneWine.Controllers
         {
             return View();
         }
-		public async Task<IActionResult> Shop()
-		{
-			// Return an error message if the Wine entity set is null
-			if (_context.Wines == null)
-			{
-				return Problem("Entity set 'ApplicationDbContext.Wines' is null.");
-			}
-			// Otherwise, return the Wines entity set as a view
-			return View(await _context.Wines.ToListAsync());
-		}
 
 
 
