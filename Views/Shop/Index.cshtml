@@ -1,0 +1,113 @@
+﻿@model IEnumerable<CapstoneWine.Models.WinesModel>
+
+<link rel="stylesheet" href="~/css/shop.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+@{
+	ViewData["Title"] = "Shop";
+}
+
+@{
+	var categories = ViewData["Categories"] as string[];
+	var types = ViewData["Types"] as string[];
+}
+
+<section>
+	<!--Search by wine name-->
+	<form method="get" action="/Shop/Product">
+		<td>
+			<input class="form-control" type="text" placeholder="Search wine name" name="SearchString" value="@ViewData["CurrentFilter"]" aria-label="Search" aria-describedby="btnSearch" />
+		</td>
+		<td>
+			<input type="submit" value="Search" class="btn btn-primary" />
+		</td>
+	</form>
+	@ViewData["ErrorMessage"]
+
+	<!--Filter by category-->
+	<h3>Filter by category</h3>
+	<div class="filters-box">
+		@foreach (var category in categories)
+		{
+			ViewData["CurrentFilter"] = category;
+			<a class="filter-btn" href="/Shop/Category/?categoryFilter=@ViewData["CurrentFilter"]">@category</a>
+		}
+	</div>
+
+	<!--Filter by type-->
+	<h3>Filter by type</h3>
+	<div class="filters-box">
+		@foreach (var type in types)
+		{
+			ViewData["CurrentFilter"] = type;
+			<a class="filter-btn" href="/Shop/Type/?typeFilter=@ViewData["CurrentFilter"]">@type</a>
+		}
+	</div>
+</section>
+
+
+@foreach (var category in categories)
+{
+	<h2 class="text-center">@category.ToUpper()</h2>
+	<section>
+		<div class="category-row">
+			<a class="slide-button" id="prv"><i class="material-icons">keyboard_arrow_left</i></a>
+			<div id="container">
+				<ul id="slider">
+					@foreach (var item in Model.Where(item => item.Category == category))
+					{
+						<li>
+							<div class="product-box">
+								<div class="img">Blank Image</div>
+								<div class="price h5">$@Html.DisplayFor(modelItem => item.Price)</div>
+								<div class="quantity">@Html.DisplayFor(modelItem => item.Quantity)</div>
+								<a class="cart" asp-controller="Cart" asp-action="Add" asp-route-id="@item.WineID">Add to Cart</a>
+								<div class="blurb">
+									<div class="product-title">@Html.DisplayFor(modelItem => item.WineName)</div>
+									<p>
+										@Html.DisplayFor(modelItem => item.Blurb)
+									</p>
+								</div>
+							</div>
+						</li>
+					}
+				</ul>
+			</div>
+			<a class="slide-button" id="nxt"><i class="material-icons">keyboard_arrow_right</i></a>
+		</div>
+	</section>
+}
+
+
+
+
+
+<script>
+	const prevButtons = document.querySelectorAll(".slide-button#prv");
+	const nextButtons = document.querySelectorAll(".slide-button#nxt");
+	const sliders = document.querySelectorAll("#slider");
+	const boxWidth = document.querySelector(".product-box").offsetWidth;
+	const conWidth = document.getElementById("container").clientWidth;
+
+	for (let i = 0; i < sliders.length; i++) {
+		const prev = prevButtons[i];
+		const next = nextButtons[i];
+		const slide = sliders[i];
+		const itemCount = slide.children.length;
+		let counter = 0;
+		console.log(conWidth);
+
+		next.addEventListener('click', () => {
+			counter++;
+			if (counter >= itemCount) counter = 0;
+			slide.style.transform = `translateX(-${(boxWidth * counter) + (counter * 47)}px)`;
+			console.log(counter);
+		});
+		prev.addEventListener('click', () => {
+			counter--;
+			if (counter < 0) counter = 0;
+			slide.style.transform = `translateX(-${(boxWidth * counter) + (counter * 47)}px)`;
+			console.log(counter);
+		});
+	}
+</script>

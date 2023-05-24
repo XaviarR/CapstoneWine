@@ -1,6 +1,8 @@
-﻿using CapstoneWine.Models;
+﻿using CapstoneWine.Data;
+using CapstoneWine.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 using System.Diagnostics;
@@ -9,6 +11,13 @@ namespace CapstoneWine.Controllers
 {
     public class HomeController : Controller
     {
+		private readonly ApplicationDbContext _context;
+
+		public HomeController(ApplicationDbContext context)
+		{
+			_context = context;
+		}
+
 		public IActionResult Index()
         {
             if(!Request.Cookies.ContainsKey("AgeVerified"))
@@ -78,10 +87,8 @@ namespace CapstoneWine.Controllers
         {
             return View();
         }
-		public IActionResult Shop()
-		{
-			return View();
-		}
+
+
 
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
