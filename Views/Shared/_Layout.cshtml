@@ -31,13 +31,43 @@
 				</a>
 			</div>
 			@*items in the hamburger*@
-			<ul class="nav-menu navbar-nav flex-grow-1">
-
-				<partial name="_LoginPartial" />
+			<section class="nav-menu navbar-nav flex-grow">
+			<ul class="wine">
+				<li class="nav-item">
+					<h1 class="boldTitle" style="text-align:left">Wines</h1>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link">Cabernet Savignon</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link">Pinot Noir</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link">Shiraz</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link">Merlot</a>
+				</li>
 				
+				<li class="nav-item">
+					<a class="nav-link">Chardonay</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link">Pinot Gris</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link">Riesling</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link">Sauvignon Blanc</a>
+				</li>
+				</ul>
 
-			</ul>
+				<ul class="otherMenu">
+				<partial name="_LoginPartial" />
+				</ul>
 
+			</section>
 			<a asp-controller="Cart" asp-action="Index"><img src="~/Images/add-to-cart.png" style="height:50px; width:50px; " /></a>
 
 			@*admin page -only accessible with proper credentials*@

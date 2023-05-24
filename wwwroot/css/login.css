@@ -77,14 +77,15 @@ form {
         outline: none;
         border: none;
     }
-   .exit{
-        background-color:transparent;
-        margin:0;
-        padding: 0;
-        border:none;
-        position:relative;
-        
-    }
+.exit {
+    background-color: transparent;
+    margin-top: 2vh;
+    padding: 0;
+    border: none;
+    position: relative;
+    width: auto;
+    font-family: 'Gruppo', cursive;
+}
     form h3 {
         font-size: 4rem;
         font-weight: 500;
