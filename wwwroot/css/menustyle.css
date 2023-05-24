@@ -37,7 +37,7 @@ a{
 .nav-link {
     transition: 0.7s ease;
     color: white;
-    font-size: 2rem;
+    font-size: 2vw;
 }
 
 .nav-link:hover{
@@ -83,15 +83,18 @@ a{
         top: 70px;
         gap: 0;
         flex-direction: column;
-        background-color: #080710;
-        width: 40%;
+        background-color: rgba(255,255,255,0.13);
+        backdrop-filter: blur(10px);
+        width: fit-content;
         text-align: right;
         transition: 0.7s;
         align-content: flex-end;
+        border:none;
+        border-radius:19px;
     }
 
     .nav-item {
-        margin: 16px 0;
+        margin: 16px 16px;
     }
 
     .nav-menu.active {
