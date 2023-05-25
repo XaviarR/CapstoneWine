@@ -21,36 +21,38 @@
 		<div id="invertedcursor"></div>
 
 		<!--Option 1-->
-		<nav class="navbar fixed-top">
-			@*this is the hamburger icon*@
-			<div class="hamburger">
-				<a>
-					<span class="bar"></span>
-					<span class="bar"></span>
-					<span class="bar"></span>
-				</a>
+		<nav class="navbar">
+			<div class="nav-sec-1">
+				@*this is the hamburger icon*@
+				<div class="hamburger">
+					<a>
+						<span class="bar"></span>
+						<span class="bar"></span>
+						<span class="bar"></span>
+					</a>
+				</div>
+				@*items in the hamburger*@
+				<ul class="nav-menu navbar-nav flex-grow-1">
+					<partial name="_LoginPartial" />
+				</ul>
 			</div>
-			@*items in the hamburger*@
-			<ul class="nav-menu navbar-nav flex-grow-1">
 
-				<partial name="_LoginPartial" />
-				
+			<div class="nav-sec-2">
+				<div class="nav-cart">
+					<a asp-controller="Cart" asp-action="Index"><img src="~/Images/add-to-cart.png" /></a>
+				</div>
 
-			</ul>
-
-			<a asp-controller="Cart" asp-action="Index"><img src="~/Images/add-to-cart.png" style="height:50px; width:50px; " /></a>
-
-			@*admin page -only accessible with proper credentials*@
-			@if (User.IsInRole("Admin"))
-			{
-				<a class="nav-branding" asp-area="" asp-controller="Admin" asp-action="Index">WINEZ</a>
-			}
-			else
-			{
-				<a href="#" class="nav-branding">WINEZ</a>
+				@*admin page -only accessible with proper credentials*@
+				@if (User.IsInRole("Admin"))
+				{
+					<a class="nav-branding" asp-area="" asp-controller="Admin" asp-action="Index">WINEZ</a>
+				}
+				else
+				{
+					<a class="nav-branding" asp-area="" asp-controller="Home" asp-action="Index">WINEZ</a>
+				}
+			</div>
 			
-				
-			}
 		</nav>
 	</header>
 	<section>
