@@ -13,49 +13,56 @@
 	var types = ViewData["Types"] as string[];
 }
 
-<section class="filter-popout">
-	<a class="toggler">Filters</a>
+<a class="toggler">Filters</a>
 
-	<!--Search by wine name-->
-	<div class="filters-box">
-		<form method="get" action="/Shop/Product">
-			<div class="search-bar">
-				<td>
-					<input class="form-control" type="text" placeholder="Search wine name" name="SearchString" value="@ViewData["CurrentFilter"]" aria-label="Search" aria-describedby="btnSearch" />
-					<input type="submit" value="Search" class="btn btn-primary" />
-				</td>
+<section class="filter-box">
+	<div class="filter-popout">
+
+		<!--Search by wine name-->
+		<div class="filter-search">
+			<form method="get" action="/Shop/Product">
+				<div class="search-bar">
+					<td>
+						<input class="form-control" type="text" placeholder="Search wine name" name="SearchString" value="@ViewData["CurrentFilter"]" aria-label="Search" aria-describedby="btnSearch" />
+						<input type="submit" value="Search" class="btn btn-primary" />
+					</td>
+				</div>
+
+
+			</form>
+		</div>
+
+
+		<!--Filter by category-->
+		<div class="filter-category">
+			<a class="filter-title">Filter by category</a>
+			<div class="list-box">
+				<div class="filter-list">
+					@foreach (var category in categories)
+					{
+						ViewData["CurrentFilter"] = category;
+						<div><a class="filter" href="/Shop/Category/?categoryFilter=@ViewData["CurrentFilter"]">@category</a></div>
+					}
+				</div>
 			</div>
 
+		</div>
 
-		</form>
+		<!--Filter by type-->
+		<div class="filter-type">
+			<a class="filter-title">Filter by type</a>
+			<div class="list-box">
+				<div class="filter-list">
+					@foreach (var type in types)
+					{
+						ViewData["CurrentFilter"] = type;
+						<div><a class="filter" href="/Shop/Type/?typeFilter=@ViewData["CurrentFilter"]">@type</a></div>
+					}
+				</div>
+			</div>
+		</div>
 	</div>
 
-
-	<!--Filter by category-->
-	<div class="filters-box">
-		<h3>Filter by category</h3>
-		<ul>
-			@foreach (var category in categories)
-			{
-				ViewData["CurrentFilter"] = category;
-				<li><a class="filters" href="/Shop/Category/?categoryFilter=@ViewData["CurrentFilter"]">@category</a></li>
-			}
-		</ul>
-
-	</div>
-
-	<!--Filter by type-->
-	<div class="filters-box">
-		<h3>Filter by type</h3>
-		<ul>
-			@foreach (var type in types)
-			{
-				ViewData["CurrentFilter"] = type;
-				<li><a class="filters" href="/Shop/Type/?typeFilter=@ViewData["CurrentFilter"]">@type</a></li>
-			}
-		</ul>
-
-	</div>
 </section>
 
 @foreach (var category in categories)
