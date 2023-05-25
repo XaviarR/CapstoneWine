@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<CapstoneWine.Models.WinesModel>
+@using System.Net;
 
 <link rel="stylesheet" href="~/css/shop.css" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -45,7 +46,6 @@
 	</div>
 </section>
 
-
 @foreach (var category in categories)
 {
 	<h2 class="text-center">@category.ToUpper()</h2>
@@ -58,7 +58,7 @@
 					{
 						<li>
 							<div class="product-box">
-								<div class="img">Blank Image</div>
+								<img class="img" src="@Html.DisplayFor(modelItem => item.Image)" />
 								<div class="price h5">$@Html.DisplayFor(modelItem => item.Price)</div>
 								<div class="quantity">@Html.DisplayFor(modelItem => item.Quantity)</div>
 								<a class="cart" asp-controller="Cart" asp-action="Add" asp-route-id="@item.WineID">Add to Cart</a>
