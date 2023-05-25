@@ -1,4 +1,5 @@
 ﻿using CapstoneWine.Data;
+using CapstoneWine.Infrastructure;
 using CapstoneWine.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -6,11 +7,12 @@ using Microsoft.EntityFrameworkCore;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 using System.Diagnostics;
+using CapstoneWine.Models.ViewModels;
 
 namespace CapstoneWine.Controllers
 {
-    public class HomeController : Controller
-    {
+	public class HomeController : Controller
+	{
 		private readonly ApplicationDbContext _context;
 
 		public HomeController(ApplicationDbContext context)
@@ -19,17 +21,18 @@ namespace CapstoneWine.Controllers
 		}
 
 		public IActionResult Index()
-        {
-            if(!Request.Cookies.ContainsKey("AgeVerified"))
-            {
-                return RedirectToAction("VerifyAge");
-            }
-            return View();
-        }
-        
-        public IActionResult VerifyAge() {
-            return View();
-        }
+		{
+			if (!Request.Cookies.ContainsKey("AgeVerified"))
+			{
+				return RedirectToAction("VerifyAge");
+			}
+			return View();
+		}
+
+		public IActionResult VerifyAge()
+		{
+			return View();
+		}
 		/*AgeCheck*/
 		[HttpPost]
 		public IActionResult VerifyAge(DateTime dateOfBirth)
@@ -52,48 +55,345 @@ namespace CapstoneWine.Controllers
 
 
 		[Authorize]
-        public IActionResult Subscription()
+		public IActionResult Subscription()
 		{
 			return View();
 		}
 
 		public IActionResult Privacy()
-        {
-            return View();
-        }
+		{
+			return View();
+		}
 
 		public IActionResult Help()
 		{
 			return View();
 		}
 
-        public IActionResult TermsAndConditions()
-        {
-            return View();
-        }
+		public IActionResult TermsAndConditions()
+		{
+			return View();
+		}
 
-        public IActionResult LiquorLicense()
-        {
-            return View();
-        }
+		public IActionResult LiquorLicense()
+		{
+			return View();
+		}
 
 
-        public IActionResult About()
-        {
-            return View();
-        }
+		public IActionResult About()
+		{
+			return View();
+		}
 
-        public IActionResult Home()
-        {
-            return View();
-        }
+		public IActionResult Home()
+		{
+			return View();
+		}
+		public async Task<IActionResult> Shop()
+		{
+			// Return an error message if the Wine entity set is null
+			if (_context.Wines == null)
+			{
+				return Problem("Entity set 'ApplicationDbContext.Wines' is null.");
+			}
+			// Otherwise, return the Wines entity set as a view
+			return View(await _context.Wines.ToListAsync());
+		}
+
+
+
+		public async Task<IActionResult> Test()
+		{
+			// Return an error message if the Wine entity set is null
+			if (_context.Subscriptions == null)
+			{
+				return Problem("Entity set 'ApplicationDbContext.Wines' is null.");
+			}
+			// Otherwise, return the Wines entity set as a view
+			return View(await _context.Subscriptions.ToListAsync());
+		}
+
+
+
+		public IActionResult TestSub()
+		{
+			List<SubItem> cart = HttpContext.Session.GetJson<List<SubItem>>("Sub") ?? new List<SubItem>();
+
+			SubViewModel cartVM = new()
+			{
+				SubItems = cart,
+		
+			};
+
+			return View(cartVM);
+		}
+
+		public async Task<IActionResult> Add(int id)
+		{
+			SubscriptionsModel subscriptions = await _context.Subscriptions.FindAsync(id);
+
+			List<SubItem> cart = HttpContext.Session.GetJson<List<SubItem>>("Sub") ?? new List<SubItem>();
+
+			SubItem cartItem = cart.Where(c => c.ProductId == id).FirstOrDefault();
+
+			if (cartItem == null)
+			{
+				cart.Add(new SubItem(subscriptions));
+			}
+			else
+			{
+				cartItem.NumOfBottles += 1;
+			}
+
+			HttpContext.Session.SetJson("Sub", cart);
+
+			TempData["Success"] = "The product has been added!";
+
+			return Redirect(Request.Headers["Referer"].ToString());
+		}
+
+		public async Task<IActionResult> Red(int id)
+		{
+			SubscriptionsModel subscriptions = await _context.Subscriptions.FindAsync(id);
+
+			List<SubItem> cart = HttpContext.Session.GetJson<List<SubItem>>("Sub") ?? new List<SubItem>();
+
+			SubItem cartItem = cart.Where(c => c.ProductId == id).FirstOrDefault();
+
+			if (cartItem == null)
+			{
+				cart.Add(new SubItem(subscriptions));
+			}
+			else
+			{
+				cartItem.Type = "Red";
+			}
+
+			HttpContext.Session.SetJson("Sub", cart);
+
+			TempData["Success"] = "The product has been added!";
+
+			return Redirect(Request.Headers["Referer"].ToString());
+		}
+		public async Task<IActionResult> White(int id)
+		{
+			SubscriptionsModel subscriptions = await _context.Subscriptions.FindAsync(id);
+
+			List<SubItem> cart = HttpContext.Session.GetJson<List<SubItem>>("Sub") ?? new List<SubItem>();
+
+			SubItem cartItem = cart.Where(c => c.ProductId == id).FirstOrDefault();
+
+			if (cartItem == null)
+			{
+				cart.Add(new SubItem(subscriptions));
+			}
+			else
+			{
+				cartItem.Type = "White";
+			}
+
+			HttpContext.Session.SetJson("Sub", cart);
+
+			TempData["Success"] = "The product has been added!";
+
+			return Redirect(Request.Headers["Referer"].ToString());
+		}
+		public async Task<IActionResult> Mixed(int id)
+		{
+			SubscriptionsModel subscriptions = await _context.Subscriptions.FindAsync(id);
+
+			List<SubItem> cart = HttpContext.Session.GetJson<List<SubItem>>("Sub") ?? new List<SubItem>();
+
+			SubItem cartItem = cart.Where(c => c.ProductId == id).FirstOrDefault();
+
+			if (cartItem == null)
+			{
+				cart.Add(new SubItem(subscriptions));
+			}
+			else
+			{
+				cartItem.Type = "Mixed";
+			}
+
+			HttpContext.Session.SetJson("Sub", cart);
+
+			TempData["Success"] = "The product has been added!";
+
+			return Redirect(Request.Headers["Referer"].ToString());
+		}
+		public async Task<IActionResult> Bottles6(int id)
+		{
+			SubscriptionsModel subscriptions = await _context.Subscriptions.FindAsync(id);
+
+			List<SubItem> cart = HttpContext.Session.GetJson<List<SubItem>>("Sub") ?? new List<SubItem>();
+
+			SubItem cartItem = cart.Where(c => c.ProductId == id).FirstOrDefault();
+
+			if (cartItem == null)
+			{
+				cart.Add(new SubItem(subscriptions));
+			}
+			else
+			{
+				cartItem.NumOfBottles = 6;
+			}
+
+			HttpContext.Session.SetJson("Sub", cart);
+
+			TempData["Success"] = "The product has been added!";
+
+			return Redirect(Request.Headers["Referer"].ToString());
+		}
+		public async Task<IActionResult> Bottles12(int id)
+		{
+			SubscriptionsModel subscriptions = await _context.Subscriptions.FindAsync(id);
+
+			List<SubItem> cart = HttpContext.Session.GetJson<List<SubItem>>("Sub") ?? new List<SubItem>();
+
+			SubItem cartItem = cart.Where(c => c.ProductId == id).FirstOrDefault();
+
+			if (cartItem == null)
+			{
+				cart.Add(new SubItem(subscriptions));
+			}
+			else
+			{
+				cartItem.NumOfBottles = 12;
+			}
+
+			HttpContext.Session.SetJson("Sub", cart);
+
+			TempData["Success"] = "The product has been added!";
+
+			return Redirect(Request.Headers["Referer"].ToString());
+		}
+		public async Task<IActionResult> Freq3(int id)
+		{
+			SubscriptionsModel subscriptions = await _context.Subscriptions.FindAsync(id);
+
+			List<SubItem> cart = HttpContext.Session.GetJson<List<SubItem>>("Sub") ?? new List<SubItem>();
+
+			SubItem cartItem = cart.Where(c => c.ProductId == id).FirstOrDefault();
+
+			if (cartItem == null)
+			{
+				cart.Add(new SubItem(subscriptions));
+			}
+			else
+			{
+				cartItem.Frequency = 3;
+			}
+
+			HttpContext.Session.SetJson("Sub", cart);
+
+			TempData["Success"] = "The product has been added!";
+
+			return Redirect(Request.Headers["Referer"].ToString());
+		}
+		public async Task<IActionResult> Freq6(int id)
+		{
+			SubscriptionsModel subscriptions = await _context.Subscriptions.FindAsync(id);
+
+			List<SubItem> cart = HttpContext.Session.GetJson<List<SubItem>>("Sub") ?? new List<SubItem>();
+
+			SubItem cartItem = cart.Where(c => c.ProductId == id).FirstOrDefault();
+
+			if (cartItem == null)
+			{
+				cart.Add(new SubItem(subscriptions));
+			}
+			else
+			{
+				cartItem.Frequency = 6;
+			}
+
+			HttpContext.Session.SetJson("Sub", cart);
+
+			TempData["Success"] = "The product has been added!";
+
+			return Redirect(Request.Headers["Referer"].ToString());
+		}
+		public async Task<IActionResult> Freq12(int id)
+		{
+			SubscriptionsModel subscriptions = await _context.Subscriptions.FindAsync(id);
+
+			List<SubItem> cart = HttpContext.Session.GetJson<List<SubItem>>("Sub") ?? new List<SubItem>();
+
+			SubItem cartItem = cart.Where(c => c.ProductId == id).FirstOrDefault();
+
+			if (cartItem == null)
+			{
+				cart.Add(new SubItem(subscriptions));
+			}
+			else
+			{
+				cartItem.Frequency = 12;
+			}
+
+			HttpContext.Session.SetJson("Sub", cart);
+
+			TempData["Success"] = "The product has been added!";
+
+			return Redirect(Request.Headers["Referer"].ToString());
+		}
+
+		public async Task<IActionResult> Decrease(int id)
+		{
+			List<SubItem> cart = HttpContext.Session.GetJson<List<SubItem>>("Sub");
+
+			SubItem cartItem = cart.Where(c => c.ProductId == id).FirstOrDefault();
+
+			if (cartItem.NumOfBottles > 1)
+			{
+				--cartItem.NumOfBottles;
+			}
+			else
+			{
+				cart.RemoveAll(p => p.ProductId == id);
+			}
+
+			if (cart.Count == 0)
+			{
+				HttpContext.Session.Remove("Sub");
+			}
+			else
+			{
+				HttpContext.Session.SetJson("Sub", cart);
+			}
+
+			TempData["Success"] = "The product has been removed!";
+
+			return RedirectToAction("TestSub");
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
-    }
+		public IActionResult Error()
+		{
+			return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+		}
+	}
 }
