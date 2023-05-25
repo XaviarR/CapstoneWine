@@ -90,6 +90,7 @@ form {
     justify-content: center;
     align-items: center;
     font-size: 2em;
+    user-select: none;
 }
 
     .slide-button:hover {
@@ -143,25 +144,69 @@ form {
             margin-right: 0;
         }
 
- form td{
+form td {
     width: 400px;
 }
 
-.filters-box {
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    gap: 10px;
-    min-width: 20vw;
-    width: 30%;
+.filter-popout {
+    backdrop-filter: blur(10px);
+    background-color: rgba(10,10,10,0.3);
+    position: absolute;
+    left: 0;
+    top: 55px;
+    z-index: 1;
+    width: 400px;
+    border: none;
+    border-radius: 0 0 5px 0;
+    transform: translateX(-100%);
+    transition: 0.3s ease-in-out;
 }
 
-.filter-btn {
+    .filter-popout.show {
+        transform: translateX(0);
+        transition: 0.3s ease-in-out;
+    }
+
+.toggler {
+    position: absolute;
+    left: 100%;
+    top: 0%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #040b4f;
-    height: 50px;
+    background-color: rgba(10,10,10,0.3);
+    color: black;
+    height: 55px;
+    width: 100px;
     border: none;
-    border-radius: 5px;
-    color:white;
+    border-radius: 0 0 5px 0;
+    user-select: none;
+}
+
+    .toggler:hover {
+        color: white;
+    }
+
+.filters-box {
+    display: grid;
+    grid-template-columns: auto;
+    gap: 10px;
+    min-width: 20vw;
+    width: 100%;
+    padding: 10px;
+}
+
+    .filters-box h3 {
+        grid-area: 1/1/1/5;
+        font-size: 16px;
+        text-decoration-line: underline;
+    }
+
+    .filters-box .search-bar {
+        display: grid;
+        grid-template-columns: 4fr 1fr;
+    }
+
+.filters {
+    color: black;
 }
