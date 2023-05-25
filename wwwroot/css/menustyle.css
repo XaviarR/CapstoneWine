@@ -27,6 +27,8 @@ a{
 .nav-sec-2 {
     display: flex;
     gap: 50px;
+    justify-content: center;
+    align-items: center;
 }
 
 .nav-menu {
@@ -43,7 +45,7 @@ a{
 }
 
 .nav-cart img {
-    height: 45px;
+    height: 40px;
 }
 
 .nav-link {
