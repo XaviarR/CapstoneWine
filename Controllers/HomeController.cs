@@ -54,11 +54,7 @@ namespace CapstoneWine.Controllers
 		}
 
 
-		[Authorize]
-		public IActionResult Subscription()
-		{
-			return View();
-		}
+
 
 		public IActionResult Privacy()
 		{
@@ -101,9 +97,8 @@ namespace CapstoneWine.Controllers
 			return View(await _context.Wines.ToListAsync());
 		}
 
-
-
-		public async Task<IActionResult> Test()
+		[Authorize]
+		public async Task<IActionResult> Subscription()
 		{
 			// Return an error message if the Wine entity set is null
 			if (_context.Subscriptions == null)
@@ -112,11 +107,8 @@ namespace CapstoneWine.Controllers
 			}
 			// Otherwise, return the Wines entity set as a view
 			return View(await _context.Subscriptions.ToListAsync());
-		}
-
-
-
-		public IActionResult TestSub()
+		}//View for Subscription
+		public IActionResult SubCart()
 		{
 			List<SubItem> cart = HttpContext.Session.GetJson<List<SubItem>>("Sub") ?? new List<SubItem>();
 
@@ -127,8 +119,7 @@ namespace CapstoneWine.Controllers
 			};
 
 			return View(cartVM);
-		}
-
+		}//View for SubCart
 		public async Task<IActionResult> Add(int id)
 		{
 			SubscriptionsModel subscriptions = await _context.Subscriptions.FindAsync(id);
@@ -141,18 +132,14 @@ namespace CapstoneWine.Controllers
 			{
 				cart.Add(new SubItem(subscriptions));
 			}
-			else
-			{
-				cartItem.NumOfBottles += 1;
-			}
+
 
 			HttpContext.Session.SetJson("Sub", cart);
 
 			TempData["Success"] = "The product has been added!";
 
 			return Redirect(Request.Headers["Referer"].ToString());
-		}
-
+		}//To add the subscription to the subcart
 		public async Task<IActionResult> Red(int id)
 		{
 			SubscriptionsModel subscriptions = await _context.Subscriptions.FindAsync(id);
@@ -175,7 +162,7 @@ namespace CapstoneWine.Controllers
 			TempData["Success"] = "The product has been added!";
 
 			return Redirect(Request.Headers["Referer"].ToString());
-		}
+		}//Changes SubItem.type to Red
 		public async Task<IActionResult> White(int id)
 		{
 			SubscriptionsModel subscriptions = await _context.Subscriptions.FindAsync(id);
@@ -198,7 +185,7 @@ namespace CapstoneWine.Controllers
 			TempData["Success"] = "The product has been added!";
 
 			return Redirect(Request.Headers["Referer"].ToString());
-		}
+		}//Changes SubItem.type to White
 		public async Task<IActionResult> Mixed(int id)
 		{
 			SubscriptionsModel subscriptions = await _context.Subscriptions.FindAsync(id);
@@ -221,7 +208,7 @@ namespace CapstoneWine.Controllers
 			TempData["Success"] = "The product has been added!";
 
 			return Redirect(Request.Headers["Referer"].ToString());
-		}
+		}//Changes SubItem.type to Mixed
 		public async Task<IActionResult> Bottles6(int id)
 		{
 			SubscriptionsModel subscriptions = await _context.Subscriptions.FindAsync(id);
@@ -244,7 +231,7 @@ namespace CapstoneWine.Controllers
 			TempData["Success"] = "The product has been added!";
 
 			return Redirect(Request.Headers["Referer"].ToString());
-		}
+		}//Chagnes SubItem.NumOfBottles to 6
 		public async Task<IActionResult> Bottles12(int id)
 		{
 			SubscriptionsModel subscriptions = await _context.Subscriptions.FindAsync(id);
@@ -267,7 +254,7 @@ namespace CapstoneWine.Controllers
 			TempData["Success"] = "The product has been added!";
 
 			return Redirect(Request.Headers["Referer"].ToString());
-		}
+		}//Changes SubItem.NumOfBottles to 12
 		public async Task<IActionResult> Freq3(int id)
 		{
 			SubscriptionsModel subscriptions = await _context.Subscriptions.FindAsync(id);
@@ -290,7 +277,7 @@ namespace CapstoneWine.Controllers
 			TempData["Success"] = "The product has been added!";
 
 			return Redirect(Request.Headers["Referer"].ToString());
-		}
+		}//Changes SubItem.Frequency to 3
 		public async Task<IActionResult> Freq6(int id)
 		{
 			SubscriptionsModel subscriptions = await _context.Subscriptions.FindAsync(id);
@@ -313,7 +300,7 @@ namespace CapstoneWine.Controllers
 			TempData["Success"] = "The product has been added!";
 
 			return Redirect(Request.Headers["Referer"].ToString());
-		}
+		}//Chagnes SubItem.Frequency to 6
 		public async Task<IActionResult> Freq12(int id)
 		{
 			SubscriptionsModel subscriptions = await _context.Subscriptions.FindAsync(id);
@@ -336,56 +323,25 @@ namespace CapstoneWine.Controllers
 			TempData["Success"] = "The product has been added!";
 
 			return Redirect(Request.Headers["Referer"].ToString());
-		}
-
-		public async Task<IActionResult> Decrease(int id)
+		}//Changes SubItem.Frequency to 12
+		public IActionResult Clear()
 		{
-			List<SubItem> cart = HttpContext.Session.GetJson<List<SubItem>>("Sub");
+			HttpContext.Session.Remove("Sub");
 
-			SubItem cartItem = cart.Where(c => c.ProductId == id).FirstOrDefault();
-
-			if (cartItem.NumOfBottles > 1)
-			{
-				--cartItem.NumOfBottles;
-			}
-			else
-			{
-				cart.RemoveAll(p => p.ProductId == id);
-			}
-
-			if (cart.Count == 0)
-			{
-				HttpContext.Session.Remove("Sub");
-			}
-			else
-			{
-				HttpContext.Session.SetJson("Sub", cart);
-			}
-
-			TempData["Success"] = "The product has been removed!";
-
-			return RedirectToAction("TestSub");
+			return RedirectToAction("Subscription");
 		}
+		public IActionResult Checkout()
+		{
+			List<SubItem> cart = HttpContext.Session.GetJson<List<SubItem>>("Sub") ?? new List<SubItem>();
 
+			SubViewModel cartVM = new()
+			{
+				SubItems = cart,
 
+			};
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+			return View(cartVM);
+		}//View for SubCart
 
 
 

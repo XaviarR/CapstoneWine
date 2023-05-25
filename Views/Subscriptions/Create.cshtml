@@ -38,6 +38,16 @@
                 <span asp-validation-for="RewardPoints" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="BottlePrice" class="control-label"></label>
+                <input asp-for="BottlePrice" class="form-control" />
+                <span asp-validation-for="BottlePrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PricePerDel" class="control-label"></label>
+                <input asp-for="PricePerDel" class="form-control" />
+                <span asp-validation-for="PricePerDel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>

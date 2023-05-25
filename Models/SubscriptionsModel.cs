@@ -11,5 +11,7 @@ namespace CapstoneWine.Models
         public int Frequency { get; set; }
         public int NumOfBottles { get; set; }
         public int RewardPoints { get; set; }
+        public int BottlePrice { get; set; }
+        public int PricePerDel { get; set; }
     }
 }
