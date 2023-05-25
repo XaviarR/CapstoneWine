@@ -209,6 +209,29 @@ namespace CapstoneWine.Controllers
 
 			return Redirect(Request.Headers["Referer"].ToString());
 		}//Changes SubItem.type to Mixed
+		public async Task<IActionResult> Bottles3(int id)
+		{
+			SubscriptionsModel subscriptions = await _context.Subscriptions.FindAsync(id);
+
+			List<SubItem> cart = HttpContext.Session.GetJson<List<SubItem>>("Sub") ?? new List<SubItem>();
+
+			SubItem cartItem = cart.Where(c => c.ProductId == id).FirstOrDefault();
+
+			if (cartItem == null)
+			{
+				cart.Add(new SubItem(subscriptions));
+			}
+			else
+			{
+				cartItem.NumOfBottles = 3;
+			}
+
+			HttpContext.Session.SetJson("Sub", cart);
+
+			TempData["Success"] = "The product has been added!";
+
+			return Redirect(Request.Headers["Referer"].ToString());
+		}//Chagnes SubItem.NumOfBottles to 3
 		public async Task<IActionResult> Bottles6(int id)
 		{
 			SubscriptionsModel subscriptions = await _context.Subscriptions.FindAsync(id);
@@ -337,13 +360,30 @@ namespace CapstoneWine.Controllers
 			SubViewModel cartVM = new()
 			{
 				SubItems = cart,
-
+				GrandTotal = cart.Sum(x => x.Total * x.Frequency)//creates variable GrandTotal = Total (from CartViewModel) * Frequency (from SubModel)
 			};
 
 			return View(cartVM);
-		}//View for SubCart
+		}//View for Checkout
+		public async Task<IActionResult> Remove(int id)
+		{
+			List<SubItem> cart = HttpContext.Session.GetJson<List<SubItem>>("Sub");
 
+			cart.RemoveAll(p => p.ProductId == id);
 
+			if (cart.Count == 0)
+			{
+				HttpContext.Session.Remove("Sub");
+			}
+			else
+			{
+				HttpContext.Session.SetJson("Sub", cart);
+			}
+
+			TempData["Success"] = "The product has been removed!";
+
+			return RedirectToAction("SubCart");
+		}//Button to remove item from subcart
 
 
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

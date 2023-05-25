@@ -15,7 +15,8 @@
 					<th>Type</th>
 					<th>Frequency</th>
 					<th>Bottles</th>
-					<th>Points</th>
+					<th>Bottle Price</th>
+					<th>Total</th>
 				</tr>
 				@foreach (var item in Model.SubItems)
 				{
@@ -24,9 +25,13 @@
 						<td>@item.Type</td>
 						<td>@item.Frequency</td>
 						<td>@item.NumOfBottles</td>
-						<td>@item.RewardPoints</td>
+						<td>@item.BottlePrice.ToString("C2")</td>
+						<td>@Model.SubItems.Where(x => x.ProductId == item.ProductId).Sum(x => x.NumOfBottles * x.BottlePrice).ToString("C2")</td>
 					</tr>
 				}
+				<tr>
+					<td class="text-right" colspan="4">Grand Total: @Model.GrandTotal.ToString("C2")</td>
+				</tr>
 				<tr>
 					<td>
 						<div>
@@ -78,6 +83,9 @@ else
 	<script src="https://www.paypalobjects.com/api/checkout.js"></script>
 
 	<script>
+		let a = @Model.GrandTotal.ToString();//sets the displayed total in the paypal window to be grandtotal
+		let _total = a;
+
 		paypal.Button.render({
 			//Configure environment
 			env: 'sandbox',
@@ -99,7 +107,7 @@ else
 				return actions.payment.create({
 					transactions: [{
 						amount: {
-							total: "10",
+							total: _total,
 							currency: 'USD'//as its usd, paypal converts payment to NZD automatically
 						}
 					}]

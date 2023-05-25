@@ -8,7 +8,15 @@
 		public int Frequency { get; set; }
 		public int NumOfBottles { get; set; }
 		public int RewardPoints { get; set; }
-	
+
+		public decimal BottlePrice { get; set; }
+
+		public decimal PricePerDel { get; set; }
+
+		public decimal Total
+		{
+			get { return NumOfBottles * BottlePrice; }
+		}
 
 		public SubItem()
 		{
@@ -22,6 +30,9 @@
 			Frequency = subscriptions.Frequency;
 			NumOfBottles = subscriptions.NumOfBottles;
 			RewardPoints = subscriptions.RewardPoints;
+			BottlePrice = subscriptions.BtlPrice;
+			PricePerDel = subscriptions.PricePerDel;
+
 		}
 	}
 }

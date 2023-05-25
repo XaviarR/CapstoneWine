@@ -10,9 +10,9 @@
 		@foreach (var item in Model.SubItems)
 		{
 
-			<div class="col">
+			<div class="row col" style="padding-bottom:15px">
 				<h1 class="text-start">@Html.DisplayFor(modelItem => item.ProductName)</h1>
-				<img src="~/Images/sub/mixed.jpg" width="40%" height="40%" />
+				<img src="~/Images/sub/mixed.jpg" style="width:300px; height:350px" />
 				<div>
 					<h2 class="text-start">Type: @Html.DisplayFor(modelItem => item.Type)</h2>
 					<a class="btn btn-secondary btn-sm" asp-action="Red" asp-route-id="@item.ProductId">Red</a>
@@ -21,6 +21,7 @@
 				</div>
 				<div>
 					<h2 class="text-start">Number of Bottles: @Html.DisplayFor(modelItem => item.NumOfBottles)</h2>
+					<a class="btn btn-secondary btn-sm" asp-action="Bottles3" asp-route-id="@item.ProductId">3</a>
 					<a class="btn btn-primary btn-sm" asp-action="Bottles6" asp-route-id="@item.ProductId">6</a>
 					<a class="btn btn-info btn-sm" asp-action="Bottles12" asp-route-id="@item.ProductId">12</a>
 				</div>
@@ -29,6 +30,10 @@
 					<a class="btn btn-secondary btn-sm" asp-action="Freq3" asp-route-id="@item.ProductId">3</a>
 					<a class="btn btn-primary btn-sm" asp-action="Freq6" asp-route-id="@item.ProductId">6</a>
 					<a class="btn btn-info btn-sm" asp-action="Freq12" asp-route-id="@item.ProductId">12</a>
+				</div>
+				<div>
+					<h2></h2>
+					<a class="btn btn-danger btn-sm" asp-action="Remove" asp-route-id="@item.ProductId">Remove</a>
 				</div>
 			</div>
 		}
@@ -43,7 +48,7 @@
 }
 else
 {
-	<h1>No Subscription is selected</h1>
+	<h1>No Subscription</h1>
 	<a class="btn btn-primary" asp-controller="Home" asp-action="Subscription">Select a new Subscription</a>
 }
 
