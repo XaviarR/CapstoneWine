@@ -17,8 +17,16 @@ a{
     min-height: 70px;
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
     padding: 0px, 24px;
+}
+
+.nav-sec-1 {
+    height: 100%;
+}
+
+.nav-sec-2 {
+    display: flex;
+    gap: 50px;
 }
 
 .nav-menu {
@@ -32,6 +40,10 @@ a{
 .nav-branding{
     font-size: 2rem;
     margin-right: 50px;
+}
+
+.nav-cart img {
+    height: 45px;
 }
 
 .nav-link {
