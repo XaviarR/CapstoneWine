@@ -360,7 +360,8 @@ namespace CapstoneWine.Controllers
 			SubViewModel cartVM = new()
 			{
 				SubItems = cart,
-				GrandTotal = cart.Sum(x => x.Total * x.Frequency)//creates variable GrandTotal = Total (from CartViewModel) * Frequency (from SubModel)
+
+				GrandTotal = cart.Sum(x => x.Total + x.Shipping)//creates variable GrandTotal = Total (from CartViewModel) * Frequency (from SubModel)
 			};
 
 			return View(cartVM);

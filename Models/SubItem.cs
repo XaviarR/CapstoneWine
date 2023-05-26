@@ -13,6 +13,10 @@
 
 		public decimal PricePerDel { get; set; }
 
+		public decimal Shipping
+		{
+			get { return PricePerDel * Frequency; }
+		}
 		public decimal Total
 		{
 			get { return NumOfBottles * BottlePrice; }
