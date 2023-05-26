@@ -1,71 +1,85 @@
 ﻿@model IEnumerable<CapstoneWine.Models.SubscriptionsModel>
 
 @{
-    ViewData["Title"] = "Subscriptions";
+	ViewData["Title"] = "Subscriptions";
 }
 
 <h1>Subscriptions</h1>
 
 <form method="get" action="/Subscriptions/Index">
 
-    <td style="padding-right:940px">
-    </td>
-    <td>
-        <input class="form-control" type="text" placeholder="Search for..." name="SearchString" value="@ViewData["CurrentFilter"]" aria-label="Search" aria-describedby="btnNavbarSearch" />
-    </td>
-    <td>
-        <input type="submit" value="Search" class="btn btn-primary" />
-    </td>
+	<td style="padding-right:940px">
+	</td>
+	<td>
+		<input class="form-control" type="text" placeholder="Search for..." name="SearchString" value="@ViewData["CurrentFilter"]" aria-label="Search" aria-describedby="btnNavbarSearch" />
+	</td>
+	<td>
+		<input type="submit" value="Search" class="btn btn-primary" />
+	</td>
 </form>
 
 <p>
-    <a asp-action="Create">Create New</a>
+	<a asp-action="Create">Create New</a>
 </p>
 <table class="table" style="color:white;">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.SubName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Type)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Frequency)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NumOfBottles)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RewardPoints)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.SubName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Type)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Frequency)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumOfBottles)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RewardPoints)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.SubID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.SubID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.SubID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
+	<thead>
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.SubName)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Type)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Frequency)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.NumOfBottles)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.RewardPoints)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.BtlPrice)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.PricePerDel)
+			</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.SubName)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Type)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Frequency)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.NumOfBottles)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.RewardPoints)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.BtlPrice)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.PricePerDel)
+				</td>
+
+				<td>
+					<a asp-action="Edit" asp-route-id="@item.SubID">Edit</a> |
+					<a asp-action="Details" asp-route-id="@item.SubID">Details</a> |
+					<a asp-action="Delete" asp-route-id="@item.SubID">Delete</a>
+				</td>
+			</tr>
+		}
+	</tbody>
 </table>
