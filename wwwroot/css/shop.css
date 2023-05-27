@@ -161,31 +161,8 @@ form td {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(10,10,10,0.3);
-    color: black;
-    height: 30px;
-    width: 100px;
-    user-select: none;
-}
-
-    .toggler:hover {
-        color: white;
-    }
-
-.filter-box {
-    display: none;
-}
-
-    .filter-box.show {
-        display: block;
-    }
-
-.filter-popout {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 10px;
-    background-color: rgba(200,200,200);
-    width: 100%;
+    background-color: #040b4f;
+    height: 50px;
     border: none;
     border-radius: 0 0 5px 0;
     transform: translateY(-20px);
@@ -261,3 +238,103 @@ form td {
 .filter:hover {
     background-color: dimgrey;
 }
+    border-radius: 5px;
+    color: white;
+}
+
+.filter-menu {
+    position: relative;
+    justify-content: space-between;
+    font-size: 1rem;
+    border-bottom: 3px solid darkblue;
+}
+
+.top-part {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-bottom: 10px;
+    border-bottom: 2px solid lightgrey;
+}
+
+.search-sect {
+    max-width: 30%;
+}
+
+.hider {
+    height: 100%;
+    transform: translateY(-50px);
+    opacity: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+
+    .hider.show {
+        pointer-events: auto;
+        z-index: 0;
+        transition: 0.2s;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+.search-row {
+    display: grid;
+    grid-template-columns: 9fr 1fr;
+}
+
+.filter-sect {
+    /*width: 200px;*/
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0px;
+    justify-content: center;
+    /*background-color: red;*/
+}
+
+.filter-link {
+    display: flex;
+    min-width: 100px;
+    width: 140px;
+    max-width: 8vw;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 1.25rem;
+    /*background-color: red;*/
+}
+
+    .filter-link:hover {
+        background-color: rgba(10, 10, 10, 0.2);
+    }
+
+.f-category-row,
+.f-type-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    border-width: 2px;
+    border-style: solid;
+    border-top: 1px solid rgba(0,0,0,0.2);
+    border-image: linear-gradient( to bottom, lightgrey, darkblue )1;
+}
+
+.category, .type {
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 20px;
+    align-items: center;
+    font-size: 1.25rem;
+    height: 50px;
+    /*border-radius: 7px;*/
+    color: black;
+}
+
+    .category:hover, .type:hover {
+        color: darkblue;
+        background-color: rgba(20, 20, 20, 0.1);
+    }
