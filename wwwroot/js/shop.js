@@ -26,25 +26,20 @@ for (let i = 0; i < sliders.length; i++) {
     });
 }
 
-const popout = document.querySelector(".filter-popout");
-const fBox = document.querySelector(".filter-box");
-const filterBtn = document.querySelector(".toggler");
+const filterLinks = document.querySelectorAll(".filter-link");
+const hiders = document.querySelectorAll(".hider");
 
-filterBtn.addEventListener("click", () => {
-    fBox.classList.toggle("show");
-    popout.classList.toggle("show");
-});
-
-const filterLink = document.querySelectorAll(".filter-title");
-const listBox = document.querySelectorAll(".list-box");
-
-for (var i = 0; i < filterLink.length; i++) {
-    const link = filterLink[i];
-    const list = listBox[i];
-
-    link.addEventListener("click", () => {
-        list.classList.toggle("show");
+filterLinks.forEach((link, index) => {
+    link.addEventListener('click', () => {
+        hiders[index].classList.toggle("show");
     });
 
-}
+    document.addEventListener('click', (event) => {
+        const isClickedInside = link.contains(event.target);
+        if (!isClickedInside) {
+            hiders[index].classList.remove("show");
+        }
+    });
+});
+
 
