@@ -8,7 +8,7 @@ for (let i = 0; i < sliders.length; i++) {
     const prev = prevButtons[i];
     const next = nextButtons[i];
     const slide = sliders[i];
-    const itemCount = slide.children.length;
+    const itemCount = slide.children.length-1;
     let margin = 47;
     let counter = 0;
 
