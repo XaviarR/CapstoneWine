@@ -77,14 +77,17 @@ form {
         outline: none;
         border: none;
     }
-   .exit{
-        background-color:transparent;
-        margin:0;
-        padding: 0;
-        border:none;
-        position:relative;
-        
-    }
+.exit {
+    background-color: transparent;
+    margin-top: 2vh;
+    padding: 6px;
+    border: none;
+    width: auto;
+    font-family: 'Gruppo', cursive;
+    color: black;
+    text-decoration:none;
+   
+}
     form h3 {
         font-size: 4rem;
         font-weight: 500;
@@ -166,6 +169,10 @@ h1{   color: white;
 footer {
     /*margin-top: auto;*/
 }
-  
+.backbtn{
+    margin-top: 5px;
+    border-radius: 50px;
+    -webkit-text-stroke:thick;
+}
 
    
