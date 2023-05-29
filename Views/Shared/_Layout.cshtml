@@ -18,7 +18,7 @@
 <body>
 
 	<header>
-		<div id="invertedcursor"></div>
+		<div id="invertedcursor" class="page-container"></div>
 
 		<!--Option 1-->
 		<nav class="navbar fixed-top">
@@ -64,6 +64,9 @@
 				</ul>
 
 				<ul class="otherMenu">
+					<li class="nav-item">
+						<a class="nav-link" asp-controller="Home" asp-action="Options">Options</a>
+					</li>
 				<partial name="_LoginPartial" />
 				</ul>
 		<nav class="navbar">
@@ -100,6 +103,7 @@
 			
 		</nav>
 	</header>
+
 	<section>
 		<div class="container block">
 			<main role="main" class="pb-3">
@@ -112,7 +116,7 @@
 	&copy; 2023 - CapstoneWine - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>*@
 
 	<!-- Footer -->
-	<footer class="text-center text-lg-start text-white border-top"
+	<footer id="footer" class="text-center text-lg-start text-white border-top"
 			style="background-color: #080710">
 		<div class="container p-4 pb-0">
 			<section class="">

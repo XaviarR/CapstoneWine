@@ -18,14 +18,23 @@ html {
 }
 
 body {
+    margin-top:10px;
     margin-bottom: 20px;
     cursor: none;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    padding-bottom: 2.5rem;
 }
+
+
+
 footer{
     margin-top:auto;
+    position:absolute;
+    bottom: 0;
+    width:100vw;
+    height:2.5rem;
 }
 
 .heading {
@@ -79,6 +88,7 @@ footer{
     overflow: hidden;
     transform: translate(-100%, 0%);
     transition: transform .5s ease-out;
+    background-color: black;
 }
 
     .vid-container > .bg-video {
@@ -89,7 +99,11 @@ footer{
         height: 200%;
         overflow: hidden;
         transform: translate(-100%, 0%);
-        transition: transform .5s ease-out;
+        transition: transform .5s ease-out, opacity 0.3s ease;
+        opacity:0;
+    }
+    .vid-container:hover .bg-video {
+        opacity: 1;
     }
 
     /* background-color and color should be the same as the below otherwise it won't work */
@@ -100,28 +114,35 @@ footer{
         display: grid;
         place-items: center;
         background-color: #000;
-        color: #fff;
+        color: white;
         font-weight: 900;
         /*font update*/
         font-size: 10vw;
         font-family: 'Bebas Neue';
-        /* Mix Blend Mode does the all magic */
+        /* Mix Blend Mode = magic */
         mix-blend-mode: multiply;
         user-select: none;
         transform: translate(-100%, 0%);
         transition: transform .5s ease-out;
+        -webkit-text-stroke: 2px white;
+        -webkit-text-fill-color: white;
+        
+        
     }
+
 .boldTitle {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 10vw;
     margin: 0px 0px;
     text-align: center;
 }
+
 .divaText {
     font-family: 'Gruppo', cursive;
     text-align: center;
     font-size: 5rem;
     color: white;
 }
+
 
 
