@@ -32,58 +32,44 @@
 			</div>
 			@*items in the hamburger*@
 			<section class="nav-menu navbar-nav flex-grow">
-			<ul class="wine">
-				<li class="nav-item">
-					<h1 class="boldTitle" style="text-align:left">Wines</h1>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link">Cabernet Savignon</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link">Pinot Noir</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link">Shiraz</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link">Merlot</a>
-				</li>
-				
-				<li class="nav-item">
-					<a class="nav-link">Chardonay</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link">Pinot Gris</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link">Riesling</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link">Sauvignon Blanc</a>
-				</li>
-				</ul>
+				<ul class="wine">
+					<li class="nav-item">
+						<h1 class="boldTitle" style="text-align:left">Wines</h1>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link">Cabernet Savignon</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link">Pinot Noir</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link">Shiraz</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link">Merlot</a>
+					</li>
 
+					<li class="nav-item">
+						<a class="nav-link">Chardonay</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link">Pinot Gris</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link">Riesling</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link">Sauvignon Blanc</a>
+					</li>
+				</ul>
+				
 				<ul class="otherMenu">
 					<li class="nav-item">
 						<a class="nav-link" asp-controller="Home" asp-action="Options">Options</a>
 					</li>
-				<partial name="_LoginPartial" />
-				</ul>
-		<nav class="navbar">
-			<div class="nav-sec-1">
-				@*this is the hamburger icon*@
-				<div class="hamburger">
-					<a>
-						<span class="bar"></span>
-						<span class="bar"></span>
-						<span class="bar"></span>
-					</a>
-				</div>
-				@*items in the hamburger*@
-				<ul class="nav-menu navbar-nav flex-grow-1">
 					<partial name="_LoginPartial" />
 				</ul>
-			</div>
+				</section>
 
 			<div class="nav-sec-2">
 				<div class="nav-cart">
@@ -100,7 +86,7 @@
 					<a class="nav-branding" asp-area="" asp-controller="Home" asp-action="Index">WINEZ</a>
 				}
 			</div>
-			
+
 		</nav>
 	</header>
 
