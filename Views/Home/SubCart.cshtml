@@ -1,0 +1,66 @@
+﻿@model CapstoneWine.Models.ViewModels.SubViewModel
+
+@{
+	ViewData["Title"] = "Subsciptions";
+}
+
+@if (Model.SubItems.Count > 0)
+{
+	<div class="row">
+		@foreach (var item in Model.SubItems)
+		{
+
+			<div class="row col" style="padding-bottom:15px">
+				<h1 class="text-start">@Html.DisplayFor(modelItem => item.ProductName)</h1>
+				<img src="~/Images/sub/mixed.jpg" style="width:300px; height:350px" />
+				<div>
+					<h2 class="text-start">Type: @Html.DisplayFor(modelItem => item.Type)</h2>
+					<a class="btn btn-secondary btn-sm" asp-action="Red" asp-route-id="@item.ProductId">Red</a>
+					<a class="btn btn-primary btn-sm" asp-action="White" asp-route-id="@item.ProductId">White</a>
+					<a class="btn btn-info btn-sm" asp-action="Mixed" asp-route-id="@item.ProductId">Mixed</a>
+				</div>
+				<div>
+					<h2 class="text-start">Number of Bottles: @Html.DisplayFor(modelItem => item.NumOfBottles)</h2>
+					<a class="btn btn-secondary btn-sm" asp-action="Bottles3" asp-route-id="@item.ProductId">3</a>
+					<a class="btn btn-primary btn-sm" asp-action="Bottles6" asp-route-id="@item.ProductId">6</a>
+					<a class="btn btn-info btn-sm" asp-action="Bottles12" asp-route-id="@item.ProductId">12</a>
+				</div>
+				<div>
+					<h2 class="text-start">Frequency: @Html.DisplayFor(modelItem => item.Frequency)</h2>
+					<a class="btn btn-secondary btn-sm" asp-action="Freq3" asp-route-id="@item.ProductId">3</a>
+					<a class="btn btn-primary btn-sm" asp-action="Freq6" asp-route-id="@item.ProductId">6</a>
+					<a class="btn btn-info btn-sm" asp-action="Freq12" asp-route-id="@item.ProductId">12</a>
+				</div>
+				<div>
+					<h2></h2>
+					<a class="btn btn-danger btn-sm" asp-action="Remove" asp-route-id="@item.ProductId">Remove</a>
+				</div>
+			</div>
+		}
+		<div class="row">
+			<div class="text-end" colspan="8">
+				<a class="btn btn-danger" asp-controller="Home" asp-action="Clear">Clear</a>
+				<a class="btn btn-primary" asp-controller="Home" asp-action="Subscription">Select another Subscription</a>
+				<a class="btn btn-primary" asp-controller="Home" asp-action="Checkout">Checkout</a>
+			</div>
+		</div>
+	</div>
+}
+else
+{
+	<h1>No Subscription</h1>
+	<a class="btn btn-primary" asp-controller="Home" asp-action="Subscription">Select a new Subscription</a>
+}
+
+
+
+
+@*@using (Html.BeginForm("BottlesRadio", "Home", FormMethod.Post))
+	{
+	<div>
+	<h1>Number of Bottles to be shipped</h1>
+	6 @Html.RadioButton("NumOfBottles", "6")<br>
+	12 @Html.RadioButton("NumOfBottles", "12")<br>
+	</div>
+	<input type="submit" value="submit"/>
+	}               *@

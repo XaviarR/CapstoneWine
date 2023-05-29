@@ -9,7 +9,7 @@ namespace CapstoneWine.Controllers
 	{
 		public IActionResult Index()
 		{
-			List<CartItem> cart = HttpContext.Session.GetJson<List<CartItem>>("Cart");
+			List<CartItem> cart = HttpContext.Session.GetJson<List<CartItem>>("Cart") ?? new List<CartItem>();
 
 			CartViewModel cartVM = new()
 			{

@@ -1,8 +1,8 @@
-﻿@model CapstoneWine.Models.ViewModels.CartViewModel
+﻿@model CapstoneWine.Models.ViewModels.SubViewModel
 @{
 	ViewData["Title"] = "Checkout";
 }
-@if (Model.CartItems.Count > 0)
+@if (Model.SubItems.Count > 0)
 {
 	<div>
 		<div class="col">
@@ -11,24 +11,32 @@
 			</h1>
 			<table class="table text-white">
 				<tr>
-					<th>Product</th>
-					<th>Quantity</th>
-					<th>Price</th>
+					<th>Subscrption</th>
+					<th>Type</th>
+					<th>Bottles</th>
+					<th>Bottle Price</th>
+					<th>Shipping</th>
 					<th>Total</th>
 				</tr>
-				@foreach (var item in Model.CartItems)
+				@foreach (var item in Model.SubItems)
 				{
 					<tr>
 						<td>@item.ProductName</td>
-						<td>@item.Quantity</td>
-						<td>@item.Price.ToString("C2")</td>
-						<td>@Model.CartItems.Where(x => x.ProductId == item.ProductId).Sum(x => x.Quantity * x.Price).ToString("C2")</td>
+						<td>@item.Type</td>
+						<td>@item.NumOfBottles</td>
+						<td>@item.BottlePrice.ToString("C2")</td>
+						@*Shipping = Freq * PriceToDel*@
+						<td>@item.Shipping.ToString("C2")</td>
+						@*Total = NumOfBottles * BtlPrice*@
+						<td>@Model.SubItems.Where(x => x.ProductId == item.ProductId).Sum(x => x.Total + x.Shipping).ToString("C2")</td>
 					</tr>
 				}
 				<tr>
+					@*Calculated in the homecontroller 
+
+					(Total + Shipping)*@
 					<td class="text-right" colspan="4">Grand Total: @Model.GrandTotal.ToString("C2")</td>
 				</tr>
-
 				<tr>
 					<td>
 						<div>
@@ -60,11 +68,11 @@
 		<div class="col">
 			<div class="text-end">
 				<div class="btn-group">
-					<a class="btn btn-outline-success" asp-controller="Cart" asp-action="Index">back</a>
-					<span style="padding:5px"></span>
-					<a class="btn btn-outline-success" asp-controller="Shop" asp-action="Index">Add more items</a>
-					<span style="padding:5px"></span>
-					<div class="text-center" id="paypal-btn"></div>
+					<a class="btn btn-outline-success" asp-controller="Home" asp-action="SubCart">Back</a>
+					<span style="padding:0px"></span>
+					<a class="btn btn-outline-success" asp-controller="Home" asp-action="Subscription">Choose Subscription</a>
+					<span style="padding:0px"></span>
+					<div id="paypal-btn"></div>
 				</div>
 			</div>
 		</div>
@@ -72,8 +80,8 @@
 }
 else
 {
-	<h1>Nothing in cart</h1>
-	<a class="btn btn-outline-success" asp-controller="Shop" asp-action="Index">Add new items</a>
+	<h1>No Subcription Selected</h1>
+	<a class="btn btn-outline-success" asp-controller="Home" asp-action="Subscription">Choose Subscription</a>
 }
 @section Scripts{
 
@@ -94,7 +102,7 @@ else
 			locale: 'en_US',
 			style: {
 				size: 'large',
-				color: 'gold',
+				color: 'white',
 				shape: 'pill'
 			},
 			commit: true,

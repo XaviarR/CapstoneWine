@@ -1,222 +1,128 @@
 ﻿@model Tuple<List<CapstoneWine.Models.SubscriptionsModel>, List<CapstoneWine.Models.WinesModel>, List<CapstoneWine.Models.OrdersModel>>
 
+<link rel="stylesheet" href="~/css/admin.css" />
+
 @{
 	ViewData["Title"] = "Admin";
 }
 
-<style>
-	/* Basic styling */
-	body {
-		font-family: Arial, sans-serif;
-		margin: 0;
-		padding: 0;
-	}
-
-	.table {
-		color: white;
-	}
-
-	#dashboard {
-		display: grid;
-		grid-template-columns: 200px 1fr; /* Sidebar width and content width */
-		gap: 20px; /* Gap between sidebar and content */
-	}
-
-	#sidebar {
-		background: #333;
-		color: #fff;
-		padding: 20px;
-		box-sizing: border-box;
-	}
-
-		#sidebar ul {
-			list-style: none;
-			padding: 0;
-			margin: 0;
-		}
-
-			#sidebar ul li {
-				margin-bottom: 10px;
-			}
-
-				#sidebar ul li a {
-					color: #fff;
-					text-decoration: none;
-					display: block;
-				}
-
-	#content {
-		padding: 20px;
-		box-sizing: border-box;
-	}
-</style>
-
-
-
 <div id="dashboard">
 	<div id="sidebar">
 		<ul>
-			<li><a onclick="showOrdersTable()">Orders</a></li>
-			<li><a onclick="showSubscriptionsTable()">Subscriptions</a></li>
-			<li><a onclick="showWinesTable()">Wines</a></li>
+			<li><a class="table-title" onclick="showOrdersTable()">Orders</a></li>
+			<li><a class="table-title" onclick="showSubscriptionsTable()">Subscriptions</a></li>
+			<li><a class="table-title" onclick="showWinesTable()">Wines</a></li>
 		</ul>
 	</div>
 	@*<h1>Welcome to the Admin Dashboard</h1>*@
 	<div id="content">
 
-		<!-- Content for the "Subscriptions" section -->
-		<div id="subscriptionsTable" style="display: none;">
-			<!-- Subscriptions table -->
-			<div class="row">
-				<div class="col-12">
-					<a asp-controller="Subscriptions" asp-action="Index"><h3>Subscriptions</h3></a>
-				</div>
-			</div>
+		<div id="ordersTable">
+			<table>
+				<a class="table-title" asp-controller="Orders" asp-action="Index">Orders</a>
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Order Date</th>
+						<th>User ID</th>
+						<th>Wine ID</th>
+						<th>Subscription ID</th>
+						<th>Quantity</th>
+						<th>Delivery Address</th>
+						<th>Delivery Charge</th>
+						<th>Total Cost</th>
+						<th>Order Status</th>
+						<th>Reward Points</th>
+					</tr>
+				</thead>
 
-			<div class="row">
-				<div class="col-12 pe-5">
-					<table class="table">
-						<thead>
-							<tr>
-								<th>ID</th>
-								<th>Name</th>
-								<th>Type</th>
-								<th>Frequency</th>
-								<th>Number of Bottles</th>
-								<th>Reward Points</th>
-							</tr>
-						</thead>
-						<tbody>
-							@foreach (var subscription in Model.Item1)
-							{
-								<tr>
-									<td>@subscription.SubID</td>
-									<td>@subscription.SubName</td>
-									<td>@subscription.Type</td>
-									<td>@subscription.Frequency</td>
-									<td>@subscription.NumOfBottles</td>
-									<td>@subscription.RewardPoints</td>
-								</tr>
-							}
-						</tbody>
-					</table>
-				</div>
-			</div>
+				<tbody>
+					@foreach (var order in Model.Item3)
+					{
+						<tr>
+							<td>@order.OrderID</td>
+							<td>@order.OrderDate</td>
+							<td>@order.UserID</td>
+							<td>@order.WineID</td>
+							<td>@order.SubID</td>
+							<td>@order.Quantity</td>
+							<td>@order.DeliveryAdd</td>
+							<td>@order.DeliveryCharge</td>
+							<td>@order.TotalCost</td>
+							<td>@order.OrderStatus</td>
+							<td>@order.RewardPoints</td>
+						</tr>
+					}
+				</tbody>
+			</table>
 		</div>
 
-		<!-- Content for the "Wines" section -->
-		<div id="winesTable" style="display: none;">
-			<div class="row">
-				<div class="col-12">
-					<a asp-controller="Wines" asp-action="Index"><h3>Wines</h3></a>
-				</div>
-			</div>
+		<div id="subscriptionsTable">
+			<table>
+				<a class="table-title" asp-controller="Subscriptions" asp-action="Index">Subscriptions</a>
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Name</th>
+						<th>Type</th>
+						<th>Frequency</th>
+						<th>Number of Bottles</th>
+						<th>Reward Points</th>
+					</tr>
+				</thead>
 
-			<div class="row">
-				<div class="col-12 pe-5">
-					<table class="table">
-						<thead>
-							<tr>
-								<th>ID</th>
-								<th>Name</th>
-								<th>Image</th>
-								<th>Price</th>
-								<th>Blurb</th>
-								<th>Quantity</th>
-								<th>Type</th>
-								<th>Category</th>
-							</tr>
-						</thead>
-						<tbody>
-							@foreach (var wine in Model.Item2)
-							{
-								<tr>
-									<td>@wine.WineID</td>
-									<td>@wine.WineName</td>
-									<td>@wine.Image</td>
-									<td>@wine.Price</td>
-									<td>@wine.Blurb</td>
-									<td>@wine.Quantity</td>
-									<td>@wine.Type</td>
-									<td>@wine.Category</td>
-								</tr>
-							}
-						</tbody>
-					</table>
-				</div>
-			</div>
+				<tbody>
+					@foreach (var subscription in Model.Item1)
+					{
+						<tr>
+							<td>@subscription.SubID</td>
+							<td>@subscription.SubName</td>
+							<td>@subscription.Type</td>
+							<td>@subscription.Frequency</td>
+							<td>@subscription.NumOfBottles</td>
+							<td>@subscription.RewardPoints</td>
+						</tr>
+					}
+				</tbody>
+			</table>
 		</div>
 
+		<div id="winesTable">
+			<table class="wines-table">
+				<a class="table-title" asp-controller="Wines" asp-action="Index">Wines</a>
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Name</th>
+						<th class="hide-overflow">Image</th>
+						<th>Price</th>
+						<th class="blurb-col">Blurb</th>
+						<th>Quantity</th>
+						<th>Type</th>
+						<th>Category</th>
+					</tr>
+				</thead>
 
-		<!-- Content for the orders table -->
-		<div id="ordersTable" style="display: none;">
-			<div class="row">
-				<div class="col-12">
-					<a asp-controller="Orders" asp-action="Index"><h3>Orders</h3></a>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-12 pe-5">
-					<table class="table">
-						<thead>
-							<tr>
-								<th>ID</th>
-								<th>Order Date</th>
-								<th>User ID</th>
-								<th>Wine ID</th>
-								<th>Subscription ID</th>
-								<th>Quantity</th>
-								<th>Delivery Address</th>
-								<th>Delivery Charge</th>
-								<th>Total Cost</th>
-								<th>Order Status</th>
-								<th>Reward Points</th>
-							</tr>
-						</thead>
-						<tbody>
-							@foreach (var order in Model.Item3)
-							{
-								<tr>
-									<td>@order.OrderID</td>
-									<td>@order.OrderDate</td>
-									<td>@order.UserID</td>
-									<td>@order.WineID</td>
-									<td>@order.SubID</td>
-									<td>@order.Quantity</td>
-									<td>@order.DeliveryAdd</td>
-									<td>@order.DeliveryCharge</td>
-									<td>@order.TotalCost</td>
-									<td>@order.OrderStatus</td>
-									<td>@order.RewardPoints</td>
-								</tr>
-							}
-						</tbody>
-					</table>
-				</div>
-			</div>
+				<tbody>
+					@foreach (var wine in Model.Item2)
+					{
+						<tr>
+							<td>@wine.WineID</td>
+							<td>@wine.WineName</td>
+							<td class="hide-overflow">@wine.Image</td>
+							<td>@wine.Price</td>
+							<td class="blurb-col">@wine.Blurb</td>
+							<td>@wine.Quantity</td>
+							<td>@wine.Type</td>
+							<td>@wine.Category</td>
+						</tr>
+					}
+				</tbody>
+			</table>
 		</div>
 
 
 	</div>
 </div>
 
-<script>
-	function showSubscriptionsTable() {
-		document.getElementById("subscriptionsTable").style.display = "block";
-		document.getElementById("winesTable").style.display = "none";
-		document.getElementById("ordersTable").style.display = "none";
-	}
-
-	function showWinesTable() {
-		document.getElementById("subscriptionsTable").style.display = "none";
-		document.getElementById("winesTable").style.display = "block";
-		document.getElementById("ordersTable").style.display = "none";
-	}
-
-	function showOrdersTable() {
-		document.getElementById("subscriptionsTable").style.display = "none";
-		document.getElementById("winesTable").style.display = "none";
-		document.getElementById("ordersTable").style.display = "block";
-	}
-</script>
+<script src="~/js/admin.js"></script>
