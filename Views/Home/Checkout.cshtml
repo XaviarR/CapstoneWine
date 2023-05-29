@@ -13,8 +13,7 @@
 				<tr>
 					<th>Subscrption</th>
 					<th>Type</th>
-					<th>Bottles</th>
-					<th>Bottle Price</th>
+					<th>Bottle price</th>
 					<th>Shipping</th>
 					<th>Total</th>
 				</tr>
@@ -23,10 +22,9 @@
 					<tr>
 						<td>@item.ProductName</td>
 						<td>@item.Type</td>
-						<td>@item.NumOfBottles</td>
-						<td>@item.BottlePrice.ToString("C2")</td>
+						<td>@item.NumOfBottles x @item.BottlePrice.ToString("C2") = @item.Total.ToString("C2")</td>
 						@*Shipping = Freq * PriceToDel*@
-						<td>@item.Shipping.ToString("C2")</td>
+						<td>@item.Frequency x @item.PricePerDel.ToString("C2") = @item.Shipping.ToString("C2")</td>
 						@*Total = NumOfBottles * BtlPrice*@
 						<td>@Model.SubItems.Where(x => x.ProductId == item.ProductId).Sum(x => x.Total + x.Shipping).ToString("C2")</td>
 					</tr>
@@ -102,7 +100,7 @@ else
 			locale: 'en_US',
 			style: {
 				size: 'large',
-				color: 'white',
+				color: 'white',//Silver, White, Blue, Gold
 				shape: 'pill'
 			},
 			commit: true,

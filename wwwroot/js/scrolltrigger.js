@@ -13,3 +13,4 @@ for (let i = 0; i < wines.length; i++) {
         x: "0%",
     });
 }
+

@@ -2,6 +2,7 @@
 
 <link rel="stylesheet" href="~/css/searchproducts.css" />
 
+
 @{
 	ViewData["Title"] = "Search " + "'" + @ViewData["CurrentFilter"] + "'";
 }
@@ -14,7 +15,7 @@
 	@foreach (var item in Model)
 	{
 		<div class="product-box">
-			<div class="img">Blank Image</div>
+			<img class="img" src="@Html.DisplayFor(modelItem => item.Image)" />
 			<div class="price h5">$@Html.DisplayFor(modelItem => item.Price)</div>
 			<div class="quantity">@Html.DisplayFor(modelItem => item.Quantity)</div>
 			<a class="cart" asp-controller="Cart" asp-action="Add" asp-route-id="@item.WineID">Add to Cart</a>

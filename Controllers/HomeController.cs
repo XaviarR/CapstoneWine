@@ -8,6 +8,7 @@ using SendGrid;
 using SendGrid.Helpers.Mail;
 using System.Diagnostics;
 using CapstoneWine.Models.ViewModels;
+using Microsoft.Identity.Client;
 
 namespace CapstoneWine.Controllers
 {
@@ -53,7 +54,10 @@ namespace CapstoneWine.Controllers
 			}
 		}
 
-
+		public IActionResult Options()
+		{
+			return View();
+		}
 
 
 		public IActionResult Privacy()
