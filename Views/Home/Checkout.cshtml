@@ -13,20 +13,30 @@
 				<tr>
 					<th>Subscrption</th>
 					<th>Type</th>
-					<th>Frequency</th>
 					<th>Bottles</th>
-					<th>Points</th>
+					<th>Bottle Price</th>
+					<th>Shipping</th>
+					<th>Total</th>
 				</tr>
 				@foreach (var item in Model.SubItems)
 				{
 					<tr>
 						<td>@item.ProductName</td>
 						<td>@item.Type</td>
-						<td>@item.Frequency</td>
 						<td>@item.NumOfBottles</td>
-						<td>@item.RewardPoints</td>
+						<td>@item.BottlePrice.ToString("C2")</td>
+						@*Shipping = Freq * PriceToDel*@
+						<td>@item.Shipping.ToString("C2")</td>
+						@*Total = NumOfBottles * BtlPrice*@
+						<td>@Model.SubItems.Where(x => x.ProductId == item.ProductId).Sum(x => x.Total + x.Shipping).ToString("C2")</td>
 					</tr>
 				}
+				<tr>
+					@*Calculated in the homecontroller 
+
+					(Total + Shipping)*@
+					<td class="text-right" colspan="4">Grand Total: @Model.GrandTotal.ToString("C2")</td>
+				</tr>
 				<tr>
 					<td>
 						<div>
@@ -59,9 +69,9 @@
 			<div class="text-end">
 				<div class="btn-group">
 					<a class="btn btn-outline-success" asp-controller="Home" asp-action="SubCart">Back</a>
-					<span style="padding:5px"></span>
+					<span style="padding:0px"></span>
 					<a class="btn btn-outline-success" asp-controller="Home" asp-action="Subscription">Choose Subscription</a>
-					<span style="padding:5px"></span>
+					<span style="padding:0px"></span>
 					<div id="paypal-btn"></div>
 				</div>
 			</div>
@@ -78,6 +88,9 @@ else
 	<script src="https://www.paypalobjects.com/api/checkout.js"></script>
 
 	<script>
+		let a = @Model.GrandTotal.ToString();//sets the displayed total in the paypal window to be grandtotal
+		let _total = a;
+
 		paypal.Button.render({
 			//Configure environment
 			env: 'sandbox',
@@ -89,7 +102,7 @@ else
 			locale: 'en_US',
 			style: {
 				size: 'large',
-				color: 'gold',
+				color: 'white',
 				shape: 'pill'
 			},
 			commit: true,
@@ -99,7 +112,7 @@ else
 				return actions.payment.create({
 					transactions: [{
 						amount: {
-							total: "10",
+							total: _total,
 							currency: 'USD'//as its usd, paypal converts payment to NZD automatically
 						}
 					}]
