@@ -35,6 +35,11 @@ namespace CapstoneWine.Controllers
                 return View(wines);
             }
 
+            if (String.IsNullOrEmpty(searchString))
+            {
+                ViewData["CurrentFilter"] = "";
+            }
+
             var wineList = _context.Wines.ToList();
             return View(wineList);
             //// Return an error message if the Wine entity set is null
