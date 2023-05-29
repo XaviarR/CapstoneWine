@@ -1,0 +1,46 @@
+﻿@model IEnumerable<CapstoneWine.Models.OrderHistoryModel>
+@{
+	ViewData["Title"] = "Order History";
+}
+
+
+<table class="table text-white">
+	<tr>
+		<th>OrderID</th>
+		<th>OrderDate</th>
+		<th>UserID</th>
+		<th>WineID</th>
+		<th>SubID</th>
+		<th>Quantity</th>
+		<th>Delivery Address</th>
+		<th>Delivery Charge</th>
+		<th>Total Cost</th>
+		<th>Order Status</th>
+		<th>Reward Points</th>
+	</tr>
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>@Html.DisplayFor(modelItem => item.OrderID)</td>
+			<td>@Html.DisplayFor(modelItem => item.OrderDate)</td>
+			<td>@Html.DisplayFor(modelItem => item.UserID)</td>
+			<td>@Html.DisplayFor(modelItem => item.WineID)</td>
+			<td>@Html.DisplayFor(modelItem => item.SubID)</td>
+			<td>@Html.DisplayFor(modelItem => item.Quantity)</td>
+			<td>@Html.DisplayFor(modelItem => item.DeliveryAdd)</td>
+			<td>@Html.DisplayFor(modelItem => item.DeliveryCharge)</td>
+			<td>@Html.DisplayFor(modelItem => item.TotalCost)</td>
+			<td>@Html.DisplayFor(modelItem => item.OrderStatus)</td>
+			<td>@Html.DisplayFor(modelItem => item.RewardPoints)</td>
+		</tr>
+	}
+	<tr>
+		<td class="text-right" colspan="8">
+			<a class="btn btn-danger" asp-action="Clear">Clear Cart</a>
+			<a class="btn btn-primary" asp-controller="Checkout" asp-action="Index">Checkout</a>
+		</td>
+	</tr>
+</table>
+
+
+

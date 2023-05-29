@@ -20,7 +20,6 @@ namespace CapstoneWine.Controllers
 		{
 			_context = context;
 		}
-
 		public IActionResult Index()
 		{
 			if (!Request.Cookies.ContainsKey("AgeVerified"))
@@ -124,6 +123,16 @@ namespace CapstoneWine.Controllers
 
 			return View(cartVM);
 		}//View for SubCart
+		public async Task<IActionResult> Test()
+		{
+			// Return an error message if the Wine entity set is null
+			if (_context.OrderHistory == null)
+			{
+				return Problem("Entity set 'ApplicationDbContext.Wines' is null.");
+			}
+			// Otherwise, return the Wines entity set as a view
+			return View(await _context.OrderHistory.ToListAsync());
+		}//View for test
 		public async Task<IActionResult> Add(int id)
 		{
 			SubscriptionsModel subscriptions = await _context.Subscriptions.FindAsync(id);
