@@ -17,7 +17,7 @@ html {
     background-color: #080710;
 }
 
-body {
+.body {
     margin-top:10px;
     margin-bottom: 20px;
     cursor: none;

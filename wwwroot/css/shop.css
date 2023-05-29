@@ -183,6 +183,7 @@ form td {
 /*==== FILTER STUFF ====*/
 
 .filter-menu {
+    margin-top: 80px;
     position: relative;
     justify-content: space-between;
     border-bottom: 3px solid darkblue;
