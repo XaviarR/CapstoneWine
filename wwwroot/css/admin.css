@@ -1,0 +1,136 @@
+﻿body {
+    font-family: "Lato", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+#dashboard {
+    display: grid;
+    grid-template-columns: 200px 1fr; /* Sidebar width and content width */
+    width: 100%;
+    position: relative;
+    /*overflow: hidden;*/
+}
+
+#sidebar {
+    min-height: 100vh;
+    height: 100%;
+    /*position: absolute;*/
+    width: 100%;
+    border: 3px solid white;
+    border-top-right-radius: 10px;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+    #sidebar ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+        #sidebar ul li {
+            margin-bottom: 10px;
+        }
+
+            #sidebar ul li a {
+                text-decoration: none;
+            }
+
+#content {
+    padding: 20px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+table {
+    border-collapse: collapse;
+    border-radius: 1em;
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.table-title {
+    font-family: 'Bebas Neue';
+    font-size: 2rem;
+}
+
+.wines-table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+.blurb-col {
+    /*overflow-y: auto;*/
+}
+
+th, td {
+    vertical-align: text-top;
+    padding: 1em;
+    border-bottom: 2px solid white;
+    word-wrap: break-word;
+}
+
+th {
+    padding-left: 1rem;
+    background-color: darkblue;
+}
+
+td {
+    padding: 1rem;
+    background-color: rgba(20, 20, 244, 0.2);
+}
+
+tr:nth-of-type(2n) {
+    background-color: rgba(20, 20, 244, 0.1);
+}
+
+.hide-overflow {
+    /*white-space: nowrap;*/ /* Prevent line breaks within table cells */
+    overflow: hidden; /* Hide overflowing content */
+    text-overflow: ellipsis; /* Display ellipsis for overflowing content */
+}
+
+form {
+    all: unset;
+}
+
+.top-sect {
+    display: flex;
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+    .top-sect .inactive {
+        color: rgba(200, 200, 200,0.3);
+        font-size: 1.6rem;
+    }
+
+        .top-sect .inactive:hover {
+            color: rgba(200, 200, 200,0.6);
+        }
+
+.search-row {
+    display: grid;
+    grid-template-columns: 9fr 1fr;
+    column-gap: 5px;
+    max-width: 50%;
+}
+
+.search-bar {
+    border: 2.7px solid darkblue;
+    border-radius: 5px;
+    height: 40px;
+    color: black;
+    padding-left: 5px;
+    background-color: rgba(255);
+}
+
+.search-btn {
+    height: 100%;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    background-color: darkblue;
+    font-size: 1rem;
+}
