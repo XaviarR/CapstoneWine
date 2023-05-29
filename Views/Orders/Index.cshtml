@@ -1,16 +1,21 @@
-﻿@model IEnumerable<CapstoneWine.Models.OrdersModel
->
+﻿@model IEnumerable<CapstoneWine.Models.OrdersModel>
+
+<link rel="stylesheet" href="~/css/admin.css"/>
 
 @{
     ViewData["Title"] = "Orders";
 }
 
-<h1>Orders</h1>
+<section class="top-sect">
+    <a class="table-title">Orders</a>
+    <a class="table-title inactive" asp-controller="Subscriptions" asp-action="Index">Subscriptions</a>
+    <a class="table-title inactive" asp-controller="Wines" asp-action="Index">Wines</a>
+</section>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table" style="color:white;">
+<table style="width: 100%;">
     <thead>
         <tr>
             <th>
