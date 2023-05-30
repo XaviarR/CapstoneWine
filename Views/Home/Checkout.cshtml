@@ -120,7 +120,7 @@ else
 			//Execute the payment
 			onAuthorize: function (data, actions) {
 				return actions.payment.execute().then(function () {
-					var url = '@Url.Action("Shop", "Home", new { })';//page sent to after order completed
+					var url = '@Url.Action("Subscription", "Home", new { })';//page sent to after order completed
 					window.location.href = url;
 				});
 			}
