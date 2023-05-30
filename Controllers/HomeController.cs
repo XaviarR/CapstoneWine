@@ -22,6 +22,10 @@ namespace CapstoneWine.Controllers
 		}
 		public IActionResult Index()
 		{
+			var allWine = _context.Wines.ToList();
+			var categories = allWine.Select(w => w.Category).Distinct().ToArray();
+			ViewData["Categories"] = categories;
+
 			if (!Request.Cookies.ContainsKey("AgeVerified"))
 			{
 				return RedirectToAction("VerifyAge");
