@@ -23,9 +23,8 @@ body {
 }
 
 .hero{
-    position:relative;
-    height: 100vh;
-    
+   
+    height: 90vh;
 }
 
 .wineText {
@@ -36,16 +35,20 @@ body {
     flex-direction: column;
     justify-content:flex-end;
     align-content:flex-end;
+    flex-wrap:wrap;
+    
 }
 
-.wineText li{
-    height: 9rem;
-    display: flex;
-    overflow: hidden;
-    margin-bottom: 0.5rem;
-    justify-content:flex-end;
-    /*background-color:white;*/
-}
+    .wineText li {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        margin-bottom: 0.5rem;
+        justify-content: flex-end;
+        align-items: flex-end;
+        /*background-color:white;*/
+    }
 
 .wineText li span{
     display: block;
@@ -61,7 +64,54 @@ body {
     transition: 1s ease-out;
 }
 
-.wineText li:hover {
+/*.wineText li:hover {
     opacity:0.5;
     cursor:inherit;
+}*/
+
+.extraInfo{
+    visibility:hidden;
+    opacity:0;
+   text-align:right;
+   width:75%;
+   padding:15px;
 }
+.extraInfo:hover {
+    visibility: visible;
+    color: white;
+    transition: 2s ease-out;
+    opacity: 1;
+    max-width: fit-content;
+}
+.wineText li span:hover + .extraInfo {
+   visibility:visible;
+    color: white;
+    transition: 2s ease-out;
+    opacity: 1;
+    max-width:fit-content;
+    
+}
+
+
+/*.poemText {
+    left: 120px;
+    top: 400px;
+    position: fixed;
+    right: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+    .poemText li span {
+        display: block;
+        line-height: 4.5rem;
+        font-size: 4rem;
+        color: var(--white);
+        font-family: Gruppo;
+        transform: translateY(200%)
+    }
+
+       .poemText li span.active {
+            transform: translateY(0%);
+            transition: 3s ease-out;
+        }*/
