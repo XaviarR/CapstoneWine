@@ -14,5 +14,6 @@ namespace CapstoneWine.Data
         public DbSet<CapstoneWine.Models.WinesModel> Wines { get; set; } = default!;
 
         public DbSet<CapstoneWine.Models.OrdersModel> Orders { get; set; } = default!;
-    }
+		public DbSet<CapstoneWine.Models.OrderHistoryModel> OrderHistory { get; set; } = default!;
+	}
 }
