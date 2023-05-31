@@ -88,7 +88,6 @@ footer{
     overflow: hidden;
     transform: translate(-100%, 0%);
     transition: transform .5s ease-out;
-    background-color: black;
 }
 
     .vid-container > .bg-video {
