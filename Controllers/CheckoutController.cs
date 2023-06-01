@@ -14,7 +14,7 @@ namespace CapstoneWine.Controllers
 			CartViewModel cartVM = new()
 			{
 				CartItems = cart,
-				GrandTotal = cart.Sum(x => x.Quantity * x.Price)
+				GrandTotal = cart.Sum(x => x.Total + x.Shipping)
 			};
 
 			return View(cartVM);
