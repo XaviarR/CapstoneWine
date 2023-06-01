@@ -15,7 +15,7 @@
 
 		public decimal Shipping
 		{
-			get { return PricePerDel * Frequency; }
+			get { return 0; }
 		}
 		public decimal Total
 		{
