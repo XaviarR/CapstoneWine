@@ -22,10 +22,11 @@ body {
     
 }
 
+
 .hero{
-    position:relative;
-    height: 100vh;
-    
+   height:90vh; 
+   margin-left:auto;
+   clip:auto
 }
 
 .wineText {
@@ -36,16 +37,20 @@ body {
     flex-direction: column;
     justify-content:flex-end;
     align-content:flex-end;
+    flex-wrap:wrap;
+    
 }
 
-.wineText li{
-    height: 9rem;
-    display: flex;
-    overflow: hidden;
-    margin-bottom: 0.5rem;
-    justify-content:flex-end;
-    /*background-color:white;*/
-}
+    .wineText li {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        margin-bottom: 0.5rem;
+        justify-content: flex-end;
+        align-items: flex-end;
+        /*background-color:white;*/
+    }
 
 .wineText li span{
     display: block;
@@ -61,7 +66,32 @@ body {
     transition: 1s ease-out;
 }
 
-.wineText li:hover {
+/*.wineText li:hover {
     opacity:0.5;
     cursor:inherit;
+}*/
+
+.extraInfo{
+    visibility:hidden;
+    opacity:0;
+   text-align:right;
+   width:75%;
+   padding:15px;
 }
+.extraInfo:hover {
+    visibility: visible;
+    color: white;
+    transition: 2s ease-out;
+    opacity: 1;
+    max-width: fit-content;
+}
+.wineText li span:hover + .extraInfo {
+   visibility:visible;
+    color: white;
+    transition: 2s ease-out;
+    opacity: 1;
+    max-width:fit-content;
+    
+}
+
+
