@@ -8,18 +8,24 @@ using Microsoft.EntityFrameworkCore;
 using CapstoneWine.Data;
 using CapstoneWine.Models;
 using Microsoft.AspNetCore.Authorization;
+using CapstoneWine.Infrastructure;
+using CapstoneWine.Models.ViewModels;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using CapstoneWine.Areas.Services;
 
 namespace CapstoneWine.Controllers
 {
     [Authorize(Roles = "Admin")]
     public class SubscriptionsController : Controller
     {
-        private readonly ApplicationDbContext _context;
+		private readonly ApplicationDbContext _context;
+		private readonly IEmailSender _emailSender;
 
-        public SubscriptionsController(ApplicationDbContext context)
+        public SubscriptionsController(ApplicationDbContext context, IEmailSender emailSender)
         {
             _context = context;
-        }
+			_emailSender = emailSender;
+		}
 
         // GET: Subscriptions
         public async Task<IActionResult> Index(string searchString)
@@ -199,8 +205,48 @@ namespace CapstoneWine.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+		public IActionResult OrderComplete()
+		{
+			List<SubItem> cart = HttpContext.Session.GetJson<List<SubItem>>("Sub") ?? new List<SubItem>();
 
-        private bool SubscriptionsExists(int id)
+			SubViewModel cartVM = new()
+			{
+				SubItems = cart,
+
+			};
+
+			return View(cartVM);
+		}//View for OrderComplete
+
+        string Email { get; set; }
+		public async Task<IActionResult> Receipt(int id)
+		{
+			WinesModel wines = await _context.Wines.FindAsync(id);
+
+			List<SubItem> cart = HttpContext.Session.GetJson<List<SubItem>>("Sub") ?? new List<SubItem>();
+
+			SubViewModel cartVM = new()
+			{
+				SubItems = cart,
+				GrandTotal = cart.Sum(x => x.Total + x.Shipping),
+				NumOfItems = cart.Count.ToString()
+			};
+
+			if (cartVM == null)
+			{
+				await _emailSender.SendEmailAsync(Email = "xaviar.rehu@techtorium.ac.nz", "Order", htmlMessage: "No item selected");
+			}
+			else
+			{
+				await _emailSender.SendEmailAsync(Email = "xaviar.rehu@techtorium.ac.nz", "Order Complete", htmlMessage: "For " + cartVM.NumOfItems.ToString() + " Subscriptions, You have been charged: " + cartVM.GrandTotal.ToString("C2"));
+			}
+
+			TempData["Success"] = "The product has been added!";
+
+			return Redirect(Request.Headers["Referer"].ToString());
+		}
+
+		private bool SubscriptionsExists(int id)
         {
           return (_context.Subscriptions?.Any(e => e.SubID == id)).GetValueOrDefault();
         }

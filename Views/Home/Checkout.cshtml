@@ -55,7 +55,7 @@
 					<label class="label">Email:</label>
 					<input class="input text-white" autocomplete="on" aria-required="true" placeholder="name@example.com" />
 					<span class="text-danger"></span>
-
+					
 					<label class="label">Mobile:</label>
 					<input class="input text-white" autocomplete="on" aria-required="true" placeholder="+64 123 456" />
 					<span class="text-danger"></span>
@@ -164,7 +164,7 @@ else
 			//Execute the payment
 			onAuthorize: function (data, actions) {
 				return actions.payment.execute().then(function () {
-					var url = '@Url.Action("Subscription", "Home", new { })';//page sent to after order completed
+					var url = '@Url.Action("OrderComplete", "Subscriptions", new { })';//page sent to after order completed
 					window.location.href = url;
 				});
 			}
@@ -187,4 +187,5 @@ else
 			}
 		}
 	</script>
+
 }
