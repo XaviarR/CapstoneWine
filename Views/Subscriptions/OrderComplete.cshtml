@@ -1,0 +1,15 @@
+﻿@model CapstoneWine.Models.ViewModels.SubViewModel
+@{
+	ViewData["Title"] = "Checkout";
+}
+@if (Model.SubItems.Count > 0)
+{
+	<h1>Order Complete</h1>
+	<a class="btn btn-outline-success" asp-controller="Subscriptions" asp-action="Receipt">Send Receipt</a>
+	<a class="btn btn-outline-success" asp-controller="Home" asp-action="Subscription">Add new subscriptions</a>
+}
+else
+{
+	<h1>Nothing in cart</h1>
+	<a class="btn btn-outline-success" asp-controller="Home" asp-action="Subscription">Add new subscriptions</a>
+}
