@@ -2,6 +2,7 @@
     color: black;
     background-color: white;
     font-family: 'Bebas Neue';
+    margin-top: 70px;
 }
 
 footer {
@@ -12,6 +13,10 @@ footer {
     padding-bottom: 50px;
 }
 
+h1{
+    color: black;
+    margin: 20px;
+}
 .navbar {
     background-color: #080710;
 }
@@ -23,10 +28,10 @@ footer {
 
 .shop-content {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 1.57rem;
     place-items: center;
-    margin-top: 50px;
+    margin-top: 0px;
 }
 
 .product-box {
@@ -91,4 +96,8 @@ footer {
     font-size: 1.37rem;
 }
 
-    
+.back-text {
+    margin:0;
+    padding: 0;
+    font-size: clamp(1.3em, 1.57em, 2em);
+}
