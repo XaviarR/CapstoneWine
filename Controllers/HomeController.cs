@@ -93,6 +93,7 @@ namespace CapstoneWine.Controllers
 		{
 			return View();
 		}
+
 		public async Task<IActionResult> Shop()
 		{
 			// Return an error message if the Wine entity set is null
@@ -377,7 +378,6 @@ namespace CapstoneWine.Controllers
 			SubViewModel cartVM = new()
 			{
 				SubItems = cart,
-
 				GrandTotal = cart.Sum(x => x.Total + x.Shipping)//creates variable GrandTotal = Total (from CartViewModel) * Frequency (from SubModel)
 			};
 
