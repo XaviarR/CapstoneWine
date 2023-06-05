@@ -9,16 +9,19 @@ using SendGrid.Helpers.Mail;
 using System.Diagnostics;
 using CapstoneWine.Models.ViewModels;
 using Microsoft.Identity.Client;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using CapstoneWine.Areas.Services;
 
 namespace CapstoneWine.Controllers
 {
 	public class HomeController : Controller
 	{
 		private readonly ApplicationDbContext _context;
-
-		public HomeController(ApplicationDbContext context)
+		private readonly IEmailSender _emailSender;
+		public HomeController(ApplicationDbContext context, IEmailSender emailSender)
 		{
 			_context = context;
+			_emailSender = emailSender;
 		}
 		public IActionResult Index()
 		{
@@ -93,6 +96,7 @@ namespace CapstoneWine.Controllers
 		{
 			return View();
 		}
+
 		public async Task<IActionResult> Shop()
 		{
 			// Return an error message if the Wine entity set is null
@@ -370,6 +374,8 @@ namespace CapstoneWine.Controllers
 
 			return RedirectToAction("Subscription");
 		}
+		public string Email { get; set; }
+		[HttpGet]
 		public IActionResult Checkout()
 		{
 			List<SubItem> cart = HttpContext.Session.GetJson<List<SubItem>>("Sub") ?? new List<SubItem>();
@@ -377,12 +383,26 @@ namespace CapstoneWine.Controllers
 			SubViewModel cartVM = new()
 			{
 				SubItems = cart,
-
 				GrandTotal = cart.Sum(x => x.Total + x.Shipping)//creates variable GrandTotal = Total (from CartViewModel) * Frequency (from SubModel)
 			};
 
 			return View(cartVM);
 		}//View for Checkout
+		[HttpPost]
+		public async Task<IActionResult> CheckoutAsync(string ShippingEmail)
+		{
+			List<SubItem> cart = HttpContext.Session.GetJson<List<SubItem>>("Sub") ?? new List<SubItem>();
+
+			SubViewModel cartVM = new()
+			{
+				SubItems = cart,
+				GrandTotal = cart.Sum(x => x.Total + x.Shipping),
+				NumOfItems = cart.Count.ToString()
+			};
+			Email = ShippingEmail;
+			await _emailSender.SendEmailAsync(Email, "Order Complete", htmlMessage: "For " + cartVM.NumOfItems.ToString() + " Subscriptions, You have been charged: " + cartVM.GrandTotal.ToString("C2"));
+			return Redirect(Request.Headers["Referer"].ToString());
+		}
 		public async Task<IActionResult> Remove(int id)
 		{
 			List<SubItem> cart = HttpContext.Session.GetJson<List<SubItem>>("Sub");
