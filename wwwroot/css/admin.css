@@ -57,7 +57,7 @@ table {
 }
 
 .wines-table {
-    table-layout: fixed;
+    /*table-layout: fixed;*/
     width: 100%;
 }
 
@@ -68,7 +68,7 @@ table {
 .img {
     vertical-align: text-top;
     height: 180px;
-    width: 100%;
+    width: 100px;
     object-fit: contain;
 }
 

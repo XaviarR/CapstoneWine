@@ -23,7 +23,7 @@
     </td>
     @if (ViewData["CurrentFilter"] != "")
     {
-        <a asp-action="Index">Clear search</a>
+        <a class="m-2" asp-action="Index">Clear search</a>
     }
 </form>
 <p>
@@ -32,27 +32,13 @@
 <table class="wines-table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.WineName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Image)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Blurb)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Quantity)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Type)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Category)
-            </th>
+            <th>Wine Name</th>
+            <th>Image</th>
+            <th>Price</th>
+            <th>Blurb</th>
+            <th>Quantity</th>
+            <th>Type</th>
+            <th>Category</th>
             <th></th>
         </tr>
     </thead>
