@@ -37,7 +37,7 @@ namespace CapstoneWine.Controllers
 			return View(cartVM);
 		}
 		[HttpPost]
-		public async Task<IActionResult> IndexAsync(string ShippingEmail)
+		public async Task<IActionResult> IndexAsync(string ShippingEmail, string ShippingName)
 		{
 			List<CartItem> cart = HttpContext.Session.GetJson<List<CartItem>>("Cart") ?? new List<CartItem>();
 
@@ -47,8 +47,9 @@ namespace CapstoneWine.Controllers
 				GrandTotal = cart.Sum(x => x.Total + x.Shipping),
 				NumOfItems = cart.Count.ToString()
 			};
+			
 			Email = ShippingEmail;
-			await _emailSender.SendEmailAsync(Email, "Order Complete", htmlMessage: "For " + cartVM.NumOfItems.ToString() + " Items, You have been charged: " + cartVM.GrandTotal.ToString("C2"));
+			await _emailSender.SendEmailAsync(Email, $"Order Complete {ShippingName}", htmlMessage: $"For {cartVM.NumOfItems} Items, You have been charged: {cartVM.GrandTotal.ToString("C2")}");
 			return Redirect(Request.Headers["Referer"].ToString());
 		}
 

@@ -18,12 +18,12 @@
 .html,
 body {
     display:grid;
-    background-color: var(--black);
     
 }
 
 
 .hero{
+    cursor:inherit;
    height:90vh; 
    margin-left:auto;
    clip:auto
@@ -40,7 +40,56 @@ body {
     flex-wrap:wrap;
     
 }
+.extraInfo {
+    opacity: 0;
+    text-align: right;
+    line-height: 1.6em;
+    padding: 15px;
+    font-size: 1.4rem;
+    white-space: normal;
+    margin-top: -180px;
+    margin-bottom: 25px;
+}
 
+.extraInfo:hover {
+    color: white;
+    transition: 2s ease-out;
+    opacity: 1;
+    max-width: fit-content;
+}
+/*Index CSS*/
+
+    .wineText a{
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        margin-bottom: 0.5rem;
+        justify-content: flex-end;
+        align-items: flex-end;
+        /*background-color:white;*/
+    }
+        .wineText a span {
+            display: block;
+            line-height: 8.5rem;
+            font-size: 8rem;
+            color: var(--white);
+            font-family: var(--font-title);
+            margin: 0.05rem;
+            transform: translateY(200%)
+        }
+            .wineText a span.active {
+                transform: translateY(0%);
+                transition: 1s ease-out;
+            }
+
+            .slide-box:hover + .extraInfo {
+                color: white;
+                transition: 5s ease-out;
+                opacity: 1;
+                max-width: fit-content;
+            }
+ /*Options CSS*/
     .wineText li {
         height: auto;
         display: flex;
@@ -51,7 +100,6 @@ body {
         align-items: flex-end;
         /*background-color:white;*/
     }
-
 .wineText li span{
     display: block;
     line-height: 8.5rem;
@@ -61,37 +109,25 @@ body {
     margin:0.05rem;
     transform:translateY(200%)
 }
+
 .wineText li span.active{
     transform: translateY(0%);
     transition: 1s ease-out;
 }
+    .wineText li span:hover + .extraInfo {
+        color: white;
+        transition: 2s ease-out;
+        opacity: 1;
+        max-width: fit-content;
+    }
 
 /*.wineText li:hover {
     opacity:0.5;
     cursor:inherit;
 }*/
 
-.extraInfo{
-    visibility:hidden;
-    opacity:0;
-   text-align:right;
-   width:75%;
-   padding:15px;
-}
-.extraInfo:hover {
-    visibility: visible;
-    color: white;
-    transition: 2s ease-out;
-    opacity: 1;
-    max-width: fit-content;
-}
-.wineText li span:hover + .extraInfo {
-   visibility:visible;
-    color: white;
-    transition: 2s ease-out;
-    opacity: 1;
-    max-width:fit-content;
-    
-}
+
+
+
 
 

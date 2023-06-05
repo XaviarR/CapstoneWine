@@ -30,49 +30,10 @@ form {
 }
 
 .nav-menu {
-    background-color: rgba(10,10,10,0.3);
+    top: 55px;
+    background-color: rgba(10,10,10,0.6);
     border-radius: 0 19px 19px 0;
 }
-
-.img {
-    grid-area: 1/1/1/1;
-    height: 100%;
-    width: 100%;
-    object-fit: contain;
-}
-
-.price {
-    /*background-color:aqua;*/
-    grid-area: 2/1/2/1;
-}
-
-.quantity {
-    /*background-color: red;*/
-    grid-area: 3/1/3/1;
-}
-
-.cart {
-    grid-area: 4/1/4/3;
-    background-color: #040b4f;
-    text-align: center;
-    color: white;
-    border-radius: 5px;
-}
-
-    .cart:hover {
-        background-color: lightgrey;
-        color: black;
-    }
-
-.blurb {
-    /*background-color: yellow;*/
-    grid-area: 1/2/4/2;
-    overflow-y: auto;
-}
-
-    .blurb::-webkit-scrollbar {
-        display: none;
-    }
 
 
 .category-title {
@@ -147,23 +108,66 @@ form {
             margin-right: 0;
         }
 
-    #container .product-box {
-        display: grid;
-        grid-template-columns: 150px auto;
-        grid-template-rows: 60% auto auto auto;
-        align-self: center;
-        gap: 0.8rem;
-        height: 21rem;
-        width: 100%;
-        margin-top: 15px;
-        margin-left: 10px;
-        padding: 1rem;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-        font-size: 1rem;
-        font-family: "Lato", sans-serif;
-        /*background-color: pink;*/
+.product-box {
+    display: grid;
+    grid-template-columns: 150px auto;
+    grid-template-rows: 60% auto auto auto;
+    align-self: center;
+    gap: 0.8rem;
+    height: 21rem;
+    width: 100%;
+    margin-top: 15px;
+    margin-left: 10px;
+    padding: 1rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+    font-size: 1rem;
+    font-family: "Lato", sans-serif;
+    transition: .3s;
+}
+
+    .product-box:hover {
+        transform: scale(1.02);
     }
 
+.img {
+    grid-area: 1/1/1/1;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.price {
+    /*background-color:aqua;*/
+    grid-area: 2/1/2/1;
+}
+
+.quantity {
+    /*background-color: red;*/
+    grid-area: 3/1/3/1;
+}
+
+.cart {
+    grid-column: span 2;
+    background-color: rgba(0, 5, 99, 1);
+    text-align: center;
+    color: white;
+    border-radius: 5px;
+}
+
+    .cart:hover {
+        background-color: rgba(0, 3, 65, 1);
+        color: white;
+    }
+
+.blurb {
+    /*background-color: yellow;*/
+    grid-area: 1/2/4/2;
+    overflow-y: auto;
+}
+
+    .blurb::-webkit-scrollbar {
+        display: none;
+    }
 
 
 form td {

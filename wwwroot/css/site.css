@@ -30,7 +30,7 @@ html {
 
 .hero {
     height: 95vh;
-    cursor:none;
+    cursor:inherit;
     padding-left:8%;
 }
 
