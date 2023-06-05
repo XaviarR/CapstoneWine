@@ -1,7 +1,7 @@
 ﻿@{
 	ViewData["Title"] = "Home Page";
 	var categories = ViewData["Categories"] as string[];
-
+	
 	// Ellie use this for the hover function
 	string[] blurbs = {
 		"Cabernet Sauvignon Blurb",
@@ -23,6 +23,9 @@
 }
 
 <body class="bg-home">
+	<div class="hero">
+		<iframe src='https://my.spline.design/untitled-019ae71b0f1b635607356af5e756cf9c/' frameborder='0' height='150%' width='200%'></iframe>
+	</div>
 	@for (var i = 0; i < categories.Length; i++)
 	{
 		ViewData["CurrentFilter"] = categories[i];

@@ -1,6 +1,7 @@
 ﻿body {
     font-family: "Lato", sans-serif;
     margin: 0;
+    margin-top: 70px;
     padding: 0;
 }
 
@@ -62,6 +63,13 @@ table {
 
 .blurb-col {
     /*overflow-y: auto;*/
+}
+
+.img {
+    vertical-align: text-top;
+    height: 180px;
+    width: 100%;
+    object-fit: contain;
 }
 
 th, td {

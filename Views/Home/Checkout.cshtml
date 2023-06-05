@@ -2,6 +2,7 @@
 @{
 	ViewData["Title"] = "Checkout";
 }
+
 @if (Model.SubItems.Count > 0)
 {
 	<div>
@@ -11,6 +12,7 @@
 			</h1>
 			<table class="table text-white">
 				<tr>
+					<th>Image</th>
 					<th>Subscrption</th>
 					<th>Type</th>
 					<th>Bottle price</th>
@@ -20,58 +22,103 @@
 				@foreach (var item in Model.SubItems)
 				{
 					<tr>
+						<td><img src="~/Images/sub/mixed.jpg" style="height:170px;width:110px; object-fit:contain" /></td>
 						<td>@item.ProductName</td>
 						<td>@item.Type</td>
 						<td>@item.NumOfBottles x @item.BottlePrice.ToString("C2") = @item.Total.ToString("C2")</td>
 						@*Shipping = Freq * PriceToDel*@
-						<td>@item.Frequency x @item.PricePerDel.ToString("C2") = @item.Shipping.ToString("C2")</td>
+						<td>
+							<s>@item.Frequency x @item.PricePerDel.ToString("C2") = @Model.SubItems.Where(x => x.ProductId == item.ProductId).Sum(x => x.Frequency * x.PricePerDel).ToString("C2")</s>
+							<br>
+							<b class="" style="color:limegreen">Special discount free shipping</b>
+						</td>
 						@*Total = NumOfBottles * BtlPrice*@
 						<td>@Model.SubItems.Where(x => x.ProductId == item.ProductId).Sum(x => x.Total + x.Shipping).ToString("C2")</td>
 					</tr>
 				}
 				<tr>
-					@*Calculated in the homecontroller 
+					@*Calculated in the homecontroller
 
-					(Total + Shipping)*@
-					<td class="text-right" colspan="4">Grand Total: @Model.GrandTotal.ToString("C2")</td>
+				(Total + Shipping)*@
+					<td class="text-right" colspan="8"><b>Grand Total: @Model.GrandTotal.ToString("C2")</b></td>
 				</tr>
-				<tr>
-					<td>
-						<div>
-							<label class="label">Name:</label>
-							<input class="input text-white" autocomplete="username" aria-required="true" placeholder="John Smith" />
-							<span class="text-danger"></span>
-
-							<label class="label">Email:</label>
-							<input class="input text-white" autocomplete="username" aria-required="true" placeholder="name@example.com" />
-							<span class="text-danger"></span>
-
-							<label class="label">Mobile:</label>
-							<input class="input text-white" autocomplete="username" aria-required="true" placeholder="+64 123 456" />
-							<span class="text-danger"></span>
-
-							<label class="label">Shipping Address:</label>
-							<input class="input text-white" aria-required="true" placeholder="123 Boluvard Street" />
-							<span class="text-danger"></span>
-
-							<label class="label">Delivery Instructions</label>
-							<input class="input text-white" placeholder="eg: Leave at backdoor" />
-							<span class="text-danger"></span>
-						</div>
-					</td>
-				</tr>
-
 			</table>
-		</div>
-		<div class="col">
-			<div class="text-end">
-				<div class="btn-group">
-					<a class="btn btn-outline-success" asp-controller="Home" asp-action="SubCart">Back</a>
-					<span style="padding:0px"></span>
-					<a class="btn btn-outline-success" asp-controller="Home" asp-action="Subscription">Choose Subscription</a>
-					<span style="padding:0px"></span>
-					<div id="paypal-btn"></div>
+			@*Form*@
+			<h1>Shipping Details</h1>
+
+			<form method="post">
+				<div class="row">
+					<div class="col">
+						<label class="label">Name:</label>
+						<input class="input text-white" autocomplete="on" aria-required="true" placeholder="John Smith" />
+						<span class="text-danger"></span>
+
+						<label class="label">Email:</label>
+						<input class="input text-white" autocomplete="on" name="ShippingEmail" aria-required="true" placeholder="name@example.com" />
+						<span class="text-danger"></span>
+
+						<label class="label">Mobile:</label>
+						<input class="input text-white" autocomplete="on" aria-required="true" placeholder="+64 123 456" />
+						<span class="text-danger"></span>
+					</div>
+					<div class="col">
+						<label class="label">Address:</label>
+						<input class="input text-white" aria-required="true" placeholder="123 Boluvard Street" />
+						<span class="text-danger"></span>
+
+						<label class="label">Address 2:</label>
+						<input class="input text-white" aria-required="true" placeholder="123 Boluvard Street" />
+						<span class="text-danger"></span>
+
+						<label class="label">Delivery Instructions</label>
+						<input class="input text-white" placeholder="eg: Leave at backdoor" />
+						<span class="text-danger"></span>
+					</div>
 				</div>
+				<input type="submit" value="Invoice" class="btn btn-outline-success">
+			</form>
+		</div>
+	</div>
+
+	<h1>Rewards</h1>
+
+	<div class="row">
+		<table class="table text-white">
+			<tr>
+				<th></th>
+				<th>Order</th>
+				<th>Order Status</th>
+				<th>Reward Points</th>
+			</tr>
+			@foreach(var item in Model.SubItems)
+			{
+			<tr>
+				<td><img src="~/Images/sub/mixed.jpg" style="height:170px;width:110px; object-fit:contain" /></td>
+				<td>@item.ProductName</td>
+				<td>Pending</td>
+				<td>@item.RewardPoints</td>
+			</tr>
+			}
+
+		</table>
+	</div>
+
+	<div class="row">
+		<div class="col">
+			<p>Please tick the box below to begin payment</p>
+			<input required type="checkbox" name="agreement" id="legalCheck" onclick="clickAgreement()">
+			<label id="text" for="agreement" style="font-size:larger;"><b>You agree that you are 18+ and agree to our sites Terms & Conditions</b></label>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="text-end">
+			<div class="btn-group">
+				<a class="btn btn-outline-success" asp-controller="Home" asp-action="SubCart">Back</a>
+				<span style="padding:2px"></span>
+				<a class="btn btn-outline-success" asp-controller="Home" asp-action="Subscription">Choose Subscription</a>
+				<span style="padding:2px"></span>
+				<button type="submit" id="paypal-btn" style="display:none"></button>
 			</div>
 		</div>
 	</div>
@@ -101,7 +148,7 @@ else
 			style: {
 				size: 'large',
 				color: 'white',//Silver, White, Blue, Gold
-				shape: 'pill'
+				shape: 'rect'
 			},
 			commit: true,
 
@@ -120,11 +167,28 @@ else
 			//Execute the payment
 			onAuthorize: function (data, actions) {
 				return actions.payment.execute().then(function () {
-					var url = '@Url.Action("Subscription", "Home", new { })';//page sent to after order completed
+					var url = '@Url.Action("OrderComplete", "Subscriptions", new { })';//page sent to after order completed
 					window.location.href = url;
 				});
 			}
 
 		}, '#paypal-btn')
 	</script>
+
+	<script>
+		function clickAgreement() {
+			// Get the checkbox
+			var checkBox = document.getElementById("legalCheck");
+			// Get the output
+			var paypal = document.getElementById("paypal-btn")
+
+			// If the checkbox is checked, display the output
+			if (checkBox.checked == true) {
+				paypal.style.display = "block"
+			} else {
+				paypal.style.display = "none";
+			}
+		}
+	</script>
+
 }

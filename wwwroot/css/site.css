@@ -28,12 +28,17 @@ html {
 }
 
 
+.hero {
+    height: 95vh;
+    cursor:none;
+    padding-left:8%;
+}
 
 footer{
     margin-top:auto;
     position:absolute;
     bottom: 0;
-    width:100vw;
+    width:99vw;
     height:2.5rem;
 }
 

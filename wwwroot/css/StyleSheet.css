@@ -22,9 +22,11 @@ body {
     
 }
 
+
 .hero{
-   
-    height: 90vh;
+   height:90vh; 
+   margin-left:auto;
+   clip:auto
 }
 
 .wineText {
@@ -93,25 +95,3 @@ body {
 }
 
 
-/*.poemText {
-    left: 120px;
-    top: 400px;
-    position: fixed;
-    right: 5%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-}
-    .poemText li span {
-        display: block;
-        line-height: 4.5rem;
-        font-size: 4rem;
-        color: var(--white);
-        font-family: Gruppo;
-        transform: translateY(200%)
-    }
-
-       .poemText li span.active {
-            transform: translateY(0%);
-            transition: 3s ease-out;
-        }*/
