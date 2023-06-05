@@ -144,27 +144,33 @@
             </p>
 
         </div>
+    <form method="post">
         <div class="row">
-            <div class="col-12">
-                <label class="label">Name</label>
-                <input class="input"  aria-required="true" placeholder="Name" />
+            <div class="col">
+                <label class="label">Name:</label>
+                <input class="input text-white" autocomplete="on" name="AboutName" aria-required="true" placeholder="John Smith" required />
+                <span class="text-danger"></span>
+
+                <label class="label">Email:</label>
+                <input class="input text-white" autocomplete="on" name="AboutEmail" aria-required="true" placeholder="name@example.com" required/>
+                <span class="text-danger"></span>
+
+                <label class="label">Subject:</label>
+                <input class="input text-white" autocomplete="on" name="AboutText" aria-required="true" placeholder="Your Feedback" required />
                 <span class="text-danger"></span>
             </div>
         </div>
         <div class="row">
-            <div class="col-12">
-                <label class="label">Email</label>
-                <input class="input"  aria-required="true" placeholder="name@example.com" />
-                <span  class="text-danger"></span>
+            <div class="col">
+                <div class="text-end">
+                    <div class="btn-group">
+                        <input type="submit" value="Submit" class="btn btn-outline-success">
+                    </div>
+                    <p style="color:black">Your the best</p>
                 </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <label class="label">Subject</label>
-                <input class="input" aria-required="true" placeholder="" />
-                <span class="text-danger"></span>
             </div>
         </div>
-        <button type="submit" class="w-100 btn btn-lg btn-outline-light">Submit</button>
+
+    </form>
 </div>
 
