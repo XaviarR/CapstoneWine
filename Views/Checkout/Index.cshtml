@@ -39,34 +39,41 @@
 			@*Form*@
 			<h1>Shipping Details</h1>
 
-			<div class="row">
-				<div class="col">
-					<label class="label">Name:</label>
-					<input class="input text-white" autocomplete="on" aria-required="true" placeholder="John Smith" />
-					<span class="text-danger"></span>
 
-					<label class="label">Email:</label>
-					<input class="input text-white" autocomplete="on" aria-required="true" placeholder="name@example.com" />
-					<span class="text-danger"></span>
 
-					<label class="label">Mobile:</label>
-					<input class="input text-white" autocomplete="on" aria-required="true" placeholder="+64 123 456" />
-					<span class="text-danger"></span>
+			<form method="post">
+				<div class="row">
+					<div class="col">
+						<label class="label">Name:</label>
+						<input class="input text-white" autocomplete="on" name="ShippingName" aria-required="true" placeholder="John Smith" />
+						<span class="text-danger"></span>
+
+						<label class="label">Email:</label>
+						<input class="input text-white" autocomplete="on" name="ShippingEmail" aria-required="true" placeholder="name@example.com" />
+						<span class="text-danger"></span>
+
+						<label class="label">Mobile:</label>
+						<input class="input text-white" autocomplete="on" aria-required="true" placeholder="+64 123 456" />
+						<span class="text-danger"></span>
+					</div>
+					<div class="col">
+						<label class="label">Address:</label>
+						<input class="input text-white" aria-required="true" placeholder="123 Boluvard Street" />
+						<span class="text-danger"></span>
+
+						<label class="label">Address 2:</label>
+						<input class="input text-white" aria-required="true" placeholder="123 Boluvard Street" />
+						<span class="text-danger"></span>
+
+						<label class="label">Delivery Instructions</label>
+						<input class="input text-white" placeholder="eg: Leave at backdoor" />
+						<span class="text-danger"></span>
+					</div>
 				</div>
-				<div class="col">
-					<label class="label">Address:</label>
-					<input class="input text-white" aria-required="true" placeholder="123 Boluvard Street" />
-					<span class="text-danger"></span>
+					<input type="submit" value="Invoice" class="btn btn-outline-success">
+				</form>
 
-					<label class="label">Address 2:</label>
-					<input class="input text-white" aria-required="true" placeholder="123 Boluvard Street" />
-					<span class="text-danger"></span>
-
-					<label class="label">Delivery Instructions</label>
-					<input class="input text-white" placeholder="eg: Leave at backdoor" />
-					<span class="text-danger"></span>
-				</div>
-			</div>
+			
 		</div>
 
 		<div class="row">
