@@ -32,7 +32,10 @@ html {
 .hamburger:hover .show{
     opacity:1;
 }
-
+.nav-cart:hover .show{
+    opacity:1;
+   text-align:center;
+}
 .hero {
     height: 95vh;
     cursor:inherit;
