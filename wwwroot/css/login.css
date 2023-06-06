@@ -44,7 +44,6 @@ body {
     left: 50%;
     top:50%;
     margin-top: 20px;
-   
 }
 
     .background .shape {
@@ -68,7 +67,7 @@ body {
 /*user_form+ bk_blur to create login form style*/
 .bk_blur {
     height: auto;
-    width: 500px;
+    min-width: 500px;
     background-color: rgba(255,255,255,0.13);
     border-radius: 10px;
     backdrop-filter: blur(10px);
@@ -139,6 +138,10 @@ h1{   color: white;
     font-size: 20px;
     font-weight: 300;
 }
+textarea{
+    width: 500px;
+    height: 250px;
+}
 
 ::placeholder {
     color: #e5e5e5;
@@ -186,14 +189,10 @@ h1{   color: white;
         margin-right: 4px;
     }
 
-footer {
-    /*margin-top: auto;*/
-}
-
 .backbtn{
     margin-top: 5px;
     border-radius: 50px;
     -webkit-text-stroke:thick;
 }
 
-   
+  
