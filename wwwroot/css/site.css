@@ -26,7 +26,12 @@ html {
     flex-direction: column;
     padding-bottom: 2.5rem;
 }
-
+.show{
+    opacity:0;
+}
+.hamburger:hover .show{
+    opacity:1;
+}
 
 .hero {
     height: 95vh;
