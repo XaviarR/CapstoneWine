@@ -86,10 +86,19 @@ namespace CapstoneWine.Controllers
 			return View();
 		}
 
-
+		[HttpGet]
 		public IActionResult About()
 		{
 			return View();
+		}
+		[HttpPost]
+		public async Task<IActionResult> AboutAsync(string AboutEmail, string AboutName)
+		{
+
+			await _emailSender.SendEmailAsync(email: AboutEmail, $"Thank You for the feedback {AboutName}", htmlMessage: $"We will contact you for anything further");
+
+			
+			return RedirectToAction("About");
 		}
 
 		public IActionResult Home()

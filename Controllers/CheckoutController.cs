@@ -49,11 +49,12 @@ namespace CapstoneWine.Controllers
 			};
 			
 			Email = ShippingEmail;
-			await _emailSender.SendEmailAsync(Email, $"Order Complete {ShippingName}", htmlMessage: $"For {cartVM.NumOfItems} Items, You have been charged: {cartVM.GrandTotal.ToString("C2")}");
-			return Redirect(Request.Headers["Referer"].ToString());
+			await _emailSender.SendEmailAsync(Email, $"Order Complete {ShippingName}", htmlMessage: $"For {cartVM.NumOfItems} Items, You will be charged: {cartVM.GrandTotal.ToString("C2")}");
+			//return RedirectToAction("OrderComplete");
+			return Redirect("Cart/Index");
 		}
-
-		public IActionResult OrderComplete()
+		[HttpGet]
+		public IActionResult ShippingDetails()
 		{
 			List<CartItem> cart = HttpContext.Session.GetJson<List<CartItem>>("Cart") ?? new List<CartItem>();
 
@@ -61,6 +62,38 @@ namespace CapstoneWine.Controllers
 			{
 				CartItems = cart,
 
+			};
+
+			return View(cartVM);
+		}//View for ShippingDetails
+		[HttpPost]
+		public async Task<IActionResult> ShippingDetailsAsync(string ShippingEmail, string ShippingName, string ShippingMobile,string ShippingAddress)
+		{
+			List<CartItem> cart = HttpContext.Session.GetJson<List<CartItem>>("Cart") ?? new List<CartItem>();
+
+			CartViewModel cartVM = new()
+			{
+				CartItems = cart,
+				GrandTotal = cart.Sum(x => x.Total + x.Shipping),
+				NumOfItems = cart.Count.ToString()
+			};
+			
+			Email = ShippingEmail;
+			await _emailSender.SendEmailAsync(Email, $"Order Complete {ShippingName}", htmlMessage: $"For {cartVM.NumOfItems} Items" +
+				$"<br>You will be charged: {cartVM.GrandTotal.ToString("C2")}" +
+				$"<br>Mobile: {ShippingMobile}" +
+				$"<br>They will be delivered to {ShippingAddress}");
+
+			//return RedirectToAction("OrderComplete");
+			return Redirect("Index");
+		}
+		public IActionResult OrderComplete()
+		{
+			List<CartItem> cart = HttpContext.Session.GetJson<List<CartItem>>("Cart") ?? new List<CartItem>();
+
+			CartViewModel cartVM = new()
+			{
+				CartItems = cart,
 			};
 
 			return View(cartVM);
