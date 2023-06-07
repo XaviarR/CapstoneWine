@@ -91,6 +91,7 @@ namespace CapstoneWine.Controllers
 		{
 			return View();
 		}
+		//Gets the values from the about form
 		[HttpPost]
 		public async Task<IActionResult> AboutAsync(string AboutEmail, string AboutName)
 		{
@@ -140,16 +141,6 @@ namespace CapstoneWine.Controllers
 
 			return View(cartVM);
 		}//View for SubCart
-		public async Task<IActionResult> Test()
-		{
-			// Return an error message if the Wine entity set is null
-			if (_context.OrderHistory == null)
-			{
-				return Problem("Entity set 'ApplicationDbContext.Wines' is null.");
-			}
-			// Otherwise, return the Wines entity set as a view
-			return View(await _context.OrderHistory.ToListAsync());
-		}//View for test
 		public async Task<IActionResult> Add(int id)
 		{
 			SubscriptionsModel subscriptions = await _context.Subscriptions.FindAsync(id);
@@ -192,7 +183,7 @@ namespace CapstoneWine.Controllers
 			TempData["Success"] = "The product has been added!";
 
 			return Redirect(Request.Headers["Referer"].ToString());
-		}//Changes SubItem.type to Red
+		}//Changes SubItem.type to Red	
 		public async Task<IActionResult> White(int id)
 		{
 			SubscriptionsModel subscriptions = await _context.Subscriptions.FindAsync(id);
@@ -397,6 +388,8 @@ namespace CapstoneWine.Controllers
 
 			return View(cartVM);
 		}//View for Checkout
+
+		//Gets the values from the Checkout form
 		[HttpPost]
 		public async Task<IActionResult> CheckoutAsync(string ShippingEmail)
 		{

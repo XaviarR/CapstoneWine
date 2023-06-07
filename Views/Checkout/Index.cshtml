@@ -36,12 +36,9 @@
 				</tr>
 			</table>
 
-			Form
-			<h1>Shipping Details</h1>
-
-
-
-			<form method="post">
+	@*		Form
+			<h1>Shipping Details</h1>*@
+@*			<form method="post">
 				<div class="row">
 					<div class="col">
 						<label class="label">Name:</label>
@@ -71,9 +68,7 @@
 					</div>
 				</div>
 					<input type="submit" value="Invoice" class="btn btn-outline-success">
-				</form>
-
-			
+				</form>*@
 		</div>
 
 		<div class="row">
@@ -87,9 +82,8 @@
 			<div class="col">
 				<div class="text-end">
 					<div class="btn-group">
-						<div class="text-center" style="visibility:hidden" id="paypal-btn"></div>
+						<div class="text-center" style="display:none" id="paypal-btn"></div>
 					</div>
-					<p style="color:black">Your the best</p>
 				</div>
 			</div>
 		</div>
@@ -120,7 +114,7 @@ else
 			style: {
 				size: 'large',
 				color: 'gold',
-				shape: 'rect' //pill, rect
+				shape: 'pill' //pill, rect
 			},
 			commit: true,
 
@@ -159,9 +153,9 @@ else
 
 			// If the checkbox is checked, display the paypal button
 			if (checkBox.checked == true) {
-				paypal.style.visibility = "visible";
+				paypal.style.display = "block"
 			} else {
-				paypal.style.visibility = "hidden";
+				paypal.style.display = "none";
 			}
 		}
 	</script>

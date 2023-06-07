@@ -4,41 +4,41 @@
 }
 @if (Model.CartItems.Count > 0)
 {
-			@*Form*@
-			<h1>Shipping Details</h1>
-			
-			<form method="post">
-				<div class="row">
-					<div class="col">
-						<label class="label">Name:</label>
-						<input class="input text-white" autocomplete="on" name="ShippingName" aria-required="true" placeholder="John Smith" required/>
-						<span class="text-danger"></span>
+	@*Form*@
+	<h1>Shipping Details</h1>
 
-						<label class="label">Email:</label>
-						<input class="input text-white" autocomplete="on" name="ShippingEmail" aria-required="true" placeholder="name@example.com" required/>
-						<span class="text-danger"></span>
+	<form method="post">
+		<div class="row">
+			<div class="col">
+				<label class="label">Name:</label>
+				<input class="input text-white" autocomplete="on" name="ShippingName" aria-required="true" placeholder="John Smith" required />
+				<span class="text-danger"></span>
 
-						<label class="label">Mobile:</label>
-						<input class="input text-white" autocomplete="on" name="ShippingMobile" aria-required="true" placeholder="+64 123 456" required/>
-						<span class="text-danger"></span>
-					</div>
-					<div class="col">
-						<label class="label">Address:</label>
-						<input class="input text-white" aria-required="true" name="ShippingAddress" placeholder="123 Boluvard Street" required/>
-						<span class="text-danger"></span>
+				<label class="label">Email:</label>
+				<input class="input text-white" autocomplete="on" name="ShippingEmail" aria-required="true" placeholder="name@example.com" required />
+				<span class="text-danger"></span>
 
-						<label class="label">Address 2:</label>
-						<input class="input text-white" aria-required="true" placeholder="123 Boluvard Street" />
-						<span class="text-danger"></span>
+				<label class="label">Mobile:</label>
+				<input class="input text-white" autocomplete="on" name="ShippingMobile" aria-required="true" placeholder="+64 123 456" required />
+				<span class="text-danger"></span>
+			</div>
+			<div class="col">
+				<label class="label">Address:</label>
+				<input class="input text-white" aria-required="true" name="ShippingAddress" placeholder="123 Boluvard Street" required />
+				<span class="text-danger"></span>
 
-						<label class="label">Delivery Instructions</label>
-						<input class="input text-white" placeholder="eg: Leave at backdoor" />
-						<span class="text-danger"></span>
-					</div>
-				</div>		
-				
-			
-				<div class="row">
+				<label class="label">Address 2:</label>
+				<input class="input text-white" aria-required="true" placeholder="123 Boluvard Street" />
+				<span class="text-danger"></span>
+
+				<label class="label">Delivery Instructions</label>
+				<input class="input text-white" placeholder="eg: Leave at backdoor" />
+				<span class="text-danger"></span>
+			</div>
+		</div>
+
+
+		<div class="row">
 			<div class="col">
 				<div class="text-end">
 					<div class="btn-group">
@@ -52,8 +52,8 @@
 				</div>
 			</div>
 		</div>
-					
-				</form>
+
+	</form>
 
 }
 else
