@@ -14,7 +14,7 @@ a{
 }
 
 .navbar {
-    min-height: 70px;
+    height: 70px;
     display: flex;
     justify-content: space-between;
     padding: 0px, 20px;
@@ -28,7 +28,6 @@ a{
     display: flex;
     gap: 50px;
     justify-content: center;
-    align-items: center;
 }
 
 .nav-menu {
