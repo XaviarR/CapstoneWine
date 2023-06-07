@@ -1,62 +1,57 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
-
+<!--nav bar logged in view-->
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
 {
-        <li>
-            <p asp-area="Idenitity"> Welcome @User.Identity?.Name!</p>
+    <li class="nav-item">
+		<p class="nav-link">Welcome</p>
+        <p class="nav-link" asp-area="Idenitity">@User.Identity?.Name!</p>
+    </li>
+    <li class="nav-item ">
+            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home  <img src="~/Images/home.png"></a>
         </li>
+    <li class="nav-item">
+            <a class="nav-link" asp-area="" asp-controller="Shop" asp-action="Index">Shop</a>
+        </li>
+    <li class="nav-item">
+            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Subscription">Subscription</a>
+        </li>
+
+    <li class="nav-item">
+            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About | Contact</a>
+        </li>
+
     <li class="nav-item">
         <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"> My Profile</a>
        @* <a  class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>*@
     </li>
-    
-    <!--Nav bar-->
-        <li class="nav-item ">
-            
-            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">
-                <img src="~/Images/home.png">
-                Home
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About|Contact</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" asp-area="" asp-controller="Shop" asp-action="Index">Shop</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Subscription">Subscription</a>
-        </li>
-
-
+        
     <li class="nav-item">
 			<form class="exit" asp-area="Identity" asp-page="/Account/Logout"
 				  asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
                 <button type="submit" class="w-100 btn btn-md btn-outline-light" style="font-family:'Gruppo', cursive">Logout</button>
         </form>
     </li>
-}
+    }
 else
-{   <li class="nav-item">
+    {
+    <li class="nav-item "> 
+        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home  <img src="~/Images/home.png"> </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" asp-area="" asp-controller="Shop" asp-action="Index">Shop</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Subscription">Subscription</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About | Contact</a>
+    </li>
+    <li class="nav-item">
         <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Login">Login</a>
     </li>
-     <li class="nav-item ">
-         
-            <a class="nav-link"  asp-area="" asp-controller="Home" asp-action="Index">Home </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About | Contact</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" asp-area="" asp-controller="Shop" asp-action="Index">Shop</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Subscription">Subscription</a>
-        </li>
-
     <li class="nav-item">
         <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Register">Register</a>
     </li>
