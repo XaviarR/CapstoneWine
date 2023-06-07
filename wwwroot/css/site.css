@@ -1,3 +1,9 @@
+:root {
+    --bg-color: #080710;
+    --primary-text-color: white;
+    --accent-color: rgba(0, 5, 99, 1);
+}
+
 html {
     font-size: 14px;
 }
@@ -26,8 +32,16 @@ html {
     flex-direction: column;
     padding-bottom: 2.5rem;
 }
-
-
+.show{
+    opacity:0;
+}
+.hamburger:hover .show{
+    opacity:1;
+}
+.nav-cart:hover .show{
+    opacity:1;
+   text-align:center;
+}
 .hero {
     height: 95vh;
     cursor:inherit;

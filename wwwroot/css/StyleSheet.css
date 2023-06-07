@@ -29,102 +29,20 @@ body {
    clip:auto
 }
 
-.wineText {
-    display:block;
-    position:relative;
-    right: 5%;
-    display: flex;
-    flex-direction: column;
-    justify-content:flex-end;
-    align-content:flex-end;
-    flex-wrap:wrap;
-    
-}
+  
 .extraInfo {
-    opacity: 0;
-    text-align: right;
+    opacity: 1;
+    text-align: center;
     line-height: 1.6em;
     padding: 15px;
     font-size: 1.4rem;
     white-space: normal;
-    margin-top: -180px;
+    margin-top: -188px;
     margin-bottom: 25px;
+    position:relative; 
+    z-index: 1;
 }
 
-.extraInfo:hover {
-    color: white;
-    transition: 2s ease-out;
-    opacity: 1;
-    max-width: fit-content;
-}
-/*Index CSS*/
-
-    .wineText a{
-        height: auto;
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
-        margin-bottom: 0.5rem;
-        justify-content: flex-end;
-        align-items: flex-end;
-        /*background-color:white;*/
-    }
-        .wineText a span {
-            display: block;
-            line-height: 8.5rem;
-            font-size: 8rem;
-            color: var(--white);
-            font-family: var(--font-title);
-            margin: 0.05rem;
-            transform: translateY(200%)
-        }
-            .wineText a span.active {
-                transform: translateY(0%);
-                transition: 1s ease-out;
-            }
-
-            .slide-box:hover + .extraInfo {
-                color: white;
-                transition: 5s ease-out;
-                opacity: 1;
-                max-width: fit-content;
-            }
- /*Options CSS*/
-    .wineText li {
-        height: auto;
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
-        margin-bottom: 0.5rem;
-        justify-content: flex-end;
-        align-items: flex-end;
-        /*background-color:white;*/
-    }
-.wineText li span{
-    display: block;
-    line-height: 8.5rem;
-    font-size: 8rem;
-    color:var(--white);
-    font-family:var(--font-title);
-    margin:0.05rem;
-    transform:translateY(200%)
-}
-
-.wineText li span.active{
-    transform: translateY(0%);
-    transition: 1s ease-out;
-}
-    .wineText li span:hover + .extraInfo {
-        color: white;
-        transition: 2s ease-out;
-        opacity: 1;
-        max-width: fit-content;
-    }
-
-/*.wineText li:hover {
-    opacity:0.5;
-    cursor:inherit;
-}*/
 
 
 

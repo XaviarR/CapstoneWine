@@ -1,7 +1,23 @@
 ﻿body {
-    background-color: white;
-    color: black;
+    background-color: var(--bg-color);
+    color: var(--primary-text-color);
     font-family: 'Lato', sans-serif;
+    --header-color: var(--accent-color);
+    --hover-bg-color: rgba(200, 200, 200, 0.2);
+}
+
+    body.light {
+        --header-color: black;
+        --bg-color: white;
+        --primary-text-color: black;
+        --accent-color: rgba(0, 5, 99, 1);
+        --hover-bg-color: rgba(200, 200, 200, 1);
+    }
+
+.theme-toggle-btn {
+    width: 70px;
+    background-color: firebrick;
+    border: none;
 }
 
 footer {
@@ -26,7 +42,7 @@ form {
 }
 
 .navbar {
-    background-color: #080710;
+    background-color: var(--header-color);
 }
 
 .nav-menu {
@@ -63,7 +79,7 @@ form {
     align-items: center;
     user-select: none;
     border-radius: 50%;
-    z-index: 10;
+    z-index: 5;
     font-size: 100%;
 }
 
@@ -94,7 +110,7 @@ form {
         position: absolute;
         height: 100%;
         font-size: 0;
-        transition: 0.3s ease-in-out;
+        transition: transform 0.3s ease-in-out;
         /*background-color: hotpink;*/
     }
 
@@ -119,10 +135,10 @@ form {
     margin-top: 15px;
     margin-left: 10px;
     padding: 1rem;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 8px 0 rgba(100, 100, 100, 0.6);
     font-size: 1rem;
     font-family: "Lato", sans-serif;
-    transition: .3s;
+    transition: transform .3s;
 }
 
     .product-box:hover {
@@ -181,11 +197,14 @@ form td {
 /*==== FILTER STUFF ====*/
 
 .filter-menu {
-    margin-top: 80px;
-    position: relative;
     justify-content: space-between;
-    border-bottom: 3px solid darkblue;
+    border-bottom: 3px solid var(--accent-color);
     font-family: 'bebas neue';
+    position: sticky;
+    top: 70px;
+    background: var(--bg-color);
+    z-index: 10;
+    padding-top: 10px;
 }
 
 .top-part {
@@ -193,7 +212,7 @@ form td {
     justify-content: space-between;
     width: 100%;
     padding-bottom: 10px;
-    border-bottom: 2px solid lightgrey;
+    /*border-bottom: 2px solid lightgrey;*/
 }
 
 .search-row {
@@ -203,7 +222,7 @@ form td {
 }
 
 .search-bar {
-    border: 2.7px solid darkblue;
+    border: 2.7px solid var(--accent-color);
     border-radius: 5px;
     height: 40px;
     color: black;
@@ -212,7 +231,6 @@ form td {
 }
 
 .search-btn {
-    height: 100%;
     width: 100%;
     border: none;
     border-radius: 5px;
@@ -226,6 +244,10 @@ form td {
     flex-wrap: wrap;
     gap: 0px;
     justify-content: center;
+}
+
+.search-sect {
+    display: flex;
 }
 
 
@@ -259,7 +281,7 @@ form td {
 }
 
     .filter-link:hover {
-        background-color: rgba(10, 10, 10, 0.2);
+        background-color: var(--hover-bg-color);
     }
 
 .f-category-row,
@@ -271,11 +293,11 @@ form td {
     top: 100%;
     left: 0;
     width: 100%;
-    background-color: white;
+    background-color: var(--bg-color);
     border-width: 2px;
     border-style: solid;
     border-top: 1px solid rgba(0,0,0,0.2);
-    border-image: linear-gradient( to bottom, lightgrey, darkblue )1;
+    border-image: linear-gradient( to bottom, var(--bg-color), darkblue )1;
 }
 
 .category, .type {
@@ -285,10 +307,10 @@ form td {
     align-items: center;
     font-size: clamp(1.25rem, 1.4rem, 2rem);
     height: 50px;
-    color: black;
+    color: var(--primary-text-color);
+    /*color: black;*/
 }
 
     .category:hover, .type:hover {
         color: darkblue;
-        background-color: rgba(20, 20, 20, 0.1);
     }
