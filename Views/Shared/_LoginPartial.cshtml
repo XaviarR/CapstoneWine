@@ -5,12 +5,21 @@
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
 {
+        <li>
+            <p asp-area="Idenitity"> Welcome @User.Identity?.Name!</p>
+        </li>
     <li class="nav-item">
-        <a  class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
+        <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"> My Profile</a>
+       @* <a  class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>*@
     </li>
+    
     <!--Nav bar-->
         <li class="nav-item ">
-            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+            
+            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">
+                <img src="~/Images/home.png">
+                Home
+            </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About|Contact</a>
@@ -35,10 +44,11 @@ else
         <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Login">Login</a>
     </li>
      <li class="nav-item ">
-            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+         
+            <a class="nav-link"  asp-area="" asp-controller="Home" asp-action="Index">Home </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About|Contact</a>
+            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About | Contact</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" asp-area="" asp-controller="Shop" asp-action="Index">Shop</a>
