@@ -103,10 +103,17 @@ form {
     all: unset;
 }
 
+.navbar {
+    background-color: var(--bg-color);
+}
+
 .top-sect {
     display: flex;
     gap: 3rem;
     margin-bottom: 3rem;
+    position: sticky;
+    top: 70px;
+    background-color: var(--bg-color)
 }
 
     .top-sect .inactive {
