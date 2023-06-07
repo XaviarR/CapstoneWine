@@ -168,7 +168,7 @@ namespace CapstoneWine.Controllers
 
 			TempData["Success"] = "The product has been added!";
 
-			return Redirect(Request.Headers["Referer"].ToString());
+			return RedirectToAction("SubCart");
 		}//To add the subscription to the subcart
 		public async Task<IActionResult> Red(int id)
 		{
