@@ -20,8 +20,6 @@ namespace CapstoneWine.Controllers
 			_emailSender = emailSender;
 		}
 
-
-
 		public string Email { get; private set; }
 		[HttpGet]
 		public IActionResult Index()
@@ -50,8 +48,8 @@ namespace CapstoneWine.Controllers
 			
 			Email = ShippingEmail;
 			await _emailSender.SendEmailAsync(Email, $"Order Complete {ShippingName}", htmlMessage: $"For {cartVM.NumOfItems} Items, You will be charged: {cartVM.GrandTotal.ToString("C2")}");
-			//return RedirectToAction("OrderComplete");
-			return Redirect("Cart/Index");
+			return RedirectToAction("OrderComplete");
+			//return Redirect("Cart/Index");
 		}
 		[HttpGet]
 		public IActionResult ShippingDetails()
