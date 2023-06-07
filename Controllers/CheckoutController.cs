@@ -46,14 +46,14 @@ namespace CapstoneWine.Controllers
 		//		GrandTotal = cart.Sum(x => x.Total + x.Shipping),
 		//		NumOfItems = cart.Count.ToString()
 		//	};
-			
+
 		//	Email = ShippingEmail;
 		//	await _emailSender.SendEmailAsync(Email, $"Order Complete {ShippingName}", htmlMessage: $"For {cartVM.NumOfItems} Items, You will be charged: {cartVM.GrandTotal.ToString("C2")}");
 		//	//return RedirectToAction("OrderComplete");
 		//	//return Redirect("Cart/Index");
 		//	return View(cartVM);
 		//}
-		
+
 		[HttpGet]
 		public IActionResult ShippingDetails()
 		{
@@ -67,10 +67,10 @@ namespace CapstoneWine.Controllers
 
 			return View(cartVM);
 		}//View for ShippingDetails
-		
+
 		//Gets the values from the Form in the shipping details page
 		[HttpPost]
-		public async Task<IActionResult> ShippingDetailsAsync(string ShippingEmail, string ShippingName, string ShippingMobile,string ShippingAddress)
+		public async Task<IActionResult> ShippingDetailsAsync(string ShippingEmail, string ShippingName, string ShippingMobile, string ShippingAddress)
 		{
 			List<CartItem> cart = HttpContext.Session.GetJson<List<CartItem>>("Cart") ?? new List<CartItem>();
 
@@ -80,7 +80,7 @@ namespace CapstoneWine.Controllers
 				GrandTotal = cart.Sum(x => x.Total + x.Shipping),
 				NumOfItems = cart.Count.ToString()
 			};
-			
+
 			Email = ShippingEmail;
 			await _emailSender.SendEmailAsync(Email, $"Order Complete {ShippingName}", htmlMessage: $"For {cartVM.NumOfItems} Items" +
 				$"<br>You will be charged: {cartVM.GrandTotal.ToString("C2")}" +

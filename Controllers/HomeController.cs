@@ -98,7 +98,7 @@ namespace CapstoneWine.Controllers
 
 			await _emailSender.SendEmailAsync(email: AboutEmail, $"Thank You for the feedback {AboutName}", htmlMessage: $"We will contact you for anything further");
 
-			
+
 			return RedirectToAction("About");
 		}
 
@@ -136,7 +136,7 @@ namespace CapstoneWine.Controllers
 			SubViewModel cartVM = new()
 			{
 				SubItems = cart,
-				
+
 			};
 
 			return View(cartVM);
