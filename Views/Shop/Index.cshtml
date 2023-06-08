@@ -20,6 +20,7 @@
 			<button class="theme-toggle-btn">Switch</button>
 			<a><div class="filter-link">Category <i class="material-icons">keyboard_arrow_down</i></div></a>
 			<a><div class="filter-link">Type <i class="material-icons">keyboard_arrow_down</i></div></a>
+			<a><div class="filter-link">Price <i class="material-icons">keyboard_arrow_down</i></div></a>
 		</div>
 		
 		<div class="search-sect">
@@ -51,6 +52,14 @@
 				ViewData["CurrentFilter"] = type;
 				<a class="type" href="/Shop/Type/?typeFilter=@ViewData["CurrentFilter"]">@type</a>
 			}
+		</div>
+	</div>
+
+	<div class="hider">
+		<div class="f-type-row">
+			<a class="type" href="/Shop/Price/?lowerVal=10&upperVal=20">$10-$20</a>
+			<a class="type" href="/Shop/Price/?lowerVal=20&upperVal=30">$20-$30</a>
+			<a class="type" href="/Shop/Price/?lowerVal=30&upperVal=100">$30+</a>
 		</div>
 	</div>
 	
