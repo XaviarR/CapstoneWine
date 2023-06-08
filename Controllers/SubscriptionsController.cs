@@ -231,7 +231,6 @@ namespace CapstoneWine.Controllers
 				GrandTotal = cart.Sum(x => x.Total + x.Shipping),
 				NumOfItems = cart.Count.ToString()
 			};
-
 			if (cartVM == null)
 			{
 				await _emailSender.SendEmailAsync(Email = "xaviar.rehu@techtorium.ac.nz", "Order", htmlMessage: "No item selected");
@@ -240,9 +239,6 @@ namespace CapstoneWine.Controllers
 			{
 				await _emailSender.SendEmailAsync(Email = "xaviar.rehu@techtorium.ac.nz", "Order Complete", htmlMessage: "For " + cartVM.NumOfItems.ToString() + " Subscriptions, You have been charged: " + cartVM.GrandTotal.ToString("C2"));
 			}
-
-			TempData["Success"] = "The product has been added!";
-
 			return Redirect(Request.Headers["Referer"].ToString());
 		}
 
