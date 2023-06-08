@@ -34,25 +34,6 @@ namespace CapstoneWine.Controllers
 
 			return View(cartVM);
 		}
-		//This is for the form in the Index page But its not being used
-		//[HttpPost]
-		//public async Task<IActionResult> IndexAsync(string ShippingEmail, string ShippingName)
-		//{
-		//	List<CartItem> cart = HttpContext.Session.GetJson<List<CartItem>>("Cart") ?? new List<CartItem>();
-
-		//	CartViewModel cartVM = new()
-		//	{
-		//		CartItems = cart,
-		//		GrandTotal = cart.Sum(x => x.Total + x.Shipping),
-		//		NumOfItems = cart.Count.ToString()
-		//	};
-
-		//	Email = ShippingEmail;
-		//	await _emailSender.SendEmailAsync(Email, $"Order Complete {ShippingName}", htmlMessage: $"For {cartVM.NumOfItems} Items, You will be charged: {cartVM.GrandTotal.ToString("C2")}");
-		//	//return RedirectToAction("OrderComplete");
-		//	//return Redirect("Cart/Index");
-		//	return View(cartVM);
-		//}
 
 		[HttpGet]
 		public IActionResult ShippingDetails()
@@ -62,7 +43,7 @@ namespace CapstoneWine.Controllers
 			CartViewModel cartVM = new()
 			{
 				CartItems = cart,
-
+				GrandTotal = cart.Sum(x => x.Total + x.Shipping)
 			};
 
 			return View(cartVM);

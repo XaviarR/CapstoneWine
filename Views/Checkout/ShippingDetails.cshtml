@@ -4,6 +4,39 @@
 }
 @if (Model.CartItems.Count > 0)
 {
+	<div>
+		<div class="col">
+			<h1>
+				Order Details
+			</h1>
+			<table class="table text-white">
+				<tr>
+					<th>Image</th>
+					<th>Product</th>
+					<th>Quantity</th>
+					<th>Price</th>
+					<th>Shipping</th>
+					<th>Total</th>
+				</tr>
+				@foreach (var item in Model.CartItems)
+				{
+					<tr>
+						<td><img class="img" src="@Html.DisplayFor(modelItem => item.Image)" style="height:170px;width:110px; object-fit:contain" /></td>
+						<td>@item.ProductName</td>
+						<td>@item.Quantity</td>
+						<td>@item.Price.ToString("C2")</td>
+						<td>@item.Shipping.ToString("C2")</td>
+						@*Total is Calculated in CartItem Model*@
+						<td>@Model.CartItems.Where(x => x.ProductId == item.ProductId).Sum(x => x.Total + x.Shipping).ToString("C2")</td>
+					</tr>
+				}
+				<tr>
+					@*Caluculated in checkout controller -links to viewmodel*@
+					<td class="text-right" colspan="8"><b>Grand Total: @Model.GrandTotal.ToString("C2")</b></td>
+				</tr>
+			</table>
+		</div>
+		</div>
 	@*Form*@
 	<h1>Shipping Details</h1>
 
@@ -48,7 +81,6 @@
 						<span style="padding:5px"></span>
 						<input type="submit" value="Send Receipt" class="btn btn-outline-success">
 					</div>
-					<p style="color:black">Your the best</p>
 				</div>
 			</div>
 		</div>

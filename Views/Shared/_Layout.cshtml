@@ -70,9 +70,10 @@
 				</section>
 
 			<div class="nav-sec-2">
+				@*Displays the cart icon as well as the item count*@
 				<div class="nav-cart">
 					<a asp-controller="Cart" asp-action="Index"><img src="~/Images/add-to-cart.png" /></a>
-					<p class="show">Cart</p>
+					<p class="text-end"><span id="cartItemCount">0</span></p>
 				</div>
 
 				@*admin page -only accessible with proper credentials*@
@@ -233,3 +234,27 @@
 	@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+<script>
+	$(document).ready(function () {
+		updateCartItemCount(); // Call the function initially to display the current cart count
+
+		function updateCartItemCount() {
+			// Perform an AJAX request to get the cart item count
+			$.ajax({
+				url: '/Cart/GetCartItemCount',
+				type: 'GET',
+				success: function (response) {
+					// Update the cart item count in the HTML
+					$('#cartItemCount').text(response.count);
+				},
+				error: function (error) {
+					// Handle the error if needed
+					console.error(error);
+				}
+			});
+		}
+
+		// Call the function periodically to keep the cart count up to date
+		setInterval(updateCartItemCount, 2000); // Update every 2 seconds (adjust as needed)
+	});
+</script>
