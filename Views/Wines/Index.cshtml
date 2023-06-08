@@ -1,48 +1,44 @@
 ﻿@model IEnumerable<CapstoneWine.Models.WinesModel>
 
+<link rel="stylesheet" href="~/css/admin.css" />
+
+
 @{
     ViewData["Title"] = "Wines";
 }
 
-<h1>Wines</h1>
-<form method="get" action="/Wines/Index">
+<section class="top-sect">
+    <a class="table-title inactive" asp-controller="Orders" asp-action="Index">Orders</a>
+    <a class="table-title inactive" asp-controller="Subscriptions" asp-action="Index">Subscriptions</a>
+    <a class="table-title">Wines</a>
+</section>
 
-    <td style="padding-right:940px">
+
+<form class="search-row" method="get" action="/Wines/Index">
+    <td>
+        <input class="search-bar" type="text" placeholder="Search for..." name="SearchString" value="@ViewData["CurrentFilter"]" aria-label="Search" aria-describedby="btnNavbarSearch" />
     </td>
     <td>
-        <input class="form-control" type="text" placeholder="Search for..." name="SearchString" value="@ViewData["CurrentFilter"]" aria-label="Search" aria-describedby="btnNavbarSearch" />
+        <input type="submit" value="Search" class="search-btn" />
     </td>
-    <td>
-        <input type="submit" value="Search" class="btn btn-primary" />
-    </td>
+    @if (ViewData["CurrentFilter"] != "")
+    {
+        <a class="m-2" asp-action="Index">Clear search</a>
+    }
 </form>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table" style="color:white;">
+<table class="wines-table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.WineName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Image)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Blurb)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Quantity)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Type)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Category)
-            </th>
+            <th>Wine Name</th>
+            <th>Image</th>
+            <th>Price</th>
+            <th>Blurb</th>
+            <th>Quantity</th>
+            <th>Type</th>
+            <th>Category</th>
             <th></th>
         </tr>
     </thead>
@@ -53,7 +49,7 @@
                 @Html.DisplayFor(modelItem => item.WineName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Image)
+                <img class="img" src="@Html.DisplayFor(modelItem => item.Image)" />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Price)

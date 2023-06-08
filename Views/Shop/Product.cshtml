@@ -1,23 +1,25 @@
 ﻿@model IEnumerable<CapstoneWine.Models.WinesModel>
 
 <link rel="stylesheet" href="~/css/searchproducts.css" />
+<link rel="stylesheet" href="~/css/toastify.css" />
+
 
 @{
 	ViewData["Title"] = "Search " + "'" + @ViewData["CurrentFilter"] + "'";
 }
 
-<a asp-controller="Shop" asp-action="Index">Back to shop</a>
 
-<h1 class="text-black">Search results for "@ViewData["CurrentFilter"]"</h1>
+<h1 class="title">Search results for "@ViewData["CurrentFilter"]"</h1>
+<a class="back-text" asp-controller="Shop" asp-action="Index">Back to shop</a>
 
 <div class="shop-content">
 	@foreach (var item in Model)
 	{
 		<div class="product-box">
-			<div class="img">Blank Image</div>
+			<img class="img" src="@Html.DisplayFor(modelItem => item.Image)" />
 			<div class="price h5">$@Html.DisplayFor(modelItem => item.Price)</div>
 			<div class="quantity">@Html.DisplayFor(modelItem => item.Quantity)</div>
-			<a class="cart" asp-controller="Cart" asp-action="Add" asp-route-id="@item.WineID">Add to Cart</a>
+			<a class="cart" asp-controller="Cart" asp-action="Add" asp-route-id="@item.WineID" onclick="addToCart(event, @item.WineID)">Add to Cart</a>
 			<div class="blurb">
 				<div class="product-title">@Html.DisplayFor(modelItem => item.WineName)</div>
 				<p>
@@ -28,3 +30,37 @@
 	}
 </div>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="~/js/toastify.js"></script>
+
+@*For displaying a message box when an item is added to cart*@
+<script>
+	function addToCart(event, id) {
+		event.preventDefault(); // Prevent the default behavior of the link
+
+		// Perform an AJAX request to add the item to the cart
+		$.ajax({
+			url: '/Cart/Add',
+			type: 'POST',
+			data: { id: id },
+			success: function (response) {
+				// Handle the response if needed
+				// Show a custom message
+				var message = "Item added to cart!";
+				Toastify({
+					text: message,
+					duration: 3000, // Display for 3 seconds
+					close: true,
+					gravity: "bottom", // Position the notification at the bottom
+					position: "right", // Position the notification on the left side
+					backgroundColor: "rgba(0, 0, 0, 0.8)",
+					stopOnFocus: true
+				}).showToast();
+			},
+			error: function (error) {
+				// Handle the error if needed
+				console.error(error);
+			}
+		});
+	}
+</script>

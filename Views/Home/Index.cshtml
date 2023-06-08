@@ -1,85 +1,53 @@
-﻿@{
+﻿<link rel="stylesheet" href="~/css/StyleSheet.css" asp-append-version="true" />
+
+@{
 	ViewData["Title"] = "Home Page";
+	var categories = ViewData["Categories"] as string[];
+	// Ellie use this for the hover function
+	string[] blurbs = {
+		"Like a mischievous spirit, Cabernet Sauvignon delights in surprising your taste buds with its complex flavors.",
+		
+		"This wine offers a delightful melody of red berries, cherries, and subtle earthy notes.",
+		
+		"Much like the hipster who effortlessly stands out in a crowd.  With its dark fruit flavors, hints of spice, and a captivating intensity, Shiraz leaves a lasting impression on your palate.",
+		
+		"Merlot enters the stage with a velvety smoothness, captivating with its approachable and inviting nature.  This wine embraces flavors of ripe plum, black cherry, and a touch of chocolate, creating a truly delightful experience.",
+		
+		"The vibrant and lively extrovert, bursting with freshness and a zingy personality.  This wine offers vibrant citrus flavors, crisp acidity, and herbaceous notes, inviting you to join the party.",
+		
+		"The timeless and sophisticated trendsetter, exuding elegance and refined taste.  This wine showcases a graceful balance of flavors, offering notes of citrus, ripe apple, and a touch of creamy richness.",
+		
+		"The laid-back and easy-going free spirit, radiating a relaxed and approachable vibe.  This wine invites you to kick back and unwind with its smooth and silky texture, offering flavors of ripe pear, tropical fruits, and a hint of floral notes.",
+		
+		"This wine enchants with its aromatic profile, offering a delightful combination of floral notes, zesty citrus, and a touch of sweetness.  Riesling is like the hipster who effortlessly captivates attention with their vivacious personality and infectious laughter.",
+	};
 }
 
 <body class="bg-home">
-	<div id="mouse-area">
-		<div id="mouse-area-body">
-			<div class="slide-box" id="box1">
-				<div class="vid-container" id="wine1">
-					<video class="bg-video" id="wine1" autoplay loop muted>
-						<source src="/video/textvid.mp4" type="video/mp4" />
-					</video>
-					<a href="#" class="text" id="wine1">CABERNET SAUVIGNON</a>
-				</div>
-			</div>
+	<div class="hero">
+		<iframe src='https://my.spline.design/untitled-019ae71b0f1b635607356af5e756cf9c/' frameborder='0' height='200%' width='300%'></iframe>
+	</div>
+	
+	@for (var i = 0; i < categories.Length; i++)
+	{
+		ViewData["CurrentFilter"] = categories[i];
+	
+		<div class="slide-box" id="box@(i + 1)">
+			<div class="vid-container" id="wine@(i + 1)">
+				<!--Video-->
+				<video class="bg-video" id="wine@(i + 1)" autoplay loop muted>
+					<source src="/video/textvid.mp4" type="video/mp4" />
+				</video>
 
-			<div class="slide-box" id="box2">
-				<div class="vid-container" id="wine2">
-					<video class="bg-video" id="wine2" autoplay loop muted>
-						<source src="/video/textvid.mp4" type="video/mp4" />
-					</video>
-					<a href="#" class="text" id="wine2">PINOT NOIR</a>
-				</div>
-			</div>
-
-			<div class="slide-box" id="box3">
-				<div class="vid-container" id="wine3">
-					<video class="bg-video" id="wine3" autoplay loop muted>
-						<source src="/video/textvid.mp4" type="video/mp4" />
-					</video>
-					<a href="#" class="text" id="wine3">SHRIAZ</a>
-				</div>
-			</div>
-
-			<div class="slide-box" id="box4">
-				<div class="vid-container" id="wine4">
-					<video class="bg-video" id="wine4" autoplay loop muted>
-						<source src="/video/textvid.mp4" type="video/mp4" />
-					</video>
-					<a href="#" class="text" id="wine4">MERLOT</a>
-				</div>
-			</div>
-
-			<div class="slide-box" id="box5">
-				<div class="vid-container" id="wine5">
-					<video class="bg-video" id="wine5" autoplay loop muted>
-						<source src="/video/textvid.mp4" type="video/mp4" />
-					</video>
-					<a class="text" id="wine5">SAUVIGNON BLANC</a>
-				</div>
-			</div>
-
-			<div class="slide-box" id="box6">
-				<div class="vid-container" id="wine6">
-					<video class="bg-video" id="wine6" autoplay loop muted>
-						<source src="/video/textvid.mp4" type="video/mp4" />
-					</video>
-					<a class="text" id="wine6">CHARDONAY</a>
-				</div>
-			</div>
-
-			<div class="slide-box" id="box7">
-				<div class="vid-container" id="wine7">
-					<video class="bg-video" id="wine7" autoplay loop muted>
-						<source src="/video/textvid.mp4" type="video/mp4" />
-					</video>
-					<a class="text" id="wine7">PINOT GRIS</a>
-				</div>
-			</div>
-
-			<div class="slide-box" id="box8">
-				<div class="vid-container" id="wine8">
-					<video class="bg-video" id="wine8" autoplay loop muted>
-						<source src="/video/textvid.mp4" type="video/mp4" />
-					</video>
-					<a class="text" id="wine8" asp-controller="Home" asp-action="Privacy">RIESLING</a>
-				</div>
+				<!--Text-->
+				<a class="text" id="wine@(i + 1)" href="/Shop/Category/?categoryFilter=@ViewData["CurrentFilter"]"><span>@ViewData["CurrentFilter"]</span></a>
 			</div>
 		</div>
-	</div>
-
-
+		
+		<div class="extraInfo">
+				<p>@blurbs[i]</p>
+		</div>
+	}
 
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>

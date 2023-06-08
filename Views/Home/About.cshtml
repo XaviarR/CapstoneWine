@@ -1,44 +1,76 @@
-﻿
+﻿<link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
 @{
     ViewData["Title"] = "About";
 }
-<div class="text-center">
-    <div class="row">
-        <div class="col-sm-6">        
-            <h1 class="divaText">ABOUT US</h1>          
+    <style>
+        .demo {
+            padding: 100px 0;
+        }
+    </style>
+  <container>
+      <section>
+    <div class="text-center">
+        <div class="row">
+            <h3 class="divaText">ABOUT US:</h3>
             <p>
                 WINEZ is a wine subscription company that offers a unique experience to wine enthusiasts. They carefully curate a selection of high-quality wines from around the world and deliver them straight to your door on a monthly basis. With WINEZ, you can discover new and exciting wines that you might not have had the opportunity to try otherwise. They also provide tasting notes and pairing suggestions to help you fully appreciate the nuances of each bottle. Whether you're a casual wine drinker or a seasoned sommelier, WINEZ has something to offer everyone. Their subscriptions are flexible, so you can choose the frequency and duration that suits you best. Joining WINEZ is a fantastic way to expand your palate and indulge in some of the best wines the world has to offer.
                 One of the standout features of WINEZ is their commitment to sustainability. They work closely with wineries that prioritize environmentally responsible practices, ensuring that their wines are both delicious and ethical. WINEZ also uses eco-friendly packaging materials to minimize their environmental impact. Their dedication to sustainability is just one example of how they prioritize their customers' values and needs. WINEZ is more than just a wine subscription company; they're a community of wine lovers who are passionate about discovering and sharing great wine. Whether you're hosting a dinner party, enjoying a cozy night in, or just looking to unwind after a long day, WINEZ has the perfect bottle for every occasion.
             </p>
-        </div>
-        <div class="col-sm-6">
-            <h1 class="divaText">CONTACT US</h1>
-            <p>
-                Email: info@winz.co.nz
-            </p>
-            <p>
-                Phone: +64 9 123 4567
-            </p>
-            <p>
-                Address: 45 Queen Street, Auckland Central, Auckland 1010, New Zealand
-            </p>
-            <p>
-                You can also follow WINEZ on social media for updates, news, and special offers:
-            </p>
-            <p>
-                Instagram: winz.wine.nz
-            </p>
-            <p>
-                Facebook: winz.nz
-            </p>
-            <p>
-                Twitter: winz_wine_nz
-            </p>
 
-            <p>
-                If you have any questions about WINEZ's subscription options, wine selections, or delivery process, their customer service team is happy to help. You can reach them via email or phone during business hours in New Zealand.
-            </p>
-        </div>
 
+        </div>
+        <div class="row">
+            <h1 class="divaText">ORIGINS:</h1>
+            <p>WiNeZ was founded by two friends, Will and Nez, who shared a passion for fine wine and forensic science. They wanted to create wines that were not only delicious, but also authentic and traceable. They used cutting-edge technology to analyze the geochemistry of the soil, the vine, and the wine, creating a unique fingerprint for each bottle that could be verified by scanning a QR code on the label. This way, they could guarantee the origin and provenance of their wines, no matter where they were sold or how old they were. They named their company WiNeZ, combining their initials and playing on the word “wines”.</p>
+        </div>
+	</section>
+   
+        <div >
+            <h3 class="divaText flipH">CONTACT US:</h3>
+		<p class ="text-align:center">
+			If you have any questions about WINEZ's subscription options, wine selections, or delivery process, our customer service team is happy to help. </p>
+        <p> You can reach them via email or phone during business hours in New Zealand.</p>
+
+	</div><hr />
+		<section class="row justify-content-around">
+            <div class="col-4">
+            <p> Email: info@winz.co.nz</p>
+            <p>Phone: +64 9 123 4567</p>
+            <p>Address: 45 Queen Street, Auckland Central, Auckland 1010, New Zealand</p>
+            <p>You can also follow WINEZ on social media for updates, news, and special offers:</p>
+            <p>Instagram: winz.wine.nz</p>
+            <p> Facebook: winz.nz</p>
+            <p>Twitter: winz_wine_nz</p>
+        </div>
+		
+        <div class="col-4">
+			
+			<form class="bk_blur" method="post">
+               
+            <label class="label">Name:</label>
+            <input class="input text-white" autocomplete="on" name="AboutName" aria-required="true" placeholder="Name" required />
+            <span class="text-danger"></span>
+				
+            <label class="label">Email:</label>
+            <input class="input text-white" autocomplete="on" name="AboutEmail" aria-required="true" placeholder="name@example.com" required/>
+            <span class="text-danger"></span>
+
+            <label class="label">Message:</label>
+				<textarea class="input" rows="6" cols="44" autocomplete="on" name="AboutText" method="get" aria-required="true" placeholder="Enter details here...."></textarea><br />
+            @*<input class="input text-white" autocomplete="on" name="AboutText" aria-required="true" placeholder="Your Feedback" required />*@
+            <span class="text-danger"></span>
+           
+        <div class="row">
+            <div class="col">
+                <div class="text-end">
+                    <div class="btn-group">
+                        <input type="submit" value="Submit" class="btn btn-outline-success">
+                    </div>
+                   @* <p style="color:black">Your the best</p>*@
+                </div>
+           </div>
+        </div> 
+	</form>
     </div>
-</div>
+	</section>
+</container>

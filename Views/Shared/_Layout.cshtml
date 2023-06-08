@@ -18,7 +18,7 @@
 <body>
 
 	<header>
-		<div id="invertedcursor"></div>
+		<div id="invertedcursor" class="page-container"></div>
 
 		<!--Option 1-->
 		<nav class="navbar fixed-top">
@@ -28,31 +28,69 @@
 					<span class="bar"></span>
 					<span class="bar"></span>
 					<span class="bar"></span>
-				</a>
+					</a>
+				<p class="show">Menu</p>
 			</div>
 			@*items in the hamburger*@
-			<ul class="nav-menu navbar-nav flex-grow-1">
+			<section class="nav-menu navbar-nav flex-grow">
+				<ul class="wine">
+					<li class="nav-item">
+						<h1 class="boldTitle" style="text-align:left; font-size:3vw; padding-top:10px">Wines</h1>
+					</li>
+					<li class="nav-item">
+						<a href="/Shop/Category/?categoryFilter=Cabernet Savignon" class="nav-link">Cabernet Savignon</a>
+					</li>
+					<li class="nav-item">
+						<a href="/Shop/Category/?categoryFilter=Pinot Noir" class="nav-link">Pinot Noir</a>
+					</li>
+					<li class="nav-item">
+						<a href="/Shop/Category/?categoryFilter=Shiraz" class="nav-link">Shiraz</a>
+					</li>
+					<li class="nav-item">
+						<a href="/Shop/Category/?categoryFilter=Merlot" class="nav-link">Merlot</a>
+					</li>
 
-				<partial name="_LoginPartial" />
+					<li class="nav-item">
+						<a href="/Shop/Category/?categoryFilter=Chardonay" class="nav-link">Chardonnay</a>
+					</li>
+					<li class="nav-item">
+						<a href="/Shop/Category/?categoryFilter=Pinot Gris" class="nav-link">Pinot Gris</a>
+					</li>
+					<li class="nav-item">
+						<a href="/Shop/Category/?categoryFilter=Riesling" class="nav-link">Riesling</a>
+					</li>
+					<li class="nav-item">
+						<a href="/Shop/Category/?categoryFilter=Sauvignon Blanc" class="nav-link">Sauvignon Blanc</a>
+					</li>
+				</ul>
 				
+				<ul class="otherMenu">
+					<partial name="_LoginPartial" />
+				</ul>
+				</section>
 
-			</ul>
+			<div class="nav-sec-2">
+				@*Displays the cart icon as well as the item count*@
+				<div class="nav-cart">
+					<a asp-controller="Cart" asp-action="Index"><img src="~/Images/add-to-cart.png" /></a>
+					<p class="text-end cart-item-count"><span id="cartItemCount">0</span></p>
+				</div>
 
-			<a asp-controller="Cart" asp-action="Index"><img src="~/Images/add-to-cart.png" style="height:50px; width:50px; " /></a>
 
-			@*admin page -only accessible with proper credentials*@
-			@if (User.IsInRole("Admin"))
-			{
-				<a class="nav-branding" asp-area="" asp-controller="Admin" asp-action="Index">WINEZ</a>
-			}
-			else
-			{
-				<a href="#" class="nav-branding">WINEZ</a>
-			
-				
-			}
+				@*admin page -only accessible with proper credentials*@
+				@if (User.IsInRole("Admin"))
+				{
+					<a class="nav-branding" asp-area="" asp-controller="Admin" asp-action="Index">WINEZ</a>
+				}
+				else
+				{
+					<a class="nav-branding" asp-area="" asp-controller="Home" asp-action="Index">WINEZ</a>
+				}
+			</div>
+
 		</nav>
 	</header>
+
 	<section>
 		<div class="container block">
 			<main role="main" class="pb-3">
@@ -65,11 +103,12 @@
 	&copy; 2023 - CapstoneWine - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>*@
 
 	<!-- Footer -->
-	<footer class="text-center text-lg-start text-white border-top"
+	<footer id="footer" class="text-center text-lg-start text-white border-top"
 			style="background-color: #080710">
 		<div class="container p-4 pb-0">
 			<section class="">
-				<div class="row">
+				<div class="row" style="background-color: #080710">
+					
 					@*WINEZ*@
 					<div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
 						<h6 class="text-uppercase mb-4 font-weight-bold">
@@ -197,3 +236,27 @@
 	@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+<script>
+	$(document).ready(function () {
+		updateCartItemCount(); // Call the function initially to display the current cart count
+
+		function updateCartItemCount() {
+			// Perform an AJAX request to get the cart item count
+			$.ajax({
+				url: '/Cart/GetCartItemCount',
+				type: 'GET',
+				success: function (response) {
+					// Update the cart item count in the HTML
+					$('#cartItemCount').text(response.count);
+				},
+				error: function (error) {
+					// Handle the error if needed
+					console.error(error);
+				}
+			});
+		}
+
+		// Call the function periodically to keep the cart count up to date
+		setInterval(updateCartItemCount, 1000); // Update every 1 seconds (adjust as needed)
+	});
+</script>

@@ -7,6 +7,7 @@
 {
 	<table class="table text-white">
 		<tr>
+			<th>Image</th>
 			<th>Product</th>
 			<th>Quantity</th>
 			<th></th>
@@ -16,6 +17,9 @@
 		@foreach (var item in Model.CartItems)
 		{
 			<tr>
+				<td>
+					<img class="img" src="@Html.DisplayFor(modelItem => item.Image)" style="height:170px;width:110px; object-fit:contain" />
+				</td>
 				<td>@item.ProductName</td>
 				<td>@item.Quantity</td>
 				<td>
@@ -32,8 +36,9 @@
 		</tr>
 		<tr>
 			<td class="text-right" colspan="4">
+				<a class="btn btn-success" asp-controller="Shop" asp-action="Index">Add more items</a>
 				<a class="btn btn-danger" asp-action="Clear">Clear Cart</a>
-				<a class="btn btn-primary" asp-controller="Checkout" asp-action="Index">Checkout</a>
+				<a class="btn btn-primary" asp-controller="Checkout" asp-action="ShippingDetails">Checkout</a>
 			</td>
 		</tr>
 	</table>

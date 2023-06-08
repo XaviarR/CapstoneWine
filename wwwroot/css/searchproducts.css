@@ -1,74 +1,106 @@
 ﻿body {
-    background-color: floralwhite;
     color: black;
-    padding: 70px;
+    background-color: white;
+    font-family: 'Lato', sans-serif;
+    margin-top: 70px;
 }
 
 footer {
     position: absolute;
     top: 100%;
     left: 0;
+    bottom: auto;
     width: 99vw;
     padding-bottom: 50px;
 }
 
+.title {
+    font-family: 'Bebas Neue';
+    color: black;
+    margin: 20px;
+}
 .navbar {
     background-color: #080710;
 }
 
 .nav-menu {
-    background-color: rgba(10,10,10,0.3);
+    background-color: rgba(10,10,10,0.6);
     border-radius: 0 19px 19px 0;
 }
 
 .shop-content {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    row-gap: 1.57rem;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 1.57rem;
     place-items: center;
-    margin-top: 50px;
+    margin-top: 0px;
 }
 
 .product-box {
     display: grid;
     grid-template-columns: 150px auto;
     grid-template-rows: 60% auto auto auto;
+    align-self: center;
     gap: 0.8rem;
-    height: 23rem;
-    width: 400px;
+    height: 24rem;
+    width: 100%;
+    margin-top: 15px;
+    margin-left: 10px;
     padding: 1rem;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    font-size: 1rem;
+    font-family: "Lato", sans-serif;
+    /*background-color: pink;*/
 }
 
-    .product-box .img {
-        grid-area: 1/1/1/1;
-        background-color: antiquewhite;
-        height: 100%;
-        width: 100%;
-    }
+.img {
+    grid-area: 1/1/1/1;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
 
-    .product-box .price {
-        grid-area: 2/1/2/1;
-    }
+.price {
+    /*background-color:aqua;*/
+    grid-area: 2/1/2/1;
+}
 
-    .product-box .quantity {
-        grid-area: 3/1/3/1;
-    }
+.quantity {
+    /*background-color: red;*/
+    grid-area: 3/1/3/1;
+}
 
-    .product-box .cart {
-        grid-area: 4/1/4/3;
-        background-color: #040b4f;
-        text-align: center;
+.cart {
+    grid-area: 4/1/4/3;
+    background-color: rgba(0, 5, 99, 1);
+    text-align: center;
+    color: white;
+    border-radius: 5px;
+}
+
+    .cart:hover {
+        background-color: rgba(0, 3, 65, 1);
         color: white;
-        border-radius: 5px;
     }
 
-    .product-box .blurb {
-        grid-area: 1/2/4/2;
+.blurb {
+    /*background-color: yellow;*/
+    grid-area: 1/2/4/2;
+    overflow-y: auto;
+}
+
+    .blurb::-webkit-scrollbar {
+        display: none;
     }
 
-        .product-box .blurb .product-title {
-            font-size: 24px;
-        }
+.product-title {
+    font-family: 'Bebas Neue';
+    font-size: 1.37rem;
+}
 
-    
+.back-text {
+    margin: 0;
+    padding: 0;
+    font-size: clamp(1.3em, 1.57em, 2em);
+    font-family: 'Bebas Neue';
+}

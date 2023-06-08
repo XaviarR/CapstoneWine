@@ -1,7 +1,10 @@
 ﻿@model IEnumerable<CapstoneWine.Models.WinesModel>
+@using System.Net;
 
-<link rel="stylesheet" href="~/css/shop.css" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="~/css/shop.css" />
+<link rel="stylesheet" href="~/css/toastify.css" />
+
 
 @{
 	ViewData["Title"] = "Shop";
@@ -12,43 +15,64 @@
 	var types = ViewData["Types"] as string[];
 }
 
-<section>
-	<!--Search by wine name-->
-	<form method="get" action="/Shop/Product">
-		<td>
-			<input class="form-control" type="text" placeholder="Search wine name" name="SearchString" value="@ViewData["CurrentFilter"]" aria-label="Search" aria-describedby="btnSearch" />
-		</td>
-		<td>
-			<input type="submit" value="Search" class="btn btn-primary" />
-		</td>
-	</form>
-	@ViewData["ErrorMessage"]
+<section class="filter-menu">
 
-	<!--Filter by category-->
-	<h3>Filter by category</h3>
-	<div class="filters-box">
-		@foreach (var category in categories)
-		{
-			ViewData["CurrentFilter"] = category;
-			<a class="filter-btn" href="/Shop/Category/?categoryFilter=@ViewData["CurrentFilter"]">@category</a>
-		}
+	<div class="top-part">
+		<div class="filter-sect">
+			<button class="theme-toggle-btn">Switch</button>
+			<a><div class="filter-link">Category <i class="material-icons">keyboard_arrow_down</i></div></a>
+			<a><div class="filter-link">Type <i class="material-icons">keyboard_arrow_down</i></div></a>
+			<a><div class="filter-link">Price <i class="material-icons">keyboard_arrow_down</i></div></a>
+		</div>
+		
+		<div class="search-sect">
+			<form class="search-row" method="get" action="/Shop/Product">
+				<td>
+					<input class="search-bar" type="text" placeholder="Search wine name" name="SearchString" value="@ViewData["CurrentFilter"]" aria-label="Search" aria-describedby="btnSearch" />
+					<input type="submit" value="Search" class="search-btn" />
+				</td>
+			</form>
+		</div>
+	</div>
+	
+
+	<div class="hider">
+		<div class="f-category-row">
+			@foreach (var category in categories)
+			{
+				ViewData["CurrentFilter"] = category;
+				<a class="category" href="/Shop/Category/?categoryFilter=@ViewData["CurrentFilter"]">@category</a>
+			}
+		</div>
+	</div>
+	
+
+	<div class="hider">
+		<div class="f-type-row">
+			@foreach (var type in types)
+			{
+				ViewData["CurrentFilter"] = type;
+				<a class="type" href="/Shop/Type/?typeFilter=@ViewData["CurrentFilter"]">@type</a>
+			}
+		</div>
 	</div>
 
-	<!--Filter by type-->
-	<h3>Filter by type</h3>
-	<div class="filters-box">
-		@foreach (var type in types)
-		{
-			ViewData["CurrentFilter"] = type;
-			<a class="filter-btn" href="/Shop/Type/?typeFilter=@ViewData["CurrentFilter"]">@type</a>
-		}
+	<div class="hider">
+		<div class="f-type-row">
+			<a class="type" href="/Shop/Price/?lowerVal=10&upperVal=20">$10-$20</a>
+			<a class="type" href="/Shop/Price/?lowerVal=20&upperVal=30">$20-$30</a>
+			<a class="type" href="/Shop/Price/?lowerVal=30&upperVal=100">$30+</a>
+		</div>
 	</div>
+	
+
 </section>
+
 
 
 @foreach (var category in categories)
 {
-	<h2 class="text-center">@category.ToUpper()</h2>
+	<h2 class="category-title">@category.ToUpper()</h2>
 	<section>
 		<div class="category-row">
 			<a class="slide-button" id="prv"><i class="material-icons">keyboard_arrow_left</i></a>
@@ -58,10 +82,10 @@
 					{
 						<li>
 							<div class="product-box">
-								<div class="img">Blank Image</div>
+								<img class="img" src="@Html.DisplayFor(modelItem => item.Image)" />
 								<div class="price h5">$@Html.DisplayFor(modelItem => item.Price)</div>
 								<div class="quantity">@Html.DisplayFor(modelItem => item.Quantity)</div>
-								<a class="cart" asp-controller="Cart" asp-action="Add" asp-route-id="@item.WineID">Add to Cart</a>
+								<a class="cart" asp-controller="Cart" asp-action="Add" asp-route-id="@item.WineID" onclick="addToCart(event, @item.WineID)">Add to Cart</a>
 								<div class="blurb">
 									<div class="product-title">@Html.DisplayFor(modelItem => item.WineName)</div>
 									<p>
@@ -71,43 +95,45 @@
 							</div>
 						</li>
 					}
+					<li><a href="#">Hello</a></li>
 				</ul>
 			</div>
 			<a class="slide-button" id="nxt"><i class="material-icons">keyboard_arrow_right</i></a>
 		</div>
 	</section>
 }
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/js/shop.js"></script>
+<script src="~/js/toastify.js"></script>
 
-
-
-
-
+@*For displaying a message box when an item is added to cart*@
 <script>
-	const prevButtons = document.querySelectorAll(".slide-button#prv");
-	const nextButtons = document.querySelectorAll(".slide-button#nxt");
-	const sliders = document.querySelectorAll("#slider");
-	const boxWidth = document.querySelector(".product-box").offsetWidth;
-	const conWidth = document.getElementById("container").clientWidth;
+	function addToCart(event, id) {
+		event.preventDefault(); // Prevent the default behavior of the link
 
-	for (let i = 0; i < sliders.length; i++) {
-		const prev = prevButtons[i];
-		const next = nextButtons[i];
-		const slide = sliders[i];
-		const itemCount = slide.children.length;
-		let counter = 0;
-		console.log(conWidth);
-
-		next.addEventListener('click', () => {
-			counter++;
-			if (counter >= itemCount) counter = 0;
-			slide.style.transform = `translateX(-${(boxWidth * counter) + (counter * 47)}px)`;
-			console.log(counter);
-		});
-		prev.addEventListener('click', () => {
-			counter--;
-			if (counter < 0) counter = 0;
-			slide.style.transform = `translateX(-${(boxWidth * counter) + (counter * 47)}px)`;
-			console.log(counter);
+		// Perform an AJAX request to add the item to the cart
+		$.ajax({
+			url: '/Cart/Add',
+			type: 'POST',
+			data: { id: id },
+			success: function (response) {
+				// Handle the response if needed
+				// Show a custom message
+				var message = "Item added to cart!";
+				Toastify({
+					text: message,
+					duration: 3000, // Display for 3 seconds
+					close: true,
+					gravity: "bottom", // Position the notification at the bottom
+					position: "right", // Position the notification on the left side
+					backgroundColor: "rgba(0, 0, 0, 0.8)",
+					stopOnFocus: true
+				}).showToast();
+			},
+			error: function (error) {
+				// Handle the error if needed
+				console.error(error);
+			}
 		});
 	}
 </script>

@@ -29,5 +29,6 @@ namespace CapstoneWine.Models
         public decimal? TotalCost { get; set; }
         public string? OrderStatus { get; set; }
         public int RewardPoints { get; set; }
+
     }
 }

@@ -1,0 +1,14 @@
+﻿@model CapstoneWine.Models.ViewModels.CartViewModel
+@{
+	ViewData["Title"] = "Checkout";
+}
+@if (Model.CartItems.Count > 0)
+{
+	<h1>Order Complete</h1>
+	<a class="btn btn-outline-success" asp-controller="Shop" asp-action="Index">Shop Page</a>
+}
+else
+{
+	<h1>Nothing in cart</h1>
+	<a class="btn btn-outline-success" asp-controller="Shop" asp-action="Index">Add new items</a>
+}
