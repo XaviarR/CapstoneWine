@@ -3,6 +3,8 @@
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="~/css/shop.css" />
+<link rel="stylesheet" href="~/css/toastify.css" />
+
 
 @{
 	ViewData["Title"] = "Shop";
@@ -91,8 +93,10 @@
 		</div>
 	</section>
 }
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/shop.js"></script>
+<script src="~/js/toastify.js"></script>
+
 @*For displaying a message box when an item is added to cart*@
 <script>
 	function addToCart(event, id) {
@@ -107,7 +111,15 @@
 				// Handle the response if needed
 				// Show a custom message
 				var message = "Item added to cart!";
-				alert(message);
+				Toastify({
+					text: message,
+					duration: 3000, // Display for 3 seconds
+					close: true,
+					gravity: "bottom", // Position the notification at the bottom
+					position: "right", // Position the notification on the left side
+					backgroundColor: "rgba(0, 0, 0, 0.8)",
+					stopOnFocus: true
+				}).showToast();
 			},
 			error: function (error) {
 				// Handle the error if needed
