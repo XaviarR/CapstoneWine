@@ -73,8 +73,9 @@
 				@*Displays the cart icon as well as the item count*@
 				<div class="nav-cart">
 					<a asp-controller="Cart" asp-action="Index"><img src="~/Images/add-to-cart.png" /></a>
-					<p class="text-end"><span id="cartItemCount">0</span></p>
+					<p class="text-end cart-item-count"><span id="cartItemCount">0</span></p>
 				</div>
+
 
 				@*admin page -only accessible with proper credentials*@
 				@if (User.IsInRole("Admin"))
