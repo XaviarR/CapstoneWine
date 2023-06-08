@@ -5,8 +5,13 @@
 
 APIFILE.cs
 **/_LoginPartial.cshtml
-**/Views/Admin/*
-**/Views/Orders/*
+Views/Admin/Create.cshtml
+Views/Admin/Delete.cshtml
+Views/Admin/Details.cshtml
+Views/Admin/Edit.cshtml
+Views/Admin/Index.cshtml
+Views/Admin/Orders.cshtml
+Views/Orders/Index.cshtml
 
 # User-specific files
 *.rsuser
