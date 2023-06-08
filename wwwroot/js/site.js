@@ -16,6 +16,21 @@ $(function () {
         $('#invertedcursor').css('width', '40px');
         $('#invertedcursor').css('transition', 'height .5s, width .5s');
 
+        
+
+
+    }, function () {
+        // on mouseout, reset the cursor size
+        $('#invertedcursor').css('height', '70px');
+        $('#invertedcursor').css('width', '70px');
+        $('#invertedcursor').css('transition', 'height .5s width .5s')
+
+        
+    });
+    $('button').hover(function () {
+        $('#invertedcursor').css('height', '40px');
+        $('#invertedcursor').css('width', '40px');
+        $('#invertedcursor').css('transition', 'height .5s, width .5s');
 
     }, function () {
         // on mouseout, reset the cursor size
