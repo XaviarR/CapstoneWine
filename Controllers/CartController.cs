@@ -29,8 +29,18 @@ namespace CapstoneWine.Controllers
 
             return View(cartVM);
         }
+        //For the cart amount displayed next to icon
+		public IActionResult GetCartItemCount()
+		{
+			List<CartItem> cart = HttpContext.Session.GetJson<List<CartItem>>("Cart") ?? new List<CartItem>();
 
-        public async Task<IActionResult> Add(int id)
+			int cartItemCount = cart.Sum(item => item.Quantity);
+
+			return Json(new { count = cartItemCount });
+		}
+
+
+		public async Task<IActionResult> Add(int id)
         {
             WinesModel wines = await _context.Wines.FindAsync(id);
 

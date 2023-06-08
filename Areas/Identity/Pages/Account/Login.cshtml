@@ -14,10 +14,11 @@
         </div>
         <section class="background">
             <form class="user_form bk_blur" id="account" method="post">
-            <div class="btn-outline-light btn backbtn" onclick="javascript:history.back()">
-                <a><</a>
+           <a> <div class="btn-outline-light btn backbtn" onclick="javascript:history.back()">
+                < 
             </div>
-                <h3>Login Here</h3>
+            </a>
+            <h3>Login Here</h3>
 			<hr/>
                 <div>
                 <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
@@ -36,9 +37,11 @@
                         @Html.DisplayNameFor(m => m.Input.RememberMe)
                     </label>
                 </div>
+            
                 <div>
                     <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-outline-light">Log in</button>
                 </div>
+            
 			    <div class="social">
           
 					<a id="forgot-password" asp-page="./ForgotPassword">
