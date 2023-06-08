@@ -182,3 +182,15 @@ button.accept-policy {
     font-size: 16px;
     resize: none;
 }
+
+.cartItemCount {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: red;
+    color: white;
+    padding: 4px 6px;
+    border-radius: 50%;
+    font-size: 12px;
+    line-height: 1;
+}
