@@ -1,6 +1,7 @@
 ﻿using CapstoneWine.Data;
 using CapstoneWine.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Reflection;
 
 namespace CapstoneWine.Controllers
 {
@@ -87,5 +88,20 @@ namespace CapstoneWine.Controllers
 			return View(allWine);
 		}
 
+		public IActionResult Price(int lowerVal, int upperVal)
+		{
+			var allWine = _context.Wines.ToList();
+			ViewData["LowerValue"] = lowerVal;
+			ViewData["UpperValue"] = upperVal;
+
+			//ViewData["CurrentFilter"] = priceSort;
+			var prices = from price in _context.Wines select price;
+
+			prices = prices.Where(p => p.Price >= lowerVal && p.Price <= upperVal);
+
+			return View(prices);
+		}
+
 	}
+
 }
