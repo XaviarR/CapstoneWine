@@ -11,8 +11,8 @@ namespace CapstoneWine.Models
         [DataType(DataType.Date)]
         public DateTime OrderDate { get; set; }
 
-        public string? UserID { get; set; }
-        [ForeignKey("UserID")]
+        public int CustomerId { get; set; }
+        [ForeignKey("CustomerId")]
         // public UserProfile userprofile { get; set; }
 
         public int WineID { get; set; }

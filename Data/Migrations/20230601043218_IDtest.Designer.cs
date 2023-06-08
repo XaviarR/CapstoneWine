@@ -4,6 +4,7 @@ using CapstoneWine.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CapstoneWine.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230601043218_IDtest")]
+    partial class IDtest
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,8 +40,10 @@ namespace CapstoneWine.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("IdentityKey")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IdentityUserId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
@@ -57,6 +62,8 @@ namespace CapstoneWine.Data.Migrations
 
                     b.HasKey("ID");
 
+                    b.HasIndex("IdentityUserId");
+
                     b.ToTable("CustomerModel");
                 });
 
@@ -67,9 +74,6 @@ namespace CapstoneWine.Data.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderID"));
-
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
 
                     b.Property<string>("DeliveryAdd")
                         .HasColumnType("nvarchar(max)");
@@ -94,6 +98,9 @@ namespace CapstoneWine.Data.Migrations
 
                     b.Property<decimal?>("TotalCost")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("UserID")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("WineID")
                         .HasColumnType("int");
@@ -369,6 +376,15 @@ namespace CapstoneWine.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("CapstoneWine.Models.CustomerModel", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "IdentityUser")
+                        .WithMany()
+                        .HasForeignKey("IdentityUserId");
+
+                    b.Navigation("IdentityUser");
                 });
 
             modelBuilder.Entity("CapstoneWine.Models.OrdersModel", b =>
