@@ -21,30 +21,24 @@ namespace CapstoneWine.Controllers
             _context = context;
         }
 
-        // GET: Orders
-        public async Task<IActionResult> Index(string searchString)
-        {
+		// GET: Orders
+		public async Task<IActionResult> Index(string searchString)
+		{
 			ViewData["CurrentFilter"] = searchString;
 
 			var orders = from wine in _context.Orders
-						select wine;
+						 select wine;
+
 			if (!String.IsNullOrEmpty(searchString))
 			{
-				orders = orders.Where(w => w.UserID.Contains(searchString));
-				return View(orders);
+				orders = orders.Where(w => w.CustomerId.ToString().Contains(searchString));
 			}
 
-			if (String.IsNullOrEmpty(searchString))
-			{
-				ViewData["CurrentFilter"] = "";
-			}
+			return View(await orders.ToListAsync());
+		}
 
-			var applicationDbContext = _context.Orders.Include(o => o.subscription).Include(o => o.wine);
-            return View(await applicationDbContext.ToListAsync());
-        }
-
-        // GET: Orders/Details/5
-        public async Task<IActionResult> Details(int? id)
+		// GET: Orders/Details/5
+		public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Orders == null)
             {
