@@ -33,7 +33,7 @@ namespace CapstoneWine.Areas.Services
 			var client = new SendGridClient(apiKey);
 			var msg = new SendGridMessage()
 			{
-				From = new EmailAddress("Xaviar.Rehu@techtorium.ac.nz"),
+				From = new EmailAddress("winez2023@outlook.com"),
 				Subject = subject,
 				PlainTextContent = message,
 				HtmlContent = message
