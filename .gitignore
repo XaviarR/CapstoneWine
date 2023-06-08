@@ -4,6 +4,7 @@
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
 APIFILE.cs
+**/_LoginPartial.cshtml
 
 # User-specific files
 *.rsuser

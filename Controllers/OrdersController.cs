@@ -61,7 +61,7 @@ namespace CapstoneWine.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("OrderID,OrderDate,UserID,WineID,SubID,Quantity,DeliveryAdd,DeliveryCharge,TotalCost,OrderStatus,RewardPoints")] OrdersModel order)
+        public async Task<IActionResult> Create([Bind("OrderID,OrderDate,CustomerId,WineID,SubID,Quantity,DeliveryAdd,DeliveryCharge,TotalCost,OrderStatus,RewardPoints")] OrdersModel order)
         {
             if (ModelState.IsValid)
             {
@@ -107,7 +107,7 @@ namespace CapstoneWine.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("OrderID,OrderDate,UserID,WineID,SubID,Quantity,DeliveryAdd,DeliveryCharge,TotalCost,OrderStatus,RewardPoints")] OrdersModel order)
+        public async Task<IActionResult> Edit(int id, [Bind("OrderID,OrderDate,CustomerId,WineID,SubID,Quantity,DeliveryAdd,DeliveryCharge,TotalCost,OrderStatus,RewardPoints")] OrdersModel order)
         {
             if (id != order.OrderID)
             {
