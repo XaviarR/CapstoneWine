@@ -20,9 +20,25 @@ namespace CapstoneWine.Controllers
         }
 
         // GET: CustomerModels
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            return _context.CustomerModel != null ?
+			ViewData["CurrentFilter"] = searchString;
+
+			var customers = from customer in _context.CustomerModel
+						select customer;
+
+			if (!String.IsNullOrEmpty(searchString))
+			{
+				customers = customers.Where(c => c.FirstName.Contains(searchString));
+				return View(customers);
+			}
+
+			if (String.IsNullOrEmpty(searchString))
+			{
+				ViewData["CurrentFilter"] = "";
+			}
+
+			return _context.CustomerModel != null ?
                         View(await _context.CustomerModel.ToListAsync()) :
                         Problem("Entity set 'ApplicationDbContext.CustomerModel'  is null.");
         }
@@ -56,11 +72,20 @@ namespace CapstoneWine.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,FirstName,LastName,StreetAddress,Suburb,City,PostCode,")] CustomerModel customerModel)
+        public async Task<IActionResult> Create([Bind("ID,FirstName,LastName,StreetAddress,Suburb,City,PostCode")] CustomerModel customerModel)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(customerModel);
+				int newCustomerID = 1;
+
+				if (_context.CustomerModel.Any())
+				{
+					newCustomerID = _context.CustomerModel.Max(c => c.ID) + 1;
+				}
+
+				customerModel.ID = newCustomerID;
+
+				_context.Add(customerModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
