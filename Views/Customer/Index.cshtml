@@ -1,15 +1,34 @@
 ﻿@model IEnumerable<CapstoneWine.Models.CustomerModel>
+<link rel="stylesheet" href="~/css/admin.css" />
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Customers";
 }
 
-<h1>Index</h1>
+<section class="top-sect">
+    <a class="table-title inactive" asp-controller="Orders" asp-action="Index">Orders</a>
+    <a class="table-title inactive" asp-controller="Subscriptions" asp-action="Index">Subscriptions</a>
+    <a class="table-title inactive" asp-controller="Wines" asp-action="Index">Wines</a>
+    <a class="table-title">Customers</a>
+</section>
+
+<form class="search-row" method="get" action="/Customer/Index">
+    <td>
+        <input class="search-bar" type="text" placeholder="Search for..." name="SearchString" value="@ViewData["CurrentFilter"]" aria-label="Search" aria-describedby="btnNavbarSearch" />
+    </td>
+    <td>
+        <input type="submit" value="Search" class="search-btn" />
+    </td>
+    @if (ViewData["CurrentFilter"] != "")
+    {
+        <a class="m-2" asp-action="Index">Clear search</a>
+    }
+</form>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table style="width: 100%">
     <thead>
         <tr>
             <th>
@@ -39,9 +58,9 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.IdentityKey)
-            </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdentityKey)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FirstName)
             </td>
