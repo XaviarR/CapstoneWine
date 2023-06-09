@@ -80,7 +80,7 @@
 				@*admin page -only accessible with proper credentials*@
 				@if (User.IsInRole("Admin"))
 				{
-					<a class="nav-branding" asp-area="" asp-controller="Admin" asp-action="Index">WINEZ</a>
+					<a class="nav-branding" asp-area="" asp-controller="Customer" asp-action="Index">WINEZ</a>
 				}
 				else
 				{

@@ -111,55 +111,18 @@ form {
     th {
         display: none;
     }
+
     td {
         display: grid;
         border: none;
     }
-        td:nth-child(1)::before {
-            content: 'Wine Name:';
-            font-weight: bold;
-            font-family: "Bebas Neue", sans-serif;
-            font-size: 1.46em;
-        }
-        td:nth-child(2)::before {
-            content: 'Image:';
-            font-weight: bold;
-            font-family: "Bebas Neue", sans-serif;
-            font-size: 1.46em;
-        }
 
-        td:nth-child(3)::before {
-            content: 'Price:';
+        td::before {
+            content: attr(data-cell);
             font-weight: bold;
-            font-family: "Bebas Neue", sans-serif;
-            font-size: 1.46em;
-        }
+            font-family: "Lato", sans-serif;
+            font-size: 1.26em;
+            text-transform: capitalize;
 
-        td:nth-child(4)::before {
-            content: 'Blurb:';
-            font-weight: bold;
-            font-family: "Bebas Neue", sans-serif;
-            font-size: 1.46em;
-        }
-
-        td:nth-child(5)::before {
-            content: 'Quantity:';
-            font-weight: bold;
-            font-family: "Bebas Neue", sans-serif;
-            font-size: 1.46em;
-        }
-
-        td:nth-child(6)::before {
-            content: 'Type:';
-            font-weight: bold;
-            font-family: "Bebas Neue", sans-serif;
-            font-size: 1.46em;
-        }
-
-        td:nth-child(7)::before {
-            content: 'Category:';
-            font-weight: bold;
-            font-family: "Bebas Neue", sans-serif;
-            font-size: 1.46em;
         }
 }
