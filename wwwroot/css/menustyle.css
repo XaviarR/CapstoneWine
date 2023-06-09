@@ -1,16 +1,13 @@
-﻿
-
-header {
+﻿header {
     background-color: #080710;
 }
 
-li{
+li {
     list-style: none;
 }
 
-a{
+a {
     text-decoration: none;
-   
 }
 
 .navbar {
@@ -31,13 +28,36 @@ a{
 }
 
 .nav-menu {
-    display: flex;
+    position: fixed;
+    left: -200%;
+    top: 70px;
     justify-content: space-evenly;
     align-items: center;
     z-index: 9;
+    gap: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: rgba(100,100,100,0.26);
+    backdrop-filter: blur(10px);
+    width: fit-content;
+    transition: 0.5s;
+    border: none;
+    border-radius: 0 19px 19px 0;
+    font-family: 'Gruppo', cursive;
 }
 
-.nav-branding{
+    .nav-menu.active {
+        left: 0;
+    }
+
+.menu-title {
+    text-align: left;
+    font-size: 3em;
+    padding-top: 10px
+}
+
+
+.nav-branding {
     font-size: 2rem;
     margin-right: 50px;
 }
@@ -45,6 +65,7 @@ a{
 .nav-cart img {
     height: 2.7rem;
 }
+
 .nav-cart {
     position: relative;
 }
@@ -62,17 +83,16 @@ a{
 }
 
 .nav-link {
-    transition: 0.7s ease;
+    transition: 0.2s ease;
     color: white;
-    font-size: 2vw;
-    
+    font-size: 1.8em;
 }
 
-.nav-link:hover{
-    color: white;
-}
+    .nav-link:hover {
+        color: mediumpurple;
+    }
 
-.hamburger{
+.hamburger {
     display: block;
     cursor: none
 }
@@ -87,11 +107,10 @@ a{
     background-color: white;
 }
 
-@media(min-width:10px) {
-    .hamburger {
-        display: block;
-        margin-left: 20px;
-    }
+.hamburger {
+    display: block;
+    margin-left: 20px;
+}
 
     .hamburger.active .bar:nth-child(2) {
         opacity: 0;
@@ -105,43 +124,19 @@ a{
         transform: translateY(-8px) rotate(-45deg);
     }
 
-    .nav-menu {
-        position: fixed;
-        left: -100%;
-        top: 70px;
-        gap: 0;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        flex-direction: column;
-        flex-basis: auto;
-        background-color: rgba(255,255,255,0.13);
-        backdrop-filter: blur(10px);
-        width: fit-content;
-        transition: 0.7s;
-        align-content: flex-end;
-        border: none;
-        border-radius: 19px;
-        font-family: 'Gruppo', cursive;
-    }
-    .otherMenu {
-        text-align: right;
-        align-self:flex-end;
-        margin-bottom: 2vh;
-        
-       
-        
-    }
-    .wine{
-        width: auto;
-        float:left;
-    }
 
-    .nav-item {
-        margin: 0px 16px;
-    }
 
-    .nav-menu.active {
-        left: 0;
-    }
+.otherMenu {
+    text-align: right;
+    align-self: flex-end;
+    margin-bottom: 2vh;
 }
 
+.wine {
+    width: auto;
+    float: left;
+}
+
+.nav-item {
+    margin: 0px 16px;
+}
