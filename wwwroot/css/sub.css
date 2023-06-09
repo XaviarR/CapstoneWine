@@ -124,10 +124,9 @@ p {
     }
 
 .cart-btn {
-    display: block;
+    display: grid;
+    place-items:center;
     background-color: var(--accent-color);
-    text-align: center;
-    vertical-align:central;
     color: white;
     height: 2.8em;
     width: 100%;
