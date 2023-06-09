@@ -21,11 +21,11 @@
 }
 
 footer {
-    position: absolute;
+    /*position: absolute;
     top: 100%;
     left: 0;
     width: 99vw;
-    padding-bottom: 50px;
+    padding-bottom: 50px;*/
 }
 
 section {
@@ -196,7 +196,6 @@ form td {
 /*==== FILTER STUFF ====*/
 
 .filter-menu {
-    justify-content: space-between;
     border-bottom: 3px solid var(--accent-color);
     font-family: 'bebas neue';
     position: sticky;
@@ -209,7 +208,7 @@ form td {
 .top-part {
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    /*width: 100%;*/
     padding-bottom: 10px;
     /*border-bottom: 2px solid lightgrey;*/
 }
@@ -230,7 +229,7 @@ form td {
 }
 
 .search-btn {
-    width: 100%;
+    /*width: 100%;*/
     border: none;
     border-radius: 5px;
     background-color: darkblue;
@@ -240,7 +239,7 @@ form td {
 
 .filter-sect {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: 0px;
     justify-content: center;
 }
