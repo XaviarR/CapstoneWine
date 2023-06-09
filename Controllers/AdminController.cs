@@ -25,7 +25,6 @@ namespace CapstoneWine.Controllers
             var subscriptions = await _context.Subscriptions.ToListAsync();
             var wines = await _context.Wines.ToListAsync();
             var orders = await _context.Orders
-                .Include(o => o.subscription)
                 .Include(o => o.wine)
                 .ToListAsync();
 
@@ -35,7 +34,7 @@ namespace CapstoneWine.Controllers
 
         public async Task<IActionResult> Orders()
         {
-            var applicationDbContext = _context.Orders.Include(o => o.subscription).Include(o => o.wine);
+            var applicationDbContext = _context.Orders.Include(o => o.wine);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -48,7 +47,6 @@ namespace CapstoneWine.Controllers
             }
 
             var ordersModel = await _context.Orders
-                .Include(o => o.subscription)
                 .Include(o => o.wine)
                 .FirstOrDefaultAsync(m => m.OrderID == id);
             if (ordersModel == null)
@@ -80,7 +78,6 @@ namespace CapstoneWine.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["SubID"] = new SelectList(_context.Subscriptions, "SubID", "SubID", ordersModel.SubID);
             ViewData["WineID"] = new SelectList(_context.Wines, "WineID", "WineID", ordersModel.WineID);
             return View(ordersModel);
         }
@@ -98,7 +95,6 @@ namespace CapstoneWine.Controllers
             {
                 return NotFound();
             }
-            ViewData["SubID"] = new SelectList(_context.Subscriptions, "SubID", "SubID", ordersModel.SubID);
             ViewData["WineID"] = new SelectList(_context.Wines, "WineID", "WineID", ordersModel.WineID);
             return View(ordersModel);
         }
@@ -135,7 +131,6 @@ namespace CapstoneWine.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["SubID"] = new SelectList(_context.Subscriptions, "SubID", "SubID", ordersModel.SubID);
             ViewData["WineID"] = new SelectList(_context.Wines, "WineID", "WineID", ordersModel.WineID);
             return View(ordersModel);
         }
@@ -149,7 +144,6 @@ namespace CapstoneWine.Controllers
             }
 
             var ordersModel = await _context.Orders
-                .Include(o => o.subscription)
                 .Include(o => o.wine)
                 .FirstOrDefaultAsync(m => m.OrderID == id);
             if (ordersModel == null)

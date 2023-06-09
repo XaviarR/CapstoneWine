@@ -26,7 +26,7 @@ namespace CapstoneWine.Controllers
         public async Task<IActionResult> Index()
         {
             //TODO: Review loading statement to load all orders of curent customer
-            var applicationDbContext = _context.Orders.Include(o => o.subscription).Include(o => o.wine);
+            var applicationDbContext = _context.Orders.Include(o => o.wine);
             return View(await applicationDbContext.ToListAsync());
         }
 
