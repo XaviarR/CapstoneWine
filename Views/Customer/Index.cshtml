@@ -32,7 +32,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ID)
+                @Html.DisplayNameFor(model => model.IdentityKey)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.FirstName)
@@ -58,9 +58,9 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ID)
-            </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdentityKey)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FirstName)
             </td>
