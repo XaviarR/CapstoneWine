@@ -9,91 +9,72 @@
 }
 
 body {
-    margin-top:70px;
+    margin-top: 70px;
     background-color: #080710;
     margin-bottom: 0px;
     cursor: none;
     min-height: 90vh;
     display: flex;
     flex-direction: column;
-    flex-wrap:wrap;
-    color:white;
+    flex-wrap: wrap;
+    color: white;
 }
-.p{
+
+.p {
     font-size: 24px;
     line-height: 22px;
 }
-.login_layout{
-    display:grid;
-    position:relative;
-    grid-template-rows:repeat(3, 1fr);
-}
-
-.details_layout {
-    display: grid;
-    position: relative;
-    grid-template-rows: .5fr 2fr;
-    min-height:fit-content;
-    margin-top:50px
-}
 
 .background {
-    width: 530px;
-    height: auto;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    top:50%;
+    width: 100%;
     margin-top: 20px;
+    display: flex;
+    justify-content: center;
 }
 
-    .background .shape {
-        height: 300px;
-        width: 300px;
-        position: absolute;
-        border-radius: 50%;
+.shape {
+    aspect-ratio: 1;
+    width: 20rem;
+    position: absolute;
+    border-radius: 50%;
+}
+    /*blue*/
+    .shape:first-child {
+        background: linear-gradient( #1845ad, #23a2f6 );
+        left: 20%;
+        top: -0px;
     }
-/*blue*/
-.shape:first-child {
-    background: linear-gradient( #1845ad, #23a2f6 );
-    left: -120px;
-    top: -0px;
-}
-/*Orange*/
-.shape:last-child {
-    background: linear-gradient( to right, #ff512f, #f09819 );
-    right: -170px;
-    bottom: -0px;
-}
+    /*Orange*/
+    .shape:nth-child(2) {
+        background: linear-gradient( to right, #ff512f, #f09819 );
+        right: 20%;
+        bottom: -0px;
+    }
 /*user_form+ bk_blur to create login form style*/
 .bk_blur {
     height: auto;
-    min-width: 500px;
+    width: 80%;
+    max-width: 500px;
     background-color: rgba(255,255,255,0.13);
     border-radius: 10px;
     backdrop-filter: blur(10px);
     border: 2px solid rgba(255,255,255,0.1);
     box-shadow: 0 0 40px rgba(8,7,16,0.6);
     padding: 30px 35px;
-    margin-bottom: 40px;
 }
 
 .user_form {
-    position: absolute;
-    transform: translate(-50%,-50%);
-    top: 50%;
-    left: 50%;
     padding: 30px 35px;
     align-content: center;
-    }
+}
 
-    form * {
-        font-family: 'Poppins',sans-serif;
-        color: #fff;
-        letter-spacing: 0.5px;
-        outline: none;
-        border: none;
-    }
+form * {
+    font-family: 'Poppins',sans-serif;
+    color: #fff;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+}
 
 .exit {
     background-color: transparent;
@@ -103,9 +84,9 @@ body {
     width: auto;
     font-family: 'Gruppo', cursive;
     color: black;
-    text-decoration:none;
-   
+    text-decoration: none;
 }
+
 .h3 {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 4rem;
@@ -115,9 +96,10 @@ body {
     margin-bottom: 20px;
 }
 
-h1{   color: white;
-      text-align:center;
-      margin:40px 0;
+h1 {
+    color: white;
+    text-align: center;
+    margin: 40px 0;
 }
 
 .label {
@@ -139,7 +121,8 @@ h1{   color: white;
     font-size: 20px;
     font-weight: 300;
 }
-textarea{
+
+textarea {
     width: 500px;
     height: 250px;
 }
@@ -163,23 +146,22 @@ textarea{
 .social {
     margin-top: 30px;
     display: flex;
+    justify-content: center;
 }
 
     .social div {
-        background: red;
-        width: 150px;
+        flex-grow: 1;
         border-radius: 3px;
-        padding: 25px 10px 10px 5px;
+        padding: 15px;
         background-color: rgba(255,255,255,0.27);
         color: #eaf0fb;
         text-align: center;
         margin: 5px;
-        vertical-align:central;
+        vertical-align: central;
     }
 
         .social div:hover {
             background-color: rgba(255,255,255,0.47);
-           
         }
 
     .social .fb {
@@ -190,10 +172,10 @@ textarea{
         margin-right: 4px;
     }
 
-.backbtn{
+.backbtn {
     margin-top: 5px;
     border-radius: 50px;
-    -webkit-text-stroke:thick;
+    -webkit-text-stroke: thick;
 }
 
 /*about/contact css*/

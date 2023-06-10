@@ -6,11 +6,14 @@
 @if (SignInManager.IsSignedIn(User))
 {
     <li class="nav-item">
-		<p class="nav-link">Welcome</p>
-        <p class="nav-link" asp-area="Idenitity">@User.Identity?.Name!</p>
+        <a  class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
     </li>
-    <li class="nav-item ">
-            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home  <img src="~/Images/home.png"></a>
+        <li class="nav-item">
+            <a class="nav-link" asp-area="" asp-controller="Customer" asp-action="Index">My Account</a>
+        </li>
+    <!--Nav bar-->
+        <li class="nav-item ">
+            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
         </li>
     <li class="nav-item">
             <a class="nav-link" asp-area="" asp-controller="Shop" asp-action="Index">Shop</a>
@@ -23,15 +26,11 @@
             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About | Contact</a>
         </li>
 
-    <li class="nav-item">
-        <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"> My Profile</a>
-       @* <a  class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>*@
-    </li>
-        
+
     <li class="nav-item">
 			<form class="exit" asp-area="Identity" asp-page="/Account/Logout"
 				  asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                <button type="submit" class="w-100 btn btn-md btn-outline-light" style="font-family:'Gruppo', cursive">Logout</button>
+        <button type="submit" class=" btn btn-outline-light btn-lg">Logout</button>
         </form>
     </li>
     }

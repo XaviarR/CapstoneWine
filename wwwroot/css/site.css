@@ -2,6 +2,7 @@
     --bg-color: #080710;
     --primary-text-color: white;
     --accent-color: rgba(0, 5, 99, 1);
+    --header-size: 70px;
 }
 
 html {
@@ -21,6 +22,10 @@ html {
 html {
     position: relative;
     background-color: #080710;
+}
+
+body {
+    margin-top: var(--header-size); /*offsets the body by the height of navbar for all pages*/
 }
 
 .body {
@@ -49,9 +54,9 @@ html {
 }
 
 footer{
-    margin-top:auto;
+    /*margin-top:auto;*/
     position:absolute;
-    bottom: 0;
+    top: 100%;
     width:99vw;
     height:2.5rem;
 }

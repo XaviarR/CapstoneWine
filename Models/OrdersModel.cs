@@ -11,17 +11,13 @@ namespace CapstoneWine.Models
         [DataType(DataType.Date)]
         public DateTime OrderDate { get; set; }
 
-        public string? UserID { get; set; }
-        [ForeignKey("UserID")]
+        public int CustomerId { get; set; }
+        [ForeignKey("CustomerId")]
         // public UserProfile userprofile { get; set; }
 
         public int WineID { get; set; }
         [ForeignKey("WineID")]
         public WinesModel? wine { get; set; }
-
-        public int SubID { get; set; }
-        [ForeignKey("SubID")]
-        public SubscriptionsModel? subscription { get; set; }
 
         public int Quantity { get; set; }
         public string? DeliveryAdd { get; set; }

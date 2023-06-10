@@ -11,6 +11,8 @@
 	<a class="table-title inactive" asp-controller="Orders" asp-action="Index">Orders</a>
 	<a class="table-title">Subscriptions</a>
 	<a class="table-title inactive" asp-controller="Wines" asp-action="Index">Wines</a>
+	<a class="table-title inactive" asp-controller="Customer" asp-action="Index">Customers</a>
+
 </section>
 
 <form class="search-row" method="get" action="/Subscriptions/Index">
@@ -33,13 +35,13 @@
 <table style="width: 100%;">
 	<thead>
 		<tr>
-			<th>Subscription Name</th>
-			<th>Type</th>
-			<th>Frequency</th>
-			<th>No. Of Bottles</th>
-			<th>Reward Points</th>
-			<th>Bottle Price</th>
-			<th>Price Per Delivery</th>
+			<th data-cell="subscription name">Subscription Name</th>
+			<th data-cell="type">Type</th>
+			<th data-cell="frequency">Frequency</th>
+			<th data-cell="no. of bottles">No. Of Bottles</th>
+			<th data-cell="reward points">Reward Points</th>
+			<th data-cell="bottle price">Bottle Price</th>
+			<th data-cell="price per delivery">Price Per Delivery</th>
 			<th></th>
 		</tr>
 	</thead>
@@ -47,24 +49,24 @@
 		@foreach (var item in Model)
 		{
 			<tr>
-				<td>
+				<td data-cell="subscription name">
 					@Html.DisplayFor(modelItem => item.SubName)
 				</td>
-				<td>
+				<td data-cell="type">
 					@Html.DisplayFor(modelItem => item.Type)
 				</td>
-				<td>
+				<td data-cell="frequency">
 					@Html.DisplayFor(modelItem => item.Frequency)
 				</td>
-				<td>
+				<td data-cell="no. of bottles">
 					@Html.DisplayFor(modelItem => item.NumOfBottles)
 				</td>
-				<td>
+				<td data-cell="reward points">
 					@Html.DisplayFor(modelItem => item.RewardPoints)
-				<td>
+				<td data-cell="bottle price">
 					@Html.DisplayFor(modelItem => item.BtlPrice)
 				</td>
-				<td>
+				<td data-cell="price per delivery">
 					@Html.DisplayFor(modelItem => item.PricePerDel)
 				</td>
 				<td>

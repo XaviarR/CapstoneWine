@@ -21,30 +21,24 @@ namespace CapstoneWine.Controllers
             _context = context;
         }
 
-        // GET: Orders
-        public async Task<IActionResult> Index(string searchString)
-        {
+		// GET: Orders
+		public async Task<IActionResult> Index(string searchString)
+		{
 			ViewData["CurrentFilter"] = searchString;
 
 			var orders = from wine in _context.Orders
-						select wine;
+						 select wine;
+
 			if (!String.IsNullOrEmpty(searchString))
 			{
-				orders = orders.Where(w => w.UserID.Contains(searchString));
-				return View(orders);
+				orders = orders.Where(w => w.CustomerId.ToString().Contains(searchString));
 			}
 
-			if (String.IsNullOrEmpty(searchString))
-			{
-				ViewData["CurrentFilter"] = "";
-			}
+			return View(await orders.ToListAsync());
+		}
 
-			var applicationDbContext = _context.Orders.Include(o => o.subscription).Include(o => o.wine);
-            return View(await applicationDbContext.ToListAsync());
-        }
-
-        // GET: Orders/Details/5
-        public async Task<IActionResult> Details(int? id)
+		// GET: Orders/Details/5
+		public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Orders == null)
             {
@@ -52,7 +46,6 @@ namespace CapstoneWine.Controllers
             }
 
             var order = await _context.Orders
-                .Include(o => o.subscription)
                 .Include(o => o.wine)
                 .FirstOrDefaultAsync(m => m.OrderID == id);
             if (order == null)
@@ -76,7 +69,7 @@ namespace CapstoneWine.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("OrderID,OrderDate,UserID,WineID,SubID,Quantity,DeliveryAdd,DeliveryCharge,TotalCost,OrderStatus,RewardPoints")] OrdersModel order)
+        public async Task<IActionResult> Create([Bind("OrderID,OrderDate,CustomerId,WineID,SubID,Quantity,DeliveryAdd,DeliveryCharge,TotalCost,OrderStatus,RewardPoints")] OrdersModel order)
         {
             if (ModelState.IsValid)
             {
@@ -92,7 +85,6 @@ namespace CapstoneWine.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            ViewData["SubID"] = new SelectList(_context.Subscriptions, "SubID", "SubID", order.SubID);
             ViewData["WineID"] = new SelectList(_context.Wines, "WineID", "WineID", order.WineID);
             return View(order);
         }
@@ -112,7 +104,6 @@ namespace CapstoneWine.Controllers
             {
                 return NotFound();
             }
-            ViewData["SubID"] = new SelectList(_context.Subscriptions, "SubID", "SubID", order.SubID);
             ViewData["WineID"] = new SelectList(_context.Wines, "WineID", "WineID", order.WineID);
             return View(order);
         }
@@ -122,7 +113,7 @@ namespace CapstoneWine.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("OrderID,OrderDate,UserID,WineID,SubID,Quantity,DeliveryAdd,DeliveryCharge,TotalCost,OrderStatus,RewardPoints")] OrdersModel order)
+        public async Task<IActionResult> Edit(int id, [Bind("OrderID,OrderDate,CustomerId,WineID,SubID,Quantity,DeliveryAdd,DeliveryCharge,TotalCost,OrderStatus,RewardPoints")] OrdersModel order)
         {
             if (id != order.OrderID)
             {
@@ -149,7 +140,6 @@ namespace CapstoneWine.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["SubID"] = new SelectList(_context.Subscriptions, "SubID", "SubID", order.SubID);
             ViewData["WineID"] = new SelectList(_context.Wines, "WineID", "WineID", order.WineID);
             return View(order);
         }
@@ -163,7 +153,6 @@ namespace CapstoneWine.Controllers
             }
 
             var order = await _context.Orders
-                .Include(o => o.subscription)
                 .Include(o => o.wine)
                 .FirstOrDefaultAsync(m => m.OrderID == id);
             if (order == null)

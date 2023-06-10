@@ -5,11 +5,17 @@
 
 
 @{
-	ViewData["Title"] = "Search " + "'" + @ViewData["CurrentFilter"] + "'";
+	ViewData["Title"] = "Shop Range";
 }
 
-
-<h1 class="title">Search results for "@ViewData["CurrentFilter"]"</h1>
+@if (ViewData["UpperValue"].ToString() == "100")
+{
+	<h1 class="title">Our $@ViewData["LowerValue"]+ Range</h1>
+}
+else
+{
+	<h1 class="title">Our $@ViewData["LowerValue"] - $@ViewData["UpperValue"] Range</h1>
+}
 <a class="back-text" asp-controller="Shop" asp-action="Index">Back to shop</a>
 
 <div class="shop-content">

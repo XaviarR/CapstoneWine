@@ -247,6 +247,7 @@ namespace CapstoneWine.Models
                         RewardPoints = 120,
                     }
                     );
+                /*
                 if (context.Orders.Any())
                 {
                     return; // DB has been seeded
@@ -255,7 +256,7 @@ namespace CapstoneWine.Models
                         new OrdersModel
                         {
                             OrderDate = DateTime.Now,
-                            UserID = "0f1e1c11-6b01-48fc-b440-57a5b9e65fbb",
+                            CustomerId = "0f1e1c11-6b01-48fc-b440-57a5b9e65fbb",
                             WineID = 1,
                             SubID = 1,
                             Quantity = 10,
@@ -268,7 +269,7 @@ namespace CapstoneWine.Models
                         new OrdersModel
                         {
                             OrderDate = DateTime.Now,
-                            UserID = "4f761d70-f797-4e90-95d7-cb0e6c39b4d8",
+                            CustomerId = "4f761d70-f797-4e90-95d7-cb0e6c39b4d8",
                             WineID = 2,
                             SubID = 3,
                             Quantity = 15,
@@ -281,7 +282,7 @@ namespace CapstoneWine.Models
                         new OrdersModel
                         {
                             OrderDate = DateTime.Now,
-                            UserID = "b495ec40-e4c6-43da-a1de-00e22428ada0",
+                            CustomerId = "b495ec40-e4c6-43da-a1de-00e22428ada0",
                             WineID = 4,
                             SubID = 3,
                             Quantity = 7,
@@ -294,7 +295,7 @@ namespace CapstoneWine.Models
                         new OrdersModel
                         {
                             OrderDate = DateTime.Now,
-                            UserID = "9d804031-7b76-47af-8266-4d4c28e614a6",
+                            CustomerId = "9d804031-7b76-47af-8266-4d4c28e614a6",
                             WineID = 1,
                             SubID = 2,
                             Quantity = 8,
@@ -307,7 +308,7 @@ namespace CapstoneWine.Models
                         new OrdersModel
                         {
                             OrderDate = DateTime.Now,
-                            UserID = "3b4d2e82-fdb8-4fc0-9a2b-98000c45b49c",
+                            CustomerId = "3b4d2e82-fdb8-4fc0-9a2b-98000c45b49c",
                             WineID = 4,
                             SubID = 1,
                             Quantity = 5,
@@ -320,7 +321,7 @@ namespace CapstoneWine.Models
                         new OrdersModel
                         {
                             OrderDate = DateTime.Now,
-                            UserID = "b495ec40-e4c6-43da-a1de-00e22428ada0",
+                            CustomerId = "b495ec40-e4c6-43da-a1de-00e22428ada0",
                             WineID = 2,
                             SubID = 1,
                             Quantity = 11,
@@ -333,7 +334,7 @@ namespace CapstoneWine.Models
                         new OrdersModel
                         {
                             OrderDate = DateTime.Now,
-                            UserID = "2394f4f1-c073-49ab-881a-9ab1d19eb493",
+                            CustomerId = "2394f4f1-c073-49ab-881a-9ab1d19eb493",
                             WineID = 3,
                             SubID = 2,
                             Quantity = 6,
@@ -346,7 +347,7 @@ namespace CapstoneWine.Models
                         new OrdersModel
                         {
                             OrderDate = DateTime.Now,
-                            UserID = "2394f4f1-c073-49ab-881a-9ab1d19eb493",
+                            CustomerId = "2394f4f1-c073-49ab-881a-9ab1d19eb493",
                             WineID = 1,
                             SubID = 3,
                             Quantity = 14,
@@ -359,7 +360,7 @@ namespace CapstoneWine.Models
                         new OrdersModel
                         {
                             OrderDate = DateTime.Now,
-                            UserID = "5767c35c-a81d-4398-a014-16db4a6eecbe",
+                            CustomerId = "5767c35c-a81d-4398-a014-16db4a6eecbe",
                             WineID = 4,
                             SubID = 3,
                             Quantity = 14,
@@ -372,7 +373,7 @@ namespace CapstoneWine.Models
                         new OrdersModel
                         {
                             OrderDate = DateTime.Now,
-                            UserID = "2394f4f1-c073-49ab-881a-9ab1d19eb493",
+                            CustomerId = "2394f4f1-c073-49ab-881a-9ab1d19eb493",
                             WineID = 4,
                             SubID = 2,
                             Quantity = 14,
@@ -385,7 +386,7 @@ namespace CapstoneWine.Models
                         new OrdersModel
                         {
                             OrderDate = DateTime.Now,
-                            UserID = "9d804031-7b76-47af-8266-4d4c28e614a6",
+                            CustomerId = "9d804031-7b76-47af-8266-4d4c28e614a6",
                             WineID = 2,
                             SubID = 2,
                             Quantity = 3,
@@ -395,7 +396,7 @@ namespace CapstoneWine.Models
                             OrderStatus = "Pending",
                             RewardPoints = 13376
                         }
-                        ); ;
+                        );*/ 
                 context.SaveChanges();
             }
         }

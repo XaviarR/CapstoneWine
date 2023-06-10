@@ -4,74 +4,77 @@
 
 
 @{
-    ViewData["Title"] = "Wines";
+	ViewData["Title"] = "Wines";
 }
 
 <section class="top-sect">
-    <a class="table-title inactive" asp-controller="Orders" asp-action="Index">Orders</a>
-    <a class="table-title inactive" asp-controller="Subscriptions" asp-action="Index">Subscriptions</a>
-    <a class="table-title">Wines</a>
+	<a class="table-title inactive" asp-controller="Orders" asp-action="Index">Orders</a>
+	<a class="table-title inactive" asp-controller="Subscriptions" asp-action="Index">Subscriptions</a>
+	<a class="table-title">Wines</a>
+	<a class="table-title inactive" asp-controller="Customer" asp-action="Index">Customers</a>
+
 </section>
 
 
 <form class="search-row" method="get" action="/Wines/Index">
-    <td>
-        <input class="search-bar" type="text" placeholder="Search for..." name="SearchString" value="@ViewData["CurrentFilter"]" aria-label="Search" aria-describedby="btnNavbarSearch" />
-    </td>
-    <td>
-        <input type="submit" value="Search" class="search-btn" />
-    </td>
-    @if (ViewData["CurrentFilter"] != "")
-    {
-        <a class="m-2" asp-action="Index">Clear search</a>
-    }
+	<td>
+		<input class="search-bar" type="text" placeholder="Search for..." name="SearchString" value="@ViewData["CurrentFilter"]" aria-label="Search" aria-describedby="btnNavbarSearch" />
+	</td>
+	<td>
+		<input type="submit" value="Search" class="search-btn" />
+	</td>
+	@if (ViewData["CurrentFilter"] != "")
+	{
+		<a class="m-2" asp-action="Index">Clear search</a>
+	}
 </form>
 <p>
-    <a asp-action="Create">Create New</a>
+	<a asp-action="Create">Create New</a>
 </p>
 <table class="wines-table">
-    <thead>
-        <tr>
-            <th>Wine Name</th>
-            <th>Image</th>
-            <th>Price</th>
-            <th>Blurb</th>
-            <th>Quantity</th>
-            <th>Type</th>
-            <th>Category</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.WineName)
-            </td>
-            <td>
-                <img class="img" src="@Html.DisplayFor(modelItem => item.Image)" />
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Blurb)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Type)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.WineID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.WineID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.WineID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
+	<thead>
+		<tr>
+			<th data-cell="wine name">Wine Name</th>
+			<th data-cell="image">Image</th>
+			<th data-cell="price">Price</th>
+			<th data-cell="blurb">Blurb</th>
+			<th data-cell="quantity">Quantity</th>
+			<th data-cell="type">Type</th>
+			<th data-cell="category">Category</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td data-cell="wine name">
+					@Html.DisplayFor(modelItem => item.WineName)
+				</td>
+				<td data-cell="image">
+					<img class="img" src="@Html.DisplayFor(modelItem => item.Image)" />
+				</td>
+				<td data-cell="price">
+					@Html.DisplayFor(modelItem => item.Price)
+				</td>
+				<td data-cell="blurb">
+					@Html.DisplayFor(modelItem => item.Blurb)
+				</td>
+				<td data-cell="quantity">
+					@Html.DisplayFor(modelItem => item.Quantity)
+				</td>
+				<td data-cell="type">
+					@Html.DisplayFor(modelItem => item.Type)
+				</td>
+				<td data-cell="category">
+					@Html.DisplayFor(modelItem => item.Category)
+				</td>
+				<td>
+					<a asp-action="Edit" asp-route-id="@item.WineID">Edit</a> |
+					<a asp-action="Details" asp-route-id="@item.WineID">Details</a> |
+					<a asp-action="Delete" asp-route-id="@item.WineID">Delete</a>
+				</td>
+			</tr>
+		}
+	</tbody>
 </table>
