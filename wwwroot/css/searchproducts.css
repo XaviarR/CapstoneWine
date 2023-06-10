@@ -19,6 +19,7 @@ footer {
     color: black;
     margin: 20px;
 }
+
 .navbar {
     background-color: #080710;
 }
@@ -92,6 +93,35 @@ footer {
     .blurb::-webkit-scrollbar {
         display: none;
     }
+
+@media (max-width: 450px) {
+    .product-box {
+        height: auto;
+        grid-template-columns: auto;
+        grid-template-rows: auto;
+    }
+    .img {
+        width: 100px;
+        height: 200px;
+    }
+    .price::before {
+        content: 'Price: ';
+        font-weight: bold;
+    }
+    .quantity::before {
+        content: 'Quantity: ';
+        font-weight: bold;
+    }
+    .product-box > * {
+        grid-area:auto;
+    }
+    .blurb {
+        height: auto;
+    }
+    .cart {
+        grid-row-start: 5; 
+    }
+}
 
 .product-title {
     font-family: 'Bebas Neue';
