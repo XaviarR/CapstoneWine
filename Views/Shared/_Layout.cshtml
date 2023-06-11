@@ -33,6 +33,10 @@
 			</div>
 			@*items in the hamburger*@
 			<section class="nav-menu navbar-nav flex-grow">
+				@if (ViewData["ThemeOn"] == "true")
+				{
+					<i class="theme-icon theme-toggle-btn"><img src="~/Images/brightness.png"/></i>
+				}
 				<ul class="wine">
 					<li class="nav-item">
 						<h1 class="boldTitle menu-title">Wines</h1>

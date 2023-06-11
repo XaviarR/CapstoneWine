@@ -164,3 +164,15 @@ a {
         text-align: unset;
     }
 }
+
+.theme-icon {
+    position: absolute;
+    right: 0;
+    margin: 15px;
+    aspect-ratio: 1;
+    width: 1.84rem;
+}
+.theme-icon img {
+    width: 100%;
+    object-fit: contain;
+}
