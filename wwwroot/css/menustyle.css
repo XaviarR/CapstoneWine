@@ -44,7 +44,6 @@ a {
 .nav-cart img {
     height: 2.7rem;
 }
-
 .nav-cart {
     position: relative;
 }
@@ -62,16 +61,17 @@ a {
 }
 
 .nav-link {
-    transition: 0.2s ease;
+    transition: 0.7s ease;
     color: white;
-    font-size: 1.8em;
+    font-size: 2vw;
+    
 }
 
-    .nav-link:hover {
-        color: mediumpurple;
-    }
+.nav-link:hover{
+    color: white;
+}
 
-.hamburger {
+.hamburger{
     display: block;
     cursor: none
 }

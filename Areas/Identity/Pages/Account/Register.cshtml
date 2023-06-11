@@ -13,27 +13,35 @@
 	</div>
 <div class="background">
 	
-		<form class="user_form bk_blur"id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-			<a><div class="btn-outline-light btn backbtn" onclick="javascript:history.back()">
+		<form style="width:45vw" class="user_form bk_blur" id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+			<a>
+			<div class="btn-outline-light btn backbtn" onclick="javascript:history.back()">
 			<
 			</div>
 			</a>
-			<h3>Sign Up</h3>
+			<h3>Register Here</h3>
 			<hr />
 			<div>
 			<div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
 				<label class="label" asp-for="Input.Email">Email</label>
 				<input asp-for="Input.Email" class="input" autocomplete="username" aria-required="true" placeholder="name@example.com" />
 				<span asp-validation-for="Input.Email" class="text-danger"></span>
-
-				<label class="label" asp-for="Input.FirstName">FirstName</label>
-				<input asp-for="Input.FirstName" class="input"  aria-required="true" placeholder="FirstName" />
-				<span asp-validation-for="Input.FirstName" class="text-danger"></span>
-
-				<label class="label" asp-for="Input.LastName">LastName</label>
-				<input asp-for="Input.LastName" class="input"  aria-required="true" placeholder="LastName" />
-				<span asp-validation-for="Input.LastName" class="text-danger"></span>
-
+				<table style="width:100%">
+					<tr>
+						<label class="label">Enter Name</label>
+					</tr>
+					<tr>
+						<td>
+							<input asp-for="Input.FirstName" class="input" aria-required="true" placeholder="First Name" />
+							<span asp-validation-for="Input.FirstName" class="text-danger"></span>
+						</td>
+						<td>
+							<input asp-for="Input.LastName" class="input" aria-required="true" placeholder="Last Name" />
+							<span asp-validation-for="Input.LastName" class="text-danger"></span>
+						</td>
+					</tr>
+				</table>
+			
 				<label class="label" asp-for="Input.StreetAddress">StreetAddress</label>
 				<input asp-for="Input.StreetAddress" class="input"  aria-required="true" placeholder="StreetAddress" />
 				<span asp-validation-for="Input.StreetAddress" class="text-danger"></span>
@@ -49,14 +57,21 @@
 				<label class="label" asp-for="Input.PostCode">PostCode</label>
 				<input asp-for="Input.PostCode" class="input" aria-required="true" placeholder="PostCode" />
 					<span asp-validation-for="Input.PostCode" class="text-danger"></span> -->
-
-				<label class="label" asp-for="Input.Password">Password</label>
-				<input asp-for="Input.Password" class="input" autocomplete="new-password" aria-required="true" placeholder="password" />
-				<span asp-validation-for="Input.Password" class="text-danger"></span>
-
-				<label class="label" asp-for="Input.ConfirmPassword">Confirm Password</label>
-				<input asp-for="Input.ConfirmPassword" class="input" autocomplete="new-password" aria-required="true" placeholder="password" />
-			   <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+				<table style="width:100%">
+					<tr>
+						<label class="label">Set your Password</label>
+					</tr>
+					<tr>
+						<td>
+							<input asp-for="Input.Password" class="input" autocomplete="new-password" aria-required="true" placeholder="Enter password" />
+							<span asp-validation-for="Input.Password" class="text-danger"></span>
+						</td>
+						<td>
+							<input asp-for="Input.ConfirmPassword" class="input" autocomplete="new-password" aria-required="true" placeholder="Confirm password" />
+							<span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+						</td>
+					</tr>
+				</table>
 			</div>
 			<div style="margin:25px 0">
 				<button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-outline-light">Register</button>
