@@ -124,18 +124,37 @@ a {
         transform: translateY(-8px) rotate(-45deg);
     }
 
-
-
-.otherMenu {
-    text-align: right;
-    align-self: flex-end;
-    margin-bottom: 2vh;
-}
-
-.wine {
-    width: auto;
-    float: left;
-}
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        gap: 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        flex-direction: column;
+        flex-basis: auto;
+        /*background-color: rgba(255,255,255,0.13);*/
+        background-color: rgba(13, 110, 253, 0.13);
+        backdrop-filter: blur(10px);
+        width: fit-content;
+        transition: 0.7s;
+        align-content: flex-end;
+        border: none;
+        border-radius: 19px;
+        font-family: 'Gruppo', cursive;
+    }
+    .otherMenu {
+        text-align: right;
+        align-self:flex-end;
+        margin-bottom: 2vh;
+        
+       
+        
+    }
+    .wine{
+        width: auto;
+        float:left;
+    }
 
 .nav-item {
     margin: 0px 16px;

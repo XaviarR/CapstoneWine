@@ -1,7 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
-
+<!--nav bar logged in view-->
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
 {
@@ -15,14 +15,15 @@
         <li class="nav-item ">
             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About|Contact</a>
-        </li>
-        <li class="nav-item">
+    <li class="nav-item">
             <a class="nav-link" asp-area="" asp-controller="Shop" asp-action="Index">Shop</a>
         </li>
-        <li class="nav-item">
+    <li class="nav-item">
             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Subscription">Subscription</a>
+        </li>
+
+    <li class="nav-item">
+            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About | Contact</a>
         </li>
 
 
@@ -32,24 +33,24 @@
         <button type="submit" class=" btn btn-outline-light btn-lg">Logout</button>
         </form>
     </li>
-}
+    }
 else
-{   <li class="nav-item">
+    {
+    <li class="nav-item "> 
+        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home  <img src="~/Images/home.png"> </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" asp-area="" asp-controller="Shop" asp-action="Index">Shop</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Subscription">Subscription</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About | Contact</a>
+    </li>
+    <li class="nav-item">
         <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Login">Login</a>
     </li>
-     <li class="nav-item ">
-            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About|Contact</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" asp-area="" asp-controller="Shop" asp-action="Index">Shop</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Subscription">Subscription</a>
-        </li>
-
     <li class="nav-item">
         <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Register">Register</a>
     </li>
