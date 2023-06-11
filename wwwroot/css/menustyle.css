@@ -114,7 +114,8 @@ a{
         grid-template-columns: 1fr 1fr;
         flex-direction: column;
         flex-basis: auto;
-        background-color: rgba(255,255,255,0.13);
+        /*background-color: rgba(255,255,255,0.13);*/
+        background-color: rgba(13, 110, 253, 0.13);
         backdrop-filter: blur(10px);
         width: fit-content;
         transition: 0.7s;
