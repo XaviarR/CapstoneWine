@@ -9,8 +9,7 @@ li{
 }
 
 a{
-    text-decoration: none;
-   
+    text-decoration: none; 
 }
 
 .navbar {
@@ -35,6 +34,7 @@ a{
     justify-content: space-evenly;
     align-items: center;
     z-index: 9;
+    width:50vw;
 }
 
 .nav-branding{
@@ -128,9 +128,6 @@ a{
         text-align: right;
         align-self:flex-end;
         margin-bottom: 2vh;
-        
-       
-        
     }
     .wine{
         width: auto;
