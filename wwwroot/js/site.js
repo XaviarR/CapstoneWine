@@ -49,3 +49,13 @@ hamburger.addEventListener("click", () => {
     navMenu.classList.toggle("active");
 })
 
+document.addEventListener("click", (event) => {
+    const isClickInsideNav = navMenu.contains(event.target);
+    const isClickOnHamburger = hamburger.contains(event.target);
+
+    if (!isClickInsideNav && !isClickOnHamburger) {
+        hamburger.classList.remove("active");
+        navMenu.classList.remove("active");
+    }
+});
+
