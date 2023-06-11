@@ -65,7 +65,7 @@ p {
 
 .sub-cards-sec {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
     place-items: center;
     gap: 1em;
 }
@@ -73,7 +73,6 @@ p {
 .card {
     display: grid;
     place-items: center;
-    width: 80vw;
     max-width: 21.875rem;
     height: 28.125rem;
     overflow: hidden;

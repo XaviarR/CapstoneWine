@@ -25,7 +25,7 @@
 	</p>
 </section>
 
-<div class="mySection">
+<section class="sub-cards-sec">
 	@foreach (var item in Model)
 	{
 		<div class="card-column">
@@ -42,7 +42,7 @@
 					</div>
 				</div>
 			</article>
-			<a class="btn btn-secondary btn-sm" asp-controller="Home" asp-action="Add" asp-route-id="@item.SubID">Subscribe</a>
+			<a class="cart-btn" asp-controller="Home" asp-action="Add" asp-route-id="@item.SubID">Subscribe</a>
 		</div>
 	}
-</sections>
+</section>

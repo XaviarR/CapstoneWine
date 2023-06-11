@@ -27,28 +27,7 @@ a {
     justify-content: center;
 }
 
-.nav-menu {
-    position: fixed;
-    left: -200%;
-    top: 70px;
-    justify-content: space-evenly;
-    align-items: center;
-    z-index: 9;
-    gap: 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    background-color: rgba(100,100,100,0.26);
-    backdrop-filter: blur(10px);
-    width: fit-content;
-    transition: 0.5s;
-    border: none;
-    border-radius: 0 19px 19px 0;
-    font-family: 'Gruppo', cursive;
-}
 
-    .nav-menu.active {
-        left: 0;
-    }
 
 .menu-title {
     text-align: left;
@@ -124,38 +103,64 @@ a {
         transform: translateY(-8px) rotate(-45deg);
     }
 
-    .nav-menu {
-        position: fixed;
-        left: -100%;
-        top: 70px;
-        gap: 0;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        flex-direction: column;
-        flex-basis: auto;
-        /*background-color: rgba(255,255,255,0.13);*/
-        background-color: rgba(13, 110, 253, 0.13);
-        backdrop-filter: blur(10px);
-        width: fit-content;
-        transition: 0.7s;
-        align-content: flex-end;
-        border: none;
-        border-radius: 19px;
-        font-family: 'Gruppo', cursive;
+.nav-menu {
+    position: fixed;
+    left: -200%;
+    top: 70px;
+    gap: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    flex-direction: column;
+    flex-basis: auto;
+    /*background-color: rgba(255,255,255,0.13);*/
+    background-color: rgba(13, 110, 253, 0.13);
+    backdrop-filter: blur(10px);
+    width: fit-content;
+    transition: 0.7s;
+    align-content: flex-end;
+    border: none;
+    border-radius: 0 19px 19px 0;
+    font-family: 'Gruppo', cursive;
+}
+
+    .nav-menu.active {
+        left: 0;
     }
-    .otherMenu {
-        text-align: right;
-        align-self:flex-end;
-        margin-bottom: 2vh;
-        
-       
-        
-    }
-    .wine{
-        width: auto;
-        float:left;
-    }
+
+.otherMenu {
+    text-align: right;
+    align-self: flex-end;
+    margin: 5px;
+}
+
+.wine {
+    width: auto;
+    float: left;
+}
 
 .nav-item {
     margin: 0px 16px;
+}
+
+/*  Change layout of menu at small screen size
+    so theres no overflow  */
+
+@media (max-width: 500px) {
+    .nav-menu {
+        grid-template-columns: auto;
+        width: 100vw;
+        grid-template-rows: auto;
+        font-size: 12px;
+        border-radius: unset;
+        max-height: 90vh;
+        border-radius: unset;
+    }
+
+    .wine {
+        display: none;
+    }
+
+    .otherMenu {
+        text-align: unset;
+    }
 }
