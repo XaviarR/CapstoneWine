@@ -3,6 +3,10 @@
     --primary-text-color: white;
     --accent-color: rgba(0, 5, 99, 1);
     --header-size: 70px;
+    --red: rgba(245, 39, 39, 0.13);
+    --white: rgba(255,255,255,0.13);
+    --blue: rgba(13, 110, 253, 0.13);
+    --purple: rgba(91, 42, 113, 0.25);
 }
 
 html {
@@ -48,9 +52,12 @@ body {
    text-align:center;
 }
 .hero {
-    height: 95vh;
-    cursor:inherit;
-    padding-left:8%;
+    height: 100vh;
+    cursor: inherit;
+   margin-left:-7vw;
+    clip: auto;
+    overflow: hidden;
+    justify-content:center;
 }
 
 footer{
@@ -167,5 +174,27 @@ footer{
     color: white;
 }
 
+.block1 {
+    padding: 10px;
+    background-color: var(--white);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: none;
+}
+.bk_blur_r {
+    background-color:var(--purple);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    padding: 10px;
+}
 
+.icon_r {
+    border-radius: 75px;
+    height: 150px;
+    background-clip: content-box;
+    margin-bottom: -75px;
+    border: 7px solid;
+    margin-left: 31vw;
+    border-color: var(--white);
+}
 
