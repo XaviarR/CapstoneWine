@@ -10,7 +10,7 @@ using System.Linq;
 using Microsoft.Identity.Client;
 using CapstoneWine.Controllers;
 using CapstoneWine.Areas.Services;
-
+using CapstoneWine.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,9 +35,12 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
 	.AddRoles<IdentityRole>()
 	.AddEntityFrameworkStores<ApplicationDbContext>();
+	
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddTransient<IEmailSender, EmailSender>();
+builder.Services.AddTransient<IAccountService, AccountService>();
+
 builder.Services.Configure<AuthMessageSenderOptions>(builder.Configuration);
 
 var app = builder.Build();
