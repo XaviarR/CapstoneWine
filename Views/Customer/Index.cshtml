@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CapstoneWine.Models.CustomerModel>
+﻿@model IEnumerable<CapstoneWine.Models.ViewModels.CustomerViewModel>
 <link rel="stylesheet" href="~/css/admin.css" />
 
 @{
@@ -32,25 +32,25 @@
 	<thead>
 		<tr>
 			<th data-cell="identity key">
-				@Html.DisplayNameFor(model => model.IdentityKey)
+				@Html.DisplayNameFor(model => model.Customer.IdentityKey)
 			</th>
 			<th data-cell="first name">
-				@Html.DisplayNameFor(model => model.FirstName)
+				@Html.DisplayNameFor(model => model.Customer.FirstName)
 			</th>
 			<th data-cell="last name">
-				@Html.DisplayNameFor(model => model.LastName)
+				@Html.DisplayNameFor(model => model.Customer.LastName)
 			</th>
 			<th data-cell="street address">
-				@Html.DisplayNameFor(model => model.StreetAddress)
+				@Html.DisplayNameFor(model => model.Customer.StreetAddress)
 			</th>
 			<th data-cell="suburb">
-				@Html.DisplayNameFor(model => model.Suburb)
+				@Html.DisplayNameFor(model => model.Customer.Suburb)
 			</th>
 			<th data-cell="city">
-				@Html.DisplayNameFor(model => model.City)
+				@Html.DisplayNameFor(model => model.Customer.City)
 			</th>
 			<th data-cell="post-code">
-				@Html.DisplayNameFor(model => model.PostCode)
+				@Html.DisplayNameFor(model => model.Customer.PostCode)
 			</th>
 			<th></th>
 		</tr>
@@ -60,31 +60,31 @@
 		{
 			<tr>
 				<td data-cell="identity key">
-					@Html.DisplayFor(modelItem => item.IdentityKey)
+					@Html.DisplayFor(modelItem => item.Customer.IdentityKey)
 				</td>
 				<td data-cell="first name">
-					@Html.DisplayFor(modelItem => item.FirstName)
+					@Html.DisplayFor(modelItem => item.Customer.FirstName)
 				</td >
 				<td data-cell="last name">
-					@Html.DisplayFor(modelItem => item.LastName)
+					@Html.DisplayFor(modelItem => item.Customer.LastName)
 				</td>
 				<td data-cell="street address">
-					@Html.DisplayFor(modelItem => item.StreetAddress)
+					@Html.DisplayFor(modelItem => item.Customer.StreetAddress)
 				</td>
 				<td data-cell="suburb">
-					@Html.DisplayFor(modelItem => item.Suburb)
+					@Html.DisplayFor(modelItem => item.Customer.Suburb)
 				</td>
 				<td data-cell="city">
-					@Html.DisplayFor(modelItem => item.City)
+					@Html.DisplayFor(modelItem => item.Customer.City)
 				</td>
 				<td data-cell="post-code">
-					@Html.DisplayFor(modelItem => item.PostCode)
+					@Html.DisplayFor(modelItem => item.Customer.PostCode)
 				</td>
 
 				<td>
-					<a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-					<a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-					<a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+					<a asp-action="Edit" asp-route-id="@item.Customer.ID">Edit</a> |
+					<a asp-action="Details" asp-route-id="@item.Customer.ID">Details</a> |
+					<a asp-action="Delete" asp-route-id="@item.Customer.ID">Delete</a>
 				</td>
 			</tr>
 		}

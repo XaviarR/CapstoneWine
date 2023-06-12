@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CapstoneWine.Data;
+using CapstoneWine.Models.ViewModels;
+using CapstoneWine.Services;
 using CapstoneWine.Models;
 
 namespace CapstoneWine.Controllers
@@ -13,34 +10,48 @@ namespace CapstoneWine.Controllers
     public class CustomerController : Controller
     {
         private readonly ApplicationDbContext _context;
+		private readonly IAccountService _accountService;
 
-        public CustomerController(ApplicationDbContext context)
-        {
-            _context = context;
-        }
+		public CustomerController(
+			ApplicationDbContext context,
+			IAccountService accountService
+)
+		{
+			_context = context;
+			_accountService = accountService;
+		}
 
         // GET: CustomerModels
         public async Task<IActionResult> Index(string searchString)
         {
 			ViewData["CurrentFilter"] = searchString;
 
-			var customers = from customer in _context.CustomerModel
-						select customer;
+            IEnumerable<CustomerModel> customers;
 
-			if (!String.IsNullOrEmpty(searchString))
-			{
-				customers = customers.Where(c => c.FirstName.Contains(searchString));
-				return View(customers);
-			}
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                customers = await _context.CustomerModel.Where(c => c.FirstName.Contains(searchString)).ToListAsync();
+            }
+            else 
+            {
+                customers = await _context.CustomerModel.ToListAsync();
+                ViewData["CurrentFilter"] = "";
+            }
 
-			if (String.IsNullOrEmpty(searchString))
-			{
-				ViewData["CurrentFilter"] = "";
-			}
 
-			return _context.CustomerModel != null ?
-                        View(await _context.CustomerModel.ToListAsync()) :
-                        Problem("Entity set 'ApplicationDbContext.CustomerModel'  is null.");
+            var customerViewModels = new List<CustomerViewModel>();
+
+            foreach (var customer in customers)
+            {
+                var user =  _context.Users.Where(u => u.Id == customer.IdentityKey).First();
+                var customerViewModel = new CustomerViewModel();
+                customerViewModel.Customer = customer;
+                customerViewModel.Email = user.Email;
+                customerViewModels.Add(customerViewModel);
+            }
+
+			return View(customerViewModels);
+			
         }
 
         // GET: CustomerModels/Details/5
@@ -58,42 +69,49 @@ namespace CapstoneWine.Controllers
                 return NotFound();
             }
 
-            return View(customerModel);
+            var customerViewModel = new CustomerViewModel()
+            {
+                Customer = customerModel,
+                Email = _context.Users.Where(u => u.Id == customerModel.IdentityKey).First().Email
+            };
+
+            return View(customerViewModel);
         }
 
         // GET: CustomerModels/Create
         public IActionResult Create()
         {
-            return View();
+			return View();
         }
 
-        // POST: CustomerModels/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,FirstName,LastName,StreetAddress,Suburb,City,PostCode")] CustomerModel customerModel)
-        {
-            if (ModelState.IsValid)
-            {
-				int newCustomerID = 1;
+		// POST: CustomerModels/Create
+		// To protect from overposting attacks, enable the specific properties you want to bind to.
+		// For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		//public async Task<IActionResult> Create([Bind("ID,FirstName,LastName,StreetAddress,Suburb,City,PostCode")] CustomerViewModel customerViewModel)
+		public async Task<IActionResult> Create(CustomerViewModel customerViewModel)
+		{
+			if (ModelState.IsValid)
+			{
+                //Create user first
+				var user = _accountService.CreateAccountAsync(customerViewModel.Email, "Test/123");
+                
+				customerViewModel.Customer.IdentityKey = user.Result.Id;
 
-				if (_context.CustomerModel.Any())
-				{
-					newCustomerID = _context.CustomerModel.Max(c => c.ID) + 1;
-				}
+                Console.WriteLine(customerViewModel.Customer.IdentityKey);
 
-				customerModel.ID = newCustomerID;
+                await _accountService.CreateCustomerAsync(customerViewModel.Customer);
 
-				_context.Add(customerModel);
-                await _context.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
-            }
-            return View(customerModel);
-        }
+			}
+			return View(customerViewModel);
+		}
 
-        // GET: CustomerModels/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+
+		// GET: CustomerModels/Edit/5
+		public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.CustomerModel == null)
             {
@@ -105,7 +123,14 @@ namespace CapstoneWine.Controllers
             {
                 return NotFound();
             }
-            return View(customerModel);
+
+            var customerViewModel = new CustomerViewModel()
+            {
+                Customer = customerModel,
+                Email = _context.Users.Where(u => u.Id == customerModel.IdentityKey).First().Email
+            };
+
+            return View(customerViewModel);
         }
 
         // POST: CustomerModels/Edit/5
@@ -113,9 +138,10 @@ namespace CapstoneWine.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,FirstName,LastName,StreetAddress,Suburb,City,PostCode,")] CustomerModel customerModel)
+        //public async Task<IActionResult> Edit(int id, [Bind("ID,FirstName,LastName,StreetAddress,Suburb,City,PostCode,")] CustomerModel customerModel)
+        public async Task<IActionResult> Edit(int id, CustomerViewModel customerViewModel)
         {
-            if (id != customerModel.ID)
+            if (id != customerViewModel.Customer.ID)
             {
                 return NotFound();
             }
@@ -124,12 +150,12 @@ namespace CapstoneWine.Controllers
             {
                 try
                 {
-                    _context.Update(customerModel);
+                    _context.Update(customerViewModel);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CustomerModelExists(customerModel.ID))
+                    if (!CustomerModelExists(customerViewModel.Customer.ID))
                     {
                         return NotFound();
                     }
@@ -140,7 +166,7 @@ namespace CapstoneWine.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(customerModel);
+            return View(customerViewModel);
         }
 
         // GET: CustomerModels/Delete/5
@@ -158,7 +184,13 @@ namespace CapstoneWine.Controllers
                 return NotFound();
             }
 
-            return View(customerModel);
+            var customerViewModel = new CustomerViewModel()
+            {
+                Customer = customerModel,
+                Email = _context.Users.Where(u => u.Id == customerModel.IdentityKey).First().Email
+            };
+
+            return View(customerViewModel);
         }
 
         // POST: CustomerModels/Delete/5
@@ -184,5 +216,6 @@ namespace CapstoneWine.Controllers
         {
             return (_context.CustomerModel?.Any(e => e.ID == id)).GetValueOrDefault();
         }
-    }
+
+	}
 }
