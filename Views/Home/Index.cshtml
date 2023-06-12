@@ -24,8 +24,10 @@
 }
 
 <body class="bg-home">
-	<div class="hero">
-		<iframe src='https://my.spline.design/untitled-019ae71b0f1b635607356af5e756cf9c/' frameborder='0' height='200%' width='300%'></iframe>
+	<div>
+	<video class="hero" autoplay muted loop>
+				<source src="~/video/winez_hero.mp4" type="video/mp4" />
+	</video>
 	</div>
 	
 	@for (var i = 0; i < categories.Length; i++)
@@ -49,8 +51,16 @@
 		</div>
 	}
 
-
+	<script type="importmap">
+		{
+			"imports": {
+				"three": "https://unpkg.com/three@0.152.2/build/three.module.js",
+				"three/addons/": "https://unpkg.com/three@0.152.2/examples/jsm/"
+			}
+		}
+	</script>
+	<script defer type="module" src="~/js/hero.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
 	<script src="~/js/scrolltrigger.js"></script>
-</body>
+</body>d

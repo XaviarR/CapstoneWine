@@ -1,4 +1,6 @@
-﻿*,
+﻿
+
+*,
 *:before,
 *:after {
     padding: 0;
@@ -51,9 +53,8 @@ body {
 /*user_form+ bk_blur to create login form style*/
 .bk_blur {
     height: auto;
-    width: 80%;
-    max-width: 500px;
-    background-color: rgba(255,255,255,0.13);
+    /*background-color: rgba(255,255,255,0.13);*/
+    background-color: rgba(13, 110, 253, 0.13);
     border-radius: 10px;
     backdrop-filter: blur(10px);
     border: 2px solid rgba(255,255,255,0.1);
@@ -85,7 +86,7 @@ form * {
     text-decoration: none;
 }
 
-.h3 {
+h3 {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 4rem;
     font-weight: 500;
@@ -102,8 +103,8 @@ h1 {
 
 .label {
     display: block;
-    margin-top: 10px;
-    margin-bottom: 15px;
+    margin-top: 25px;
+    margin-bottom: 5px;
     font-size: 28px;
     font-weight: 500;
 }
@@ -118,6 +119,9 @@ h1 {
     margin-top: 8px;
     font-size: 20px;
     font-weight: 300;
+}
+.input::placeholder{
+    opacity:.7;
 }
 
 textarea {
@@ -171,7 +175,126 @@ textarea {
     }
 
 .backbtn {
+    margin-bottom:5px;
     margin-top: 5px;
     border-radius: 50px;
     -webkit-text-stroke: thick;
+}
+
+/*about/contact css*/
+.contact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 3fr .4fr;
+    gap: 0.4fr;
+    justify-items: flex-start
+}
+
+.row > p {
+    font-family: var(--font-text);
+    font-size: 22px;
+    line-height: 1.7;
+    
+}
+
+/*Icon stuff*/
+.wrapper {
+    display: inline-flex;
+    list-style: none;
+}
+
+    .wrapper .icon {
+        position: relative;
+        background: #ffffff;
+        border-radius: 50%;
+        padding: 2px;
+        margin: 0px;
+        width: 50px;
+        height: 50px;
+        font-size: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    .wrapper .tooltip {
+        position: absolute;
+        top: 0;
+        font-size: 14px;
+        background: #ffffff;
+        color: #ffffff;
+        padding: 5px 8px;
+        border-radius: 5px;
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+        .wrapper .tooltip::before {
+            position: absolute;
+            content: "";
+            height: 8px;
+            width: 8px;
+            background: #ffffff;
+            bottom: -3px;
+            left: 50%;
+            transform: translate(-50%) rotate(45deg);
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+    .wrapper .icon:hover .tooltip {
+        top: -45px;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    .wrapper .icon:hover span,
+    .wrapper .icon:hover .tooltip {
+        text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+    }
+
+    .wrapper .facebook:hover,
+    .wrapper .facebook:hover .tooltip,
+    .wrapper .facebook:hover .tooltip::before {
+        background: #1356afce;
+        color: #ffffff;
+    }
+
+    .wrapper .twitter:hover,
+    .wrapper .twitter:hover .tooltip,
+    .wrapper .twitter:hover .tooltip::before {
+        background: #29a7f5;
+        color: #ffffff;
+    }
+
+    .wrapper .instagram:hover,
+    .wrapper .instagram:hover .tooltip,
+    .wrapper .instagram:hover .tooltip::before {
+        background: #f17399;
+        color: #ffffff;
+    }
+
+    .wrapper .github:hover,
+    .wrapper .github:hover .tooltip,
+    .wrapper .github:hover .tooltip::before {
+        background: #333333;
+        color: #ffffff;
+    }
+
+    .wrapper .youtube:hover,
+    .wrapper .youtube:hover .tooltip,
+    .wrapper .youtube:hover .tooltip::before {
+        background: #CD201F;
+        color: #ffffff;
+    }
+
+.fab fa-youtube {
+    display: none;
+    visibility: hidden;
 }

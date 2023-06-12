@@ -18,15 +18,15 @@
 .html,
 body {
     display:grid;
-    
 }
 
 
 .hero{
-    cursor:inherit;
+   cursor:inherit;
    height:90vh; 
-   margin-left:auto;
-   clip:auto
+   margin:0 auto;
+   clip:auto;
+   overflow:hidden;
 }
 
   

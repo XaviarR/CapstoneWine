@@ -33,12 +33,16 @@
 			</div>
 			@*items in the hamburger*@
 			<section class="nav-menu navbar-nav flex-grow">
+				@if (ViewData["ThemeOn"] == "true")
+				{
+					<a class="theme-icon theme-toggle-btn"><img src="~/Images/brightness.png"/></a>
+				}
 				<ul class="wine">
 					<li class="nav-item">
-						<h1 class="boldTitle" style="text-align:left; font-size:3vw; padding-top:10px">Wines</h1>
+						<h1 class="boldTitle menu-title">Wines</h1>
 					</li>
 					<li class="nav-item">
-						<a href="/Shop/Category/?categoryFilter=Cabernet Savignon" class="nav-link">Cabernet Savignon</a>
+						<a href="/Shop/Category/?categoryFilter=Cabernet Sauvignon" class="nav-link">Cabernet Sauvignon</a>
 					</li>
 					<li class="nav-item">
 						<a href="/Shop/Category/?categoryFilter=Pinot Noir" class="nav-link">Pinot Noir</a>
@@ -51,7 +55,7 @@
 					</li>
 
 					<li class="nav-item">
-						<a href="/Shop/Category/?categoryFilter=Chardonay" class="nav-link">Chardonnay</a>
+						<a href="/Shop/Category/?categoryFilter=Chardonnay" class="nav-link">Chardonnay</a>
 					</li>
 					<li class="nav-item">
 						<a href="/Shop/Category/?categoryFilter=Pinot Gris" class="nav-link">Pinot Gris</a>
@@ -144,7 +148,7 @@
 							<a class="text-white text-decoration-underline" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Your Account</a>
 						</p>
 						<p>
-							<a class="text-white text-decoration-underline" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Subscriptions</a>
+							<a class="text-white text-decoration-underline" asp-controller="Home" asp-action="Subscription" title="Manage">Subscriptions</a>
 						</p>
 						<p>
 							<a class="text-white text-decoration-underline" asp-area="" asp-controller="Home" asp-action="About">About Us</a>

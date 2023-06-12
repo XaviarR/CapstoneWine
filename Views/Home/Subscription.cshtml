@@ -25,16 +25,13 @@
 	</p>
 </section>
 
-<div>
+<section class="sub-cards-sec">
 	@foreach (var item in Model)
 	{
-		<div style="padding:15px">
+		<div class="card-column">
 			<article class="card logo hidden">
 				@*images need to be same ratio*@
-				<img class="card__background"
-		 src="~/Images/sub/mixed.jpg"
-		 width="1920"
-		 height="2193" />
+				<img class="card__background" src="~/Images/sub/mixed.jpg" />
 				<div class="card__content | flow">
 					<div class="card__content--container | flow">
 						<h2 class="card__title">@Html.DisplayFor(modelItem => item.SubName)</h2>
@@ -45,7 +42,7 @@
 					</div>
 				</div>
 			</article>
-			<a class="btn btn-secondary btn-sm" asp-controller="Home" asp-action="Add" asp-route-id="@item.SubID">Add to cart</a>
+			<a class="cart-btn" asp-controller="Home" asp-action="Add" asp-route-id="@item.SubID">Subscribe</a>
 		</div>
 	}
-</div>
+</section>
