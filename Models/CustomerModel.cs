@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Identity;
 
 namespace CapstoneWine.Models
 {
@@ -17,11 +16,7 @@ namespace CapstoneWine.Models
         public string? PostCode { get; set; }
 
         [ForeignKey("ID")]
-        public string IdentityKey { get; set; } //email
-
-        //public IdentityUser? IdentityUser { get; set; }
-
-       // public IdentityUser? IdentityUser { get; set; }
+        public string? IdentityKey { get; set; } 
 
     }
 }
