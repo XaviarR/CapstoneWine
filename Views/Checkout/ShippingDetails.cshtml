@@ -4,41 +4,8 @@
 }
 @if (Model.CartItems.Count > 0)
 {
-	<div>
-		<div class="col">
-			<h1>
-				Order Details
-			</h1>
-			<table class="table text-white">
-				<tr>
-					<th>Image</th>
-					<th>Product</th>
-					<th>Quantity</th>
-					<th>Price</th>
-					<th>Shipping</th>
-					<th>Total</th>
-				</tr>
-				@foreach (var item in Model.CartItems)
-				{
-					<tr>
-						<td><img class="img" src="@Html.DisplayFor(modelItem => item.Image)" style="height:170px;width:110px; object-fit:contain" /></td>
-						<td>@item.ProductName</td>
-						<td>@item.Quantity</td>
-						<td>@item.Price.ToString("C2")</td>
-						<td>@item.Shipping.ToString("C2")</td>
-						@*Total is Calculated in CartItem Model*@
-						<td>@Model.CartItems.Where(x => x.ProductId == item.ProductId).Sum(x => x.Total + x.Shipping).ToString("C2")</td>
-					</tr>
-				}
-				<tr>
-					@*Caluculated in checkout controller -links to viewmodel*@
-					<td class="text-right" colspan="8"><b>Grand Total: @Model.GrandTotal.ToString("C2")</b></td>
-				</tr>
-			</table>
-		</div>
-		</div>
 	@*Form*@
-	<h1>Shipping Details</h1>
+	<h1>Order Complete</h1>
 
 	<form method="post">
 		<div class="row">
@@ -75,7 +42,7 @@
 			<div class="col">
 				<div class="text-end">
 					<div class="btn-group">
-						<a class="btn btn-outline-success" asp-controller="Cart" asp-action="Index">back</a>
+						<a class="btn btn-outline-success" asp-controller="Cart" asp-action="Index">Back</a>
 						<span style="padding:5px"></span>
 						<a class="btn btn-outline-success" asp-controller="Shop" asp-action="Index">Add more items</a>
 						<span style="padding:5px"></span>
@@ -92,69 +59,4 @@ else
 {
 	<h1>Nothing in cart</h1>
 	<a class="btn btn-outline-success" asp-controller="Shop" asp-action="Index">Add new items</a>
-}
-@section Scripts{
-
-	<script src="https://www.paypalobjects.com/api/checkout.js"></script>
-
-	<script>
-		let a = @Model.GrandTotal.ToString();//sets the displayed total in the paypal window to be grandtotal
-		let _total = a;
-
-		paypal.Button.render({
-			//Configure environment
-			env: 'sandbox',
-			client: {
-				sandbox: 'AQJ-nomYmdcrcJJa_kZYrA-Lzy1AdtFLCMYgwwyBhOxumCXDaQ4r7VtkGAcyDMqZhfVvz27iS7mmbgXW'//this is the client id -needed to receive payments
-			},
-
-			//Customize button
-			locale: 'en_US',
-			style: {
-				size: 'large',
-				color: 'gold',
-				shape: 'rect' //pill, rect
-			},
-			commit: true,
-
-			//Set up a payment
-			payment: function (data, actions) {
-				return actions.payment.create({
-					transactions: [{
-						amount: {
-							total: _total,
-							currency: 'USD'//as its usd, paypal converts payment to NZD automatically
-						}
-					}]
-				});
-			},
-
-			//Execute the payment
-			onAuthorize: function (data, actions) {
-				return actions.payment.execute().then(function () {
-					var url = '@Url.Action("OrderComplete", "Checkout", new { })';//page sent to after order completed
-					window.location.href = url;
-				});
-			}
-
-		}, '#paypal-btn')
-	</script>
-	@*script for checkbox
-		displays paypal button if checked
-	*@
-	<script>
-		function clickAgreement() {
-			// Get the checkbox
-			var checkBox = document.getElementById("legalCheck");
-			// Get the paypal button
-			var paypal = document.getElementById("paypal-btn")
-
-			// If the checkbox is checked, display the paypal button
-			if (checkBox.checked == true) {
-				paypal.style.visibility = "visible";
-			} else {
-				paypal.style.visibility = "hidden";
-			}
-		}
-	</script>
 }

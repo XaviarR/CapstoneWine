@@ -14,12 +14,6 @@
         --hover-bg-color: rgba(200, 200, 200, 1);
     }
 
-.theme-toggle-btn {
-    width: 70px;
-    background-color: firebrick;
-    border: none;
-}
-
 footer {
     /*position: absolute;
     top: 100%;
@@ -45,9 +39,7 @@ form {
 }
 
 .nav-menu {
-    top: 55px;
     background-color: rgba(10,10,10,0.6);
-    border-radius: 0 19px 19px 0;
 }
 
 

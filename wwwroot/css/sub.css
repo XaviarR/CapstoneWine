@@ -62,10 +62,17 @@ p {
 
 /* CARD COMPONENT */
 
+
+.sub-cards-sec {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
+    place-items: center;
+    gap: 1em;
+}
+
 .card {
     display: grid;
     place-items: center;
-    width: 80vw;
     max-width: 21.875rem;
     height: 28.125rem;
     overflow: hidden;
@@ -114,6 +121,24 @@ p {
         left: -1.25rem;
         background-color: var(--brand-color);
     }
+
+.cart-btn {
+    display: grid;
+    place-items:center;
+    background-color: var(--accent-color);
+    color: white;
+    height: 2.8em;
+    width: 100%;
+    margin-top: 10px;
+    border: 3px solid black;
+    border-radius: 10px;
+    transition: transform 0.2s;
+}
+.cart-btn:hover {
+    color: white;
+    border-color: blue;
+    transform: scale(1.02);
+}
 
    
 
@@ -186,7 +211,7 @@ p {
 .mySection {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: .5fr 3fr .2fr .2fr .2fr .2fr .2fr .2fr .2fr;
+    grid-template-rows: 3fr .4fr;
     gap:0.4fr;
     justify-items:flex-start
 }
@@ -210,11 +235,13 @@ logos {
     justify-content: space-around;
 }
 
-.logo:nth-child(2) {
+.logo:nth-child(2),
+.card-column:nth-child(2) .logo {
     transition-delay: 500ms;
 }
 
-.logo:nth-child(3) {
+.logo:nth-child(3),
+.card-column:nth-child(3) .logo {
     transition-delay: 1000ms;
 }
 

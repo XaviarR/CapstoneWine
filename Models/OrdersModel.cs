@@ -19,10 +19,6 @@ namespace CapstoneWine.Models
         [ForeignKey("WineID")]
         public WinesModel? wine { get; set; }
 
-        public int SubID { get; set; }
-        [ForeignKey("SubID")]
-        public SubscriptionsModel? subscription { get; set; }
-
         public int Quantity { get; set; }
         public string? DeliveryAdd { get; set; }
         public decimal? DeliveryCharge { get; set; }

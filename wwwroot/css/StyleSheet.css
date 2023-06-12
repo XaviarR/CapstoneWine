@@ -18,24 +18,15 @@
 .html,
 body {
     display:grid;
-    
 }
 
 
-.hero{
-    cursor:inherit;
-   height:90vh; 
-   margin-left:auto;
-   clip:auto
-}
-
-  
 .extraInfo {
     opacity: 1;
     text-align: center;
     line-height: 1.6em;
     padding: 15px;
-    font-size: 1.4rem;
+    font-size: 1.2vw;
     white-space: normal;
     margin-top: -188px;
     margin-bottom: 25px;

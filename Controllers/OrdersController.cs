@@ -46,7 +46,6 @@ namespace CapstoneWine.Controllers
             }
 
             var order = await _context.Orders
-                .Include(o => o.subscription)
                 .Include(o => o.wine)
                 .FirstOrDefaultAsync(m => m.OrderID == id);
             if (order == null)
@@ -86,7 +85,6 @@ namespace CapstoneWine.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            ViewData["SubID"] = new SelectList(_context.Subscriptions, "SubID", "SubID", order.SubID);
             ViewData["WineID"] = new SelectList(_context.Wines, "WineID", "WineID", order.WineID);
             return View(order);
         }
@@ -106,7 +104,6 @@ namespace CapstoneWine.Controllers
             {
                 return NotFound();
             }
-            ViewData["SubID"] = new SelectList(_context.Subscriptions, "SubID", "SubID", order.SubID);
             ViewData["WineID"] = new SelectList(_context.Wines, "WineID", "WineID", order.WineID);
             return View(order);
         }
@@ -143,7 +140,6 @@ namespace CapstoneWine.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["SubID"] = new SelectList(_context.Subscriptions, "SubID", "SubID", order.SubID);
             ViewData["WineID"] = new SelectList(_context.Wines, "WineID", "WineID", order.WineID);
             return View(order);
         }
@@ -157,7 +153,6 @@ namespace CapstoneWine.Controllers
             }
 
             var order = await _context.Orders
-                .Include(o => o.subscription)
                 .Include(o => o.wine)
                 .FirstOrDefaultAsync(m => m.OrderID == id);
             if (order == null)
