@@ -1,15 +1,26 @@
-﻿@model Tuple<List<CapstoneWine.Models.SubscriptionsModel>, List<CapstoneWine.Models.WinesModel>, List<CapstoneWine.Models.OrdersModel>>
+﻿<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+@model Tuple<List<CapstoneWine.Models.SubscriptionsModel>, List<CapstoneWine.Models.WinesModel>, List<CapstoneWine.Models.OrdersModel>, List<CapstoneWine.Models.CustomerModel>>
 
 @{
 	ViewData["Title"] = "Admin";
+	var userCountStr = ViewData["UserCount"].ToString();
+	int userCount = Convert.ToInt32(userCountStr);
+
+	var wineCountStr = ViewData["WineCount"].ToString();
+	int wineCount = Convert.ToInt32(wineCountStr);
+
+	var adminCountStr = ViewData["AdminCount"].ToString();
+	int adminCount = Convert.ToInt32(adminCountStr);
+
+	var pendingOrdersStr = ViewData["pendingOrders"].ToString();
+	int pendingOrders = Convert.ToInt32(pendingOrdersStr);
+
 }
 
 <style>
 	/* Basic styling */
 	body {
 		font-family: Arial, sans-serif;
-		margin: 0;
-		padding: 0;
 	}
 
 	.table {
@@ -49,8 +60,101 @@
 		padding: 20px;
 		box-sizing: border-box;
 	}
+
 </style>
 
+<script>
+	function showSubscriptionsTable() {
+		document.getElementById("subscriptionsTable").style.display = "block";
+		document.getElementById("winesTable").style.display = "none";
+		document.getElementById("ordersTable").style.display = "none";
+	}
+
+	function showWinesTable() {
+		document.getElementById("subscriptionsTable").style.display = "none";
+		document.getElementById("winesTable").style.display = "block";
+		document.getElementById("ordersTable").style.display = "none";
+	}
+
+	function showOrdersTable() {
+		document.getElementById("subscriptionsTable").style.display = "none";
+		document.getElementById("winesTable").style.display = "none";
+		document.getElementById("ordersTable").style.display = "block";
+	}
+
+	// User Pie Chart //
+	var userTypes = ["Registered", "Subscribed", "Admin"];
+	var typeCount = [@userCount, 2, @adminCount];
+	var barColors = [
+		"#b91d47",
+		"#00aba9",
+		"#2b5797"
+	];
+
+	new Chart("userPieChart", {
+		type: "doughnut",
+		data: {
+			labels: userTypes,
+			datasets: [{
+				backgroundColor: barColors,
+				data: typeCount
+			}]
+		},
+		options: {
+			title: {
+				display: true,
+				text: "All Users"
+			}
+		}
+	});
+
+
+
+
+	// Sales Line Graph
+	const weeks = [1, 2, 3, 4, 5, 6, 7, 8];
+	const salesNum = [10, 30, 10, 30, 50, 60, 60, 80];
+
+	new Chart("salesChart", {
+		type: "line",
+		data: {
+			labels: weeks, // x-axis
+			datasets: [{
+				fill: false,
+				lineTension: 0,
+				backgroundColor: "rgba(0,0,255,1.0)",
+				borderColor: "rgba(0,0,255,0.1)",
+				data: salesNum  // y-axis
+			}]
+		},
+		options: {
+			legend: { display: false },
+			scales: {
+				yAxes: [{
+					ticks: { min: 0, max: 90 },
+					scaleLabel: {
+						display: true,
+						labelString: "Sales Amount" // y-axis title
+					}
+				}],
+				xAxes: [{
+					scaleLabel: {
+						display: true,
+						labelString: "Weeks" // x-axis title
+					}
+				}]
+			},
+			title: {
+				display: true,
+				text: "Sales per week"
+			}
+		}
+	});
+
+
+
+
+</script>
 
 
 <div id="dashboard">
@@ -196,27 +300,5 @@
 				</div>
 			</div>
 		</div>
-
-
 	</div>
 </div>
-
-<script>
-	function showSubscriptionsTable() {
-		document.getElementById("subscriptionsTable").style.display = "block";
-		document.getElementById("winesTable").style.display = "none";
-		document.getElementById("ordersTable").style.display = "none";
-	}
-
-	function showWinesTable() {
-		document.getElementById("subscriptionsTable").style.display = "none";
-		document.getElementById("winesTable").style.display = "block";
-		document.getElementById("ordersTable").style.display = "none";
-	}
-
-	function showOrdersTable() {
-		document.getElementById("subscriptionsTable").style.display = "none";
-		document.getElementById("winesTable").style.display = "none";
-		document.getElementById("ordersTable").style.display = "block";
-	}
-</script>
