@@ -100,7 +100,7 @@ else
 			//Execute the payment
 			onAuthorize: function (data, actions) {
 				return actions.payment.execute().then(function () {
-					var url = '@Url.Action("OrderComplete", "Checkout", new { })';//page sent to after order completed
+					var url = '@Url.Action("ShippingDetails", "Checkout", new { })';//page sent to after order completed
 					window.location.href = url;
 				});
 			}
