@@ -1,6 +1,6 @@
 ﻿body {
-    color: black;
-    background-color: white;
+    color: var(--primary-text-color);
+    background-color: var(--bg-color);
     font-family: 'Lato', sans-serif;
     margin-top: 70px;
 }
@@ -16,12 +16,11 @@ footer {
 
 .title {
     font-family: 'Bebas Neue';
-    color: black;
     margin: 20px;
 }
 
 .navbar {
-    background-color: #080710;
+    background-color: var(--accent-color);
 }
 
 .nav-menu {

@@ -18,50 +18,284 @@
 }
 
 <style>
-	/* Basic styling */
-	body {
-		font-family: Arial, sans-serif;
-	}
 
-	.table {
+	a {
 		color: white;
 	}
 
-	#dashboard {
+	.fs-big {
+		font-size: 1.3rem;
+	}
+
+	.navbar {
+		background-color: var(--bg-color);
+	}
+
+	.dashboard {
+		width: 100%;
 		display: grid;
-		grid-template-columns: 200px 1fr; /* Sidebar width and content width */
-		gap: 20px; /* Gap between sidebar and content */
+		grid-template-columns: 250px 1fr;
+		/*background-color: var(--accent-color);*/
 	}
 
-	#sidebar {
-		background: #333;
-		color: #fff;
-		padding: 20px;
-		box-sizing: border-box;
+	.sidebar {
+		position: relative;
+		left: 0;
+		min-height: calc(100vh - 70px);
+		padding: 1rem;
+		border-right: 1px solid darkblue;
+		/*background-color: rgba(200, 200, 200, 0.5);*/
 	}
 
-		#sidebar ul {
-			list-style: none;
-			padding: 0;
-			margin: 0;
+	.menu-area {
+		display: grid;
+		gap: 0.3rem;
+		margin-bottom: 2rem;
+		font-weight: bold;
+		position: relative;
+	}
+
+		.menu-area::after {
+			content: '';
+			position: absolute;
+			top: calc(100% + 20px);
+			width: 100%;
+			height: 1px;
+			background-color: rgba(200, 200, 200, 0.12);
 		}
 
-			#sidebar ul li {
-				margin-bottom: 10px;
-			}
-
-				#sidebar ul li a {
-					color: #fff;
-					text-decoration: none;
-					display: block;
-				}
-
-	#content {
-		padding: 20px;
-		box-sizing: border-box;
+	.menu-link {
+		height: 2.3rem;
+		position: relative;
+		font-weight: normal;
 	}
 
+		.menu-link::after {
+			content: '>';
+			position: absolute;
+			right: 0;
+		}
+
+	.content {
+		position: relative;
+		padding: 1rem;
+		/*background-color: rgba(200, 200, 200, 0.7);*/
+	}
+
+	.top-wrapper, .mid-wrapper, .bottom-wrapper {
+		width: 100%;
+		display: grid;
+		gap: 1.67rem;
+		margin: 1.67rem 0;
+		/*background-color: white;*/
+	}
+
+	.top-wrapper {
+		grid-template-columns: repeat(4, 1fr);
+	}
+
+	.info-tab {
+		--tab-color: rgb(23,87,201);
+		position: relative;
+		display: grid;
+		grid-template-columns: 7fr 2fr;
+		grid-template-rows: auto auto;
+		column-gap: 5px;
+		color: var(--tab-color);
+		border-radius: 10px;
+		padding: 20px 15px;
+		overflow: hidden;
+		background-color: rgba(200, 200, 200, 0.2);
+	}
+
+		.info-tab::before {
+			content: '';
+			position: absolute;
+			inset: 0;
+			width: 5px;
+			height: 100%;
+			background-color: var(--tab-color);
+		}
+
+		.info-tab:nth-child(2) {
+			--tab-color: rgb(0,171,169);
+		}
+
+		.info-tab:nth-child(3) {
+			--tab-color: rgb(185,29,71);
+		}
+
+		.info-tab:nth-child(4) {
+			--tab-color: coral;
+		}
+
+	.tab-title {
+		grid-row-start: 1;
+		font-size: 1.115rem;
+	}
+
+	.tab-value {
+		grid-row-start: 2;
+		color: white;
+	}
+
+	.tab-icon {
+		grid-column-start: 2;
+		grid-row: span 2;
+		place-self: center;
+		width: 100%;
+		height: 100%;
+	}
+
+		.tab-icon img {
+			width: 100%;
+			object-fit: contain;
+		}
+
+	.mid-wrapper {
+		grid-template-columns: 6fr 4fr;
+	}
+
+	.sales-chart {
+		/*background-color: pink;*/
+		background-color: rgba(200, 200, 200, 0.2);
+		border-radius: 10px;
+	}
+
+	.user-pie-graph {
+		/*background-color: pink;*/
+		background-color: rgba(200, 200, 200, 0.2);
+		border-radius: 10px;
+		width: 100%;
+	}
+
+	.bottom-wrapper {
+		/*background-color: pink;*/
+		padding: 1.67rem;
+		gap: 0.5rem;
+		border-radius: 10px;
+		background-color: rgba(200, 200, 200, 0.2);
+	}
+
+	.user-row {
+		display: grid;
+		grid-template-columns: repeat(5, 1fr);
+		padding: 10px 20px;
+		border-radius: 100px;
+		background-color: var(--blue);
+		/*background-color: rgba(10, 10, 10, 0.1);*/
+	}
+
+		.user-row:nth-child(2n-1) {
+			background-color: rgba(13, 110, 253, 0.33);
+		}
+
+		.user-row:nth-child(3), .user-row:nth-child(4) {
+			border-radius: unset;
+		}
+
+		.user-row:nth-child(5) {
+			border-radius: 0 0 10px 10px;
+		}
+
+	.header {
+		border-radius: 20px 20px 0 0;
+		background-color: rgba(13, 110, 253, 0.63);
+	}
+
+	.link {
+		opacity: 0.5;
+	}
+
+		.link:hover {
+			opacity: 1;
+		}
+
 </style>
+
+
+
+
+<section class="dashboard">
+
+	<section class="sidebar">
+		<div class="menu-area fs-big">Hello Admin</div>
+		<a><div class="menu-area">Dashboard</div></a>
+		<div class="menu-area">
+			<a asp-controller="Orders" asp-action="Index"><div class="menu-link">Orders</div></a>
+			<a asp-controller="Subscriptions" asp-action="Index"><div class="menu-link">Subscriptions</div></a>
+			<a asp-controller="Wines" asp-action="Index"><div class="menu-link">Wines</div></a>
+			<a asp-controller="Customer" asp-action="Index"><div class="menu-link">Customers</div></a>
+		</div>
+
+	</section>
+
+	<section class="content">
+		<h5>Dashboard</h5>
+		<div class="top-wrapper">
+			<div class="info-tab">
+				<span class="tab-title">Earnings (Monthly)</span>
+				<span class="tab-value">$800.00</span>
+				<i class="tab-icon"><img src="~/Images/dollar-symbol.png" /></i>
+			</div>
+			<div class="info-tab">
+				<span class="tab-title">Earnings (Weekly)</span>
+				<span class="tab-value">$200.00</span>
+				<i class="tab-icon"><img src="/Images/dollar-symbol.png" /></i>
+			</div>
+			<div class="info-tab">
+				<span class="tab-title">Users</span>
+				<span class="tab-value">@userCount</span>
+				<i class="tab-icon"><img src="/Images/user.png" /></i>
+			</div>
+			<div class="info-tab">
+				<span class="tab-title">Pending Orders</span>
+				<span class="tab-value">@pendingOrders</span>
+				<i class="tab-icon"><img src="~/Images/order.png" /></i>
+			</div>
+		</div>
+
+		<div class="mid-wrapper">
+			<div class="sales-chart">
+				<canvas id="salesChart"></canvas>
+			</div>
+			<div class="user-pie-graph">
+				<canvas id="userPieChart" style="width: 100%; max-width: 400px;"></canvas>
+			</div>
+		</div>
+
+
+		<div class="bottom-wrapper">
+			<h5>Users</h5>
+			<div class="user-row header">
+				<div class="user-col">First Name</div>
+				<div class="user-col">Last Name</div>
+				<div class="user-col">City</div>
+				<div class="user-col">Suburb</div>
+				<div class="user-col">Street Address</div>
+			</div>
+			@foreach (var user in Model.Item4.Take(3))
+			{
+				<div class="user-row">
+					<div class="user-col">@user.FirstName</div>
+					<div class="user-col">@user.LastName</div>
+					<div class="user-col">@user.City</div>
+					<div class="user-col">@user.Suburb</div>
+					<div class="user-col">@user.StreetAddress</div>
+				</div>
+			}
+			<a asp-controller="Customer" asp-action="Index" class="link">See more...</a>
+		</div>
+
+	</section>
+
+</section>
+
+
+
+
+
+
 
 <script>
 	function showSubscriptionsTable() {
@@ -155,149 +389,3 @@
 
 
 </script>
-
-
-<div id="dashboard">
-	<div id="sidebar">
-		<ul>
-			<li><a onclick="showOrdersTable()">Orders</a></li>
-			<li><a onclick="showSubscriptionsTable()">Subscriptions</a></li>
-			<li><a onclick="showWinesTable()">Wines</a></li>
-		</ul>
-	</div>
-	@*<h1>Welcome to the Admin Dashboard</h1>*@
-	<div id="content">
-
-		<!-- Content for the "Subscriptions" section -->
-		<div id="subscriptionsTable" style="display: none;">
-			<!-- Subscriptions table -->
-			<div class="row">
-				<div class="col-12">
-					<a asp-controller="Subscriptions" asp-action="Index"><h3>Subscriptions</h3></a>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-12 pe-5">
-					<table class="table">
-						<thead>
-							<tr>
-								<th>ID</th>
-								<th>Name</th>
-								<th>Type</th>
-								<th>Frequency</th>
-								<th>Number of Bottles</th>
-								<th>Reward Points</th>
-							</tr>
-						</thead>
-						<tbody>
-							@foreach (var subscription in Model.Item1)
-							{
-								<tr>
-									<td>@subscription.SubID</td>
-									<td>@subscription.SubName</td>
-									<td>@subscription.Type</td>
-									<td>@subscription.Frequency</td>
-									<td>@subscription.NumOfBottles</td>
-									<td>@subscription.RewardPoints</td>
-								</tr>
-							}
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-
-		<!-- Content for the "Wines" section -->
-		<div id="winesTable" style="display: none;">
-			<div class="row">
-				<div class="col-12">
-					<a asp-controller="Wines" asp-action="Index"><h3>Wines</h3></a>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-12 pe-5">
-					<table class="table">
-						<thead>
-							<tr>
-								<th>ID</th>
-								<th>Name</th>
-								<th>Image</th>
-								<th>Price</th>
-								<th>Blurb</th>
-								<th>Quantity</th>
-								<th>Type</th>
-								<th>Category</th>
-							</tr>
-						</thead>
-						<tbody>
-							@foreach (var wine in Model.Item2)
-							{
-								<tr>
-									<td>@wine.WineID</td>
-									<td>@wine.WineName</td>
-									<td>@wine.Image</td>
-									<td>@wine.Price</td>
-									<td>@wine.Blurb</td>
-									<td>@wine.Quantity</td>
-									<td>@wine.Type</td>
-									<td>@wine.Category</td>
-								</tr>
-							}
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-
-
-		<!-- Content for the orders table -->
-		<div id="ordersTable" style="display: none;">
-			<div class="row">
-				<div class="col-12">
-					<a asp-controller="Orders" asp-action="Index"><h3>Orders</h3></a>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-12 pe-5">
-					<table class="table">
-						<thead>
-							<tr>
-								<th>ID</th>
-								<th>Order Date</th>
-								<th>User ID</th>
-								<th>Wine ID</th>
-								<th>Subscription ID</th>
-								<th>Quantity</th>
-								<th>Delivery Address</th>
-								<th>Delivery Charge</th>
-								<th>Total Cost</th>
-								<th>Order Status</th>
-								<th>Reward Points</th>
-							</tr>
-						</thead>
-						<tbody>
-							@foreach (var order in Model.Item3)
-							{
-								<tr>
-									<td>@order.OrderID</td>
-									<td>@order.OrderDate</td>
-									<td>@order.CustomerId</td>
-									<td>@order.WineID</td>
-									<td>@order.Quantity</td>
-									<td>@order.DeliveryAdd</td>
-									<td>@order.DeliveryCharge</td>
-									<td>@order.TotalCost</td>
-									<td>@order.OrderStatus</td>
-									<td>@order.RewardPoints</td>
-								</tr>
-							}
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
