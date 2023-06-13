@@ -68,6 +68,8 @@ p {
     grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
     place-items: center;
     gap: 1em;
+    margin: 2em;
+    padding:1em;
 }
 
 .card {
@@ -126,18 +128,20 @@ p {
 .cart-btn {
     display: grid;
     place-items:center;
-    background-color: var(--accent-color);
-    color: white;
-    height: 2.8em;
+    background-color: var(--teal);
+    color: var(--white-text);
+    height: 2em;
     width: 100%;
-    margin-top: 10px;
+    margin-top:10px;
     border: 3px solid black;
     border-radius: 10px;
     transition: transform 0.2s;
+    font-family:var(--font-title);
+    font-size:2em;
 }
 .cart-btn:hover {
-    color: white;
-    border-color: blue;
+    color: var(--white-text);
+    border-color: var(--white);
     transform: scale(1.02);
 }
 
@@ -336,4 +340,8 @@ logos {
     height:auto;
     margin:.2vw;
     border:2px, solid var(--white); 
+}
+
+.sub_box{
+    margin-top:2vh;
 }
