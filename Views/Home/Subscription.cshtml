@@ -6,7 +6,7 @@
 @{
 	ViewData["Title"] = "Subsciptions";
 }
-<div class="bk_blur_r">
+<div class="">
 <section>
 	<h1 class="boldTitle"> Subscriptions </h1>
 </section>
@@ -14,36 +14,82 @@
 	
 	<h1 class="divaText"><span class="logo hidden"> Discover  </span> <span class="logo hidden"> Savor  </span> <span class="logo hidden"> Indulge  </span></h1>
 	</section>
-	<div>
-		<img class="icon_r" src="~/Images/icons/winebox.jpg" />
-	</div>
+	
 	
 </div>
 <section style="margin:70px auto 20px auto">
-	<h1 action="BoldTitle">How it Works</h1><hr />
-	<div>
-		<div>
-
+	<div class="bk_blur_lt card-column">
+		<div class="iconBox" style=" margin-top:-75px">
+			<img class="icon_r" src="~/Images/icons/winebox.jpg" />
 		</div>
-		<div>
+	<h1 class="boldTitle" style="font-size:3vw;">How it Works</h1><hr />
+		<h2 class="divaText" style="font-size:2vw">
+			Embark on an extraordinary wine adventure with our exclusive wine subscriptions.
+			Delight in the convenience of having exceptional, handpicked wines delivered right to your doorstep.
+		</h2>
 
+	<div class="hype_box">
+
+		<div class="ish">
+			<div class="iconBox">
+				<img class="icon_r" src="~/Images/icons/price.jpg" />
+			</div>
+				<h2>Price Gaurantee</h2>
+				<p>Our Subscription prices will always be better than you can find instore</p>
+				
 		</div>
-		<div>
 
+		<div class="ish">
+			<div class="iconBox">
+				<img class="icon_card" src="/Images/icons/delivery.jpg" />
+			</div>
+			<h2>Free Delivery</h2>
+			<p>Our members get free deliveries on all subscriptions.</p>
+		</div>
+			
+		<div class="ish">
+				<div class="iconBox">
+					<img class ="icon_r" src="~/Images/icons/heart.jpg"/>
+				</div>
+				<h2>Rewards</h2>
+				<p>With every purchase collect points. </p>
+		</div>
+
+		<div class="ish">
+			<div class="iconBox">
+				<img class="icon_card" src="~/Images/icons/sip.jpg" />
+			</div>
+			<h2>Mony Back Gaurantee</h2>
+			<p>Dont like the wine? no worries send it back an get a refund.</p>
+		</div>
+
+		<div class="ish">
+			<div class="iconBox">
+				<img class="icon_r" src="~/Images/icons/wineinfo.jpg" />
+			</div>
+				<h2>Tasting Notes</h2>
+				<p>Included free with each devlivery - Explore our suggested food pairings and recipies</p>
 		</div>
 	</div>
 	
-	<p class="blah">
-		Embark on an extraordinary wine adventure with our exclusive wine subscriptions.
-		Delight in the convenience of having exceptional, handpicked wines delivered right to your doorstep.
+	@*<p class="blah">
+		.
 		Explore a curated selection of hidden gems and renowned vineyards from around the globe,
 		allowing your palate to journey through diverse varietals, regions, and winemaking techniques.<br /><br />
 		With detailed tasting notes and expert guidance, enhance your wine knowledge and unravel the stories behind each bottle.
 		Whether you're a seasoned connoisseur or a curious enthusiast, our subscriptions offer a world of fine wines tailored to your preferences.
 		Choose from our esteemed Cheap and Cheerful, Treat Yourself, or Cellarmaster's Selection subscriptions and elevate your wine experience.<br /><br />
 		Discover, savor, and indulge in the captivating world of wine, one bottle at a time. Cheers to unforgettable moments and unforgettable wines!
-	</p>
+		</p>*@
+	</div>
 </section>
+<div style="margin-top:300px">
+	<h1 class="boldTitle" style="font-size:3vw;">Subscription Tiers</h1><hr />
+	<p class="blah">
+		Whether you're a seasoned connoisseur or a curious enthusiast, our subscriptions offer a world of fine wines tailored to your preferences.
+		Discover, savor, and indulge in the captivating world of wine, one bottle at a time. Cheers to unforgettable moments and unforgettable wines!
+	</p>
+</div>
 
 <section class="sub-cards-sec">
 	@foreach (var item in Model)

@@ -4,7 +4,7 @@
     /* Colors */
     --brand-color: hsl(46, 100%, 50%);
     --black: hsl(0, 0%, 0%);
-    --white: hsl(0, 0%, 100%);
+    --white-text: hsl(0, 0%, 100%);
     /* Fonts */
     --font-title: 'Bebas Neue', sans-serif;
     --font-text: "Lato", sans-serif;
@@ -33,14 +33,14 @@ p {
         display: grid;
         place-items: center;
         height: 100vh;
-        background-color: black;
-        color: white;
+        background-color:var(--bg-color);
+        color:var(--white-text);
     }
 
 h2 {
     font-size: 2.25rem;
     font-family: var(--font-title);
-    color: var(--white);
+    color: var(--white-text);
     line-height: 1.1;
 }
 
@@ -48,7 +48,7 @@ p {
     font-family: var(--font-text);
     font-size: 1rem;
     line-height: 1.5;
-    color: var(--white);
+    color: var(--white-text);
 }
 .blah{
     font-family: var(--font-text);
@@ -258,7 +258,7 @@ logos {
 .radio label {
     display: inline-block;
     position: relative;
-    background-color: var(--black);
+    background-color: var(--bg-color);
     padding: 10px 20px;
     font-family: var(--font-text);
     font-size: 16px;
@@ -312,5 +312,26 @@ logos {
     margin:10px auto;
     border-radius:15px;
     font-family:var(--font-text);
-    
+}
+.hype_box{
+   margin-top:15px;
+   display:flex;
+   justify-content:space-around;
+   overflow:hidden;
+   margin-bottom:-270px;
+}
+
+.ish {
+    backdrop-filter: blur(10px);
+    background-color: var(--white);
+    background-blend-mode: luminosity;
+    display: inline-flex;
+    flex-direction: column;
+    text-align: center;
+    border: none;
+    padding: .7vw;
+    border-radius: 20px;
+    width:15vw;
+    height:auto;
+    margin:.2vw;
 }
