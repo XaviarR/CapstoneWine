@@ -5,7 +5,23 @@
 
 @{
 	ViewData["Title"] = "Subsciptions";
+
+	string[] sub_blurb = {
+	"These budget-friendly gems are handpicked to deliver fantastic flavors,ensuring that you can enjoy a glass of quality wine whenever the occasion calls for it.",
+	"Immerse yourself in a world of refined flavors and captivating aromas as you savor each bottle. Treat Yourself is designed to enhance your special occasions or add a touch of luxury to your everyday life.",
+	"Embark on an extraordinary journey as our expert cellarmasters handpick a distinguished array of exclusive wines from renowned vineyards and prestigious winemakers."
+	};
+	
+	string[] image_names = {
+		"cc.jpg",
+		"treat.jpg",
+		"cellar.jpg"
+	};
+	// count subs
+	int i = 0;
 }
+
+
 <div class="">
 <section>
 	<h1 class="boldTitle"> Subscriptions </h1>
@@ -98,22 +114,25 @@
         foreach (var item in Model)
         {
             if (item.SubName != previousName)
-            {
+            { 
                 <div class="card-column">
                     <article class="card logo hidden">
-                        <img class="card__background" src="~/Images/sub/mixed.jpg" />
+                        <img class="card__background" src="~/Images/sub/@image_names[i]" />
                         <div class="card__content | flow">
                             <div class="card__content--container | flow">
                                 <h2 class="card__title">@Html.DisplayFor(modelItem => item.SubName)</h2>
                                 <p class="card__description">
-                                    These budget-friendly gems are handpicked to deliver fantastic flavors,
-                                    ensuring that you can enjoy a glass of quality wine whenever the occasion calls for it.
+									@sub_blurb[i]
                                 </p>
+								<p class="blah">
+									Price Per Bottle: $@item.BtlPrice.ToString("F2") <!--set decimal palces for price-->
+								</p>
                             </div>
                         </div>
                     </article>
                     <a class="cart-btn" asp-controller="Home" asp-action="Add" asp-route-id="@item.SubID">Subscribe</a>
                 </div>
+				i++;
             }
             previousName = item.SubName;
         }
