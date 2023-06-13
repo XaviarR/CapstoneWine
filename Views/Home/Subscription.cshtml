@@ -92,23 +92,34 @@
 </div>
 
 <section class="sub-cards-sec">
-	@foreach (var item in Model)
-	{
-		<div class="card-column">
-			<article class="card logo hidden">
-				@*images need to be same ratio*@
-				<img class="card__background" src="~/Images/sub/mixed.jpg" />
-				<div class="card__content | flow">
-					<div class="card__content--container | flow">
-						<h2 class="card__title">@Html.DisplayFor(modelItem => item.SubName)</h2>
-						<p class="card__description">
-							These budget-friendly gems are handpicked to deliver fantastic flavors,
-							ensuring that you can enjoy a glass of quality wine whenever the occasion calls for it.
-						</p>
-					</div>
-				</div>
-			</article>
-			<a class="cart-btn" asp-controller="Home" asp-action="Add" asp-route-id="@item.SubID">Subscribe</a>
-		</div>
-	}
+    @if (Model.Any())
+    {
+        var previousName = string.Empty;
+        foreach (var item in Model)
+        {
+            if (item.SubName != previousName)
+            {
+                <div class="card-column">
+                    <article class="card logo hidden">
+                        <img class="card__background" src="~/Images/sub/mixed.jpg" />
+                        <div class="card__content | flow">
+                            <div class="card__content--container | flow">
+                                <h2 class="card__title">@Html.DisplayFor(modelItem => item.SubName)</h2>
+                                <p class="card__description">
+                                    These budget-friendly gems are handpicked to deliver fantastic flavors,
+                                    ensuring that you can enjoy a glass of quality wine whenever the occasion calls for it.
+                                </p>
+                            </div>
+                        </div>
+                    </article>
+                    <a class="cart-btn" asp-controller="Home" asp-action="Add" asp-route-id="@item.SubID">Subscribe</a>
+                </div>
+            }
+            previousName = item.SubName;
+        }
+    }
+    else
+    {
+        <p>No items found.</p>
+    }
 </section>
