@@ -318,7 +318,7 @@ logos {
    display:flex;
    justify-content:space-around;
    overflow:hidden;
-   margin-bottom:-270px;
+   margin-bottom:30px;
 }
 
 .ish {
@@ -329,9 +329,10 @@ logos {
     flex-direction: column;
     text-align: center;
     border: none;
-    padding: .7vw;
+    padding: .9vw;
     border-radius: 20px;
     width:15vw;
     height:auto;
     margin:.2vw;
+    border:2px, solid var(--white); 
 }

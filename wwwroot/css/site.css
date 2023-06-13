@@ -1,13 +1,14 @@
 :root {
-    --bg-color: #102A43;
+    --bg-color: rgba(1, 18, 47,1);
     --primary-text-color: #D9E2EC;
     --accent-color: rgba(0, 5, 99, 1);
     --header-size: 70px;
-    --red: rgba(245, 39, 39, 0.13);
     --white: rgba(255,255,255,0.13);
+    --blueish: rgb(31, 110, 140, 0.13);
     --blue: rgba(13, 110, 253, 0.13);
-    --purple: rgba(91, 42, 113, .2);
-    --light: rgba(194, 163, 255, .13);
+    --teal: rgb(46, 138, 153 .13);
+    --light: rgb(132, 167, 161 .13);
+    --white-text: hsl(0, 0%, 100%);
 }
 
 html {
@@ -26,7 +27,7 @@ html {
 
 html {
     position: relative;
-    background-color: #080710;
+    background-color:var(--bg-color);
 }
 
 body {
@@ -55,7 +56,7 @@ body {
 .hero {
     height: 100vh;
     cursor: inherit;
-   margin-left:-7vw;
+    margin-left:-7vw;
     clip: auto;
     overflow: hidden;
     justify-content:center;
@@ -172,7 +173,7 @@ footer{
     font-family: 'Gruppo', cursive;
     text-align: center;
     font-size: 5rem;
-    color: white;
+    color:var(--white-text);
 }
 
 .block1 {
@@ -207,6 +208,7 @@ footer{
     border: 12px solid;
     border-radius:75px;
     border-color: var(--purple);
+    margin-bottom:15px;
 }
 
 .icon_card{
