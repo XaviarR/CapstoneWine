@@ -113,7 +113,7 @@ h1 {
     display: block;
     height: 50px;
     width: 100%;
-    background-color: var(--bg-color);
+    background-color: var(--white);
     border-radius: 3px;
     padding: 10px 10px;
     margin-top: 8px;
