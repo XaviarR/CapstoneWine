@@ -50,7 +50,7 @@ body {
     opacity:1;
 }
 .nav-cart:hover .show{
-    opacity:1;
+   opacity:1;
    text-align:center;
 }
 .hero {
@@ -79,7 +79,7 @@ footer{
 }
 
 .bg-home {
-    background-color: black;
+    background-color:var(--bg-color);
 }
 
 #invertedcursor {
@@ -102,7 +102,7 @@ footer{
     position: relative;
     width: 100%;
     height: 500px;
-    background-color: black;
+    background-color: var(--bg-color);
 }
 
 * {
@@ -145,7 +145,7 @@ footer{
         inset: 0;
         display: grid;
         place-items: center;
-        background-color: #000;
+        background-color: var(--bg-color);
         color: white;
         font-weight: 900;
         /*font update*/
