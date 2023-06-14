@@ -17,7 +17,8 @@
 		<div class="product-box">
 			<img class="img" src="@Html.DisplayFor(modelItem => item.Image)" />
 			<div class="price h5">$@Html.DisplayFor(modelItem => item.Price)</div>
-			<div class="quantity">@Html.DisplayFor(modelItem => item.Quantity)</div>
+			<div></div>
+			@*<div class="quantity">@Html.DisplayFor(modelItem => item.Quantity)</div>*@
 			<a class="cart" asp-controller="Cart" asp-action="Add" asp-route-id="@item.WineID" onclick="addToCart(event, @item.WineID)">Add to Cart</a>
 			<div class="blurb">
 				<div class="product-title">@Html.DisplayFor(modelItem => item.WineName)</div>
