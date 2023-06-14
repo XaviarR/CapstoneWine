@@ -24,12 +24,39 @@ namespace CapstoneWine.Controllers
         {
             var subscriptions = await _context.Subscriptions.ToListAsync();
             var wines = await _context.Wines.ToListAsync();
-            var orders = await _context.Orders
-                .Include(o => o.wine)
-                .ToListAsync();
+            var orders = await _context.Orders.Include(o => o.wine).ToListAsync();
+            var customers = await _context.CustomerModel.ToListAsync();
 
-            var model = new Tuple<List<SubscriptionsModel>, List<WinesModel>, List<OrdersModel>>(subscriptions, wines, orders);
-            return View(model);
+            var model = new Tuple<List<SubscriptionsModel>, List<WinesModel>, List<OrdersModel>, List<CustomerModel>>(subscriptions, wines, orders, customers);
+
+
+			// No. Of Wines
+			int wineCount = wines.Select(w => w.WineID).Count();
+			ViewData["WineCount"] = wineCount;
+
+			// No. of Users
+            int userCount = customers.Count();
+            ViewData["UserCount"] = userCount;
+
+            // Admin Users 
+            int adminCount = _context.UserRoles.Where(a => a.RoleId == "ada167e6-5ad7-440e-87ec-86d7ab9d52a7").Count();
+            ViewData["AdminCount"] = adminCount;
+
+            // Subscribers
+            
+
+            // Earnings (can probably make it up)
+
+
+            // Pending Orders
+            int pendingOrders = orders.Where(a => a.OrderStatus == "pending").Count();
+            ViewData["PendingOrders"] = pendingOrders;
+
+            // Sales
+
+
+
+			return View(model);
         }
 
         public async Task<IActionResult> Orders()
