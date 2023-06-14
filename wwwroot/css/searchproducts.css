@@ -23,9 +23,6 @@ footer {
     background-color: var(--accent-color);
 }
 
-.nav-menu {
-    background-color: rgba(13, 110, 253, 0.53);
-}
 
 .shop-content {
     display: grid;
