@@ -4,7 +4,7 @@
     /* Colors */
     --brand-color: hsl(46, 100%, 50%);
     --black: hsl(0, 0%, 0%);
-    --white: hsl(0, 0%, 100%);
+    --white-text: hsl(0, 0%, 100%);
     /* Fonts */
     --font-title: 'Bebas Neue', sans-serif;
     --font-text: "Lato", sans-serif;
@@ -33,14 +33,14 @@ p {
         display: grid;
         place-items: center;
         height: 100vh;
-        background-color: black;
-        color: white;
+        background-color:var(--bg-color);
+        color:var(--white-text);
     }
 
 h2 {
     font-size: 2.25rem;
     font-family: var(--font-title);
-    color: var(--white);
+    color: var(--white-text);
     line-height: 1.1;
 }
 
@@ -48,7 +48,7 @@ p {
     font-family: var(--font-text);
     font-size: 1rem;
     line-height: 1.5;
-    color: var(--white);
+    color: var(--white-text);
 }
 .blah{
     font-family: var(--font-text);
@@ -68,6 +68,8 @@ p {
     grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
     place-items: center;
     gap: 1em;
+    margin: 2em;
+    padding:1em;
 }
 
 .card {
@@ -97,9 +99,10 @@ p {
     flex-direction: column;
     justify-content: space-between;
     align-self: flex-end;
-    height: 60%;
+   /*set height for on hover text*/
+    height: 80%;
     padding: 12% 1.25rem 1.875rem;
-    background: linear-gradient( 180deg, hsla(0, 0%, 0%, 0) 0%, hsla(0, 0%, 0%, 0.3) 10%, hsl(0, 0%, 0%) 100% );
+    background: linear-gradient( 180deg, hsla(0, 0%, 0%, 0) 0%, hsla(0, 0%, 0%, 0.7) 10%, hsl(0, 0%, 0%) 100% );
 }
 
 .card__content--container {
@@ -125,18 +128,20 @@ p {
 .cart-btn {
     display: grid;
     place-items:center;
-    background-color: var(--accent-color);
-    color: white;
-    height: 2.8em;
+    background-color: var(--teal);
+    color: var(--white-text);
+    height: 2em;
     width: 100%;
-    margin-top: 10px;
+    margin-top:10px;
     border: 3px solid black;
     border-radius: 10px;
     transition: transform 0.2s;
+    font-family:var(--font-title);
+    font-size:2em;
 }
 .cart-btn:hover {
-    color: white;
-    border-color: blue;
+    color: var(--white-text);
+    border-color: var(--white);
     transform: scale(1.02);
 }
 
@@ -258,7 +263,7 @@ logos {
 .radio label {
     display: inline-block;
     position: relative;
-    background-color: var(--black);
+    background-color: var(--bg-color);
     padding: 10px 20px;
     font-family: var(--font-text);
     font-size: 16px;
@@ -312,5 +317,31 @@ logos {
     margin:10px auto;
     border-radius:15px;
     font-family:var(--font-text);
-    
+}
+.hype_box{
+   margin-top:15px;
+   display:flex;
+   justify-content:space-around;
+   overflow:hidden;
+   margin-bottom:30px;
+}
+
+.ish {
+    backdrop-filter: blur(10px);
+    background-color: var(--white);
+    background-blend-mode: luminosity;
+    display: inline-flex;
+    flex-direction: column;
+    text-align: center;
+    border: none;
+    padding: .9vw;
+    border-radius: 20px;
+    width:15vw;
+    height:auto;
+    margin:.2vw;
+    border:2px, solid var(--white); 
+}
+
+.sub_box{
+    margin-top:2vh;
 }

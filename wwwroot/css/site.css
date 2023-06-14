@@ -1,12 +1,14 @@
 :root {
-    --bg-color: #080710;
-    --primary-text-color: white;
+    --bg-color: rgba(9, 0, 20,1);
+    --primary-text-color: #D9E2EC;
     --accent-color: rgba(0, 5, 99, 1);
     --header-size: 70px;
-    --red: rgba(245, 39, 39, 0.13);
     --white: rgba(255,255,255,0.13);
+    --blueish: rgb(31, 110, 140, 0.13);
     --blue: rgba(13, 110, 253, 0.13);
-    --purple: rgba(91, 42, 113, 0.25);
+    --teal: rgb(46, 138, 153, .33);
+    --light: rgb(132, 167, 161 .13);
+    --white-text: hsl(0, 0%, 100%);
 }
 
 html {
@@ -25,7 +27,7 @@ html {
 
 html {
     position: relative;
-    background-color: #080710;
+    background-color:var(--bg-color);
 }
 
 body {
@@ -54,7 +56,7 @@ body {
 .hero {
     height: 100vh;
     cursor: inherit;
-   margin-left:-7vw;
+    margin-left:-7vw;
     clip: auto;
     overflow: hidden;
     justify-content:center;
@@ -171,7 +173,7 @@ footer{
     font-family: 'Gruppo', cursive;
     text-align: center;
     font-size: 5rem;
-    color: white;
+    color:var(--white-text);
 }
 
 .block1 {
@@ -181,20 +183,38 @@ footer{
     backdrop-filter: blur(10px);
     border: none;
 }
-.bk_blur_r {
-    background-color:var(--purple);
+.bk_blur_lt {
+    background-color:var(--blue);
     border-radius: 10px;
     backdrop-filter: blur(10px);
-    padding: 10px;
+    padding: 20px;
 }
 
-.icon_r {
-    border-radius: 75px;
-    height: 150px;
-    background-clip: content-box;
-    margin-bottom: -75px;
-    border: 7px solid;
-    margin-left: 31vw;
-    border-color: var(--white);
+.icon_r{
+    height: 128px;
+    transform:scale(1.3);
+    text-align:center;
+    
 }
+
+.iconBox {
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    height: 150px;
+    width: 150px;
+    text-align:center;
+    border: 12px solid;
+    border-radius:75px;
+    border-color: var(--purple);
+    margin-bottom:15px;
+}
+
+.icon_card{
+    height:128px;
+    transform:scale(1);
+    text-align:center;
+}
+
 

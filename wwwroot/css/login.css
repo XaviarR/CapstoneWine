@@ -10,7 +10,7 @@
 
 body {
     margin-top: 70px;
-    background-color: #080710;
+    background-color:inherit;
     margin-bottom: 0px;
     cursor: none;
     min-height: 90vh;
@@ -53,7 +53,7 @@ body {
 /*user_form+ bk_blur to create login form style*/
 .bk_blur {
     height: auto;
-    background-color: rgba(255,255,255,0.13);
+    background-color:var(--white);
     /*background-color: rgba(13, 110, 253, 0.13);*/
     border-radius: 10px;
     backdrop-filter: blur(10px);
@@ -82,7 +82,7 @@ form * {
     border: none;
     width: auto;
     font-family: 'Gruppo', cursive;
-    color: black;
+    color:var(--bg-color);
     text-decoration: none;
 }
 
@@ -96,7 +96,7 @@ h3 {
 }
 
 h1 {
-    color: white;
+    color:var(--white-text);
     text-align: center;
     margin: 40px 0;
 }
@@ -113,7 +113,7 @@ h1 {
     display: block;
     height: 50px;
     width: 100%;
-    background-color: rgba(255,255,255,0.07);
+    background-color: var(--white);
     border-radius: 3px;
     padding: 10px 10px;
     margin-top: 8px;
@@ -130,14 +130,14 @@ textarea {
 }
 
 ::placeholder {
-    color: #e5e5e5;
+    color: var(--light);
 }
 
 .button {
     margin-top: 50px;
     width: 100%;
-    background-color: #fff;
-    color: #080710;
+    background-color:var(--white);
+    color: var(--white-text);
     padding: 15px 0;
     font-size: 28px;
     font-weight: 600;
@@ -155,15 +155,15 @@ textarea {
         flex-grow: 1;
         border-radius: 3px;
         padding: 15px;
-        background-color: rgba(255,255,255,0.27);
-        color: #eaf0fb;
+        background-color:var(--bg-color);
+        color: var(--light);
         text-align: center;
         margin: 5px;
         vertical-align: central;
     }
 
         .social div:hover {
-            background-color: rgba(255,255,255,0.47);
+            background-color:var(--white);
         }
 
     .social .fb {
@@ -205,7 +205,7 @@ textarea {
 
     .wrapper .icon {
         position: relative;
-        background: #ffffff;
+        background:var(--white-text);
         border-radius: 50%;
         padding: 2px;
         margin: 0px;
@@ -225,8 +225,8 @@ textarea {
         position: absolute;
         top: 0;
         font-size: 14px;
-        background: #ffffff;
-        color: #ffffff;
+        background: var(--white-text);
+        color: var(--white-text);
         padding: 5px 8px;
         border-radius: 5px;
         box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
@@ -240,7 +240,7 @@ textarea {
             content: "";
             height: 8px;
             width: 8px;
-            background: #ffffff;
+            background: var(--white-text);
             bottom: -3px;
             left: 50%;
             transform: translate(-50%) rotate(45deg);
@@ -263,35 +263,35 @@ textarea {
     .wrapper .facebook:hover .tooltip,
     .wrapper .facebook:hover .tooltip::before {
         background: #1356afce;
-        color: #ffffff;
+        color: var(--white-text);
     }
 
     .wrapper .twitter:hover,
     .wrapper .twitter:hover .tooltip,
     .wrapper .twitter:hover .tooltip::before {
         background: #29a7f5;
-        color: #ffffff;
+        color: var(--white-text);
     }
 
     .wrapper .instagram:hover,
     .wrapper .instagram:hover .tooltip,
     .wrapper .instagram:hover .tooltip::before {
         background: #f17399;
-        color: #ffffff;
+        color: var(--white-text);
     }
 
     .wrapper .github:hover,
     .wrapper .github:hover .tooltip,
     .wrapper .github:hover .tooltip::before {
         background: #333333;
-        color: #ffffff;
+        color: var(--white-text);
     }
 
     .wrapper .youtube:hover,
     .wrapper .youtube:hover .tooltip,
     .wrapper .youtube:hover .tooltip::before {
         background: #CD201F;
-        color: #ffffff;
+        color: var(--white-text);
     }
 
 .fab fa-youtube {
