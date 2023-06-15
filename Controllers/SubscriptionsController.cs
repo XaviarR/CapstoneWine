@@ -12,6 +12,7 @@ using CapstoneWine.Infrastructure;
 using CapstoneWine.Models.ViewModels;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using CapstoneWine.Areas.Services;
+using Microsoft.AspNetCore.Identity;
 
 namespace CapstoneWine.Controllers
 {
@@ -214,12 +215,27 @@ namespace CapstoneWine.Controllers
 				SubItems = cart,
 
 			};
+            //To save sub order in database (not working)
+
+   //         CustomerModel customerModel = new CustomerModel();
+
+			//var customerSub = new CustomerSubModel
+			//{
+   //             CustomerSubID = 1234,
+   //             SubID = 1,
+			//	CustomerID = 1,
+			//	StartDate = DateTime.Now
+			//};
+
+			//_context.CustomerSub.Add(customerSub);
+			//_context.SaveChanges();
+
 			HttpContext.Session.Remove("Sub");
 			return View(cartVM);
 		}//View for OrderComplete
 
         string Email { get; set; }
-		public async Task<IActionResult> Receipt(int id)
+		public async Task<IActionResult> Receipt(int id, string ShippingEmail)
 		{
 			WinesModel wines = await _context.Wines.FindAsync(id);
 
@@ -231,15 +247,16 @@ namespace CapstoneWine.Controllers
 				GrandTotal = cart.Sum(x => x.Total + x.Shipping),
 				NumOfItems = cart.Count.ToString()
 			};
+			Email = ShippingEmail;
 			if (cartVM == null)
 			{
-				await _emailSender.SendEmailAsync(Email = "xaviar.rehu@techtorium.ac.nz", "Order", htmlMessage: "No item selected");
+				await _emailSender.SendEmailAsync(Email, "Order", htmlMessage: "No item selected");
 			}
 			else
 			{
-				await _emailSender.SendEmailAsync(Email = "xaviar.rehu@techtorium.ac.nz", "Order Complete", htmlMessage: "For " + cartVM.NumOfItems.ToString() + " Subscriptions, You have been charged: " + cartVM.GrandTotal.ToString("C2"));
+				await _emailSender.SendEmailAsync(Email, "Order Complete", htmlMessage: "For " + cartVM.NumOfItems.ToString() + " Subscriptions, You have been charged: " + cartVM.GrandTotal.ToString("C2"));
 			}
-			return Redirect(Request.Headers["Referer"].ToString());
+			return Json("Sent");
 		}
 
 		private bool SubscriptionsExists(int id)
