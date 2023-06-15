@@ -4,6 +4,7 @@ using CapstoneWine.Data;
 using CapstoneWine.Models.ViewModels;
 using CapstoneWine.Services;
 using CapstoneWine.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace CapstoneWine.Controllers
 {
@@ -11,14 +12,17 @@ namespace CapstoneWine.Controllers
     {
         private readonly ApplicationDbContext _context;
 		private readonly IAccountService _accountService;
+        private readonly UserManager<IdentityUser> _userManager;
 
-		public CustomerController(
+        public CustomerController(
 			ApplicationDbContext context,
-			IAccountService accountService
-)
+			IAccountService accountService,
+            UserManager<IdentityUser> userManager
+            )
 		{
 			_context = context;
 			_accountService = accountService;
+            _userManager = userManager;
 		}
 
         // GET: CustomerModels
@@ -212,7 +216,27 @@ namespace CapstoneWine.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CustomerModelExists(int id)
+		public async Task<IActionResult> Profile()
+		{
+			var customerId = _userManager.GetUserId(HttpContext.User);
+
+            var customerView = await _context.CustomerModel.FirstOrDefaultAsync(a => a.IdentityKey == customerId);
+
+            if (customerView == null)
+            {
+                return NotFound();
+            }
+
+            var customerViewModel = new CustomerViewModel()
+            {
+                Customer = customerView,
+                Email = _context.Users.Where(u => u.Id == customerView.IdentityKey).First().Email
+            };
+
+			return View(customerViewModel);
+		}
+
+		private bool CustomerModelExists(int id)
         {
             return (_context.CustomerModel?.Any(e => e.ID == id)).GetValueOrDefault();
         }
