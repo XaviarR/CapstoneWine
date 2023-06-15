@@ -132,10 +132,12 @@ footer{
         overflow: hidden;
         transform: translate(-100%, 0%);
         transition: transform .5s ease-out, opacity 0.3s ease;
-        opacity:0;
+        opacity: 0;
+        
     }
     .vid-container:hover .bg-video {
         opacity: 1;
+       
     }
 
     /* background-color and color should be the same as the below otherwise it won't work */
@@ -194,7 +196,6 @@ footer{
     height: 128px;
     transform:scale(1.3);
     text-align:center;
-    
 }
 
 .iconBox {
