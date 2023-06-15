@@ -67,21 +67,10 @@ namespace CapstoneWine.Controllers
 				$"<br>You will be charged: {cartVM.GrandTotal.ToString("C2")}" +
 				$"<br>Mobile: {ShippingMobile}" +
 				$"<br>They will be delivered to {ShippingAddress}");
-
+			// Clear the cart in the session
+			HttpContext.Session.Remove("Cart");
 			//return RedirectToAction("OrderComplete");
-			return Redirect("Index");
+			return Redirect("ShippingDetails");
 		}
-		public IActionResult OrderComplete()
-		{
-			List<CartItem> cart = HttpContext.Session.GetJson<List<CartItem>>("Cart") ?? new List<CartItem>();
-
-			CartViewModel cartVM = new()
-			{
-				CartItems = cart,
-			};
-
-			return View(cartVM);
-		}//View for OrderComplete
-
 	}
 }
