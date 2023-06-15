@@ -1,0 +1,108 @@
+﻿@model CapstoneWine.Models.ViewModels.CustomerViewModel
+
+@{
+	ViewData["Title"] = "My Profile";
+}
+
+<style>
+	.details-section {
+		margin-bottom: 10rem;
+	}
+
+	.detail-box {
+		display: grid;
+		gap: 1rem;
+		padding: 1rem;
+		border-radius: 10px;
+		background-color: rgba(200, 200, 200, 0.2);
+	}
+
+	.detail-row {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1rem;
+		max-width: 400px;
+	}
+
+		.detail-row span:nth-child(1) {
+			font-weight: bold;
+		}
+
+
+
+
+	.wrapper {
+		display: grid;
+	}
+
+	.info-row {
+		display: grid;
+		grid-template-columns: repeat(6, 1fr); 
+		padding: 10px 20px;
+		border-radius: 0 0 10px 10px;
+		background-color: var(--blue);
+	}
+
+	.header {
+		border-radius: 20px 20px 0 0;
+		background-color: rgba(13, 110, 253, 0.63);
+		border-bottom: 1px solid rgba(200, 200, 200, 0.12)
+	}
+</style>
+
+<section class="details-section">
+	<div class="detail-box" style="max-width: 600px;">
+		<h4>Basic Information</h4>
+		<div class="detail-row">
+			<span>First Name:</span>
+			<span>@Model.Customer.FirstName</span>
+		</div>
+		<div class="detail-row">
+			<span>Last Name:</span>
+			<span>@Model.Customer.LastName</span>
+		</div>
+		<div class="detail-row">
+			<span>Street Address:</span>
+			<span>@Model.Customer.StreetAddress</span>
+		</div>
+		<div class="detail-row">
+			<span>Suburb:</span>
+			<span>@Model.Customer.Suburb</span>
+		</div>
+		<div class="detail-row">
+			<span>City</span>
+			<span>@Model.Customer.City</span>
+		</div>
+		<div class="detail-row">
+			<span>Post Code:</span>
+			<span>@Model.Customer.PostCode</span>
+		</div>
+		<a class="mt-3" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Edit Information</a>
+	</div>
+</section>
+
+<section class="details-section">
+	<div class="detail-box">
+		<h4>Basic Information</h4>
+		<div class="wrapper">
+			<div class="info-row header">
+				<span class="info-heading">First Name</span>
+				<span class="info-heading">Last Name</span>
+				<span class="info-heading">Street Address</span>
+				<span class="info-heading">Suburb</span>
+				<span class="info-heading">City</span>
+				<span class="info-heading">Post Code</span>
+			</div>
+			<div class="info-row ">
+				<span class="info">@Model.Customer.FirstName</span>
+				<span class="info">@Model.Customer.LastName</span>
+				<span class="info">@Model.Customer.StreetAddress</span>
+				<span class="info">@Model.Customer.Suburb</span>
+				<span class="info">@Model.Customer.City</span>
+				<span class="info">@Model.Customer.PostCode</span>
+			</div>
+		</div>
+		<a class="mt-3" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Edit Information</a>
+	</div>
+</section>
+
