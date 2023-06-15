@@ -185,8 +185,8 @@ textarea {
 .contact {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 3fr .4fr;
-    gap: 0.4fr;
+    grid-template-rows: 3fr auto;
+    column-gap: 0.4fr;
     justify-items: flex-start
 }
 
@@ -297,4 +297,24 @@ textarea {
 .fab fa-youtube {
     display: none;
     visibility: hidden;
+}
+
+/*About Contact us page*/
+.aboutbox{
+   display:flex;
+   flex-direction:row;
+   flex-flow:wrap;
+   margin-bottom:20px;
+   padding:5%;
+}
+.about_blah {
+    width:50%;
+    vertical-align:central;
+    justify-content:end;
+}
+.team{
+    width:100%;
+    margin-top: -50px;
+    margin-left:-50px;
+    transform:scale(1.5);
 }
