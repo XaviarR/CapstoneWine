@@ -214,7 +214,7 @@ namespace CapstoneWine.Controllers
 				SubItems = cart,
 
 			};
-
+			HttpContext.Session.Remove("Sub");
 			return View(cartVM);
 		}//View for OrderComplete
 

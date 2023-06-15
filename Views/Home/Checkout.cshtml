@@ -114,11 +114,7 @@
 	<div class="row">
 		<div class="text-end">
 			<div class="btn-group">
-				<a class="btn btn-outline-success" asp-controller="Home" asp-action="SubCart">Back</a>
-				<span style="padding:2px"></span>
-				<a class="btn btn-outline-success" asp-controller="Home" asp-action="Subscription">Choose Subscription</a>
-				<span style="padding:2px"></span>
-				<button type="submit" id="paypal-btn" style="display:none"></button>
+				<div id="paypal-btn" style="display:none"></div>
 			</div>
 		</div>
 	</div>
@@ -148,7 +144,7 @@ else
 			style: {
 				size: 'large',
 				color: 'white',//Silver, White, Blue, Gold
-				shape: 'rect'
+				shape: 'pill'
 			},
 			commit: true,
 
