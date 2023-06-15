@@ -19,10 +19,12 @@
 
 	<header>
 		<div id="invertedcursor" class="page-container"></div>
-
-		<!--Option 1-->
+		@if (ViewData["Title"] != "Age Check")
+		{
+			<!--Option 1-->
 		<nav class="navbar fixed-top">
 			@*this is the hamburger icon*@
+
 			<div class="hamburger">
 				<a>
 					<span class="bar"></span>
@@ -93,6 +95,8 @@
 			</div>
 
 		</nav>
+		}
+		
 	</header>
 
 	<section>
@@ -106,8 +110,10 @@
 	<div>
 	&copy; 2023 - CapstoneWine - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>*@
 
-	<!-- Footer -->
-	<footer id="footer" class="text-center text-lg-start text-white border-top"
+	@if (ViewData["Title"] != "Age Check")
+	{
+		<!-- Footer -->
+		<footer id="footer" class="text-center text-lg-start text-white border-top"
 			style="background-color:var(--bg-color)">
 		<div class="container p-4 pb-0">
 			<section class="">
@@ -233,6 +239,8 @@
 			</div>
 		</div>
 	</footer>
+	}
+	
 
 	<script src="~/lib/jquery/dist/jquery.min.js"></script>
 	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
