@@ -18,8 +18,10 @@ namespace CapstoneWine.Data
 
         public DbSet<CapstoneWine.Models.CustomerModel> CustomerModel { get; set; } = default!;
 
-        //Added code CB
-        /*
+		public DbSet<CapstoneWine.Models.CustomerSubModel> CustomerSub { get; set; } = default!;
+
+		//Added code CB
+		/*
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -44,7 +46,7 @@ namespace CapstoneWine.Data
                 .HasForeignKey<UserProfile>(u => u.UserId); // Foreign key is UserId
     }
         */
-    }
+	}
 
 
 }

@@ -42,9 +42,6 @@
 			<div class="col">
 				<div class="text-end">
 					<div class="btn-group">
-						<a class="btn btn-outline-success" asp-controller="Cart" asp-action="Index">Back</a>
-						<span style="padding:5px"></span>
-						<a class="btn btn-outline-success" asp-controller="Shop" asp-action="Index">Add more items</a>
 						<span style="padding:5px"></span>
 						<input type="submit" value="Send Receipt" class="btn btn-outline-success">
 					</div>
@@ -57,6 +54,6 @@
 }
 else
 {
-	<h1>Nothing in cart</h1>
-	<a class="btn btn-outline-success" asp-controller="Shop" asp-action="Index">Add new items</a>
+	<h1>Order Complete!</h1>
+	<a class="btn btn-outline-success" asp-controller="Shop" asp-action="Index">Shop Page</a>
 }
