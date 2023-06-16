@@ -218,19 +218,34 @@ namespace CapstoneWine.Controllers
 
 		public async Task<IActionResult> Profile()
 		{
-			var customerId = _userManager.GetUserId(HttpContext.User);
+			var idKey = _userManager.GetUserId(HttpContext.User);
 
-            var customerView = await _context.CustomerModel.FirstOrDefaultAsync(a => a.IdentityKey == customerId);
+            var customer = await _context.CustomerModel.FirstOrDefaultAsync(a => a.IdentityKey == idKey);
 
-            if (customerView == null)
-            {
-                return NotFound();
-            }
+			if (customer == null)
+			{
+				return NotFound();
+			}
+
+			var customerId = customer.ID;
+			
+			var order = await _context.Orders.FirstOrDefaultAsync(c => c.CustomerId == customerId);
+            var wineId = order.WineID;
+            var wine = await _context.Wines.FirstOrDefaultAsync(d => d.WineID == wineId);
+            var wineName = wine.WineName;
+			
+            var customerSub = await _context.CustomerSub.FirstOrDefaultAsync(b => b.CustomerID == customerId);
+            var subId = customerSub.SubID;
+            var subscription = await _context.Subscriptions.FirstOrDefaultAsync(e => e.SubID == subId);
+
 
             var customerViewModel = new CustomerViewModel()
             {
-                Customer = customerView,
-                Email = _context.Users.Where(u => u.Id == customerView.IdentityKey).First().Email
+                Customer = customer,
+                Email = _context.Users.Where(u => u.Id == customer.IdentityKey).First().Email,
+                Subscription = subscription,
+                Order = order,
+                Wine = wine
             };
 
 			return View(customerViewModel);
