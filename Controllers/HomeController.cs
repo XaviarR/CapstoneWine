@@ -423,6 +423,33 @@ namespace CapstoneWine.Controllers
 			return RedirectToAction("SubCart");
 		}//Button to remove item from subcart
 
+		public IActionResult OrderComplete()
+		{
+			List<SubItem> cart = HttpContext.Session.GetJson<List<SubItem>>("Sub") ?? new List<SubItem>();
+
+			SubViewModel cartVM = new()
+			{
+				SubItems = cart,
+
+			};
+			//To save sub order in database (not working)
+
+			//         CustomerModel customerModel = new CustomerModel();
+
+			//var customerSub = new CustomerSubModel
+			//{
+			//             CustomerSubID = 1234,
+			//             SubID = 1,
+			//	CustomerID = 1,
+			//	StartDate = DateTime.Now
+			//};
+
+			//_context.CustomerSub.Add(customerSub);
+			//_context.SaveChanges();
+
+			HttpContext.Session.Remove("Sub");
+			return View(cartVM);
+		}//View for OrderComplete
 
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 		public IActionResult Error()

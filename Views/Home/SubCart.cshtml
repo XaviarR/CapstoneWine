@@ -1,7 +1,7 @@
 ﻿@model CapstoneWine.Models.ViewModels.SubViewModel
 
 @{
-	ViewData["Title"] = "Subsciptions";
+	ViewData["Title"] = "Subscriptions";
 }
 
 @if (Model.SubItems.Count > 0)
@@ -9,10 +9,26 @@
 	<div class="row">
 		@foreach (var item in Model.SubItems)
 		{
+			var imageName = "";
+			switch (item.ProductName)
+			{
+				case "CheapandCheerful":
+					imageName = "cc.jpg";
+					break;
+				case "TreatYourself":
+					imageName = "treat.jpg";
+					break;
+				case "CMSelection":
+					imageName = "cellar.jpg";
+					break;
+				default:
+					imageName = "default.jpg";
+					break;
+			}
 
 			<div class="row col" style="padding-bottom:15px">
 				<h1 class="text-start">@Html.DisplayFor(modelItem => item.ProductName)</h1>
-				<img src="~/Images/sub/mixed.jpg" style="width:300px; height:350px" />
+				<img src="~/Images/sub/@imageName" style="width:300px; height:350px" />
 				<div>
 					<h2 class="text-start">Type: @Html.DisplayFor(modelItem => item.Type)</h2>
 					<a class="btn btn-secondary btn-sm" asp-action="Red" asp-route-id="@item.ProductId">Red</a>

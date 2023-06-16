@@ -206,33 +206,6 @@ namespace CapstoneWine.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-		public IActionResult OrderComplete()
-		{
-			List<SubItem> cart = HttpContext.Session.GetJson<List<SubItem>>("Sub") ?? new List<SubItem>();
-
-			SubViewModel cartVM = new()
-			{
-				SubItems = cart,
-
-			};
-            //To save sub order in database (not working)
-
-   //         CustomerModel customerModel = new CustomerModel();
-
-			//var customerSub = new CustomerSubModel
-			//{
-   //             CustomerSubID = 1234,
-   //             SubID = 1,
-			//	CustomerID = 1,
-			//	StartDate = DateTime.Now
-			//};
-
-			//_context.CustomerSub.Add(customerSub);
-			//_context.SaveChanges();
-
-			HttpContext.Session.Remove("Sub");
-			return View(cartVM);
-		}//View for OrderComplete
 
         string Email { get; set; }
 		public async Task<IActionResult> Receipt(int id, string ShippingEmail)
