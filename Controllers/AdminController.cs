@@ -49,7 +49,7 @@ namespace CapstoneWine.Controllers
 
 
             // Pending Orders
-            int pendingOrders = orders.Where(a => a.OrderStatus == "pending").Count();
+            int pendingOrders = orders.Where(a => a.OrderStatus == "Pending").Count();
             ViewData["PendingOrders"] = pendingOrders;
 
             // Sales
