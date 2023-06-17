@@ -1,145 +1,136 @@
 ﻿@model CapstoneWine.Models.ViewModels.CustomerViewModel
 
 @{
-	ViewData["Title"] = "My Profile";
+	ViewData["Title"] = "My Account";
 }
 
 <style>
-	.details-section {
-		margin-bottom: 1rem;
-	}
-
-	.detail-box {
-		display: grid;
-		gap: 1rem;
-		padding: 1rem;
-		border-radius: 10px;
-		background-color: rgba(200, 200, 200, 0.2);
-	}
-
-	.detail-row {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		gap: 1rem;
-		max-width: 400px;
-	}
-
-		.detail-row span:nth-child(1) {
-			font-weight: bold;
-		}
-
-
-
-
 	.wrapper {
-		display: grid;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 2rem;
+	}
+
+	.box {
+		/*width: 500px;*/
+		background-color: rgba(200, 200, 200, 0.2);
+		border-radius: 10px;
+		flex-grow: 1;
+		padding: 1rem;
 	}
 
 	.info-row {
-		display: grid;
-		grid-template-columns: repeat(6, 1fr); 
-		padding: 10px 20px;
-		border-radius: 0 0 10px 10px;
-		background-color: var(--blue);
+		display: flex;
+		margin-bottom: 1rem;
+		gap: 1rem;
 	}
+
+		.info-row > span:nth-child(1) {
+			flex-basis: 150px;
+			flex-shrink: 0;
+		}
 
 	.header {
 		border-radius: 20px 20px 0 0;
 		background-color: rgba(13, 110, 253, 0.63);
-		border-bottom: 1px solid rgba(200, 200, 200, 0.12)
+		border-bottom: 1px solid rgba(200, 200, 200, 0.12);
+		padding: 1rem;
+	}
+
+	.order-row {
+		display: grid;
+		grid-template-columns: repeat(7, 1fr);
+		gap: 1rem;
+		border-bottom: 1px solid white
+	}
+
+	h1 {
+		margin-top: 0;
 	}
 </style>
 
 
-<section class="details-section">
-	<div class="detail-box" style="max-width: 600px;">
-		<h4>Basic Information</h4>
-		<div class="detail-row">
+<h1>My Account</h1>
+<section class="wrapper">
+	<section class="box info">
+		<h4 class="mb-3">Basic Information</h4>
+		<div class="info-row">
 			<span>First Name:</span>
 			<span>@Model.Customer.FirstName</span>
 		</div>
-		<div class="detail-row">
+		<div class="info-row">
 			<span>Last Name:</span>
 			<span>@Model.Customer.LastName</span>
 		</div>
-		<div class="detail-row">
+		<div class="info-row">
 			<span>Street Address:</span>
 			<span>@Model.Customer.StreetAddress</span>
 		</div>
-		<div class="detail-row">
+		<div class="info-row">
 			<span>Suburb:</span>
 			<span>@Model.Customer.Suburb</span>
 		</div>
-		<div class="detail-row">
+		<div class="info-row">
 			<span>City</span>
 			<span>@Model.Customer.City</span>
 		</div>
-		<div class="detail-row">
+		<div class="info-row">
 			<span>Post Code:</span>
 			<span>@Model.Customer.PostCode</span>
 		</div>
-		<a class="mt-3" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Edit Information</a>
-	</div>
-</section>
+		<a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Edit information</a>
+	</section>
 
-<section class="details-section">
-	<div class="detail-box" style="max-width: 600px;">
-		<h4>Sub Details</h4>
-		<div class="detail-row">
+
+	<section class="box sub">
+		<h4 class="mb-3">Subscription Details</h4>
+		<div class="info-row">
 			<span>Your Subscription:</span>
 			<span>@Model.Subscription.SubName</span>
 		</div>
-		<div class="detail-row">
+		<div class="info-row">
 			<span>Type:</span>
 			<span>@Model.Subscription.Type</span>
 		</div>
-		<div class="detail-row">
+		<div class="info-row">
 			<span>Frequency:</span>
 			<span>@Model.Subscription.Frequency</span>
 		</div>
-		<div class="detail-row">
-			<span>Number of Bottles:</span>
+		<div class="info-row">
+			<span>Number of bottles:</span>
 			<span>@Model.Subscription.NumOfBottles</span>
 		</div>
-		<div class="detail-row">
+		<div class="info-row">
 			<span>Reward Points:</span>
 			<span>@Model.Subscription.RewardPoints</span>
 		</div>
-	</div>
-</section>
-
-
-<section class="details-section">
-	<div class="detail-box" style="max-width: 600px;">
-		<h4>Order History</h4>
-		<div class="detail-row">
-			<span>Wine:</span>
-			<span>@Model.Wine.WineName</span>
-		</div>
-		<div class="detail-row">
-			<span>Quantity:</span>
-			<span>@Model.Order.Quantity</span>
-		</div>
-		<div class="detail-row">
-			<span>Delivery Address:</span>
-			<span>@Model.Order.DeliveryAdd</span>
-		</div>
-		<div class="detail-row">
-			<span>Delivery Charge:</span>
-			<span>@Model.Order.DeliveryCharge</span>
-		</div>
-		<div class="detail-row">
-			<span>Total Cost:</span>
-			<span>@Model.Order.TotalCost</span>
-		</div>
-		<div class="detail-row">
+	</section>
+	
+	
+	<section class="box orders">
+		<h4 class="mb-3">Order History</h4>
+		<div class="order-row header fw-bold">
+			<span>Wine Name</span>
+			<span>Quantity</span>
+			<span>Delivery Address</span>
+			<span>Delivery Charge</span>
+			<span>Total Cost</span>
 			<span>Order Date</span>
-			<span>@Model.Order.OrderDate</span>
+			<span>Order Status</span>
 		</div>
-		<div class="detail-row">
-			<span>Order Status:</span>
-			<span>@Model.Order.OrderStatus</span>
-		</div>
-	</div>
-</section>
+		@foreach (var order in Model.Orders)
+		{
+			var wine = Model.Wines.FirstOrDefault(w => w.WineID == order.WineID);
+			<div class="order-row p-3">
+				<span>@(wine != null ? wine.WineName : "N/A")</span>
+				<span>@order.Quantity</span>
+				<span>@order.DeliveryAdd</span>
+				<span>$@order.DeliveryCharge</span>
+				<span>$@order.TotalCost</span>
+				<span>@order.OrderDate</span>
+				<span>@order.OrderStatus</span>
+			</div>
+		}
+	</section>
 
+</section>

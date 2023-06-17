@@ -1,6 +1,6 @@
 ﻿<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 @model Tuple<List<CapstoneWine.Models.SubscriptionsModel>, List<CapstoneWine.Models.WinesModel>, List<CapstoneWine.Models.OrdersModel>, List<CapstoneWine.Models.CustomerModel>>
-
+<link rel="stylesheet" href="~/css/dashboard.css" />
 @{
 	ViewData["Title"] = "Admin";
 	var userCountStr = ViewData["UserCount"].ToString();
@@ -16,205 +16,6 @@
 	int pendingOrders = Convert.ToInt32(pendingOrdersStr);
 
 }
-
-<style>
-
-	a {
-		color: white;
-	}
-
-	.fs-big {
-		font-size: 1.3rem;
-	}
-
-	.navbar {
-		background-color: var(--bg-color);
-	}
-
-	.dashboard {
-		width: 100%;
-		display: grid;
-		grid-template-columns: 250px 1fr;
-		/*background-color: var(--accent-color);*/
-	}
-
-	.sidebar {
-		position: relative;
-		left: 0;
-		min-height: calc(100vh - 70px);
-		padding: 1rem;
-		border-right: 1px solid darkblue;
-		/*background-color: rgba(200, 200, 200, 0.5);*/
-	}
-
-	.menu-area {
-		display: grid;
-		gap: 0.3rem;
-		margin-bottom: 2rem;
-		font-weight: bold;
-		position: relative;
-	}
-
-		.menu-area::after {
-			content: '';
-			position: absolute;
-			top: calc(100% + 20px);
-			width: 100%;
-			height: 1px;
-			background-color: rgba(200, 200, 200, 0.12);
-		}
-
-	.menu-link {
-		height: 2.3rem;
-		position: relative;
-		font-weight: normal;
-	}
-
-		.menu-link::after {
-			content: '>';
-			position: absolute;
-			right: 0;
-		}
-
-	.content {
-		position: relative;
-		padding: 1rem;
-		/*background-color: rgba(200, 200, 200, 0.7);*/
-	}
-
-	.top-wrapper, .mid-wrapper, .bottom-wrapper {
-		width: 100%;
-		display: grid;
-		gap: 1.67rem;
-		margin: 1.67rem 0;
-		/*background-color: white;*/
-	}
-
-	.top-wrapper {
-		grid-template-columns: repeat(4, 1fr);
-	}
-
-	.info-tab {
-		--tab-color: rgb(23,87,201);
-		position: relative;
-		display: grid;
-		grid-template-columns: 7fr 2fr;
-		grid-template-rows: auto auto;
-		column-gap: 5px;
-		color: var(--tab-color);
-		border-radius: 10px;
-		padding: 20px 15px;
-		overflow: hidden;
-		background-color: rgba(200, 200, 200, 0.2);
-	}
-
-		.info-tab::before {
-			content: '';
-			position: absolute;
-			inset: 0;
-			width: 5px;
-			height: 100%;
-			background-color: var(--tab-color);
-		}
-
-		.info-tab:nth-child(2) {
-			--tab-color: rgb(0,171,169);
-		}
-
-		.info-tab:nth-child(3) {
-			--tab-color: rgb(185,29,71);
-		}
-
-		.info-tab:nth-child(4) {
-			--tab-color: coral;
-		}
-
-	.tab-title {
-		grid-row-start: 1;
-		font-size: 1.115rem;
-	}
-
-	.tab-value {
-		grid-row-start: 2;
-		color: white;
-	}
-
-	.tab-icon {
-		grid-column-start: 2;
-		grid-row: span 2;
-		place-self: center;
-		width: 100%;
-		height: 100%;
-	}
-
-		.tab-icon img {
-			width: 100%;
-			object-fit: contain;
-		}
-
-	.mid-wrapper {
-		grid-template-columns: 6fr 4fr;
-	}
-
-	.sales-chart {
-		/*background-color: pink;*/
-		background-color: rgba(200, 200, 200, 0.2);
-		border-radius: 10px;
-	}
-
-	.user-pie-graph {
-		/*background-color: pink;*/
-		background-color: rgba(200, 200, 200, 0.2);
-		border-radius: 10px;
-		width: 100%;
-	}
-
-	.bottom-wrapper {
-		/*background-color: pink;*/
-		padding: 1.67rem;
-		gap: 0.5rem;
-		border-radius: 10px;
-		background-color: rgba(200, 200, 200, 0.2);
-	}
-
-	.user-row {
-		display: grid;
-		grid-template-columns: repeat(5, 1fr);
-		padding: 10px 20px;
-		border-radius: 100px;
-		background-color: var(--blue);
-		/*background-color: rgba(10, 10, 10, 0.1);*/
-	}
-
-		.user-row:nth-child(2n-1) {
-			background-color: rgba(13, 110, 253, 0.33);
-		}
-
-		.user-row:nth-child(3), .user-row:nth-child(4) {
-			border-radius: unset;
-		}
-
-		.user-row:nth-child(5) {
-			border-radius: 0 0 10px 10px;
-		}
-
-	.header {
-		border-radius: 20px 20px 0 0;
-		background-color: rgba(13, 110, 253, 0.63);
-	}
-
-	.link {
-		opacity: 0.5;
-	}
-
-		.link:hover {
-			opacity: 1;
-		}
-
-</style>
-
-
-
 
 <section class="dashboard">
 
@@ -243,16 +44,16 @@
 				<span class="tab-value">$200.00</span>
 				<i class="tab-icon"><img src="/Images/dollar-symbol.png" /></i>
 			</div>
-			<div class="info-tab">
+			<a class="info-tab" asp-controller="Customer" asp-action="Index">
 				<span class="tab-title">Users</span>
 				<span class="tab-value">@userCount</span>
 				<i class="tab-icon"><img src="/Images/user.png" /></i>
-			</div>
-			<div class="info-tab">
+			</a>
+			<a class="info-tab" asp-controller="Orders" asp-action="Index">
 				<span class="tab-title">Pending Orders</span>
 				<span class="tab-value">@pendingOrders</span>
 				<i class="tab-icon"><img src="~/Images/order.png" /></i>
-			</div>
+			</a>
 		</div>
 
 		<div class="mid-wrapper">
