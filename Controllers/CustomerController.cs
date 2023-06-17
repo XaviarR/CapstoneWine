@@ -4,6 +4,7 @@ using CapstoneWine.Data;
 using CapstoneWine.Models.ViewModels;
 using CapstoneWine.Services;
 using CapstoneWine.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace CapstoneWine.Controllers
 {
@@ -11,14 +12,17 @@ namespace CapstoneWine.Controllers
     {
         private readonly ApplicationDbContext _context;
 		private readonly IAccountService _accountService;
+        private readonly UserManager<IdentityUser> _userManager;
 
-		public CustomerController(
+        public CustomerController(
 			ApplicationDbContext context,
-			IAccountService accountService
-)
+			IAccountService accountService,
+            UserManager<IdentityUser> userManager
+            )
 		{
 			_context = context;
 			_accountService = accountService;
+            _userManager = userManager;
 		}
 
         // GET: CustomerModels
@@ -212,7 +216,42 @@ namespace CapstoneWine.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CustomerModelExists(int id)
+		public async Task<IActionResult> Profile()
+		{
+			var idKey = _userManager.GetUserId(HttpContext.User);
+
+            var customer = await _context.CustomerModel.FirstOrDefaultAsync(a => a.IdentityKey == idKey);
+
+			if (customer == null)
+			{
+				return NotFound();
+			}
+
+			var customerId = customer.ID;
+			
+			var order = await _context.Orders.FirstOrDefaultAsync(c => c.CustomerId == customerId);
+            var wineId = order.WineID;
+            var wine = await _context.Wines.FirstOrDefaultAsync(d => d.WineID == wineId);
+            var wineName = wine.WineName;
+			
+            var customerSub = await _context.CustomerSub.FirstOrDefaultAsync(b => b.CustomerID == customerId);
+            var subId = customerSub.SubID;
+            var subscription = await _context.Subscriptions.FirstOrDefaultAsync(e => e.SubID == subId);
+
+
+            var customerViewModel = new CustomerViewModel()
+            {
+                Customer = customer,
+                Email = _context.Users.Where(u => u.Id == customer.IdentityKey).First().Email,
+                Subscription = subscription,
+                Order = order,
+                Wine = wine
+            };
+
+			return View(customerViewModel);
+		}
+
+		private bool CustomerModelExists(int id)
         {
             return (_context.CustomerModel?.Any(e => e.ID == id)).GetValueOrDefault();
         }

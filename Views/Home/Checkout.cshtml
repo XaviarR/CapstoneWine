@@ -21,8 +21,24 @@
 				</tr>
 				@foreach (var item in Model.SubItems)
 				{
+					var imageName = "";
+					switch (item.ProductName)
+					{
+						case "CheapandCheerful":
+							imageName = "cc.jpg";
+							break;
+						case "TreatYourself":
+							imageName = "treat.jpg";
+							break;
+						case "CMSelection":
+							imageName = "cellar.jpg";
+							break;
+						default:
+							imageName = "default.jpg";
+							break;
+					}
 					<tr>
-						<td><img src="~/Images/sub/mixed.jpg" style="height:170px;width:110px; object-fit:contain" /></td>
+						<td><img src="~/Images/sub/@imageName" style="height:170px;width:110px; object-fit:contain" /></td>
 						<td>@item.ProductName</td>
 						<td>@item.Type</td>
 						<td>@item.NumOfBottles x @item.BottlePrice.ToString("C2") = @item.Total.ToString("C2")</td>
@@ -103,8 +119,24 @@
 			</tr>
 			@foreach(var item in Model.SubItems)
 			{
+				var imageName = "";
+				switch (item.ProductName)
+				{
+					case "CheapandCheerful":
+						imageName = "cc.jpg";
+						break;
+					case "TreatYourself":
+						imageName = "treat.jpg";
+						break;
+					case "CMSelection":
+						imageName = "cellar.jpg";
+						break;
+					default:
+						imageName = "default.jpg";
+						break;
+				}
 			<tr>
-				<td><img src="~/Images/sub/mixed.jpg" style="height:170px;width:110px; object-fit:contain" /></td>
+					<td><img src="~/Images/sub/@imageName" style="height:170px;width:110px; object-fit:contain" /></td>
 				<td>@item.ProductName</td>
 				<td>Pending</td>
 				<td>@item.RewardPoints</td>
@@ -174,7 +206,7 @@ else
 			//Execute the payment
 			onAuthorize: function (data, actions) {
 				return actions.payment.execute().then(function () {
-					var url = '@Url.Action("OrderComplete", "Subscriptions", new { })';//page sent to after order completed
+					var url = '@Url.Action("OrderComplete", "Home", new { })';//page sent to after order completed
 					window.location.href = url;
 				});
 			}
