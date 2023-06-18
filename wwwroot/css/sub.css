@@ -338,7 +338,7 @@ logos {
     border-radius: 20px;
     width: 40vw;
     height: auto;
-    margin: 2vw 1vw;
+    margin: .4vw 1vw;
     border: 2px, solid var(--white);
 }
 .ish {
