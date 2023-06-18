@@ -5,6 +5,8 @@ using CapstoneWine.Models.ViewModels;
 using CapstoneWine.Services;
 using CapstoneWine.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace CapstoneWine.Controllers
 {
@@ -13,7 +15,7 @@ namespace CapstoneWine.Controllers
 		private readonly ApplicationDbContext _context;
 		private readonly IAccountService _accountService;
 		private readonly UserManager<IdentityUser> _userManager;
-
+		
 		public CustomerController(
 			ApplicationDbContext context,
 			IAccountService accountService,
@@ -26,6 +28,8 @@ namespace CapstoneWine.Controllers
 		}
 
 		// GET: CustomerModels
+		[Authorize(Roles = "Admin")]
+
 		public async Task<IActionResult> Index(string searchString)
 		{
 			ViewData["CurrentFilter"] = searchString;
@@ -59,6 +63,8 @@ namespace CapstoneWine.Controllers
 		}
 
 		// GET: CustomerModels/Details/5
+		[Authorize(Roles = "Admin")]
+
 		public async Task<IActionResult> Details(int? id)
 		{
 			if (id == null || _context.CustomerModel == null)
@@ -82,6 +88,7 @@ namespace CapstoneWine.Controllers
 			return View(customerViewModel);
 		}
 
+		[Authorize(Roles = "Admin")]
 		// GET: CustomerModels/Create
 		public IActionResult Create()
 		{
@@ -114,6 +121,7 @@ namespace CapstoneWine.Controllers
 		}
 
 
+		[Authorize(Roles = "Admin")]
 		// GET: CustomerModels/Edit/5
 		public async Task<IActionResult> Edit(int? id)
 		{
@@ -173,6 +181,7 @@ namespace CapstoneWine.Controllers
 			return View(customerViewModel);
 		}
 
+		[Authorize(Roles = "Admin")]
 		// GET: CustomerModels/Delete/5
 		public async Task<IActionResult> Delete(int? id)
 		{
@@ -197,6 +206,7 @@ namespace CapstoneWine.Controllers
 			return View(customerViewModel);
 		}
 
+		[Authorize(Roles = "Admin")]
 		// POST: CustomerModels/Delete/5
 		[HttpPost, ActionName("Delete")]
 		[ValidateAntiForgeryToken]
