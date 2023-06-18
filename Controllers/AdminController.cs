@@ -7,10 +7,14 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CapstoneWine.Data;
 using CapstoneWine.Models;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace CapstoneWine.Controllers
 {
-    public class AdminController : Controller
+	[Authorize(Roles = "Admin")]
+
+	public class AdminController : Controller
     {
         private readonly ApplicationDbContext _context;
 
@@ -49,7 +53,7 @@ namespace CapstoneWine.Controllers
 
 
             // Pending Orders
-            int pendingOrders = orders.Where(a => a.OrderStatus == "pending").Count();
+            int pendingOrders = orders.Where(a => a.OrderStatus == "Pending").Count();
             ViewData["PendingOrders"] = pendingOrders;
 
             // Sales
