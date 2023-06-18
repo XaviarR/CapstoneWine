@@ -1,8 +1,70 @@
-﻿@model CapstoneWine.Models.ViewModels.SubViewModel
+﻿<link rel="stylesheet" href="~/css/sub.css" asp-append-version="true" />
+@model CapstoneWine.Models.ViewModels.SubViewModel
 
 @{
 	ViewData["Title"] = "Subscriptions";
 }
+<div class="hype_box bk_blur" style="overflow:visible; margin-bottom:2vw;">
+	<div>
+		<h2 class="boldTitle" style="font-size:4vw">Customise Your Subscription</h2>
+	
+		@*One*@
+		<div class="side_ish">
+			<div class="iconBox" style="margin-left:-55px">
+				<img class="icon_r" src="~/images/icons/select.jpg" />
+			</div >
+			<div style ="flex-direction:column">
+				<p class="boldTitle" style="font-size:2.5vw">Select your wine type</p>
+				<p class ="divaText" style="font-size:1.3vw">Choose what kind of wine you would like to recieve.<br />
+				Reds? White? or the best of both worlds - Mixed</p>
+			</div>
+		</div>
+		
+		@*two*@
+		<div class="side_ish">
+			<div class="iconBox" style="margin-left:-55px">
+				<img class="icon_r" src="~/images/icons/how_many.jpg" />
+			</div>
+			<div style ="flex-direction:column">
+				<p class="boldTitle" style="font-size:2.5vw">How many Bottles for each delivery?</p>
+				<p class="divaText" style="font-size:1.3vw">Subscription bargans are not just for those<br /> who can buy their wine by the case,
+					you can choose<br /> between 3, 6 or 12 bottles per delivery</p>
+			</div>
+		</div>
+		
+		@*Three*@
+		<div class="side_ish">
+			<div class="iconBox" style="margin-left:-55px">
+				<img class="icon_r" src="~/Images/icons/img17.jpg" />
+			</div>
+			<div style="flex-direction:column">
+			<p class="boldTitle" style="font-size:2.5vw">How often should we deliver?</p>
+			<p class="divaText" style="font-size:1.3vw">Let us know often you would to recieve deliveries?<br />
+				We can delivery every 3 or six months or once per year</p>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="bk_blur" style="margin-bottom:2vw">
+		<h2 class="boldTitle" style="line-height:7rem" >How it works</h2>
+		<div>
+			<p class="divaText" style="font-size:2.5vw; text-align:left; margin-bottom:0">Payments</p>
+			<p>Subscriptions are charged at the time of delivery,
+				for your delivery months, you will recieve an email outlining what you can expect in this months subscription,
+				as well as a payment summary</p>
+		</div>
+		<div>
+			<p class="divaText" style="font-size:2.5vw; text-align:left; margin-bottom:0">Deliveries</p>
+			<p>	After Payment, or your order will be shipped. You can expect to recieve your order within 5 working days</p>
+			<p> At this point we can only accept deliveries within NZ</p>
+		</div>
+		<div>
+			<p class="divaText" style="font-size:2.5vw; text-align:left; margin-bottom:0; margin-top:25px; line-height:2vw" >Making Changes</p>
+			<p>	Super easy, just get in touch with our WINZE team </p>
+		</div>
+	</div>
+</div>
 
 @if (Model.SubItems.Count > 0)
 {
@@ -25,33 +87,35 @@
 					imageName = "default.jpg";
 					break;
 			}
-
-			<div class="row col" style="padding-bottom:15px">
-				<h1 class="text-start">@Html.DisplayFor(modelItem => item.ProductName)</h1>
-				<img src="~/Images/sub/@imageName" style="width:300px; height:350px" />
+			
+			<div class="row col" style="padding:10px">
+				<h1 class="boldTitle" style="font-size:4rem; text-align:left">@Html.DisplayFor(modelItem => item.ProductName)</h1>
+				<img src="~/Images/sub/@imageName" style="width:300px; height:350px;" />
+				
 				<div>
 					<h2 class="text-start">Type: @Html.DisplayFor(modelItem => item.Type)</h2>
-					<a class="btn btn-secondary btn-sm" asp-action="Red" asp-route-id="@item.ProductId">Red</a>
-					<a class="btn btn-primary btn-sm" asp-action="White" asp-route-id="@item.ProductId">White</a>
-					<a class="btn btn-info btn-sm" asp-action="Mixed" asp-route-id="@item.ProductId">Mixed</a>
+					<a class="btn btn-outline-secondary btn-md" asp-action="Red" asp-route-id="@item.ProductId">Red</a>
+					<a class="btn btn-outline-primary btn-md" asp-action="White" asp-route-id="@item.ProductId">White</a>
+					<a class="btn btn-outline-info btn-md" asp-action="Mixed" asp-route-id="@item.ProductId">Mixed</a>
 				</div>
-				<div>
+				<div style="margin:10px">
 					<h2 class="text-start">Number of Bottles: @Html.DisplayFor(modelItem => item.NumOfBottles)</h2>
-					<a class="btn btn-secondary btn-sm" asp-action="Bottles3" asp-route-id="@item.ProductId">3</a>
-					<a class="btn btn-primary btn-sm" asp-action="Bottles6" asp-route-id="@item.ProductId">6</a>
-					<a class="btn btn-info btn-sm" asp-action="Bottles12" asp-route-id="@item.ProductId">12</a>
+					<a class="btn btn-outline-secondary btn-md" asp-action="Bottles3" asp-route-id="@item.ProductId">3</a>
+					<a class="btn btn-outline-primary btn-md" asp-action="Bottles6" asp-route-id="@item.ProductId">6</a>
+					<a class="btn btn-outline-info btn-md" asp-action="Bottles12" asp-route-id="@item.ProductId">12</a>
 				</div>
-				<div>
-					<h2 class="text-start">Frequency: @Html.DisplayFor(modelItem => item.Frequency)</h2>
-					<a class="btn btn-secondary btn-sm" asp-action="Freq3" asp-route-id="@item.ProductId">3</a>
-					<a class="btn btn-primary btn-sm" asp-action="Freq6" asp-route-id="@item.ProductId">6</a>
-					<a class="btn btn-info btn-sm" asp-action="Freq12" asp-route-id="@item.ProductId">12</a>
+				<div style="margin:10px">
+					<h2 class="text-start">Months: @Html.DisplayFor(modelItem => item.Frequency)</h2>
+					<a class="btn btn-outline-secondary btn-md" asp-action="Freq3" asp-route-id="@item.ProductId">3</a>
+					<a class="btn btn-outline-primary btn-md" asp-action="Freq6" asp-route-id="@item.ProductId">6</a>
+					<a class="btn btn-outline-info btn-md" asp-action="Freq12" asp-route-id="@item.ProductId">12</a>
 				</div>
-				<div>
+				<div style="margin:10px">
 					<h2></h2>
-					<a class="btn btn-danger btn-sm" asp-action="Remove" asp-route-id="@item.ProductId">Remove</a>
+					<a class="btn btn-danger btn-md" asp-action="Remove" asp-route-id="@item.ProductId">Remove</a>
 				</div>
-			</div>
+				</div>
+			
 		}
 		<div class="row">
 			<div class="text-end" colspan="8">
