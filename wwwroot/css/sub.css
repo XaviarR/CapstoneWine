@@ -326,6 +326,21 @@ logos {
    margin-bottom:30px;
 }
 
+.side_ish {
+    backdrop-filter: blur(10px);
+    background-color: var(--blue);
+    background-blend-mode: luminosity;
+    display: inline-flex;
+    flex-direction: row;
+    text-align:justify;
+    border: none;
+    padding: .9vw;
+    border-radius: 20px;
+    width: 40vw;
+    height: auto;
+    margin: .4vw 1vw;
+    border: 2px, solid var(--white);
+}
 .ish {
     backdrop-filter: blur(10px);
     background-color: var(--white);
