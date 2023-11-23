@@ -1,5 +1,22 @@
 # CapstoneWine
+Capstone Wine was a collabaritve project where 4 memebers were tasked with developing a website in an agile enviroment
 
-hello world
-
-test
+![image](https://github.com/XaviarR/CapstoneWine/assets/86547764/c85d573c-73e9-4a7c-9960-043bbff0e188)
+![image](https://github.com/XaviarR/CapstoneWine/assets/86547764/e38a3b74-6dbf-4a12-aca2-40a544d66dee)
+![image](https://github.com/XaviarR/CapstoneWine/assets/86547764/53ad4582-7070-465c-a001-0ea17d74ad22)
+![image](https://github.com/XaviarR/CapstoneWine/assets/86547764/c52ccbb7-7f39-467f-8732-b3c3fd36b3e2)
+![image](https://github.com/XaviarR/CapstoneWine/assets/86547764/fee41e1a-4d6b-4215-9538-b8bf6b139871)
+![image](https://github.com/XaviarR/CapstoneWine/assets/86547764/849673f9-e294-47b5-9a67-c344e17518f2)
+![image](https://github.com/XaviarR/CapstoneWine/assets/86547764/b0bdb651-7ee8-4e0d-af08-32e89ec47394)
+![image](https://github.com/XaviarR/CapstoneWine/assets/86547764/5008c23b-ac1b-4047-8702-bd6b529ee1a8)
+![image](https://github.com/XaviarR/CapstoneWine/assets/86547764/fbcda6a3-26e7-4645-b56b-fe6bbaad67c2)
+![image](https://github.com/XaviarR/CapstoneWine/assets/86547764/858396fe-2007-4550-8646-3fc4d1053c52)
+![image](https://github.com/XaviarR/CapstoneWine/assets/86547764/1d604cb5-a6bb-4286-a494-f0eb7b2a5f06)
+![image](https://github.com/XaviarR/CapstoneWine/assets/86547764/0c69f9f3-eb40-48be-ad29-429b28442f09)
+![image](https://github.com/XaviarR/CapstoneWine/assets/86547764/7a370e3f-60c7-419a-9b74-ca89c29f72ca)
+![image](https://github.com/XaviarR/CapstoneWine/assets/86547764/c57062ea-b25c-4ce0-a9b8-b9415808d540)
+![image](https://github.com/XaviarR/CapstoneWine/assets/86547764/8532c32f-3468-4dbf-8ec0-d234b980ff82)
+![image](https://github.com/XaviarR/CapstoneWine/assets/86547764/c72edb88-8002-4bbb-9e7a-fb4d6370572d)
+![image](https://github.com/XaviarR/CapstoneWine/assets/86547764/e17d43b0-2978-436c-99d0-ae7406cffb8c)
+![image](https://github.com/XaviarR/CapstoneWine/assets/86547764/9a381490-c802-4c53-9286-9c53ec3ab536)
+![image](https://github.com/XaviarR/CapstoneWine/assets/86547764/319f5ce6-91de-4968-a460-043be1780b6e)
